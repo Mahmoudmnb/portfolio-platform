@@ -1,0 +1,53 @@
+x-app: &app
+  build: ./backend
+  env_file: ./backend/.env
+  environment:
+    DB_HOST: postgres
+    DB_PORT: 5432
+    DB_DATABASE: portfolio
+    DB_USERNAME: portfolio
+    DB_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    MAIL_HOST: mailpit
+    MAIL_PORT: 1025
+  volumes:
+    - media:/app/storage/app
+    - logs:/app/storage/logs
+  depends_on:
+    postgres:
+      condition: service_healthy
+  restart: unless-stopped
+services:
+  app:
+    <<: *app
+    ports: ["${APP_PORT:-8000}:8000"]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/v1/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+  worker:
+    <<: *app
+    command: ["php", "artisan", "queue:work", "--sleep=2", "--tries=3", "--timeout=90", "--max-time=3600"]
+  scheduler:
+    <<: *app
+    command: ["php", "artisan", "schedule:work"]
+  postgres:
+    image: postgres:18.6-bookworm
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    ports: ["127.0.0.1:${DB_PORT:-5432}:5432"]
+    volumes: ["database:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d portfolio"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  mailpit:
+    image: axllent/mailpit:v1.31.6
+    ports: ["127.0.0.1:${MAILPIT_PORT:-8025}:8025"]
+volumes:
+  database:
+  media:
+  logs:
