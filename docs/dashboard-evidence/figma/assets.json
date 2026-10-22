@@ -1,0 +1,130 @@
+[
+  {
+    "screen": "02",
+    "slot": "imgHomeIcon",
+    "file": "dashboard/assets/figma/02-imgHomeIcon.svg",
+    "sha256": "49c878705092186cf53a8a02011f4e9b3c0a5676e9b829978a3386cced7d3c25",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "02",
+    "slot": "imgContentIcon",
+    "file": "dashboard/assets/figma/02-imgContentIcon.svg",
+    "sha256": "b0cd3f8d92b1739b9b07899b0c27cb96f2a525cb8ba7656caa2307f888cb826c",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "02",
+    "slot": "imgInboxIcon",
+    "file": "dashboard/assets/figma/02-imgInboxIcon.svg",
+    "sha256": "d28cec6e3b75ed8f50d22afaf01fbc78f061d8240abf2411c89b9e06a92f801d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "02",
+    "slot": "imgMoreIcon",
+    "file": "dashboard/assets/figma/02-imgMoreIcon.svg",
+    "sha256": "462532d1d4ab097687eac369aace9d2dfb0f44719791844d4e414c43f28fe81a",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "03",
+    "slot": "imgHomeIcon",
+    "file": "dashboard/assets/figma/03-imgHomeIcon.svg",
+    "sha256": "b02cfcf5d6dbd18cc366cae3ef70b0f3a0f006cc4d0d47961badd1a09fc19b13",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "03",
+    "slot": "imgContentIcon",
+    "file": "dashboard/assets/figma/03-imgContentIcon.svg",
+    "sha256": "17baed900c6f613bd4a06de137ea38a7c3a236f98a452a761ea30a0b1b7b880d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "03",
+    "slot": "imgInboxIcon",
+    "file": "dashboard/assets/figma/03-imgInboxIcon.svg",
+    "sha256": "d28cec6e3b75ed8f50d22afaf01fbc78f061d8240abf2411c89b9e06a92f801d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "03",
+    "slot": "imgMoreIcon",
+    "file": "dashboard/assets/figma/03-imgMoreIcon.svg",
+    "sha256": "462532d1d4ab097687eac369aace9d2dfb0f44719791844d4e414c43f28fe81a",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "06",
+    "slot": "imgHomeIcon",
+    "file": "dashboard/assets/figma/06-imgHomeIcon.svg",
+    "sha256": "b02cfcf5d6dbd18cc366cae3ef70b0f3a0f006cc4d0d47961badd1a09fc19b13",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "06",
+    "slot": "imgContentIcon",
+    "file": "dashboard/assets/figma/06-imgContentIcon.svg",
+    "sha256": "b0cd3f8d92b1739b9b07899b0c27cb96f2a525cb8ba7656caa2307f888cb826c",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "06",
+    "slot": "imgInboxIcon",
+    "file": "dashboard/assets/figma/06-imgInboxIcon.svg",
+    "sha256": "d28cec6e3b75ed8f50d22afaf01fbc78f061d8240abf2411c89b9e06a92f801d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "06",
+    "slot": "imgMoreIcon",
+    "file": "dashboard/assets/figma/06-imgMoreIcon.svg",
+    "sha256": "0dc1df7d733c2fdbcd06af7d495608e8a5d36295eef4833866460a4c94d049f2",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "17",
+    "slot": "imgHomeIcon",
+    "file": "dashboard/assets/figma/17-imgHomeIcon.svg",
+    "sha256": "b02cfcf5d6dbd18cc366cae3ef70b0f3a0f006cc4d0d47961badd1a09fc19b13",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "17",
+    "slot": "imgContentIcon",
+    "file": "dashboard/assets/figma/17-imgContentIcon.svg",
+    "sha256": "17baed900c6f613bd4a06de137ea38a7c3a236f98a452a761ea30a0b1b7b880d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "17",
+    "slot": "imgInboxIcon",
+    "file": "dashboard/assets/figma/17-imgInboxIcon.svg",
+    "sha256": "d28cec6e3b75ed8f50d22afaf01fbc78f061d8240abf2411c89b9e06a92f801d",
+    "width": "24",
+    "height": "24"
+  },
+  {
+    "screen": "17",
+    "slot": "imgMoreIcon",
+    "file": "dashboard/assets/figma/17-imgMoreIcon.svg",
+    "sha256": "462532d1d4ab097687eac369aace9d2dfb0f44719791844d4e414c43f28fe81a",
+    "width": "24",
+    "height": "24"
+  }
+]

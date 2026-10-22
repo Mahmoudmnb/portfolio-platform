@@ -1,0 +1,28 @@
+<frame id="2:2671" name="10 · Inquiry detail" x="2088" y="1220" width="412" height="892">
+  <frame id="4:2894" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2895" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2896" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2897" name="INBOX / CLIENT MESSAGE" x="24" y="24" width="364" height="18" />
+    <text id="4:2898" name="Inquiry details" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2899" name="Scrollable body" x="0" y="138" width="412" height="754">
+    <frame id="4:2900" name="Content" x="24" y="24" width="364" height="578">
+      <frame id="4:2901" name="New" x="0" y="8" width="45" height="34">
+        <text id="4:2902" name="New" x="8" y="8" width="29" height="18" />
+      </frame>
+      <text id="4:2903" name="A Flutter app for our team" x="0" y="58" width="364" height="26" />
+      <text id="4:2904" name="Alex Morgan · alex@example.com" x="0" y="100" width="364" height="22" />
+      <frame id="4:2905" name="Message" x="0" y="138" width="364" height="110">
+        <text id="4:2906" name="Message" x="16" y="16" width="332" height="26" />
+        <text id="4:2907" name="We would love to discuss a mobile app for our small business. Could we arrange a short conversation?" x="16" y="50" width="332" height="44" />
+      </frame>
+      <instance id="4:2908" name="Action · Open email app" x="0" y="264" width="364" height="52" />
+      <instance id="4:2914" name="Field · Private note" x="0" y="332" width="364" height="58" />
+      <instance id="4:2924" name="Action · Save note &amp; mark read" x="0" y="406" width="364" height="52" />
+      <instance id="4:2930" name="Action · Mark as replied" x="0" y="474" width="364" height="52" />
+      <text id="4:2936" name="Replies are sent through your email app. Status changes are recorded here." x="0" y="542" width="364" height="36" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

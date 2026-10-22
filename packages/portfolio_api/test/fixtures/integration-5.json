@@ -1,0 +1,12 @@
+{
+  "data": {
+    "token": "TOKEN_PLACEHOLDER",
+    "token_type": "Bearer",
+    "expires_at": "2026-10-28T09:00:00.000000Z",
+    "user": {
+      "id": 1,
+      "name": "Example Owner",
+      "email": "owner@example.test"
+    }
+  }
+}

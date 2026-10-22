@@ -1,0 +1,72 @@
+<frame id="2:2663" name="02 · Overview" x="612" y="180" width="412" height="892">
+  <frame id="4:2456" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2457" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2458" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2459" name="BANNAN / STUDIO" x="24" y="24" width="364" height="18" />
+    <text id="4:2460" name="Studio overview" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2461" name="Scrollable body" x="0" y="138" width="412" height="666">
+    <frame id="4:2462" name="Content" x="24" y="24" width="364" height="652">
+      <frame id="4:2480" name="Last 30 days · UTC" x="0" y="8" width="150" height="34">
+        <text id="4:2481" name="Last 30 days · UTC" x="8" y="8" width="134" height="18" />
+      </frame>
+      <frame id="4:2482" name="Your work is getting seen" x="0" y="58" width="364" height="178">
+        <text id="4:2483" name="Your work is getting seen" x="16" y="16" width="332" height="26" />
+        <text id="4:2484" name="Illustrative data · accepted events" x="16" y="50" width="332" height="22" />
+        <frame id="4:2485" name="Page views" x="16" y="80" width="288.5400085449219" height="22">
+          <text id="4:2486" name="Page views" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2487" name="1,284" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+        <frame id="4:2488" name="Project views" x="16" y="110" width="288.5400085449219" height="22">
+          <text id="4:2489" name="Entry views" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2490" name="426" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+        <frame id="4:2491" name="Contact clicks" x="16" y="140" width="288.5400085449219" height="22">
+          <text id="4:2492" name="Contact clicks" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2493" name="32" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+      </frame>
+      <instance id="4:2494" name="Action · Create a project" x="0" y="252" width="364" height="52" />
+      <frame id="4:2500" name="Keep things moving" x="0" y="320" width="364" height="118">
+        <text id="4:2501" name="Keep things moving" x="16" y="16" width="332" height="26" />
+        <frame id="4:2502" name="Draft entries" x="16" y="50" width="288.5400085449219" height="22">
+          <text id="4:2503" name="Draft entries" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2504" name="3" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+        <frame id="4:2505" name="New inquiries" x="16" y="80" width="288.5400085449219" height="22">
+          <text id="4:2506" name="New inquiries" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2507" name="2" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+      </frame>
+      <text id="4:2508" name="Recently updated" x="0" y="454" width="364" height="26" />
+      <frame id="4:2509" name="Field notes" x="0" y="496" width="364" height="156">
+        <text id="4:2510" name="Field notes" x="16" y="16" width="332" height="26" />
+        <text id="4:2511" name="An offline-first Flutter notebook." x="16" y="50" width="332" height="22" />
+        <frame id="4:2512" name="Draft" x="16" y="80" width="59" height="34">
+          <text id="4:2513" name="Draft" x="8" y="8" width="43" height="18" />
+        </frame>
+        <text id="4:2514" name="Project · Updated today" x="16" y="122" width="332" height="18" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="4:2463" name="Bottom navigation" x="0" y="804" width="414" height="88">
+    <frame id="4:2464" name="Overview" x="13" y="13" width="94" height="62">
+      <frame id="4:2465" name="home icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2467" name="Overview" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2468" name="Content" x="111" y="13" width="94" height="62">
+      <frame id="4:2469" name="content icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2471" name="Content" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2472" name="Inbox" x="209" y="13" width="94" height="62">
+      <frame id="4:2473" name="inbox icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2475" name="Inbox" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2476" name="More" x="307" y="13" width="94" height="62">
+      <frame id="4:2477" name="more icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2479" name="More" x="8" y="36" width="78" height="18" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

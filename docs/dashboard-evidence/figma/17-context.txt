@@ -1,0 +1,113 @@
+const imgHomeIcon = "https://www.figma.com/api/mcp/asset/0535bf0a-b529-4dcd-aef6-e0ef168028c7.svg";
+const imgContentIcon = "https://www.figma.com/api/mcp/asset/20cf042e-f81c-48c9-af12-e8bfa1631908.svg";
+const imgInboxIcon = "https://www.figma.com/api/mcp/asset/76c48b28-a071-41f8-a591-ee38c2fa20bf.svg";
+const imgMoreIcon = "https://www.figma.com/api/mcp/asset/a7d9e7f0-3f4d-4e3e-84e3-bc00d0275415.svg";
+
+export default function Component17EmptyContent() {
+  return (
+    <div className="bg-[var(--color-canvas,#f7f8f6)] content-stretch flex flex-col items-start overflow-clip relative rounded-[24px] size-full" data-node-id="2:2678" data-name="17 · Empty content">
+      <div className="content-stretch flex gap-[var(--space-8,8px)] items-start overflow-clip p-[8px] relative shrink-0 w-[412px]" data-node-id="4:3291" data-name="System status">
+        <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-ink,#172a27)] w-[396px] whitespace-pre-wrap" data-node-id="4:3292" style={{ fontVariationSettings: '"wdth" 100' }}>{`9:41                                       LTE   100%`}</p>
+      </div>
+      <div className="[word-break:break-word] content-stretch flex flex-col gap-[var(--space-4,4px)] items-start overflow-clip p-[24px] relative shrink-0 w-[412px]" data-node-id="4:3293" data-name="App bar">
+        <p className="font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] w-[364px]" data-node-id="4:3294" style={{ fontVariationSettings: '"wdth" 100' }}>
+          A FRESH START
+        </p>
+        <p className="font-['Manrope:Bold'] font-bold leading-[34px] relative shrink-0 text-[26px] text-[color:var(--color-ink,#172a27)] w-[364px]" data-node-id="4:3295">
+          Your content
+        </p>
+      </div>
+      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[var(--space-16,16px)] items-start min-h-px overflow-x-clip overflow-y-auto p-[24px] relative w-[412px]" data-node-id="4:3296" data-name="Scrollable body">
+        <div className="content-stretch flex flex-col gap-[var(--space-16,16px)] items-start pt-[8px] relative shrink-0 w-[364px]" data-node-id="4:3297" data-name="Content">
+          <div className="bg-[var(--color-tint,#e5f2ec)] content-stretch flex flex-col gap-[var(--space-8,8px)] items-start overflow-clip p-[16px] relative rounded-[var(--radius-16,16px)] shrink-0 w-[364px]" data-node-id="4:3315" data-name="Your next project starts here.">
+            <p className="[word-break:break-word] font-['Manrope:SemiBold'] font-semibold leading-[26px] relative shrink-0 text-[18px] text-[color:var(--color-ink,#172a27)] w-[332px]" data-node-id="4:3316">
+              Your next project starts here.
+            </p>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:3317" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Add your first project or product, then publish it when you are ready.
+            </p>
+            <CodeConnectSnippet data-node-id="4:3318" data-name="Action · Create first entry">
+              {/* Material 3 Design Kit component
+Docs:
+  https://m3.material.io/components/buttons/overview */}
+              <Button booleanShowFocusIndicator={false} showFocusIndicator={false} instanceSwapIcon="4:18" icon="4:18" booleanShowIcon={false} showIcon={false} textLabelText="Create first entry" labelText="Create first entry" variantType="Round" type="Round" variantSize="Small" size="Small" variantState="Enabled" state="Enabled" />
+            </CodeConnectSnippet>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[var(--color-surface,white)] border border-[var(--color-border,#dce5e0)] border-solid content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[12px] relative shrink-0 w-[414px]" data-node-id="4:3298" data-name="Bottom navigation">
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:3299" data-name="Overview">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:3300" data-name="home icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgHomeIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:3302" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Overview
+          </p>
+        </div>
+        <div className="bg-[var(--color-tint,#e5f2ec)] content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:3303" data-name="Content">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:3304" data-name="content icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgContentIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-accent,#126b5a)] text-center w-[78px]" data-node-id="4:3306" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Content
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:3307" data-name="Inbox">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:3308" data-name="inbox icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInboxIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:3310" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Inbox
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:3311" data-name="More">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:3312" data-name="more icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMoreIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:3314" style={{ fontVariationSettings: '"wdth" 100' }}>
+            More
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Bannan/Caption: Font(family: "Roboto", style: Regular, size: 12, weight: 400, lineHeight: 18, letterSpacing: 0), Bannan/Title: Font(family: "Manrope", style: Bold, size: 26, weight: 700, lineHeight: 34, letterSpacing: 0), Bannan/Heading: Font(family: "Manrope", style: SemiBold, size: 18, weight: 600, lineHeight: 26, letterSpacing: 0), Bannan/Body: Font(family: "Roboto", style: Regular, size: 14, weight: 400, lineHeight: 22, letterSpacing: 0), M3/label/large: Font(family: "Static/Label Large/Font", style: Static/Label Large/Weight, size: Static/Label Large/Size, weight: 500, lineHeight: Static/Label Large/Line Height, letterSpacing: Static/Label Large/Tracking).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Type=Round, Size=Small, State=Enabled
+**Node ID:** 4:104
+
+Standard Icon buttons are low-emphasis buttons. They are used for the lowest priority actions, especially when presenting multiple options. Icon buttons can be placed on a variety of backgrounds. Until the button is interacted with, its container isn’t visible.
+
+## Button
+**Node ID:** 4:63
+
+Buttons communicate actions that users can take.
+
+  
+
+1.  Can contain an optional leading icon
+2.  Five color options: elevated, filled, tonal, outlined, and text
+3.  Five size recommendations: extra small, small, medium, large, extra large
+4.  Two shape options: round and square
+5.  Keep labels concise and use sentence-case
+
+**Documentation:**
+- [https://m3.material.io/components/buttons/overview](https://m3.material.io/components/buttons/overview)
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

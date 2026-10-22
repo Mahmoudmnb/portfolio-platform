@@ -1,0 +1,10 @@
+{
+  "message": "The given data was invalid.",
+  "code": "VALIDATION_ERROR",
+  "errors": {
+    "per_page": [
+      "The per page field must be between 1 and 100."
+    ]
+  },
+  "request_id": "6988b0a3-ee95-4f80-ad25-f494f1eb44a8"
+}

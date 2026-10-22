@@ -1,0 +1,27 @@
+<frame id="2:2662" name="01 · Sign in" x="120" y="180" width="412" height="892">
+  <frame id="4:2414" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2415" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2416" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2417" name="BANNAN / STUDIO" x="24" y="24" width="364" height="18" />
+    <text id="4:2418" name="Your work, in one place." x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2419" name="Scrollable body" x="0" y="138" width="412" height="754">
+    <frame id="4:2420" name="Content" x="24" y="24" width="364" height="436">
+      <text id="4:2421" name="Manage your portfolio, team and inquiries." x="0" y="8" width="364" height="22" />
+      <frame id="4:2422" name="Owner access only" x="0" y="46" width="143" height="34">
+        <text id="4:2423" name="Owner access only" x="8" y="8" width="127" height="18" />
+      </frame>
+      <frame id="4:2424" name="Welcome back" x="0" y="96" width="364" height="306">
+        <text id="4:2425" name="Welcome back" x="16" y="16" width="332" height="26" />
+        <text id="4:2426" name="Sign in to your studio dashboard." x="16" y="50" width="332" height="22" />
+        <instance id="4:2427" name="Field · Email address" x="16" y="80" width="332" height="58" />
+        <instance id="4:2437" name="Field · Password" x="16" y="146" width="332" height="58" />
+        <instance id="4:2447" name="Action · Sign in" x="16" y="212" width="332" height="52" />
+        <text id="4:2454" name="Owner access is set up on the server." x="16" y="272" width="332" height="18" />
+      </frame>
+      <text id="4:2455" name="A quieter space to keep your work moving." x="0" y="418" width="364" height="18" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

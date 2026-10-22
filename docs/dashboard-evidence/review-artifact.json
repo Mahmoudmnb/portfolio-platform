@@ -1,0 +1,15 @@
+{
+  "file": "dashboard/build/review/bannan-studio-finishing-debug-x86_64.apk",
+  "bytes": 86758235,
+  "sha256": "d6632a9f5412ee00f19ce3a36418752314e1cf334ff1639bf2f0c7e371484380",
+  "libraries": [
+    "lib/x86_64/libdartjni.so",
+    "lib/x86_64/libflutter.so"
+  ],
+  "application_id": "com.mahmoudbannan.portfolio_admin",
+  "mode": "debug",
+  "target": "lib/main.dart",
+  "base_url": "http://127.0.0.1:18082/api/v1",
+  "driver_extension_present": false,
+  "test_password_present": false
+}

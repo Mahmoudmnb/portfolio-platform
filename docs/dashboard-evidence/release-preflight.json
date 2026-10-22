@@ -1,0 +1,74 @@
+[
+  {
+    "case": "missing-url",
+    "exit": 1,
+    "message": "Release requires an explicit, non-placeholder HTTPS API_BASE_URL ending in /api/v1.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPQ==",
+      "-Ptarget=lib/main.dart"
+    ]
+  },
+  {
+    "case": "http-url",
+    "exit": 1,
+    "message": "Release requires an explicit, non-placeholder HTTPS API_BASE_URL ending in /api/v1.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPWh0dHA6Ly8xMjcuMC4wLjE6MTgwODIvYXBpL3Yx",
+      "-Ptarget=lib/main.dart"
+    ]
+  },
+  {
+    "case": "placeholder-url",
+    "exit": 1,
+    "message": "Release requires an explicit, non-placeholder HTTPS API_BASE_URL ending in /api/v1.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPWh0dHBzOi8vYXBpLmV4YW1wbGUudGVzdC9hcGkvdjE=",
+      "-Ptarget=lib/main.dart"
+    ]
+  },
+  {
+    "case": "example-domain",
+    "exit": 1,
+    "message": "Release requires an explicit, non-placeholder HTTPS API_BASE_URL ending in /api/v1.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPWh0dHBzOi8vYXBpLmV4YW1wbGUuY29tL2FwaS92MQ==",
+      "-Ptarget=lib/main.dart"
+    ]
+  },
+  {
+    "case": "driver-target",
+    "exit": 1,
+    "message": "Release must use the ordinary lib/main.dart entry point, never a test/driver target.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPWh0dHBzOi8vYXBpLmJhbm5hbi5zdHVkaW8vYXBpL3Yx",
+      "-Ptarget=test_driver/app.dart"
+    ]
+  },
+  {
+    "case": "missing-private-signing",
+    "exit": 1,
+    "message": "Private release signing is missing. Supply the four BANNAN_* signing inputs or ignored android/key.properties.",
+    "command": [
+      "./gradlew",
+      ":app:validateReleasePreparation",
+      "--console=plain",
+      "-Pdart-defines=QVBJX0JBU0VfVVJMPWh0dHBzOi8vYXBpLmJhbm5hbi5zdHVkaW8vYXBpL3Yx",
+      "-Ptarget=lib/main.dart"
+    ]
+  }
+]

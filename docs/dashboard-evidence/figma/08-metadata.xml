@@ -1,0 +1,26 @@
+<frame id="2:2669" name="08 · Member editor" x="1104" y="1220" width="412" height="892">
+  <frame id="4:2782" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2783" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2784" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2785" name="TEAM / PROFILE" x="24" y="24" width="364" height="18" />
+    <text id="4:2786" name="Edit team member" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2787" name="Scrollable body" x="0" y="138" width="412" height="754">
+    <frame id="4:2788" name="Content" x="24" y="24" width="364" height="622">
+      <instance id="4:2789" name="Field · Name" x="0" y="8" width="364" height="58" />
+      <instance id="4:2799" name="Field · Role title" x="0" y="82" width="364" height="58" />
+      <frame id="4:2809" name="Profile image" x="0" y="156" width="364" height="148">
+        <text id="4:2810" name="Profile image" x="16" y="16" width="332" height="26" />
+        <text id="4:2811" name="Choose a ready image before activating." x="16" y="50" width="332" height="22" />
+        <instance id="4:2812" name="Action · Choose photo" x="16" y="80" width="332" height="52" />
+      </frame>
+      <instance id="4:2818" name="Field · Bio" x="0" y="320" width="364" height="58" />
+      <instance id="4:2828" name="Field · Website" x="0" y="394" width="364" height="58" />
+      <instance id="4:2838" name="Action · Save profile" x="0" y="468" width="364" height="52" />
+      <instance id="4:2844" name="Action · Activate profile" x="0" y="536" width="364" height="52" />
+      <text id="4:2850" name="Profile details &amp; social links" x="0" y="604" width="364" height="18" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

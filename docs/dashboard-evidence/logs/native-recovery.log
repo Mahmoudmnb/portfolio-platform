@@ -1,0 +1,97 @@
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 103.0.0 (110.0.0 available)
+  analyzer 13.3.0 (14.6.0 available)
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  package_config 2.2.0 (3.0.0 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  test 1.31.1 (1.33.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  test_core 0.6.18 (0.6.21 available)
+  vector_math 2.4.0 (2.4.3 available)
+  xml 7.0.1 (7.1.0 available)
+Got dependencies!
+16 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                           2,827ms
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          509ms
+D/FlutterJNI(15704): Sending viewport metrics to the engine.
+00:00 [32m+0[0m: (setUpAll)[0m
+
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:39529/G2cE0xvj1BI=/
+VMServiceFlutterDriver: Isolate found with number: 5886036774439559
+VMServiceFlutterDriver: Isolate 5886036774439559 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/Choreographer(15704): Skipped 85 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connected to Flutter application.
+00:01 [32m+0[0m: native network recovery, expiry and accessible large text[0m
+
+W/KeyStore(15704): KeyStore exception
+W/KeyStore(15704): android.os.ServiceSpecificException:  (code 7)
+W/KeyStore(15704): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:2387)
+W/KeyStore(15704): 	at android.os.Parcel.createException(Parcel.java:2357)
+W/KeyStore(15704): 	at android.os.Parcel.readException(Parcel.java:2340)
+W/KeyStore(15704): 	at android.os.Parcel.readException(Parcel.java:2282)
+W/KeyStore(15704): 	at android.security.keystore.IKeystoreService$Stub$Proxy.get(IKeystoreService.java:988)
+W/KeyStore(15704): 	at android.security.KeyStore.get(KeyStore.java:233)
+W/KeyStore(15704): 	at android.security.KeyStore.get(KeyStore.java:222)
+W/KeyStore(15704): 	at android.security.keystore.AndroidKeyStoreSpi.engineGetCertificate(AndroidKeyStoreSpi.java:160)
+W/KeyStore(15704): 	at java.security.KeyStore.getCertificate(KeyStore.java:1120)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.createRSAKeysIfNeeded(KeyCipherImplementationRSAOAEP.java:115)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.<init>(KeyCipherImplementationRSAOAEP.java:42)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherAlgorithm$$ExternalSyntheticLambda0.apply(D8$$SyntheticClass:0)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.StorageCipherFactory.getCurrentKeyCipher(StorageCipherFactory.java:109)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initializeStorageCipher(FlutterSecureStorage.java:364)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.continueInitialize(FlutterSecureStorage.java:275)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.-$$Nest$mcontinueInitialize(Unknown Source:0)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:253)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:250)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.recoverBiometricNamespaceKeyIfNeeded(FlutterSecureStorage.java:301)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initialize(FlutterSecureStorage.java:250)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStoragePlugin$MethodRunner.run(FlutterSecureStoragePlugin.java:178)
+W/KeyStore(15704): 	at android.os.Handler.handleCallback(Handler.java:938)
+W/KeyStore(15704): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+W/KeyStore(15704): 	at android.os.Looper.loop(Looper.java:223)
+W/KeyStore(15704): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+W/KeyStore(15704): KeyStore exception
+W/KeyStore(15704): android.os.ServiceSpecificException:  (code 7)
+W/KeyStore(15704): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:2387)
+W/KeyStore(15704): 	at android.os.Parcel.createException(Parcel.java:2357)
+W/KeyStore(15704): 	at android.os.Parcel.readException(Parcel.java:2340)
+W/KeyStore(15704): 	at android.os.Parcel.readException(Parcel.java:2282)
+W/KeyStore(15704): 	at android.security.keystore.IKeystoreService$Stub$Proxy.get(IKeystoreService.java:988)
+W/KeyStore(15704): 	at android.security.KeyStore.get(KeyStore.java:233)
+W/KeyStore(15704): 	at android.security.KeyStore.get(KeyStore.java:222)
+W/KeyStore(15704): 	at android.security.keystore.AndroidKeyStoreSpi.engineGetCertificate(AndroidKeyStoreSpi.java:165)
+W/KeyStore(15704): 	at java.security.KeyStore.getCertificate(KeyStore.java:1120)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.createRSAKeysIfNeeded(KeyCipherImplementationRSAOAEP.java:115)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.<init>(KeyCipherImplementationRSAOAEP.java:42)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherAlgorithm$$ExternalSyntheticLambda0.apply(D8$$SyntheticClass:0)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.ciphers.StorageCipherFactory.getCurrentKeyCipher(StorageCipherFactory.java:109)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initializeStorageCipher(FlutterSecureStorage.java:364)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.continueInitialize(FlutterSecureStorage.java:275)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.-$$Nest$mcontinueInitialize(Unknown Source:0)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:253)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:250)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.recoverBiometricNamespaceKeyIfNeeded(FlutterSecureStorage.java:301)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initialize(FlutterSecureStorage.java:250)
+W/KeyStore(15704): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStoragePlugin$MethodRunner.run(FlutterSecureStoragePlugin.java:178)
+W/KeyStore(15704): 	at android.os.Handler.handleCallback(Handler.java:938)
+W/KeyStore(15704): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+W/KeyStore(15704): 	at android.os.Looper.loop(Looper.java:223)
+W/KeyStore(15704): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+D/FlutterJNI(15704): Sending viewport metrics to the engine.
+D/ProfileInstaller(15704): Installing profile for com.mahmoudbannan.portfolio_admin
+00:28 [32m+1[0m: (tearDownAll)[0m
+
+00:28 [32m+1[0m: All tests passed![0m
+
+Leaving the application running.

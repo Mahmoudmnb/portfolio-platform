@@ -1,0 +1,2 @@
+McpServerError: Client error '429 Too Many Requests' for url 'https://mcp.figma.com/mcp'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429

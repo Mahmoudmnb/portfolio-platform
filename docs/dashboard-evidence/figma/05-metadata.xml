@@ -1,0 +1,36 @@
+<frame id="2:2666" name="05 · Publish review" x="2088" y="180" width="412" height="892">
+  <frame id="4:2655" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2656" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2657" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2658" name="PUBLISH REVIEW" x="24" y="24" width="364" height="18" />
+    <text id="4:2659" name="Ready to go live?" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2660" name="Scrollable body" x="0" y="138" width="412" height="754">
+    <frame id="4:2661" name="Content" x="24" y="24" width="364" height="424">
+      <frame id="4:2662" name="Field notes" x="0" y="8" width="364" height="220">
+        <text id="4:2663" name="Field notes" x="16" y="16" width="332" height="26" />
+        <text id="4:2664" name="Your project will be visible on the website." x="16" y="50" width="332" height="22" />
+        <frame id="4:2665" name="Cover image ready" x="16" y="80" width="143" height="34">
+          <text id="4:2666" name="Cover image ready" x="8" y="8" width="127" height="18" />
+        </frame>
+        <frame id="4:2667" name="Title &amp; summary" x="16" y="122" width="288.5400085449219" height="22">
+          <text id="4:2668" name="Title &amp; summary" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2669" name="Ready" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+        <frame id="4:2670" name="Description" x="16" y="152" width="288.5400085449219" height="22">
+          <text id="4:2671" name="Description" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2672" name="Ready" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+        <frame id="4:2673" name="Visibility" x="16" y="182" width="288.5400085449219" height="22">
+          <text id="4:2674" name="Visibility" x="0" y="0" width="215.8000030517578" height="22" />
+          <text id="4:2675" name="Public" x="223.8000030517578" y="0" width="64.73999786376953" height="20" />
+        </frame>
+      </frame>
+      <text id="4:2676" name="Published media URLs remain accessible even after an entry is unpublished." x="0" y="244" width="364" height="44" />
+      <instance id="4:2677" name="Action · Publish project" x="0" y="304" width="364" height="52" />
+      <instance id="4:2683" name="Action · Keep as draft" x="0" y="372" width="364" height="52" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

@@ -1,0 +1,41 @@
+name: Android dashboard
+on:
+  push:
+    paths: ['dashboard/**', 'packages/portfolio_api/**', 'docs/openapi.yaml', '.github/workflows/dashboard.yml']
+  pull_request:
+    paths: ['dashboard/**', 'packages/portfolio_api/**', 'docs/openapi.yaml', '.github/workflows/dashboard.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.7'
+          channel: stable
+          cache: true
+      - run: dart pub get --enforce-lockfile
+        working-directory: packages/portfolio_api
+      - run: dart analyze --fatal-infos && dart test
+        working-directory: packages/portfolio_api
+      - run: flutter pub get --enforce-lockfile
+        working-directory: dashboard
+      - run: dart format --output=none --set-exit-if-changed dashboard/lib dashboard/test dashboard/test_driver packages/portfolio_api/lib packages/portfolio_api/test packages/portfolio_api/tool
+      - run: python3 packages/portfolio_api/tool/generate_contract.py && dart format packages/portfolio_api/lib/src/models.dart packages/portfolio_api/lib/src/contract.dart && git diff --exit-code -- packages/portfolio_api/lib/src
+      - run: flutter analyze --fatal-infos && flutter test
+        working-directory: dashboard
+      - run: flutter build apk --debug --dart-define=API_BASE_URL=http://10.0.2.2:18081/api/v1
+        working-directory: dashboard
+      - uses: actions/upload-artifact@v7
+        with:
+          name: bannan-studio-debug-apk
+          path: dashboard/build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 7

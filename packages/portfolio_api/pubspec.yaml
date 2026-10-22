@@ -1,0 +1,12 @@
+name: portfolio_api
+description: Framework independent Bannan Studio API client.
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+dependencies:
+  dio: ^5.11.1
+  http_parser: ^4.1.2
+dev_dependencies:
+  test: ^1.32.0
+  lints: ^6.1.0

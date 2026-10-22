@@ -1,0 +1,41 @@
+# Dashboard accessibility and native QA — 2026-10-21
+
+Runtime: emulator-5554, Android API 30/x86-64, density 420 dpi, fictional disposable PostgreSQL/queue API at 127.0.0.1:18082 through adb reverse. No physical device is attached. TalkBack is not installed (`pm path com.google.android.marvin.talkback` returns no package). Automated checks are identified below; none is presented as human testing.
+
+Reproduction: create a fresh isolated backend/owner/worker following dashboard-development.md. Inject the test password through a private file, never a define. Push a supported fictional PNG as `/sdcard/Download/finishing-picker.png` and scan it with MEDIA_SCANNER_SCAN_FILE. Confirm the worker PID belongs to that disposable backend. Use a worker with `--timeout=0` for this deliberately paused QA fixture; restore/stop it afterward. A previously paused worker with `--timeout=90` exited, which invalidated one harness retry; this was test infrastructure, not evidence of a dashboard upload failure.
+
+From dashboard/:
+
+```sh
+DASHBOARD_CONFIRM_DISPOSABLE=1 \
+DASHBOARD_SMOKE_EMAIL=fictional-owner@example.test \
+DASHBOARD_SMOKE_SECRET_FILE=/private/disposable-password \
+DASHBOARD_SMOKE_IMAGE=/tmp/fictional.png \
+DASHBOARD_QA_WORKER_PID=YOUR_DISPOSABLE_WORKER_PID \
+flutter drive --driver=test_driver/finishing_test.dart \
+  --target=test_driver/app.dart -d emulator-5554 \
+  --dart-define=API_BASE_URL=http://127.0.0.1:18082/api/v1
+```
+
+The harness is Android-specific. It scrolls actual form controls and uses DocumentsUI accessibility bounds for native taps. It disables Flutter frame synchronization only around the external picker/indeterminate choosing animation. Without that, a driver wait can hang behind the picker; this is not a passing selection test. Failed/interrupted harness runs are superseded only by a completed run, recorded in finishing-progress/completion. The worker is resumed in finally; the caller must also resume it if terminating the host process. On success the harness tracks and deletes only its fixture entry/media IDs. On a failed/interrupted run, clean those recorded fixture IDs in the disposable environment before retrying; do not reset unrelated data. Login screenshots contain empty credentials.
+
+| Check and reproduction | Expected | Actual evidence / classification | Status |
+| --- | --- | --- | --- |
+| Login accessibility: run finishing_test.dart guideline test | Android targets, meaningful labels and contrast meet automated guidelines | All three guideline assertions pass on login. Navigation now exposes an explicit semantic tap action and selection; regression asserts the tap action. | passed — automated |
+| Human TalkBack: explore every screen, selected navigation, errors and dialogs | Logical reading order, focus return, usable spoken labels | No TalkBack package/human session available. Automated semantics does not verify spoken behavior. | blocked — human/device |
+| Width 360/412/840 and 1×/2×: run layout_test.dart | No overflow, controls remain reachable, wide forms constrained | All six combinations pass for login/overview; wrapped 2× navigation passes. Native large-text captures supplement these checks. | passed — automated scope; full human sweep not run |
+| Keyboard: focus login fields and submit; submit invalid editor | Keyboard avoids fields, validation preserves text, errors reachable | Actual Android login/IME and scroll-to-action exercised; widget required-field/focus and typed-save tests pass. Full human sweep through every long form/IME not executed. | partial — automated; human not run |
+| Dirty form: toolbar/system back and gesture | Confirm before losing unsaved changes | Widget system-back/discard test passes; native toolbar back traverses editor/review/media. Physical gesture/predictive-back interaction remains unexecuted. | partial — human gesture not run |
+| Actual file picker cancellation | Android DocumentsUI opens; Back restores Choose image | Fresh native picker-cancel.xml and picker-cancel-return.png; separate from historical injected-image smoke. | passed — native automation |
+| Actual file picker selection and upload lifecycle | Pick PNG through SAF; processing differs from transfer; ready URL loads once | Actual picker opens and cancellation passes. Downloads selection timed out after the native tap while waiting 30s for Processing; external-storage attempt could not locate the file. Ordinary driver-free APK also stayed in DocumentsUI after the filename tap. No selected-file upload/processing/foreground result is claimed. Exact logs and normal-picker-result.json are archived; root cause is not established. | failed / unresolved — native selection verification |
+| Background/foreground while processing | Stop checks in background; safely recheck on return | Existing media widget cancellation/backoff/disposal tests pass. Native HOME/foreground processing steps were not reached after picker selection failed. | passed — widget cancellation; native processing return not run |
+| Rotation and process recreation | No crash or duplicate write; restored credentials validated | Normal APK restart and rotation results are recorded in native/normal-lifecycle.json. FlutterDriver defaults to uninstalling the app at teardown; --keep-app-running is required before replacing it with the ordinary APK for a valid persistence check. Picker result after forced activity/process destruction is a separate open case. | partial; picker recreation not run |
+| Email handoff: open fictional inquiry, tap email; repeat without handler | External mailto or useful failure; never auto-mark replied | No human email-client handoff performed. Transport note/status smoke does not prove this interaction. Install a configured mail client and repeat, then disable it to check the failure notice and unchanged status. | not run — human email integration |
+| Connection loss: remove adb reverse, refresh Overview, restore and refresh | Reachable error/retry, successful recovery | Native finishing harness deliberately interrupts only its localhost mapping. API tests prove writes are not automatically retried and ambiguous results require review; this does not simulate every radio/network transition. | passed — native recovery_test.dart, 28s |
+| Session expiry and late responses | One login flow, private state cleared, stale results rejected | Session/client tests cover protected 401, late response isolation and explicit logout. Native harness expires the controller, captures sign-in and reauthenticates; this is distinct from an actual server 401, covered by client tests. | passed — automated scope |
+| Loading, empty, filtered-empty, validation | Correct state and reachable next action | Empty/filtered-empty native captures, real network loading, required-field widget test. Processing/failed selector and retry behavior covered by media tests; no fabricated backend failure used. | passed — automated scope |
+
+Human checklist remains open: spoken TalkBack order/focus, complete long-content/keyboard sweep, physical navigation gestures, mail-app success/failure, and picker recreation/lost-result behavior. To test the last case, background the open picker, enable developer “Don't keep activities” on a disposable device or recreate the activity, return/select/cancel and verify no crash or repeated POST. Record OS/device, steps and result; restore the setting. Process restart of the ordinary app alone does not close that row.
+
+
+Independent native recovery command uses the same secure environment but `--driver=test_driver/recovery_test.dart --keep-app-running`. It passed (one test, 28 seconds), including network recovery, expiry/reauthentication, 2× text, Team/Services/Taxonomies, absence of captured Flutter errors and secure-storage revalidation. The failed picker suite is not relabeled as passed because this independent suite passed. The ordinary main-target APK also opened the native picker and retained it after the file-name tap; [normal-picker-result.json](dashboard-evidence/native/normal-picker-result.json) records that negative observation. Recheck actual selection on a supported physical device/provider before approving upload interaction. No causal claim about the app/plugin/provider is made from this failure alone.

@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "kind": "project",
+      "slug": "field-notes",
+      "title": "Field notes",
+      "summary": "A fictional offline notebook.",
+      "featured": false,
+      "sort_order": 0,
+      "repository_url": null,
+      "demo_url": null,
+      "external_url": null,
+      "cover": {
+        "id": 1,
+        "width": 20,
+        "height": 20,
+        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
+        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+      },
+      "category": {
+        "id": 1,
+        "slug": "mobile",
+        "name": "Mobile",
+        "description": null,
+        "sort_order": 0,
+        "created_at": "2026-10-21T06:00:00.000000Z",
+        "updated_at": "2026-10-21T06:00:00.000000Z"
+      },
+      "technologies": [
+        {
+          "id": 1,
+          "slug": "flutter",
+          "name": "Flutter",
+          "website_url": null,
+          "created_at": "2026-10-21T06:00:00.000000Z",
+          "updated_at": "2026-10-21T06:00:00.000000Z"
+        }
+      ],
+      "published_at": "2026-10-21T06:00:00.000000Z",
+      "seo_title": "Field notes",
+      "seo_description": "A fictional offline notebook.",
+      "created_at": "2026-10-21T06:00:00.000000Z",
+      "updated_at": "2026-10-21T06:00:00.000000Z"
+    }
+  ],
+  "links": {
+    "first": "http://localhost:8000/api/v1/entries?page=1",
+    "last": "http://localhost:8000/api/v1/entries?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "page": null,
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/v1/entries?page=1",
+        "label": "1",
+        "page": 1,
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "page": null,
+        "active": false
+      }
+    ],
+    "path": "http://localhost:8000/api/v1/entries",
+    "per_page": 20,
+    "to": 1,
+    "total": 1
+  }
+}

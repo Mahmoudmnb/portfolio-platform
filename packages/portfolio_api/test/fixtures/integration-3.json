@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 1,
+    "site_title": "Portfolio",
+    "tagline": "Software and creative engineering",
+    "introduction": "Welcome to our portfolio.",
+    "contact_email": "contact@example.test",
+    "availability": "available",
+    "default_seo_title": "Portfolio",
+    "default_seo_description": "Projects, products and services.",
+    "social_links": [],
+    "logo": null,
+    "created_at": "2026-10-21T06:00:00.000000Z",
+    "updated_at": "2026-10-21T06:00:00.000000Z"
+  }
+}

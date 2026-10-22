@@ -1,0 +1,48 @@
+<frame id="2:2668" name="07 · Team" x="612" y="1220" width="412" height="892">
+  <frame id="4:2741" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2742" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2743" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2744" name="PEOPLE BEHIND THE WORK" x="24" y="24" width="364" height="18" />
+    <text id="4:2745" name="Your team" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2746" name="Scrollable body" x="0" y="138" width="412" height="666">
+    <frame id="4:2747" name="Content" x="24" y="24" width="364" height="386">
+      <instance id="4:2765" name="Action · Add team member" x="0" y="8" width="364" height="52" />
+      <frame id="4:2771" name="MB / Mahmoud Bannan" x="0" y="76" width="364" height="130">
+        <text id="4:2772" name="MB / Mahmoud Bannan" x="16" y="16" width="332" height="26" />
+        <text id="4:2773" name="Flutter · Computer vision · Audio" x="16" y="50" width="332" height="22" />
+        <frame id="4:2774" name="Active" x="16" y="80" width="66" height="34">
+          <text id="4:2775" name="Active" x="8" y="8" width="50" height="18" />
+        </frame>
+      </frame>
+      <frame id="4:2776" name="AK / Alex Karim" x="0" y="222" width="364" height="130">
+        <text id="4:2777" name="AK / Alex Karim" x="16" y="16" width="332" height="26" />
+        <text id="4:2778" name="Flutter developer · Fictional sample" x="16" y="50" width="332" height="22" />
+        <frame id="4:2779" name="Inactive" x="16" y="80" width="80" height="34">
+          <text id="4:2780" name="Inactive" x="8" y="8" width="64" height="18" />
+        </frame>
+      </frame>
+      <text id="4:2781" name="Public team profiles do not grant dashboard access." x="0" y="368" width="364" height="18" />
+    </frame>
+  </frame>
+  <frame id="4:2748" name="Bottom navigation" x="0" y="804" width="414" height="88">
+    <frame id="4:2749" name="Overview" x="13" y="13" width="94" height="62">
+      <frame id="4:2750" name="home icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2752" name="Overview" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2753" name="Content" x="111" y="13" width="94" height="62">
+      <frame id="4:2754" name="content icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2756" name="Content" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2757" name="Inbox" x="209" y="13" width="94" height="62">
+      <frame id="4:2758" name="inbox icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2760" name="Inbox" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2761" name="More" x="307" y="13" width="94" height="62">
+      <frame id="4:2762" name="more icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2764" name="More" x="8" y="36" width="78" height="18" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

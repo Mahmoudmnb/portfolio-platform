@@ -1,0 +1,34 @@
+<frame id="2:2665" name="04 · Entry editor" x="1596" y="180" width="412" height="892">
+  <frame id="4:2580" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2581" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2582" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2583" name="CONTENT / FIELD NOTES" x="24" y="24" width="364" height="18" />
+    <text id="4:2584" name="Edit project" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2585" name="Scrollable body" x="0" y="138" width="412" height="754">
+    <frame id="4:2586" name="Content" x="24" y="24" width="364" height="802">
+      <frame id="4:2587" name="Draft" x="0" y="8" width="59" height="34">
+        <text id="4:2588" name="Draft" x="8" y="8" width="43" height="18" />
+      </frame>
+      <instance id="4:2589" name="Field · Title" x="0" y="58" width="364" height="58" />
+      <instance id="4:2599" name="Field · Summary" x="0" y="132" width="364" height="58" />
+      <frame id="4:2609" name="Cover image" x="0" y="206" width="364" height="148">
+        <text id="4:2610" name="Cover image" x="16" y="16" width="332" height="26" />
+        <text id="4:2611" name="Ready · WebP · 1,600 × 1,000" x="16" y="50" width="332" height="22" />
+        <instance id="4:2612" name="Action · Choose from media" x="16" y="80" width="332" height="52" />
+      </frame>
+      <frame id="4:2618" name="Description · Markdown" x="0" y="370" width="364" height="114">
+        <text id="4:2619" name="Description · Markdown" x="16" y="16" width="332" height="26" />
+        <text id="4:2620" name="A lightweight notebook built with Flutter." x="16" y="50" width="332" height="22" />
+        <text id="4:2621" name="Write → Preview" x="16" y="80" width="332" height="18" />
+      </frame>
+      <instance id="4:2622" name="Action · Save draft" x="0" y="500" width="364" height="52" />
+      <instance id="4:2628" name="Action · Review &amp; publish" x="0" y="568" width="364" height="52" />
+      <text id="4:2634" name="Details &amp; links" x="0" y="636" width="364" height="18" />
+      <instance id="4:2635" name="Field · Slug" x="0" y="670" width="364" height="58" />
+      <instance id="4:2645" name="Field · Repository URL" x="0" y="744" width="364" height="58" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

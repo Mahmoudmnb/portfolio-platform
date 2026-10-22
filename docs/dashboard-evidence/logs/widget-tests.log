@@ -1,0 +1,38 @@
+00:00 +0: loading /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/finishing_test.dart
+00:00 +0: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/finishing_test.dart: production configuration rejects documentation placeholders and HTTP
+00:00 +1: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/finishing_test.dart: an open content list reloads after a mutation from another screen
+00:01 +2: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +3: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +4: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +5: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +6: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +7: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +8: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +9: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +10: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +11: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +12: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +13: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +14: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +15: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +16: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +17: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +18: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +19: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +20: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:02 +21: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:03 +22: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: entry create saves typed draft once and pops after success
+00:03 +23: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: login and overview fit width 360.0 scale 1.0
+00:03 +24: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: dirty system back requires confirmation and discard clears draft
+00:03 +25: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: login and overview fit width 360.0 scale 2.0
+00:03 +26: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: validation preserves input and announces missing required fields
+00:03 +27: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: validation preserves input and announces missing required fields
+00:03 +28: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: validation preserves input and announces missing required fields
+00:03 +29: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: login and overview fit width 840.0 scale 1.0
+00:03 +30: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/form_test.dart: 429 retry is disabled until advertised interval
+00:03 +31: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: login and overview fit width 840.0 scale 2.0
+00:03 +32: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: guard hides private content until startup validation
+00:04 +33: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: large-text authenticated navigation wraps without clipping
+00:04 +34: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: every writable content field has explicit UI or visibility action
+00:04 +35: /run/media/mahmoud-bannan/01DC320AD41FD530/projects/Brothers_Tech/portfolio-platform/dashboard/test/layout_test.dart: entry response mapping keeps relationship IDs and excludes read-only fields
+00:04 +36: All tests passed!

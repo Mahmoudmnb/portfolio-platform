@@ -1,0 +1,59 @@
+<frame id="2:2670" name="09 · Inbox" x="1596" y="1220" width="412" height="892">
+  <frame id="4:2851" name="System status" x="0" y="0" width="412" height="34">
+    <text id="4:2852" name="9:41 LTE 100%" x="8" y="8" width="396" height="18" />
+  </frame>
+  <frame id="4:2853" name="App bar" x="0" y="34" width="412" height="104">
+    <text id="4:2854" name="CLIENT INQUIRIES" x="24" y="24" width="364" height="18" />
+    <text id="4:2855" name="Your inbox" x="24" y="46" width="364" height="34" />
+  </frame>
+  <frame id="4:2856" name="Scrollable body" x="0" y="138" width="412" height="666">
+    <frame id="4:2857" name="Content" x="24" y="24" width="364" height="420">
+      <frame id="4:2875" name="Status filters" x="0" y="8" width="186" height="34">
+        <frame id="4:2876" name="New" x="0" y="0" width="45" height="34">
+          <text id="4:2877" name="New" x="8" y="8" width="29" height="18" />
+        </frame>
+        <frame id="4:2878" name="Read" x="53" y="0" width="52" height="34">
+          <text id="4:2879" name="Read" x="8" y="8" width="36" height="18" />
+        </frame>
+        <frame id="4:2880" name="Replied" x="113" y="0" width="73" height="34">
+          <text id="4:2881" name="Replied" x="8" y="8" width="57" height="18" />
+        </frame>
+      </frame>
+      <frame id="4:2882" name="A Flutter app for our team" x="0" y="58" width="364" height="182">
+        <text id="4:2883" name="A Flutter app for our team" x="16" y="16" width="332" height="26" />
+        <text id="4:2884" name="Alex Morgan · Fictional sample" x="16" y="50" width="332" height="22" />
+        <frame id="4:2885" name="New" x="16" y="80" width="45" height="34">
+          <text id="4:2886" name="New" x="8" y="8" width="29" height="18" />
+        </frame>
+        <text id="4:2887" name="We would love to discuss a mobile app for our small business." x="16" y="122" width="332" height="44" />
+      </frame>
+      <frame id="4:2888" name="Computer vision collaboration" x="0" y="256" width="364" height="130">
+        <text id="4:2889" name="Computer vision collaboration" x="16" y="16" width="332" height="26" />
+        <text id="4:2890" name="Sam Lee · Fictional sample" x="16" y="50" width="332" height="22" />
+        <frame id="4:2891" name="Read" x="16" y="80" width="52" height="34">
+          <text id="4:2892" name="Read" x="8" y="8" width="36" height="18" />
+        </frame>
+      </frame>
+      <text id="4:2893" name="Viewing an inquiry does not change its status." x="0" y="402" width="364" height="18" />
+    </frame>
+  </frame>
+  <frame id="4:2858" name="Bottom navigation" x="0" y="804" width="414" height="88">
+    <frame id="4:2859" name="Overview" x="13" y="13" width="94" height="62">
+      <frame id="4:2860" name="home icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2862" name="Overview" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2863" name="Content" x="111" y="13" width="94" height="62">
+      <frame id="4:2864" name="content icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2866" name="Content" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2867" name="Inbox" x="209" y="13" width="94" height="62">
+      <frame id="4:2868" name="inbox icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2870" name="Inbox" x="8" y="36" width="78" height="18" />
+    </frame>
+    <frame id="4:2871" name="More" x="307" y="13" width="94" height="62">
+      <frame id="4:2872" name="more icon" x="35" y="8" width="24" height="24" />
+      <text id="4:2874" name="More" x="8" y="36" width="78" height="18" />
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

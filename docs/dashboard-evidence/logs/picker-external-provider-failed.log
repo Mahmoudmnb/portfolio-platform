@@ -1,0 +1,143 @@
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 103.0.0 (110.0.0 available)
+  analyzer 13.3.0 (14.6.0 available)
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  package_config 2.2.0 (3.0.0 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  test 1.31.1 (1.33.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  test_core 0.6.18 (0.6.21 available)
+  vector_math 2.4.0 (2.4.3 available)
+  xml 7.0.1 (7.1.0 available)
+Got dependencies!
+16 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                              6.8s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          522ms
+D/FlutterJNI(14404): Sending viewport metrics to the engine.
+00:00 [32m+0[0m: (setUpAll)[0m
+
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:43203/kakEnU2XMxM=/
+VMServiceFlutterDriver: Isolate found with number: 978613849075203
+VMServiceFlutterDriver: Isolate 978613849075203 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/Choreographer(14404): Skipped 86 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connected to Flutter application.
+00:01 [32m+0[0m: finishing native QA: real picker, processing/background, visual states and expiry[0m
+
+W/KeyStore(14404): KeyStore exception
+W/KeyStore(14404): android.os.ServiceSpecificException:  (code 7)
+W/KeyStore(14404): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:2387)
+W/KeyStore(14404): 	at android.os.Parcel.createException(Parcel.java:2357)
+W/KeyStore(14404): 	at android.os.Parcel.readException(Parcel.java:2340)
+W/KeyStore(14404): 	at android.os.Parcel.readException(Parcel.java:2282)
+W/KeyStore(14404): 	at android.security.keystore.IKeystoreService$Stub$Proxy.get(IKeystoreService.java:988)
+W/KeyStore(14404): 	at android.security.KeyStore.get(KeyStore.java:233)
+W/KeyStore(14404): 	at android.security.KeyStore.get(KeyStore.java:222)
+W/KeyStore(14404): 	at android.security.keystore.AndroidKeyStoreSpi.engineGetCertificate(AndroidKeyStoreSpi.java:160)
+W/KeyStore(14404): 	at java.security.KeyStore.getCertificate(KeyStore.java:1120)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.createRSAKeysIfNeeded(KeyCipherImplementationRSAOAEP.java:115)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.<init>(KeyCipherImplementationRSAOAEP.java:42)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherAlgorithm$$ExternalSyntheticLambda0.apply(D8$$SyntheticClass:0)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.StorageCipherFactory.getCurrentKeyCipher(StorageCipherFactory.java:109)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initializeStorageCipher(FlutterSecureStorage.java:364)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.continueInitialize(FlutterSecureStorage.java:275)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.-$$Nest$mcontinueInitialize(Unknown Source:0)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:253)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:250)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.recoverBiometricNamespaceKeyIfNeeded(FlutterSecureStorage.java:301)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initialize(FlutterSecureStorage.java:250)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStoragePlugin$MethodRunner.run(FlutterSecureStoragePlugin.java:178)
+W/KeyStore(14404): 	at android.os.Handler.handleCallback(Handler.java:938)
+W/KeyStore(14404): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+W/KeyStore(14404): 	at android.os.Looper.loop(Looper.java:223)
+W/KeyStore(14404): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+W/KeyStore(14404): KeyStore exception
+W/KeyStore(14404): android.os.ServiceSpecificException:  (code 7)
+W/KeyStore(14404): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:2387)
+W/KeyStore(14404): 	at android.os.Parcel.createException(Parcel.java:2357)
+W/KeyStore(14404): 	at android.os.Parcel.readException(Parcel.java:2340)
+W/KeyStore(14404): 	at android.os.Parcel.readException(Parcel.java:2282)
+W/KeyStore(14404): 	at android.security.keystore.IKeystoreService$Stub$Proxy.get(IKeystoreService.java:988)
+W/KeyStore(14404): 	at android.security.KeyStore.get(KeyStore.java:233)
+W/KeyStore(14404): 	at android.security.KeyStore.get(KeyStore.java:222)
+W/KeyStore(14404): 	at android.security.keystore.AndroidKeyStoreSpi.engineGetCertificate(AndroidKeyStoreSpi.java:165)
+W/KeyStore(14404): 	at java.security.KeyStore.getCertificate(KeyStore.java:1120)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.createRSAKeysIfNeeded(KeyCipherImplementationRSAOAEP.java:115)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherImplementationRSAOAEP.<init>(KeyCipherImplementationRSAOAEP.java:42)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.KeyCipherAlgorithm$$ExternalSyntheticLambda0.apply(D8$$SyntheticClass:0)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.ciphers.StorageCipherFactory.getCurrentKeyCipher(StorageCipherFactory.java:109)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initializeStorageCipher(FlutterSecureStorage.java:364)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.continueInitialize(FlutterSecureStorage.java:275)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.-$$Nest$mcontinueInitialize(Unknown Source:0)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:253)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage$5.onSuccess(FlutterSecureStorage.java:250)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.recoverBiometricNamespaceKeyIfNeeded(FlutterSecureStorage.java:301)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStorage.initialize(FlutterSecureStorage.java:250)
+W/KeyStore(14404): 	at com.it_nomads.fluttersecurestorage.FlutterSecureStoragePlugin$MethodRunner.run(FlutterSecureStoragePlugin.java:178)
+W/KeyStore(14404): 	at android.os.Handler.handleCallback(Handler.java:938)
+W/KeyStore(14404): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+W/KeyStore(14404): 	at android.os.Looper.loop(Looper.java:223)
+W/KeyStore(14404): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+D/FlutterJNI(14404): Sending viewport metrics to the engine.
+Evidence: 01-login
+D/ProfileInstaller(14404): Installing profile for com.mahmoudbannan.portfolio_admin
+Evidence: 17-empty-content
+Evidence: 02-overview
+Evidence: 03-content
+Evidence: content-filtered-empty
+Evidence: 04-entry-editor
+Evidence: 05-publish-review
+Evidence: 12-more
+Evidence: 06-ready-media
+Evidence: 20-upload-idle
+D/FilePickerUtils(14404): Custom file types are [jpg, jpeg, png, webp]. The mime types were detected as [image/jpeg, image/jpeg, image/png, image/webp].
+Evidence: picker-cancel-return
+Opening actual picker
+D/FilePickerUtils(14404): Custom file types are [jpg, jpeg, png, webp]. The mime types were detected as [image/jpeg, image/jpeg, image/png, image/webp].
+01:13 [32m+0[0m[31m -1[0m: finishing native QA: real picker, processing/background, visual states and expiry [1m[31m[E][0m[0m
+
+  Bad state: Native control not found: finishing-picker.png
+
+  test_driver/finishing_test.dart 47:3                  nativeTap
+  ===== asynchronous gap ===========================
+  test_driver/finishing_test.dart 157:7                 main.<fn>.<fn>
+  ===== asynchronous gap ===========================
+  package:flutter_driver/src/driver/driver.dart 792:16  FlutterDriver.runUnsynchronized
+  ===== asynchronous gap ===========================
+  test_driver/finishing_test.dart 150:7                 main.<fn>
+  ===== asynchronous gap ===========================
+  package:test_api/src/backend/declarer.dart 253:15     Declarer.test.<fn>.<fn>
+  ===== asynchronous gap ===========================
+  package:test_api/src/backend/declarer.dart 250:11     Declarer.test.<fn>
+  ===== asynchronous gap ===========================
+  package:test_api/src/backend/invoker.dart 318:9       Invoker._waitForOutstandingCallbacks.<fn>
+
+
+01:13 [32m+0[0m[31m -1[0m: (tearDownAll)[0m
+
+01:13 [32m+0[0m[31m -1[0m: [31mSome tests failed.[0m
+
+
+
+[31mFailing tests:[0m
+
+  .: finishing native QA: real picker, processing/background, visual states and expiry
+
+
+
+Consider enabling the flag chain-stack-traces to receive more detailed exceptions.
+For example, 'dart test --chain-stack-traces'.
+
+
+Unhandled exception:
+Dummy exception to set exit code.

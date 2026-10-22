@@ -1,0 +1,79 @@
+{
+  "data": {
+    "id": 1,
+    "kind": "project",
+    "slug": "field-notes",
+    "title": "Field notes",
+    "summary": "A fictional offline notebook.",
+    "featured": false,
+    "sort_order": 0,
+    "repository_url": null,
+    "demo_url": null,
+    "external_url": null,
+    "description": "An **offline** notebook.",
+    "gallery": [
+      {
+        "media": {
+          "id": 1,
+          "width": 20,
+          "height": 20,
+          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
+          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+        },
+        "alt_text": "Notebook example",
+        "sort_order": 0
+      }
+    ],
+    "contributors": [
+      {
+        "id": 1,
+        "slug": "fictional-engineer",
+        "name": "Fictional Engineer",
+        "role_title": "Developer",
+        "bio": "Fictional team profile.",
+        "sort_order": 0,
+        "photo": {
+          "id": 1,
+          "width": 20,
+          "height": 20,
+          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
+          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+        },
+        "links": [],
+        "created_at": "2026-10-21T06:00:00.000000Z",
+        "updated_at": "2026-10-21T06:00:00.000000Z"
+      }
+    ],
+    "cover": {
+      "id": 1,
+      "width": 20,
+      "height": 20,
+      "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
+      "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+    },
+    "category": {
+      "id": 1,
+      "slug": "mobile",
+      "name": "Mobile",
+      "description": null,
+      "sort_order": 0,
+      "created_at": "2026-10-21T06:00:00.000000Z",
+      "updated_at": "2026-10-21T06:00:00.000000Z"
+    },
+    "technologies": [
+      {
+        "id": 1,
+        "slug": "flutter",
+        "name": "Flutter",
+        "website_url": null,
+        "created_at": "2026-10-21T06:00:00.000000Z",
+        "updated_at": "2026-10-21T06:00:00.000000Z"
+      }
+    ],
+    "published_at": "2026-10-21T06:00:00.000000Z",
+    "seo_title": "Field notes",
+    "seo_description": "A fictional offline notebook.",
+    "created_at": "2026-10-21T06:00:00.000000Z",
+    "updated_at": "2026-10-21T06:00:00.000000Z"
+  }
+}

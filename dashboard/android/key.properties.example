@@ -1,0 +1,6 @@
+# Copy to ignored android/key.properties only when legitimate signing inputs exist.
+# Paths are relative to android/app unless absolute. Never commit the filled copy.
+storeFile=/absolute/private/path/to/existing-owner-upload.jks
+storePassword=REPLACE_LOCALLY
+keyAlias=REPLACE_LOCALLY
+keyPassword=REPLACE_LOCALLY

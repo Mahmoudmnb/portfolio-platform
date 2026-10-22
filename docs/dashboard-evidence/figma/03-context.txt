@@ -1,0 +1,182 @@
+const imgHomeIcon = "https://www.figma.com/api/mcp/asset/31cb15e5-c116-430a-98f1-a53c4869c2eb.svg";
+const imgContentIcon = "https://www.figma.com/api/mcp/asset/af2f03a9-ee1d-4c89-9d87-02f390907bd4.svg";
+const imgInboxIcon = "https://www.figma.com/api/mcp/asset/038d16fe-3c00-463c-9485-0d1a49c8cc44.svg";
+const imgMoreIcon = "https://www.figma.com/api/mcp/asset/ea3c0de8-3cd8-436e-a107-176892339e69.svg";
+
+export default function Component03Content() {
+  return (
+    <div className="bg-[var(--color-canvas,#f7f8f6)] content-stretch flex flex-col items-start overflow-clip relative rounded-[24px] size-full" data-node-id="2:2664" data-name="03 · Content">
+      <div className="content-stretch flex gap-[var(--space-8,8px)] items-start overflow-clip p-[8px] relative shrink-0 w-[412px]" data-node-id="4:2515" data-name="System status">
+        <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-ink,#172a27)] w-[396px] whitespace-pre-wrap" data-node-id="4:2516" style={{ fontVariationSettings: '"wdth" 100' }}>{`9:41                                       LTE   100%`}</p>
+      </div>
+      <div className="[word-break:break-word] content-stretch flex flex-col gap-[var(--space-4,4px)] items-start overflow-clip p-[24px] relative shrink-0 w-[412px]" data-node-id="4:2517" data-name="App bar">
+        <p className="font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] w-[364px]" data-node-id="4:2518" style={{ fontVariationSettings: '"wdth" 100' }}>{`PROJECTS & PRODUCTS`}</p>
+        <p className="font-['Manrope:Bold'] font-bold leading-[34px] relative shrink-0 text-[26px] text-[color:var(--color-ink,#172a27)] w-[364px]" data-node-id="4:2519">
+          Your content
+        </p>
+      </div>
+      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[var(--space-16,16px)] items-start min-h-px overflow-x-clip overflow-y-auto p-[24px] relative w-[412px]" data-node-id="4:2520" data-name="Scrollable body">
+        <div className="content-stretch flex flex-col gap-[var(--space-16,16px)] items-start pt-[8px] relative shrink-0 w-[364px]" data-node-id="4:2521" data-name="Content">
+          <CodeConnectSnippet data-node-id="4:2539" data-name="Field · Search entries">
+            {/* Material 3 Design Kit component
+Docs:
+  https://m3.material.io/components/text-fields/overview */}
+            <TextField textSupportingText="" supportingText="" textInputText="Search by title or summary" inputText="Search by title or summary" textLabelText="Search entries" labelText="Search entries" textPlaceholderText="Placeholder" placeholderText="Placeholder" booleanShowSupportingText={false} showSupportingText={false} variantStyle="Outlined" style="Outlined" variantState="Enabled" state="Enabled" variantTextConfigurations="Input text" textConfigurations="Input text" variantLeadingIcon="False" leadingIcon="False" variantTrailingIcon="False" trailingIcon="False" />
+          </CodeConnectSnippet>
+          <div className="content-stretch flex gap-[var(--space-8,8px)] items-start overflow-clip relative shrink-0 w-[235px]" data-node-id="4:2549" data-name="Filters">
+            <div className="bg-[var(--color-tint,#e5f2ec)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[80px]" data-node-id="4:2550" data-name="Projects">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-accent,#126b5a)] w-[64px]" data-node-id="4:2551" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Projects
+              </p>
+            </div>
+            <div className="bg-[var(--color-blueTint,#eaf1fa)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[80px]" data-node-id="4:2552" data-name="Products">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-blue,#295f99)] w-[64px]" data-node-id="4:2553" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Products
+              </p>
+            </div>
+            <div className="bg-[var(--color-amberTint,#fff1d5)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[59px]" data-node-id="4:2554" data-name="Draft">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-amber,#805600)] w-[43px]" data-node-id="4:2555" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Draft
+              </p>
+            </div>
+          </div>
+          <CodeConnectSnippet data-node-id="4:2556" data-name="Action · Add entry">
+            {/* Material 3 Design Kit component
+Docs:
+  https://m3.material.io/components/buttons/overview */}
+            <Button booleanShowFocusIndicator={false} showFocusIndicator={false} instanceSwapIcon="4:18" icon="4:18" booleanShowIcon={false} showIcon={false} textLabelText="Add entry" labelText="Add entry" variantType="Round" type="Round" variantSize="Small" size="Small" variantState="Enabled" state="Enabled" />
+          </CodeConnectSnippet>
+          <div className="bg-[var(--color-surface,white)] content-stretch flex flex-col gap-[var(--space-8,8px)] items-start overflow-clip p-[16px] relative rounded-[var(--radius-16,16px)] shrink-0 w-[364px]" data-node-id="4:2562" data-name="Field notes">
+            <p className="[word-break:break-word] font-['Manrope:SemiBold'] font-semibold leading-[26px] relative shrink-0 text-[18px] text-[color:var(--color-ink,#172a27)] w-[332px]" data-node-id="4:2563">
+              Field notes
+            </p>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2564" style={{ fontVariationSettings: '"wdth" 100' }}>
+              An offline-first Flutter notebook.
+            </p>
+            <div className="bg-[var(--color-tint,#e5f2ec)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[87px]" data-node-id="4:2565" data-name="Published">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-accent,#126b5a)] w-[71px]" data-node-id="4:2566" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Published
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2567" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Flutter · Mobile
+            </p>
+          </div>
+          <div className="bg-[var(--color-surface,white)] content-stretch flex flex-col gap-[var(--space-8,8px)] items-start overflow-clip p-[16px] relative rounded-[var(--radius-16,16px)] shrink-0 w-[364px]" data-node-id="4:2568" data-name="Sound lens">
+            <p className="[word-break:break-word] font-['Manrope:SemiBold'] font-semibold leading-[26px] relative shrink-0 text-[18px] text-[color:var(--color-ink,#172a27)] w-[332px]" data-node-id="4:2569">
+              Sound lens
+            </p>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2570" style={{ fontVariationSettings: '"wdth" 100' }}>
+              A playful audio exploration tool.
+            </p>
+            <div className="bg-[var(--color-amberTint,#fff1d5)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[59px]" data-node-id="4:2571" data-name="Draft">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-amber,#805600)] w-[43px]" data-node-id="4:2572" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Draft
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2573" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Audio · Product
+            </p>
+          </div>
+          <div className="bg-[var(--color-surface,white)] content-stretch flex flex-col gap-[var(--space-8,8px)] items-start overflow-clip p-[16px] relative rounded-[var(--radius-16,16px)] shrink-0 w-[364px]" data-node-id="4:2574" data-name="Vision toolkit">
+            <p className="[word-break:break-word] font-['Manrope:SemiBold'] font-semibold leading-[26px] relative shrink-0 text-[18px] text-[color:var(--color-ink,#172a27)] w-[332px]" data-node-id="4:2575">
+              Vision toolkit
+            </p>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2576" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Small tools for visual understanding.
+            </p>
+            <div className="bg-[var(--color-blueTint,#eaf1fa)] content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[8px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[80px]" data-node-id="4:2577" data-name="Archived">
+              <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-blue,#295f99)] w-[64px]" data-node-id="4:2578" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Archived
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] w-[332px]" data-node-id="4:2579" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Computer vision · Project
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[var(--color-surface,white)] border border-[var(--color-border,#dce5e0)] border-solid content-stretch flex gap-[var(--space-4,4px)] items-start overflow-clip p-[12px] relative shrink-0 w-[414px]" data-node-id="4:2522" data-name="Bottom navigation">
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:2523" data-name="Overview">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:2524" data-name="home icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgHomeIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:2526" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Overview
+          </p>
+        </div>
+        <div className="bg-[var(--color-tint,#e5f2ec)] content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:2527" data-name="Content">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:2528" data-name="content icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgContentIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-accent,#126b5a)] text-center w-[78px]" data-node-id="4:2530" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Content
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:2531" data-name="Inbox">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:2532" data-name="inbox icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInboxIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:2534" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Inbox
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[var(--space-4,4px)] items-center overflow-clip p-[8px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[94px]" data-node-id="4:2535" data-name="More">
+          <div className="relative shrink-0 size-[24px]" data-node-id="4:2536" data-name="more icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMoreIcon} />
+          </div>
+          <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[18px] relative shrink-0 text-[12px] text-[color:var(--color-muted,#5d706c)] text-center w-[78px]" data-node-id="4:2538" style={{ fontVariationSettings: '"wdth" 100' }}>
+            More
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Bannan/Caption: Font(family: "Roboto", style: Regular, size: 12, weight: 400, lineHeight: 18, letterSpacing: 0), Bannan/Title: Font(family: "Manrope", style: Bold, size: 26, weight: 700, lineHeight: 34, letterSpacing: 0), M3/body/large: Font(family: "Static/Body Large/Font", style: Static/Body Large/Weight, size: Static/Body Large/Size, weight: 400, lineHeight: Static/Body Large/Line Height, letterSpacing: Static/Body Large/Tracking), M3/body/small: Font(family: "Static/Body Small/Font", style: Static/Body Small/Weight, size: Static/Body Small/Size, weight: 400, lineHeight: Static/Body Small/Line Height, letterSpacing: Static/Body Small/Tracking), M3/sys/light/surface: #FEF7FF, M3/sys/light/outline: #79747E, M3/label/large: Font(family: "Static/Label Large/Font", style: Static/Label Large/Weight, size: Static/Label Large/Size, weight: 500, lineHeight: Static/Label Large/Line Height, letterSpacing: Static/Label Large/Tracking), Bannan/Heading: Font(family: "Manrope", style: SemiBold, size: 18, weight: 600, lineHeight: 26, letterSpacing: 0), Bannan/Body: Font(family: "Roboto", style: Regular, size: 14, weight: 400, lineHeight: 22, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Text field
+**Node ID:** 4:1029
+
+Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information. 🛠 Additional options Support text - you can toggle supporting text between hide and show.
+
+**Documentation:**
+- [https://m3.material.io/components/text-fields/overview](https://m3.material.io/components/text-fields/overview)
+
+## Type=Round, Size=Small, State=Enabled
+**Node ID:** 4:104
+
+Standard Icon buttons are low-emphasis buttons. They are used for the lowest priority actions, especially when presenting multiple options. Icon buttons can be placed on a variety of backgrounds. Until the button is interacted with, its container isn’t visible.
+
+## Button
+**Node ID:** 4:63
+
+Buttons communicate actions that users can take.
+
+  
+
+1.  Can contain an optional leading icon
+2.  Five color options: elevated, filled, tonal, outlined, and text
+3.  Five size recommendations: extra small, small, medium, large, extra large
+4.  Two shape options: round and square
+5.  Keep labels concise and use sentence-case
+
+**Documentation:**
+- [https://m3.material.io/components/buttons/overview](https://m3.material.io/components/buttons/overview)
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
