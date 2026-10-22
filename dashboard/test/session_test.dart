@@ -132,8 +132,12 @@ void main() {
       'base': 'https://other.test/api/v1',
       'expires_at': '2030-01-01T00:00:00Z',
     });
+    session.drafts['entries/new'] = {'title': 'Development-only draft'};
     await session.bootstrap();
     expect(session.state, SessionState.signedOut);
     expect(store.value, isNull);
+    expect(session.drafts, isEmpty);
+    expect(session.user, isNull);
+    expect(session.privateGeneration, 1);
   });
 }

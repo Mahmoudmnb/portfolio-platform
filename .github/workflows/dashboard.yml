@@ -32,10 +32,10 @@ jobs:
       - run: python3 packages/portfolio_api/tool/generate_contract.py && dart format packages/portfolio_api/lib/src/models.dart packages/portfolio_api/lib/src/contract.dart && git diff --exit-code -- packages/portfolio_api/lib/src
       - run: flutter analyze --fatal-infos && flutter test
         working-directory: dashboard
-      - run: flutter build apk --debug --dart-define=API_BASE_URL=http://10.0.2.2:18081/api/v1
+      - run: sh scripts/build-production-review.sh
         working-directory: dashboard
       - uses: actions/upload-artifact@v7
         with:
-          name: bannan-studio-debug-apk
-          path: dashboard/build/app/outputs/flutter-apk/app-debug.apk
+          name: bannan-studio-production-arm64-debug-review
+          path: dashboard/build/review/bannan-studio-production-arm64-debug.apk*
           retention-days: 7

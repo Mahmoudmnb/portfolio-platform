@@ -4,5 +4,5 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <application android:usesCleartextTraffic="true" tools:replace="android:usesCleartextTraffic" />
+    <application android:usesCleartextTraffic="${debugCleartextTraffic}" tools:replace="android:usesCleartextTraffic" />
 </manifest>

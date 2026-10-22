@@ -1,3 +1,5 @@
+> Production-connected Android preparation, 2026-10-22: see [current review build and results](dashboard-production-review.md). Disposable-backend artifacts and earlier test counts below are historical.
+
 # Dashboard finishing results — 2026-10-21
 
 Completed available source fixes and regression checks from dashboard-finishing-plan.md. This is a development verification report, not release/distribution approval. The original implementation evidence is retained below as history.

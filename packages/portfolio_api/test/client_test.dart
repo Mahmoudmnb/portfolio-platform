@@ -38,6 +38,98 @@ ResponseBody jsonBody(
       },
 );
 void main() {
+  test(
+    'production login and protected endpoints contain one API prefix',
+    () async {
+      final adapter = Adapter(
+        (o) async => jsonBody({
+          'data': o.path.endsWith('login')
+              ? {
+                  'token': 'fictional-token',
+                  'token_type': 'Bearer',
+                  'expires_at': '2030-01-01T00:00:00Z',
+                  'user': {
+                    'id': 1,
+                    'name': 'Owner',
+                    'email': 'owner@example.test',
+                  },
+                }
+              : {'id': 1, 'name': 'Owner', 'email': 'owner@example.test'},
+        }),
+      );
+      final api = PortfolioApi(
+        'https://api.mahmoudbannan.com/api/v1',
+        release: true,
+        credentials: () => 'fictional-token',
+        dio: Dio()..httpClientAdapter = adapter,
+      );
+      await api.login('owner@example.test', 'fictional-password');
+      await api.me();
+      expect(
+        adapter.requests[0].uri.toString(),
+        'https://api.mahmoudbannan.com/api/v1/admin/auth/login',
+      );
+      expect(adapter.requests[0].headers.containsKey('Authorization'), isFalse);
+      expect(
+        adapter.requests[1].uri.toString(),
+        'https://api.mahmoudbannan.com/api/v1/admin/auth/me',
+      );
+      expect(
+        adapter.requests[1].headers['Authorization'],
+        'Bearer fictional-token',
+      );
+      expect(adapter.requests.every((r) => !r.followRedirects), isTrue);
+    },
+  );
+  test(
+    'production media stays absolute, HTTPS, and separate from API paths',
+    () {
+      final base = Uri.parse('https://api.mahmoudbannan.com/api/v1');
+      expect(
+        safeMediaUrl(
+          'https://api.mahmoudbannan.com/storage/image.webp',
+          apiBase: base,
+        ),
+        isTrue,
+      );
+      expect(
+        safeMediaUrl('https://cdn.mahmoudbannan.com/image.webp', apiBase: base),
+        isTrue,
+      );
+      expect(
+        safeMediaUrl(
+          'http://api.mahmoudbannan.com/storage/image.webp',
+          apiBase: base,
+        ),
+        isFalse,
+      );
+      expect(safeMediaUrl('/storage/image.webp', apiBase: base), isFalse);
+      expect(
+        safeMediaUrl(
+          'https://token@cdn.mahmoudbannan.com/image.webp',
+          apiBase: base,
+        ),
+        isFalse,
+      );
+      expect(
+        safeMediaUrl(
+          'http://10.0.2.2:8000/storage/image.webp',
+          apiBase: Uri.parse('http://10.0.2.2:8000/api/v1'),
+        ),
+        isTrue,
+      );
+      for (final url in [
+        'http://api.mahmoudbannan.com/api/v1',
+        'https://10.0.2.2/api/v1',
+        'https://api.mahmoudbannan.com/api/v1/api/v1',
+      ]) {
+        expect(
+          () => PortfolioApi(url, release: true, credentials: () => null),
+          throwsArgumentError,
+        );
+      }
+    },
+  );
   test('all supplied integration JSON fixtures are envelopes', () {
     final files = Directory('test/fixtures')
         .listSync()

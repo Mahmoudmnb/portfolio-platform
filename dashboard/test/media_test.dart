@@ -54,7 +54,10 @@ void main() {
     final api = MediaApi();
     await open(tester, api);
     expect(api.checks, 1);
-    expect(find.text('Processing on the server…'), findsOneWidget);
+    expect(
+      find.textContaining('Upload received. Processing on the server'),
+      findsOneWidget,
+    );
     await tester.pump(const Duration(seconds: 2));
     await tester.pump();
     expect(api.checks, 2);
@@ -68,6 +71,30 @@ void main() {
     await tester.pump(const Duration(seconds: 20));
     expect(api.checks, 3);
     expect(tester.takeException(), isNull);
+  });
+  testWidgets('slow processing stops polling and Check again resumes safely', (
+    tester,
+  ) async {
+    final api = MediaApi();
+    await open(tester, api);
+    for (var i = 0; i < 28; i++) {
+      await tester.pump(const Duration(seconds: 5));
+      await tester.pump();
+    }
+    expect(find.textContaining('Processing is taking longer'), findsOneWidget);
+    expect(find.text('Status: Processing'), findsOneWidget);
+    expect(find.text('Processing failed. Upload a new image.'), findsNothing);
+    final checks = api.checks;
+    await tester.pump(const Duration(minutes: 2));
+    expect(api.checks, checks);
+    api.status = 'ready';
+    await tester.ensureVisible(find.text('Check again'));
+    await tester.tap(find.text('Check again'));
+    await tester.pump();
+    expect(api.checks, checks + 1);
+    expect(find.text('Status: Ready'), findsOneWidget);
+    await tester.pump(const Duration(seconds: 20));
+    expect(api.checks, checks + 1);
   });
   testWidgets(
     'terminal failure offers new upload guidance without processing retry',

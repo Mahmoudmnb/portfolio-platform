@@ -17,17 +17,17 @@ flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000/api/v1
 flutter build apk --debug --dart-define=API_BASE_URL=http://10.0.2.2:8000/api/v1
 ```
 
-`API_BASE_URL` must end in `/api/v1`, contain no credentials/query/fragment and be explicitly configured. Missing/invalid configuration shows a startup error. Release requires HTTPS in Dart and disallows cleartext in the Android main manifest; the debug manifest alone permits local HTTP. TLS verification is never disabled. The emulator's `10.0.2.2` addresses the host; `localhost` addresses the emulator. Physical devices need the host LAN address and firewall permission. The backend `MEDIA_URL` must also be device-reachable; successful API login does not prove images work. Run `storage:link` for local media and run a separate database queue worker. See api-integration.md and development.md for the existing PostgreSQL/backend setup and owner creation/recovery commands. Never put owner passwords in source, command-line defines or shell history.
+`API_BASE_URL` must end in `/api/v1`, contain no credentials/query/fragment and be explicitly configured. Missing/invalid configuration shows a startup error. Release requires HTTPS in Dart and disallows cleartext in the Android main manifest; the debug manifest permits local HTTP only for non-HTTPS API configurations. TLS verification is never disabled. The emulator's `10.0.2.2` addresses the host; `localhost` addresses the emulator. Physical devices need the host LAN address and firewall permission. The backend `MEDIA_URL` must also be device-reachable; successful API login does not prove images work. Run `storage:link` for local media and run a separate database queue worker. See api-integration.md and development.md for the current MySQL/MariaDB backend setup and owner creation/recovery commands. Never put owner passwords in source, command-line defines or shell history.
 
 Transport uses 15-second connect and 30-second send/receive defaults, with 120 seconds for image transfer. No writes retry automatically. A timeout can mean a committed change: forms block resubmission until a server reload/review. Error responses retain request IDs and dotted field keys; no HTTP payload logging is installed. Pagination uses configured-origin page numbers, never returned absolute links. Search waits 350ms, cancels old requests and ignores stale completions; failed later pages preserve prior content. Successful mutations reload server data/list state.
 
 Credentials use flutter_secure_storage's default Android Keystore encryption. Android backups are disabled, with explicit cloud/device-transfer exclusions for Android 12 and later. Startup validates `/admin/auth/me`; network failure has its own retry screen. A protected 401 cancels the session and prompts reauthentication, with no refresh endpoint. Nonsecret dirty form values live only in memory; password fields never enter the draft store. Overview offers review of same-account drafts after reauth. Explicit sign-out clears drafts and private navigation state. A failed server logout offers retry or clearly described local-only credential removal. Password change revokes all tokens.
 
-Uploads use the system picker with JPEG/PNG/WebP filters and a 10 MiB client check; the server enforces decoding/dimension/pixel constraints. An app-owned temporary staging copy is removed after transfer/disposal. Transfer percentage means bytes sent. The image screen checks processing/deleting with 2/3/5-second intervals up to two minutes; background/disposal cancels polling. Ready-only selectors exclude failed, processing and deleting images. A terminal failure offers a new upload; there is no invented processing-retry endpoint. Public image requests carry no bearer.
+Uploads use the system picker with JPEG/PNG/WebP filters and a 10 MiB client check; the server enforces decoding/dimension/pixel constraints. An app-owned temporary staging copy is removed after transfer/disposal. Transfer percentage means bytes sent. The image screen checks processing/deleting with 2/3/5-second intervals up to two minutes or 25 scheduled follow-up checks; slow processing remains pending and Check again starts another bounded window; background/disposal cancels polling. Ready-only selectors exclude failed, processing and deleting images. A terminal failure offers a new upload; there is no invented processing-retry endpoint. Public image requests carry no bearer.
 
 Dependencies: Dio provides transport/progress/cancellation; Riverpod injects session/API dependencies; go_router supplies guarded indexed navigation; flutter_secure_storage persists only credentials/expiry/server binding; file_picker supplies system grants; flutter_markdown_plus renders Markdown without HTML execution; url_launcher handles validated external HTTP(S)/mailto links. Fonts and package license information are included in Flutter's license registry/build dependencies. Exact dependency versions are in pubspec.lock; no network font package is used.
 
-Production endpoint and private signing preparation are documented in [dashboard-release-preparation.md](dashboard-release-preparation.md). The production example starts with an empty URL; release tasks reject HTTP/placeholder URLs, driver targets and missing private signing inputs. No production identity or signed artifact was created.
+Production endpoint and private signing preparation are documented in [dashboard-release-preparation.md](dashboard-release-preparation.md). The production example now contains `https://api.mahmoudbannan.com/api/v1`; release tasks reject HTTP/placeholder URLs, driver targets and missing private signing inputs. No production identity or signed artifact was created.
 
 Real-backend client smoke (from packages/portfolio_api; values below are test placeholders):
 
@@ -40,7 +40,7 @@ DASHBOARD_SMOKE_IMAGE=/tmp/fictional.png \
 dart run tool/smoke.dart
 ```
 
-The script refuses non-loopback APIs, creates only fictional test entities, restores settings and deletes only IDs it created. Use a new isolated PostgreSQL database and running worker. Do not point it at real content.
+The script refuses non-loopback APIs, creates only fictional test entities, restores settings and deletes only IDs it created. Use a new isolated MySQL/MariaDB database and running worker. Do not point it at real content.
 
 Android runtime smoke (from dashboard, same securely injected test email/password-file/image variables and confirmation):
 
@@ -50,3 +50,14 @@ flutter drive --driver=test_driver/smoke_test.dart --target=test_driver/app.dart
 ```
 
 The separate debug test target enables FlutterDriver only for that process. It checks UI login, Android secure-storage bootstrap, real media processing/reachability, publication/public GET/unpublish and logout, and writes fictional screenshots under test/screenshots. Normal `lib/main.dart` has no driver extension. Native integration_test instrumentation was replaced because official Google Maven returned 404 for its AndroidX runner/rules/Espresso dependencies in this environment. The hosted dashboard workflow runs static/unit/widget checks and debug APK build; device execution is a separate explicit command, not a skipped passing job.
+
+Production-connected review build, from `dashboard/`:
+
+```sh
+flutter build apk --debug --target-platform android-arm64 \
+  --dart-define=API_BASE_URL=https://api.mahmoudbannan.com/api/v1
+# Or build and copy the review APK/checksum in one step:
+sh scripts/build-production-review.sh
+```
+
+HTTPS API configurations also disable Android debug cleartext traffic and reject HTTP media URLs. Local HTTP development still uses the commands above. No runtime server picker exists: changing servers requires rebuilding; a stored server mismatch clears credentials, drafts and private navigation state before any authenticated request. See [current review evidence](dashboard-production-review.md) for artifact and device/signing gates.

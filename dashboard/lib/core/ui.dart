@@ -133,15 +133,16 @@ String localTime(dynamic value) {
   return d?.toLocal().toString().split('.').first ?? '—';
 }
 
-class PublicThumbnail extends StatelessWidget {
+class PublicThumbnail extends ConsumerWidget {
   final String? url;
   final double size;
   const PublicThumbnail(this.url, {super.key, this.size = 64});
   @override
-  Widget build(BuildContext context) => SizedBox(
+  Widget build(BuildContext context, WidgetRef ref) => SizedBox(
     width: size,
     height: size,
-    child: url != null && safeWebUrl(url!)
+    child:
+        url != null && safeMediaUrl(url!, apiBase: ref.watch(apiProvider).base)
         ? ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(

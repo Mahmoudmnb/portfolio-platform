@@ -29,7 +29,7 @@ fun validateReleasePreparation() {
     val api = defines.firstOrNull { it.startsWith("API_BASE_URL=") }?.substringAfter('=')
     val uri = runCatching { URI(api.orEmpty()) }.getOrNull()
     val host = uri?.host.orEmpty().lowercase()
-    val placeholder = host in listOf("localhost", "127.0.0.1", "::1", "your-api-host") ||
+    val placeholder = host in listOf("localhost", "127.0.0.1", "10.0.2.2", "::1", "your-api-host") ||
         listOf(".test", ".invalid", ".localhost").any { host.endsWith(it) } ||
         Regex("(^|\\.)example\\.(com|org|net)$").containsMatchIn(host)
     require(uri?.scheme == "https" && host.isNotBlank() && !placeholder &&
@@ -56,6 +56,13 @@ tasks.register("validateReleasePreparation") {
     doLast { validateReleasePreparation() }
 }
 
+// HTTPS review builds also disable cleartext; local HTTP debug remains available.
+val configuredApi = (project.findProperty("dart-defines") as? String).orEmpty()
+    .split(',').mapNotNull {
+        runCatching { String(Base64.getDecoder().decode(it), Charsets.UTF_8) }.getOrNull()
+    }.firstOrNull { it.startsWith("API_BASE_URL=") }?.substringAfter('=')
+val debugCleartext = runCatching { URI(configuredApi.orEmpty()).scheme != "https" }.getOrDefault(true)
+
 android {
     namespace = "com.mahmoudbannan.portfolio_admin"
     compileSdk = flutter.compileSdkVersion
@@ -67,6 +74,24 @@ android {
     }
 
     defaultConfig {
+        manifestPlaceholders["debugCleartextTraffic"] = debugCleartext.toString()
+        // Match third-party JNI libraries to explicit Flutter target platforms.
+        if (project.findProperty("split-per-abi")?.toString() != "true") {
+            val requestedPlatforms = (project.findProperty("target-platform") as? String)
+            if (requestedPlatforms != null) {
+                ndk {
+                    abiFilters.clear()
+                    abiFilters.addAll(requestedPlatforms.split(',').map { platform ->
+                        when (platform) {
+                            "android-arm" -> "armeabi-v7a"
+                            "android-arm64" -> "arm64-v8a"
+                            "android-x64" -> "x86_64"
+                            else -> error("Unsupported Android target platform: $platform")
+                        }
+                    })
+                }
+            }
+        }
         applicationId = "com.mahmoudbannan.portfolio_admin"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.

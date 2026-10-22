@@ -182,8 +182,9 @@ class _MediaDetailScreenState extends ConsumerState<MediaDetailScreen>
       });
       if (['processing', 'deleting'].contains(value['status'])) {
         timedOut =
+            ticks >= 25 ||
             DateTime.now().difference(started ?? DateTime.now()) >=
-            const Duration(minutes: 2);
+                const Duration(minutes: 2);
         if (!timedOut) {
           final delay = ticks == 0
               ? 2
@@ -258,8 +259,8 @@ class _MediaDetailScreenState extends ConsumerState<MediaDetailScreen>
             if (media!['status'] == 'processing')
               Text(
                 timedOut
-                    ? 'Still processing. Check again later.'
-                    : 'Processing on the server…',
+                    ? 'Your upload is complete. Processing is taking longer. Check again later; you do not need to upload it again.'
+                    : 'Upload received. Processing on the server… This may take several minutes.',
               ),
             if (media!['status'] == 'failed')
               const Text('Processing failed. Upload a new image.'),

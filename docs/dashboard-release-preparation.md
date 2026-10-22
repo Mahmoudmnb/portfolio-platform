@@ -1,20 +1,29 @@
 # Dashboard release preparation
 
-Finishing verification: 2026-10-21. No release identity, signed production artifact or publication was created.
+Finishing verification: 2026-10-21. No private release identity, signed distribution artifact or publication was created. The later production-connected debug review is documented separately.
 
-Development and review builds use an explicit compile-time API URL. The finishing emulator build uses `http://127.0.0.1:18082/api/v1` with `adb reverse tcp:18082 tcp:18082`. This also works for a USB-connected phone with that reverse mapping and a running development backend. The disposable backend must return image URLs on the same reachable origin. The task's temporary owner/API are disabled/stopped after QA; the artifact alone is not a working hosted demo. Recreate a disposable backend and owner before review. Changing API_BASE_URL requires rebuilding.
+The production API is `https://api.mahmoudbannan.com/api/v1`. Build-time API_BASE_URL is mandatory; no runtime server picker or silent fallback exists. Current commands and artifact evidence are in [production review](dashboard-production-review.md).
 
-From `dashboard/`, ordinary ARM64 review command:
+From `dashboard/`, production-connected ARM64 **debug review** command:
 
 ```sh
-adb reverse tcp:18082 tcp:18082
 flutter build apk --debug --target-platform android-arm64 \
-  --dart-define=API_BASE_URL=http://127.0.0.1:18082/api/v1
+  --dart-define=API_BASE_URL=https://api.mahmoudbannan.com/api/v1
+# Adds a clearly named copy and SHA-256 sidecar:
+sh scripts/build-production-review.sh
 ```
 
-Debug permits development HTTP. Main/release manifests disable cleartext, backups and cloud/device-transfer credential restoration. TLS certificate verification remains enabled. The ordinary entry point is `lib/main.dart`; test_driver/app.dart is restricted to local APIs and must never be distributed.
+Local development remains separate:
 
-For an authorized release, copy `config/production.example.json` to ignored `config/production.json` and set its initially empty API_BASE_URL to the legitimate HTTPS endpoint ending `/api/v1`. Empty URLs, HTTP, localhost and documentation placeholder hosts fail validation. Formatting validation does not prove that an endpoint exists, is controlled by the operator or has a valid live certificate.
+```sh
+flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000/api/v1
+flutter build apk --debug --target-platform android-arm64 \
+  --dart-define=API_BASE_URL=http://10.0.2.2:8000/api/v1
+```
+
+The emulator address reaches the development machine, never production. Previous disposable localhost:18082 artifacts are historical. The ordinary entry point is `lib/main.dart`; never use test_driver/app.dart for this review build. HTTPS-configured debug builds disable Android cleartext; only non-HTTPS debug configurations allow development HTTP. Release always requires HTTPS and disables cleartext. Certificate verification, encrypted token storage and backup/transfer exclusions remain enabled. Login receives no saved bearer; authenticated requests target the configured API; returned absolute public media uses a separate image client without bearer headers and cannot downgrade HTTPS.
+
+For an authorized release, copy `config/production.example.json` to ignored `config/production.json`; the example now contains the deployed HTTPS API URL and no credentials. Empty URLs, HTTP, emulator/localhost and documentation placeholder hosts fail release validation. Presence of a URL is not proof that authentication/media works on a device. API_BASE_URL must never contain a username, password, token, query or fragment.
 
 Private Gradle signing accepts either the four environment inputs below or ignored `android/key.properties`, based on `android/key.properties.example`. Environment values take precedence. Use an absolute keystore path to avoid ambiguous relative resolution.
 

@@ -1,3 +1,5 @@
+> Production-connected Android preparation, 2026-10-22: see [current review build and results](dashboard-production-review.md). Disposable-backend artifacts and earlier test counts below are historical.
+
 > Finishing run: see [dashboard-finishing-progress.md](dashboard-finishing-progress.md) and the new evidence in [dashboard-completion.md](dashboard-completion.md). Results below describe the initial implementation and are retained as history.
 
 # Dashboard progress

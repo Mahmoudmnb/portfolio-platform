@@ -355,6 +355,7 @@ bool isPlaceholderHost(String host) {
   final h = host.toLowerCase();
   return h == 'localhost' ||
       h == '127.0.0.1' ||
+      h == '10.0.2.2' ||
       h == '::1' ||
       h == 'your-api-host' ||
       h.endsWith('.test') ||
@@ -362,3 +363,8 @@ bool isPlaceholderHost(String host) {
       h.endsWith('.localhost') ||
       RegExp(r'(^|\.)example\.(com|org|net)$').hasMatch(h);
 }
+
+/// Ready media URLs are absolute and may use a CDN, but never downgrade HTTPS.
+bool safeMediaUrl(String value, {required Uri apiBase}) =>
+    safeWebUrl(value) &&
+    (apiBase.scheme != 'https' || Uri.parse(value).scheme == 'https');

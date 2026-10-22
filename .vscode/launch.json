@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Dashboard — Live API",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "dashboard",
+            "program": "lib/main.dart",
+            "toolArgs": [
+                "--dart-define=API_BASE_URL=https://api.mahmoudbannan.com/api/v1"
+            ]
+        }
+    ]
+}
