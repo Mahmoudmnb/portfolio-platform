@@ -42,7 +42,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 $error instanceof AuthorizationException => 403,
                 $error instanceof ModelNotFoundException => 404,
                 $error instanceof HttpExceptionInterface => $error->getStatusCode(),
-                $error instanceof QueryException && $error->getCode() === '23503' => 409,
+                $error instanceof QueryException && in_array((int) ($error->errorInfo[1] ?? 0), [1451, 1452], true) => 409,
                 default => 500
             };
             $code = match ($status) {

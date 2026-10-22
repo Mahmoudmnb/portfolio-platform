@@ -55,9 +55,10 @@ class ContentController extends Controller
             $pattern = Collections::literal($v['q']);
             $q->where(function ($q) use ($pattern, $resource) {
                 if ($resource === 'entries') {
-                    $q->where('title', 'ilike', $pattern)->orWhere('summary', 'ilike', $pattern);
+                    $q->whereRaw("LOWER(title) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern])->orWhereRaw("LOWER(summary) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
                 } else {
-                    $q->where(in_array($resource, ['services']) ? 'title' : 'name', 'ilike', $pattern);
+                    $column = $resource === 'services' ? 'title' : 'name';
+                    $q->whereRaw("LOWER($column) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
                 }
             });
         }

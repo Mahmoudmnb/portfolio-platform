@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\AnalyticsCounter;
 use App\Services\ContentWriter;
 use App\Services\MediaLifecycle;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Queue;
@@ -20,7 +21,7 @@ class ConcurrencyTest extends TestCase
 
     private function parallel(array $tasks): void
     {
-        $this->assertTrue(function_exists('pcntl_fork'), 'PostgreSQL race tests require pcntl.');
+        $this->assertTrue(function_exists('pcntl_fork'), 'MySQL/MariaDB race tests require pcntl.');
         DB::disconnect();
         $children = [];
         foreach ($tasks as $task) {
@@ -69,6 +70,30 @@ class ConcurrencyTest extends TestCase
         $this->parallel([$task, $task, $task]);
         $this->assertSame(3, PortfolioEntry::count());
         $this->assertSame(3, PortfolioEntry::distinct()->count('slug'));
+    }
+
+    public function test_concurrent_owner_inserts_cannot_bypass_the_singleton_constraint(): void
+    {
+        $task = function () {
+            try {
+                User::factory()->create(['email' => 'owner-'.getmypid().'@example.test']);
+            } catch (UniqueConstraintViolationException $expected) {
+            }
+        };
+        $this->parallel([$task, $task, $task]);
+        $this->assertSame(1, User::count());
+    }
+
+    public function test_concurrent_explicit_slug_collision_is_a_validation_error(): void
+    {
+        $task = function () {
+            try {
+                app(ContentWriter::class)->save('entries', ['kind' => 'project', 'slug' => 'explicit-race', 'title' => 'Concurrent entry', 'summary' => 'Example', 'description' => 'Example']);
+            } catch (ValidationException $expected) {
+            }
+        };
+        $this->parallel([$task, $task, $task]);
+        $this->assertSame(1, PortfolioEntry::count());
     }
 
     public function test_attach_versus_delete_and_cleanup_preserves_integrity(): void

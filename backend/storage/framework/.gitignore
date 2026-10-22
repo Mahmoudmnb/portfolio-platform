@@ -8,3 +8,6 @@ routes.php
 routes.scanned.php
 schedule-*
 services.json
+
+cron-queue.lock
+scheduler.lock

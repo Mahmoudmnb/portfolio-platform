@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,11 +54,13 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'collation' => 'utf8mb4_bin',
+            'timezone' => '+00:00',
+            'isolation_level' => 'READ COMMITTED',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-            'engine' => null,
+            'engine' => 'InnoDB',
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
@@ -74,14 +76,31 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'collation' => 'utf8mb4_bin',
+            'timezone' => '+00:00',
+            'isolation_level' => 'READ COMMITTED',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-            'engine' => null,
+            'engine' => 'InnoDB',
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+        ],
+
+        // Temporary read-only legacy connection for explicit data-transfer commands only.
+        'legacy_pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('TRANSFER_PG_HOST', '127.0.0.1'),
+            'port' => env('TRANSFER_PG_PORT', '5432'),
+            'database' => env('TRANSFER_PG_DATABASE', ''),
+            'username' => env('TRANSFER_PG_USERNAME', ''),
+            'password' => env('TRANSFER_PG_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'search_path' => 'public',
+            'timezone' => 'UTC',
+            'sslmode' => env('TRANSFER_PG_SSLMODE', 'require'),
         ],
 
         'pgsql' => [

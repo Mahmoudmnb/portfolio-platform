@@ -14,7 +14,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "ext-pdo_pgsql": "*",
+        "ext-pdo_mysql": "*",
         "ext-gd": "*"
     },
     "require-dev": {

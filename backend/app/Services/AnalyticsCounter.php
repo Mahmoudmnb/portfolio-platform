@@ -27,7 +27,7 @@ class AnalyticsCounter
                 $host = null;
             }
             // Lock daily allocation, including the count+insert, so the ceiling holds under concurrency.
-            DB::select('SELECT pg_advisory_xact_lock(?)', [72000000 + (int) str_replace('-', '', $day)]);
+            DB::table('application_locks')->upsert([['name' => 'analytics:'.$day]], ['name'], ['name']);
             if ($host !== null) {
                 $existing = DB::table('analytics_daily_counts')->where('date', $day)->where('referrer_host', $host)->exists();
                 $count = DB::table('analytics_daily_counts')->where('date', $day)->whereNotNull('referrer_host')->where('referrer_host', '<>', 'other')->distinct()->count('referrer_host');
@@ -38,7 +38,7 @@ class AnalyticsCounter
             $path = rtrim($event['path'], '/') ?: '/';
             $entry = isset($event['entry_id']) ? (int) $event['entry_id'] : null;
             $key = hash('sha256', json_encode([$day, $event['event_name'], $path, $entry, $host], JSON_THROW_ON_ERROR));
-            DB::statement('INSERT INTO analytics_daily_counts (date,aggregate_key,event_name,path,entry_id,referrer_host,count,created_at,updated_at) VALUES (?,?,?,?,?,?,1,?,?) ON CONFLICT (aggregate_key) DO UPDATE SET count=analytics_daily_counts.count+1,updated_at=EXCLUDED.updated_at', [$day, $key, $event['event_name'], $path, $entry, $host, now(), now()]);
+            DB::statement('INSERT INTO analytics_daily_counts (date,aggregate_key,event_name,path,entry_id,referrer_host,count,created_at,updated_at) VALUES (?,?,?,?,?,?,1,?,?) ON DUPLICATE KEY UPDATE count=analytics_daily_counts.count+1,updated_at=?', [$day, $key, $event['event_name'], $path, $entry, $host, now(), now(), now()]);
         }, 3);
     }
 

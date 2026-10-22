@@ -14,9 +14,10 @@ return new class extends Migration
             $t->text('name');
             $t->string('token', 64)->unique();
             $t->text('abilities')->nullable();
-            $t->timestamp('last_used_at')->nullable();
-            $t->timestamp('expires_at')->nullable()->index();
-            $t->timestamps();
+            $t->dateTime('last_used_at', 6)->nullable();
+            $t->dateTime('expires_at', 6)->nullable()->index();
+            $t->dateTime('created_at', 6)->nullable();
+            $t->dateTime('updated_at', 6)->nullable();
         });
     }
 

@@ -192,8 +192,8 @@ class FailureTest extends TestCase
     {
         $this->travelTo(CarbonImmutable::parse('2026-10-21T00:00:00Z'));
         $inquiry = Inquiry::factory()->create();
-        $this->assertSame('UTC', DB::selectOne("SELECT current_setting('TimeZone') AS zone")->zone);
-        $stored = DB::selectOne("SELECT to_char(submitted_at AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS') AS stamp FROM inquiries WHERE id = ?", [$inquiry->id]);
+        $this->assertSame('+00:00', DB::selectOne('SELECT @@session.time_zone AS zone')->zone);
+        $stored = DB::selectOne("SELECT DATE_FORMAT(submitted_at, '%Y-%m-%d %H:%i:%s') AS stamp FROM inquiries WHERE id = ?", [$inquiry->id]);
         $this->assertSame('2026-10-21 00:00:00', $stored->stamp);
     }
 }

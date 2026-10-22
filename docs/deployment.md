@@ -2,11 +2,13 @@
 
 Deploy only after explicit owner authorization. No live deployment is part of this implementation. Run the full CI suite first. Review `docs/backend-completion.md` for checks that could not run on the development host.
 
+For the actual shared-hosting target `api.mahmoudbannan.com` / MariaDB 11.8.9, follow [Hostinger Business deployment](hostinger-deployment.md). The container worker/scheduler below are for worker-capable infrastructure and local Compose. Existing PostgreSQL records require [explicit transfer and reconciliation](postgres-to-mysql-transfer.md); changing the connection does not move them.
+
 ## Runtime and release
 
-The Dockerfile builds PHP 8.5.11 FPM with PostgreSQL PDO, GD (JPEG/PNG/WebP), bcmath, pcntl, mbstring, XML/DOM and zip, and installs production packages from Composer's lockfile. It runs FPM and Nginx as UID 1000 under Supervisor, listening on port 8000. `backend/public` is the only document root. Writable paths: storage/app, storage/logs, storage/framework and bootstrap/cache. Do not make application source writable to the web server unnecessarily.
+The Dockerfile builds PHP 8.5.12 FPM with MySQL PDO, GD (JPEG/PNG/WebP), bcmath, pcntl, mbstring, XML/DOM and zip, and installs production packages from Composer's lockfile. It runs FPM and Nginx as UID 1000 under Supervisor, listening on port 8000. `backend/public` is the only document root. Writable paths: storage/app, storage/logs, storage/framework and bootstrap/cache. Do not make application source writable to the web server unnecessarily.
 
-Compose is the development reference; use managed PostgreSQL and durable volumes/object storage for production. Build with `docker build -t portfolio-api:RELEASE backend`. Do not mount host vendor directories into the container. Do not copy .env into the image. Pin/review image patch releases regularly; do not assume this initial pin receives future security fixes automatically. The environment here has no Docker daemon, so container build/start verification remains required before deployment.
+Compose is the development reference; use managed MySQL/MariaDB and durable volumes/object storage for production. Build with `docker build -t portfolio-api:RELEASE backend`. Do not mount host vendor directories into the container. Do not copy .env into the image. Pin/review image patch releases regularly; do not assume this initial pin receives future security fixes automatically. The environment here has no Docker daemon, so container build/start verification remains required before deployment.
 
 Web, worker and scheduler use the same image and key, database and storage configuration. Run web using the default command, worker with `php artisan queue:work --sleep=2 --tries=3 --timeout=90 --max-time=3600`, and scheduler with `php artisan schedule:work`. Use one scheduler replica. Database queue retry_after is 120 seconds, greater than the 90-second worker timeout; ProcessMedia has a 60-second job timeout. Supervise restarts; inspect and retry failed jobs after fixing their cause. `app:prune` runs at 02:15 UTC under an overlap lock; failed jobs are pruned after seven days. Do not run migrations in each web/worker startup.
 
@@ -21,7 +23,7 @@ The TLS edge example is `backend/docker/nginx.conf`; configure certificates and 
 | APP_ENV / APP_DEBUG | production / false |
 | APP_KEY | Generate once, store securely and preserve across releases/restores |
 | APP_URL | External HTTPS API origin |
-| DB_CONNECTION | pgsql |
+| DB_CONNECTION | mysql |
 | DB_HOST/PORT/DATABASE/USERNAME/PASSWORD | Restricted database user, private network, TLS according to provider configuration |
 | CACHE_STORE / QUEUE_CONNECTION | database / database |
 | SESSION_DRIVER | array; no session-based visitor tracking |
@@ -50,8 +52,8 @@ For S3 set MEDIA_DISK=s3, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_
 
 ## Release checklist
 
-1. Back up PostgreSQL, media and APP_KEY; verify recent restore-drill evidence.
-2. Build the immutable image and run formatting, static analysis, PostgreSQL tests, contract checks and dependency audit. There are no ignored audit advisories.
+1. Back up MySQL/MariaDB, media and APP_KEY; verify recent restore-drill evidence.
+2. Build the immutable image and run formatting, static analysis, MySQL/MariaDB tests, contract checks and dependency audit. There are no ignored audit advisories.
 3. Configure secrets, persistent storage, trusted proxies, TLS and exact CORS origins. Confirm debug=false.
 4. Stop old workers safely or drain them before incompatible job changes. Start a single maintenance/release task using the new image.
 5. From `backend/`, run `./scripts/deploy.sh`. It stops on failure, enters maintenance, migrates once, seeds only safe singleton defaults, creates the media link, caches configuration/routes and requests worker restart. It never generates APP_KEY or performs automatic rollback migrations.
@@ -63,13 +65,11 @@ If release commands fail, the script leaves maintenance mode in place so partial
 
 ## Backup and restoration
 
-Use encrypted backups with access controls and retention appropriate to the deployment. Keep PostgreSQL logical backups, all public media variants, any in-flight private upload input, and APP_KEY separately and securely. Back up config/secret references without committing them. Schedule snapshots consistently or pause mutations/workers briefly so database references and media correspond. S3 versioning and lifecycle rules complement database backups; neither replaces restore testing.
+Use encrypted consistent MySQL/MariaDB backups, all public media variants, in-flight private upload input and APP_KEY. Pause writers/cron for matching database/media snapshots. Keep credentials outside source control and command-line arguments.
 
-From `backend/`, run `./scripts/backup.sh /SECURE_BACKUP_DIRECTORY`. It writes a custom-format pg_dump and tar of storage/app, using standard PGHOST/PGPORT/PGUSER/PGDATABASE/PGPASSWORD or a secured .pgpass. It refuses overwriting an existing destination. Use a dedicated secure backup location and encrypt/copy off-host afterward. Container deployments may instead use provider snapshots/pg_dump from a maintenance task and archive the shared media volume.
+From `backend/`, run `MYSQL_DATABASE=DATABASE ./scripts/backup.sh NEW_SECURE_DIRECTORY PRIVATE_MYSQL_OPTION_FILE`. The 0600 option file contains a `[client]` section with host/user/password. The script refuses an existing destination, uses a single InnoDB snapshot and writes `database.sql` plus `media.tar.gz`. Use a compatible mysqldump client (or a private PATH wrapper for mariadb-dump); encrypt/copy backups off-host. Restore SQL into a new isolated empty MySQL/MariaDB database using a private client option file; restore media/key, compare counts/checksums and exercise API/media flows before any cutover. Never overwrite the existing source or automatically roll back production migrations.
 
-Restore into a new isolated PostgreSQL database with `createdb`, then `pg_restore --no-owner --no-acl --dbname=NEW_DATABASE database.dump`. Restore media to an isolated storage location, preserve APP_KEY, point a separate app instance at the restored database/storage, then run read-only checks and sampled image reads. Disable outbound mail/analytics and scheduler on the drill instance. Compare entity counts, relationships and object availability. Promote only after deliberate approval; never restore over a live database as an automatic rollback.
-
-For a local drill use a disposable name ending `_restore_drill`; create it explicitly, restore the dump, compare table counts and test a restored image's checksum. Record commands and outcomes in progress documentation, then remove the drill resources after review. This implementation's local drill evidence is recorded in backend-completion.md.
+For PostgreSQL-to-MySQL migration, preserve the original PostgreSQL dump and use [the transfer runbook](postgres-to-mysql-transfer.md); pg_dump SQL is not MySQL SQL. Executed transfer/restore checks and external limits are recorded in [migration results](mysql-migration-completion.md).
 
 ## Recovery and diagnosis
 

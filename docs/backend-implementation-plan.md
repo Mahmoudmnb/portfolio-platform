@@ -1,5 +1,7 @@
 # Portfolio Platform — Complete Laravel Backend Implementation Plan
 
+> Historical initial PostgreSQL specification. The user-authorized 2026-10-22 Hostinger migration supersedes its database/hosting choices: real MySQL/MariaDB tests, Hostinger MariaDB 11.8.9 and bounded cron processing. See [current migration results](mysql-migration-completion.md) and [deployment](hostinger-deployment.md). API/product requirements remain unchanged.
+
 > Place this file at `docs/backend-implementation-plan.md` in the repository.
 > Instruction for Codex: Read this entire file, inspect the repository and applicable AGENTS.md instructions, then implement the backend through every phase. This is an implementation specification, not a request for another proposal.
 

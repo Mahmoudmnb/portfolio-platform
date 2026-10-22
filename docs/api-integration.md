@@ -88,7 +88,7 @@ Initial limits: public reads 120/min/IP, login 5/min/account+IP and 30/min/IP, i
 
 ## Actual response examples
 
-The following fictional fixtures come from the PostgreSQL HTTP feature tests and are validated against OpenAPI. IDs and timestamps are examples, not deployment constants. The login token is replaced with a placeholder.
+The following fictional fixtures come from the backend HTTP feature tests (now exercised against MySQL/MariaDB) and are validated against OpenAPI. IDs and timestamps are examples, not deployment constants. The login token is replaced with a placeholder.
 
 ### Entry list
 

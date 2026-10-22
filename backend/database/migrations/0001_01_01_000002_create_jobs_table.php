@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('queue');
             $table->longText('payload');
             $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->dateTime('failed_at', 6)->useCurrent();
 
             $table->index(['connection', 'queue', 'failed_at']);
         });

@@ -9,8 +9,8 @@ abstract class TestCase extends BaseTestCase
     public function createApplication()
     {
         $app = parent::createApplication();
-        if (! $app->environment('testing') || config('database.default') !== 'pgsql' || ! str_ends_with((string) config('database.connections.pgsql.database'), '_testing')) {
-            throw new \RuntimeException('Tests require an isolated PostgreSQL database ending in _testing.');
+        if (! $app->environment('testing') || ! in_array(config('database.default'), ['mysql', 'mariadb'], true) || ! str_ends_with((string) config('database.connections.'.config('database.default').'.database'), '_testing')) {
+            throw new \RuntimeException('Tests require an isolated MySQL/MariaDB database ending in _testing.');
         }
 
         return $app;

@@ -15,10 +15,12 @@ return new class extends Migration
             $t->string('email', 254)->unique();
             $t->string('password');
             $t->boolean('enabled')->default(true);
-            $t->timestampsTz();
+            $t->unsignedTinyInteger('owner_slot')->storedAs('1')->unique('users_single_owner');
+            $t->dateTime('created_at', 6)->nullable();
+            $t->dateTime('updated_at', 6)->nullable();
         });
-        DB::statement('CREATE UNIQUE INDEX users_single_owner ON users ((true))');
-        DB::statement('ALTER TABLE users ADD CONSTRAINT users_normalized_email CHECK (email = lower(trim(email)))');
+        DB::statement('ALTER TABLE users ADD CONSTRAINT users_enabled_boolean CHECK (enabled IN (0,1))');
+        DB::statement('ALTER TABLE users ADD CONSTRAINT users_normalized_email CHECK (BINARY email = BINARY lower(trim(email)))');
     }
 
     public function down(): void

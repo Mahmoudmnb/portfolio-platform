@@ -9,26 +9,52 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: mysql:8.4
+            health: mysqladmin ping -h 127.0.0.1 -uroot -pci-disposable-only
+          - image: mariadb:11.8.9
+            health: healthcheck.sh --connect --innodb_initialized
     services:
       postgres:
         image: postgres:18.6-bookworm
         env:
-          POSTGRES_DB: portfolio_testing
+          POSTGRES_DB: portfolio_legacy_testing
           POSTGRES_USER: portfolio
-          POSTGRES_PASSWORD: ci-disposable-only
+          POSTGRES_PASSWORD: ci-transfer-only
         ports: ['5432:5432']
         options: >-
-          --health-cmd "pg_isready -U portfolio -d portfolio_testing"
+          --health-cmd "pg_isready -U portfolio -d portfolio_legacy_testing"
+          --health-interval 3s --health-timeout 3s --health-retries 30
+      mysql:
+        image: ${{ matrix.image }}
+        env:
+          MYSQL_DATABASE: portfolio_testing
+          MYSQL_USER: portfolio
+          MYSQL_PASSWORD: ci-disposable-only
+          MYSQL_ROOT_PASSWORD: ci-disposable-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd "${{ matrix.health }}"
           --health-interval 3s --health-timeout 3s --health-retries 30
     env:
       APP_ENV: testing
       APP_DEBUG: 'false'
-      DB_CONNECTION: pgsql
+      DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
-      DB_PORT: 5432
+      DB_PORT: 3306
       DB_DATABASE: portfolio_testing
       DB_USERNAME: portfolio
       DB_PASSWORD: ci-disposable-only
+      TRANSFER_TEST_SOURCE: '1'
+      TRANSFER_PG_HOST: 127.0.0.1
+      TRANSFER_PG_PORT: 5432
+      TRANSFER_PG_DATABASE: portfolio_legacy_testing
+      TRANSFER_PG_USERNAME: portfolio
+      TRANSFER_PG_PASSWORD: ci-transfer-only
+      TRANSFER_PG_SSLMODE: disable
       CACHE_STORE: array
       QUEUE_CONNECTION: sync
     defaults:
@@ -40,7 +66,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
-          extensions: pdo_pgsql, gd, mbstring, bcmath, pcntl, dom, zip
+          extensions: pdo_mysql, pdo_pgsql, gd, mbstring, bcmath, pcntl, dom, zip
           coverage: none
           tools: composer:2.9.5
       - uses: actions/setup-python@v7.0.0
@@ -55,6 +81,7 @@ jobs:
       - run: php artisan migrate --force
       - run: php artisan migrate:rollback --force
       - run: php artisan migrate --force
+      - run: php artisan migrate --database=legacy_pgsql --path=tests/Fixtures/postgres --force
       - run: php artisan test
       - run: python ../scripts/check-openapi.py
       - run: composer audit --locked

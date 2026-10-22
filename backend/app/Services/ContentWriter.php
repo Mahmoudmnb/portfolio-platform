@@ -83,7 +83,7 @@ class ContentWriter
                 }
                 throw ValidationException::withMessages(['slug' => ['This slug is already in use.']]);
             } catch (QueryException $e) {
-                if ($e->getCode() === '23503') {
+                if (in_array((int) ($e->errorInfo[1] ?? 0), [1451, 1452], true)) {
                     throw ValidationException::withMessages(['relations' => ['A referenced item changed; refetch and retry.']]);
                 }
                 throw $e;

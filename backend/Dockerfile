@@ -1,7 +1,7 @@
-FROM php:8.5.11-fpm-bookworm AS runtime
-RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev libpng-dev libjpeg62-turbo-dev libwebp-dev libzip-dev libonig-dev libxml2-dev unzip curl nginx supervisor \
+FROM php:8.5.12-fpm-bookworm AS runtime
+RUN apt-get update && apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libwebp-dev libzip-dev libonig-dev libxml2-dev unzip curl nginx supervisor \
     && docker-php-ext-configure gd --with-jpeg --with-webp \
-    && docker-php-ext-install pdo_pgsql gd bcmath pcntl mbstring dom xml zip \
+    && docker-php-ext-install pdo_mysql gd bcmath pcntl mbstring dom xml zip \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=composer:2.9.5 /usr/bin/composer /usr/bin/composer
 COPY docker/php.ini /usr/local/etc/php/conf.d/portfolio.ini

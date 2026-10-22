@@ -1,3 +1,5 @@
+> Current database migration, 2026-10-22: see [MySQL/MariaDB completion evidence](mysql-migration-completion.md). The PostgreSQL delivery notes below are historical; current runtime uses MySQL/MariaDB, and client applications now exist.
+
 # Backend implementation progress
 
 Updated 2026-10-21. See [delivery report](backend-completion.md) for versions, commands, evidence and external checks.

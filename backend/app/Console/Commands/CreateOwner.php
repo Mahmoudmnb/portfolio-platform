@@ -30,7 +30,7 @@ class CreateOwner extends Command
             return self::FAILURE;
         }
         DB::transaction(function () use ($data) {
-            DB::select('SELECT pg_advisory_xact_lock(71337)');
+            DB::table('application_locks')->upsert([['name' => 'owner']], ['name'], ['name']);
             if (User::exists()) {
                 throw new \RuntimeException('An owner already exists.');
             } User::create(collect($data)->except('password_confirmation')->all());
