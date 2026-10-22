@@ -1,0 +1,2983 @@
+{
+  "info": {
+    "name": "Portfolio Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Generated from docs/openapi.yaml. Import the local environment template and select it. Send requests individually; this reference collection includes deletion, settings replacement and token revocation. Login captures token automatically. Create requests capture resource IDs/slugs. Query filters are disabled until selected. No credentials are included."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "POST /admin/auth/login — Authenticate the enabled owner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Authenticate the enabled owner",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": {{login_email_json}},\n  \"password\": {{login_password_json}},\n  \"device_name\": \"Postman\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.unset(\"token\");",
+                  "for (const key of [\"email\", \"password\"]) {",
+                  "  const value = pm.environment.get(key);",
+                  "  if (!value) throw new Error(\"Set \" + key + \" in the selected environment first.\");",
+                  "  pm.variables.set(\"login_\" + key + \"_json\", JSON.stringify(value));",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));",
+                  "if (pm.response.code === 200) {",
+                  "  const data = pm.response.json().data;",
+                  "  pm.test(\"Login returns a bearer token\", () => pm.expect(data.token).to.be.a(\"string\").and.not.empty);",
+                  "  if (data.token) pm.environment.set(\"token\", data.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/auth/me — Read current enabled owner",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/auth/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Read current enabled owner"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/auth/logout — Revoke current token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/auth/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "auth",
+                "logout"
+              ]
+            },
+            "description": "Revoke current token"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));",
+                  "if (pm.response.code >= 200 && pm.response.code < 300) pm.environment.unset(\"token\");"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/auth/logout-all — Revoke all tokens",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/auth/logout-all",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "auth",
+                "logout-all"
+              ]
+            },
+            "description": "Revoke all tokens"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));",
+                  "if (pm.response.code >= 200 && pm.response.code < 300) pm.environment.unset(\"token\");"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PUT /admin/auth/password — Change password and revoke every token",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/auth/password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "auth",
+                "password"
+              ]
+            },
+            "description": "Change password and revoke every token",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_password\": {{current_password_json}},\n  \"password\": {{new_password_json}},\n  \"password_confirmation\": {{new_password_json}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "for (const key of [\"current_password\", \"new_password\"]) {",
+                  "  const value = pm.environment.get(key);",
+                  "  if (!value) throw new Error(\"Set \" + key + \" in the selected environment first.\");",
+                  "  pm.variables.set(key + \"_json\", JSON.stringify(value));",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));",
+                  "if (pm.response.code >= 200 && pm.response.code < 300) pm.environment.unset(\"token\");"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Public API",
+      "item": [
+        {
+          "name": "GET /entries — List public entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/entries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "entries"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "kind",
+                  "value": "project",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"project\", \"product\"]}"
+                },
+                {
+                  "key": "category",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 160, \"pattern\": \"^[a-z0-9]+(?:-[a-z0-9]+)*$\"}"
+                },
+                {
+                  "key": "technology",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 160, \"pattern\": \"^[a-z0-9]+(?:-[a-z0-9]+)*$\"}"
+                },
+                {
+                  "key": "featured",
+                  "value": "0",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"0\", \"1\"]}"
+                }
+              ]
+            },
+            "description": "List public entries",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /entries/{slug} — Read entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/entries/{{entry_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "entries",
+                "{{entry_slug}}"
+              ]
+            },
+            "description": "Read entries",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /categories — List public categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                }
+              ]
+            },
+            "description": "List public categories",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /technologies — List public technologies",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/technologies",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "technologies"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                }
+              ]
+            },
+            "description": "List public technologies",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /team-members — List public team-members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/team-members",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "team-members"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                }
+              ]
+            },
+            "description": "List public team-members",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /team-members/{slug} — Read team-members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/team-members/{{team_member_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "team-members",
+                "{{team_member_slug}}"
+              ]
+            },
+            "description": "Read team-members",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /services — List public services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/services",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                }
+              ]
+            },
+            "description": "List public services",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /services/{slug} — Read services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/services/{{service_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "services",
+                "{{service_slug}}"
+              ]
+            },
+            "description": "Read services",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /site-settings — Read public settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/site-settings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "site-settings"
+              ]
+            },
+            "description": "Read public settings",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /inquiries — Submit a private inquiry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/inquiries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "inquiries"
+              ]
+            },
+            "description": "Submit a private inquiry",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fictional Visitor\",\n  \"email\": \"visitor@example.test\",\n  \"subject\": \"Postman example\",\n  \"message\": \"A fictional example inquiry.\",\n  \"website\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /analytics/events — Count an accepted event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/analytics/events",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "analytics",
+                "events"
+              ]
+            },
+            "description": "Count an accepted event",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_name\": \"page_view\",\n  \"path\": \"/about\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([202]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /ready — Check database and writable storage",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ready",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ready"
+              ]
+            },
+            "description": "Check database and writable storage",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Entries",
+      "item": [
+        {
+          "name": "GET /admin/entries — List managed entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/entries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "entries"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "kind",
+                  "value": "project",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"project\", \"product\"]}"
+                },
+                {
+                  "key": "category",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 160, \"pattern\": \"^[a-z0-9]+(?:-[a-z0-9]+)*$\"}"
+                },
+                {
+                  "key": "technology",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 160, \"pattern\": \"^[a-z0-9]+(?:-[a-z0-9]+)*$\"}"
+                },
+                {
+                  "key": "featured",
+                  "value": "0",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"0\", \"1\"]}"
+                },
+                {
+                  "key": "sort",
+                  "value": "id",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"id\", \"created_at\", \"updated_at\", \"sort_order\"]}"
+                },
+                {
+                  "key": "direction",
+                  "value": "asc",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"asc\", \"desc\"]}"
+                },
+                {
+                  "key": "status",
+                  "value": "draft",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"draft\", \"published\", \"archived\"]}"
+                }
+              ]
+            },
+            "description": "List managed entries"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/entries — Create Entry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/entries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "entries"
+              ]
+            },
+            "description": "Create Entry",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kind\": \"project\",\n  \"title\": \"Postman draft project\",\n  \"summary\": \"Fictional API example.\",\n  \"description\": \"Created manually in Postman.\",\n  \"status\": \"draft\",\n  \"featured\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"entry_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"entry_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/entries/{id} — Read entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/entries/{{entry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "entries",
+                "{{entry_id}}"
+              ]
+            },
+            "description": "Read entries"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/entries/{id} — Update Entry",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/entries/{{entry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "entries",
+                "{{entry_id}}"
+              ]
+            },
+            "description": "Update Entry",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"summary\": \"Updated fictional summary.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/entries/{id} — Permanently delete Entry",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/entries/{{entry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "entries",
+                "{{entry_id}}"
+              ]
+            },
+            "description": "Permanently delete Entry\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "GET /admin/categories — List managed categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "sort",
+                  "value": "id",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"id\", \"created_at\", \"updated_at\", \"sort_order\"]}"
+                },
+                {
+                  "key": "direction",
+                  "value": "asc",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"asc\", \"desc\"]}"
+                }
+              ]
+            },
+            "description": "List managed categories"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/categories — Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "categories"
+              ]
+            },
+            "description": "Create Category",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman category\",\n  \"description\": \"Fictional category.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"category_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"category_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/categories/{id} — Read categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/categories/{{category_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "categories",
+                "{{category_id}}"
+              ]
+            },
+            "description": "Read categories"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/categories/{id} — Update Category",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/categories/{{category_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "categories",
+                "{{category_id}}"
+              ]
+            },
+            "description": "Update Category",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated fictional category.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/categories/{id} — Permanently delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/categories/{{category_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "categories",
+                "{{category_id}}"
+              ]
+            },
+            "description": "Permanently delete Category\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Technologies",
+      "item": [
+        {
+          "name": "GET /admin/technologies — List managed technologies",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/technologies",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "technologies"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "sort",
+                  "value": "id",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"id\", \"created_at\", \"updated_at\"]}"
+                },
+                {
+                  "key": "direction",
+                  "value": "asc",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"asc\", \"desc\"]}"
+                }
+              ]
+            },
+            "description": "List managed technologies"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/technologies — Create Technology",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/technologies",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "technologies"
+              ]
+            },
+            "description": "Create Technology",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman technology\",\n  \"website_url\": \"https://example.test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"technology_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"technology_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/technologies/{id} — Read technologies",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/technologies/{{technology_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "technologies",
+                "{{technology_id}}"
+              ]
+            },
+            "description": "Read technologies"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/technologies/{id} — Update Technology",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/technologies/{{technology_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "technologies",
+                "{{technology_id}}"
+              ]
+            },
+            "description": "Update Technology",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"website_url\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/technologies/{id} — Permanently delete Technology",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/technologies/{{technology_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "technologies",
+                "{{technology_id}}"
+              ]
+            },
+            "description": "Permanently delete Technology\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Team members",
+      "item": [
+        {
+          "name": "GET /admin/team-members — List managed team-members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/team-members",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "team-members"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "sort",
+                  "value": "id",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"id\", \"created_at\", \"updated_at\", \"sort_order\"]}"
+                },
+                {
+                  "key": "direction",
+                  "value": "asc",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"asc\", \"desc\"]}"
+                },
+                {
+                  "key": "active",
+                  "value": "0",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"0\", \"1\"]}"
+                }
+              ]
+            },
+            "description": "List managed team-members"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/team-members — Create TeamMember",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/team-members",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "team-members"
+              ]
+            },
+            "description": "Create TeamMember",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fictional Member\",\n  \"role_title\": \"Developer\",\n  \"bio\": \"Fictional biography.\",\n  \"is_active\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"team_member_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"team_member_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/team-members/{id} — Read team-members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/team-members/{{team_member_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "team-members",
+                "{{team_member_id}}"
+              ]
+            },
+            "description": "Read team-members"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/team-members/{id} — Update TeamMember",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/team-members/{{team_member_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "team-members",
+                "{{team_member_id}}"
+              ]
+            },
+            "description": "Update TeamMember",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role_title\": \"Updated role\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/team-members/{id} — Permanently delete TeamMember",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/team-members/{{team_member_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "team-members",
+                "{{team_member_id}}"
+              ]
+            },
+            "description": "Permanently delete TeamMember\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "GET /admin/services — List managed services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/services",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Case-insensitive literal title/summary search for entries, name search for taxonomies/team; title search for services. % and _ are literal."
+                },
+                {
+                  "key": "sort",
+                  "value": "id",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"id\", \"created_at\", \"updated_at\", \"sort_order\"]}"
+                },
+                {
+                  "key": "direction",
+                  "value": "asc",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"asc\", \"desc\"]}"
+                },
+                {
+                  "key": "active",
+                  "value": "0",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"0\", \"1\"]}"
+                }
+              ]
+            },
+            "description": "List managed services"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "POST /admin/services — Create Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/services",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "services"
+              ]
+            },
+            "description": "Create Service",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Postman service\",\n  \"summary\": \"Fictional service.\",\n  \"description\": \"Fictional description.\",\n  \"is_active\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"service_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"service_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/services/{id} — Read services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/services/{{service_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "services",
+                "{{service_id}}"
+              ]
+            },
+            "description": "Read services"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/services/{id} — Update Service",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/services/{{service_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "services",
+                "{{service_id}}"
+              ]
+            },
+            "description": "Update Service",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"summary\": \"Updated fictional service.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/services/{id} — Permanently delete Service",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/services/{{service_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "services",
+                "{{service_id}}"
+              ]
+            },
+            "description": "Permanently delete Service\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Site settings",
+      "item": [
+        {
+          "name": "GET /admin/site-settings — Read managed settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/site-settings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "site-settings"
+              ]
+            },
+            "description": "Read managed settings"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PUT /admin/site-settings — Replace typed settings",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/site-settings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "site-settings"
+              ]
+            },
+            "description": "Replace typed settings\nReplaces settings using fictional examples. Read current settings and edit this body before sending.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"site_title\": \"Fictional Portfolio\",\n  \"tagline\": \"Fictional tagline\",\n  \"introduction\": \"Fictional introduction.\",\n  \"contact_email\": \"owner@example.test\",\n  \"availability\": \"available\",\n  \"default_seo_title\": \"Fictional Portfolio\",\n  \"default_seo_description\": \"Fictional portfolio description.\",\n  \"social_links\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Media",
+      "item": [
+        {
+          "name": "POST /admin/media — Queue verified image re-encoding",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "media"
+              ]
+            },
+            "description": "Queue verified image re-encoding",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Choose a local JPEG, PNG or WebP. Max 10 MiB, 8000px per side, 20 megapixels."
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([201]));",
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json().data;",
+                  "  if (data.id) pm.environment.set(\"media_id\", data.id);",
+                  "  if (data.slug) pm.environment.set(\"media_slug\", data.slug);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/media — List uploaded media and usage",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "media"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "state",
+                  "value": "processing",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"processing\", \"ready\", \"failed\", \"deleting\"]}"
+                },
+                {
+                  "key": "usage",
+                  "value": "used",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"used\", \"unused\"]}"
+                }
+              ]
+            },
+            "description": "List uploaded media and usage"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/media/{id} — Poll media state",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/media/{{media_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "media",
+                "{{media_id}}"
+              ]
+            },
+            "description": "Poll media state"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/media/{id} — Request durable deletion of unused media",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/media/{{media_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "media",
+                "{{media_id}}"
+              ]
+            },
+            "description": "Request durable deletion of unused media\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Inquiries",
+      "item": [
+        {
+          "name": "GET /admin/inquiries — List private inquiries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/inquiries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "inquiries"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "status",
+                  "value": "new",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"enum\": [\"new\", \"read\", \"replied\", \"archived\"]}"
+                },
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                }
+              ]
+            },
+            "description": "List private inquiries"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/inquiries/{id} — Read without changing status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/inquiries/{{inquiry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "inquiries",
+                "{{inquiry_id}}"
+              ]
+            },
+            "description": "Read without changing status"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/inquiries/{id} — Update status or private note",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/inquiries/{{inquiry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "inquiries",
+                "{{inquiry_id}}"
+              ]
+            },
+            "description": "Update status or private note",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"read\",\n  \"internal_note\": \"Reviewed manually in Postman.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "DELETE /admin/inquiries/{id} — Permanently delete inquiry",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/inquiries/{{inquiry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "inquiries",
+                "{{inquiry_id}}"
+              ]
+            },
+            "description": "Permanently delete inquiry\nPermanently deletes the selected resource. Send only when intended."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Audit events",
+      "item": [
+        {
+          "name": "GET /admin/audit-events — Read privacy-limited mutation audit",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/audit-events",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "audit-events"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "disabled": true,
+                  "description": "{\"type\": \"integer\", \"minimum\": 1, \"maximum\": 100, \"default\": 20}"
+                },
+                {
+                  "key": "action",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 80}"
+                },
+                {
+                  "key": "entity_type",
+                  "value": "",
+                  "disabled": true,
+                  "description": "{\"type\": \"string\", \"maxLength\": 80}"
+                },
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                }
+              ]
+            },
+            "description": "Read privacy-limited mutation audit"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "GET /admin/analytics/summary — Read UTC accepted-event summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/analytics/summary",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "analytics",
+                "summary"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true,
+                  "description": "Top list bound; date range defaults to last 30 UTC days, max 90 days, no future dates. Deleted entry IDs are null."
+                }
+              ]
+            },
+            "description": "Read UTC accepted-event summary"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/analytics/daily — Read UTC accepted-event daily",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/analytics/daily",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "analytics",
+                "daily"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true,
+                  "description": "Top list bound; date range defaults to last 30 UTC days, max 90 days, no future dates. Deleted entry IDs are null."
+                }
+              ]
+            },
+            "description": "Read UTC accepted-event daily"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/analytics/top-pages — Read UTC accepted-event top-pages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/analytics/top-pages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "analytics",
+                "top-pages"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true,
+                  "description": "Top list bound; date range defaults to last 30 UTC days, max 90 days, no future dates. Deleted entry IDs are null."
+                }
+              ]
+            },
+            "description": "Read UTC accepted-event top-pages"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/analytics/top-entries — Read UTC accepted-event top-entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/analytics/top-entries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "analytics",
+                "top-entries"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true,
+                  "description": "Top list bound; date range defaults to last 30 UTC days, max 90 days, no future dates. Deleted entry IDs are null."
+                }
+              ]
+            },
+            "description": "Read UTC accepted-event top-entries"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/analytics/referrers — Read UTC accepted-event referrers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/analytics/referrers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "analytics",
+                "referrers"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC start date."
+                },
+                {
+                  "key": "end_date",
+                  "value": "",
+                  "disabled": true,
+                  "description": "Inclusive UTC end date."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true,
+                  "description": "Top list bound; date range defaults to last 30 UTC days, max 90 days, no future dates. Deleted entry IDs are null."
+                }
+              ]
+            },
+            "description": "Read UTC accepted-event referrers"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    }
+  ]
+}

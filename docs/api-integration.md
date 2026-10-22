@@ -1,5 +1,7 @@
 # Integrating Jaspr and Flutter
 
+For interactive API testing, import the [Postman collection and local environment template](postman/README.md), generated from the same contract.
+
 The contract is [OpenAPI 3.1](openapi.yaml). The document uses JSON syntax, which is also valid YAML 1.2. API base URLs include `/api/v1`: development `http://localhost:8000/api/v1`, Android emulator/LAN `http://HOST_REACHABLE_ADDRESS:8000/api/v1`, production `https://api.example.test/api/v1` (replace this placeholder). Serve the Jaspr client separately. Configure its exact origins in SITE_ORIGINS. Native Flutter does not depend on CORS.
 
 Send `Accept: application/json`; use `Content-Type: application/json` except multipart uploads. A single resource is under `data`. Collections have `data`, `links` and `meta`, including current_page, per_page, last_page and total. Default page size is 20, maximum 100. Follow `links.next` or increment page until last_page. Treat an empty data array as an empty state, not an error. Show a loading indicator while awaiting a request and a retry action on network/5xx errors. On 422 map `errors` keys to form fields; on 429 honor Retry-After. Keep X-Request-ID for diagnostics without recording private payloads.

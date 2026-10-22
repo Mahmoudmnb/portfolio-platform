@@ -10,3 +10,6 @@
 **/storage/*.key
 **/storage/logs/*
 !**/storage/logs/.gitignore
+
+# Filled Postman environments stay local; tracked templates contain no credentials.
+/docs/postman/*.local.json
