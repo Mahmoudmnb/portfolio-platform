@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security reporting instructions
+    url: https://github.com/Mahmoudmnb/portfolio-platform/blob/HEAD/SECURITY.md
+    about: Read the private reporting instructions before disclosing a vulnerability.

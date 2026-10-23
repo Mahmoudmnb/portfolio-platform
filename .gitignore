@@ -13,3 +13,46 @@
 
 # Filled Postman environments stay local; tracked templates contain no credentials.
 /docs/postman/*.local.json
+
+# Private deployment, credentials and generated release artifacts
+**/auth.json
+**/key.properties
+**/*.jks
+**/*.keystore
+**/*.p12
+**/*.pfx
+**/*.pem
+**/*.key
+**/*.sql
+**/*.sql.gz
+**/*.dump
+**/*.apk
+**/*.aab
+**/*.local.json
+**/config/production.json
+
+# Local databases and compressed database backups, wherever created
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.db
+*.db-*
+*.sql.bz2
+*.sql.xz
+*.sql.zst
+*.dump.gz
+*.dump.bz2
+*.dump.xz
+*.dump.zst
+
+# Credential stores and private SSH/signing material
+**/credentials.json
+**/service-account*.json
+**/.aws/credentials
+**/.aws/config
+**/.pgpass
+**/.my.cnf
+**/id_rsa
+**/id_ed25519
+**/*.p8
