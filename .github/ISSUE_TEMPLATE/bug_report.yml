@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem using fictional data.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "For vulnerabilities use SECURITY.md. Do not include passwords, tokens, private inquiries or production logs. Reproduce against your own local instance."
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options: [Backend API, Android dashboard, Shared Dart client, Documentation or setup]
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      placeholder: Commit SHA or release tag
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS/device, relevant PHP/Flutter version, database engine/version. No credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps with fictional records and expected versus actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Relevant error text, HTTP status, request ID or fictional screenshots. Remove secrets and personal information.
