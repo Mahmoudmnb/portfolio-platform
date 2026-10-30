@@ -33,7 +33,7 @@ services:
     <<: *app
     command: ["php", "artisan", "schedule:work"]
   mysql:
-    image: mariadb:11.8.9
+    image: mariadb:12.3.3
     environment:
       MYSQL_DATABASE: portfolio
       MYSQL_USER: portfolio
