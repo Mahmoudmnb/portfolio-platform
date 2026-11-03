@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../core/components/app_footer.dart';
+import '../../core/components/app_header.dart';
 
 class HomePage extends StatelessComponent {
   const HomePage();
@@ -20,115 +21,13 @@ class HomePage extends StatelessComponent {
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
       ),
       .fragment([
-        header(
-          classes:
-              "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          [
-            div(
-              classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              [
-                a(
-                  classes: "flex items-center gap-2 group",
-                  href: "/",
-                  attributes: {
-                    "data-path": "home",
-                  },
-                  [
-                    span(
-                      classes:
-                          "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      [
-                        .text("Brothers-Tech"),
-                      ],
-                    ),
-                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
-                  ],
-                ),
-
-                nav(
-                  classes:
-                      "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
-                  attributes: {
-                    "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
-                  },
-                  [
-                    a(
-                      classes:
-                          "px-4 py-2 transition-colors bg-surface-container-high text-primary font-medium rounded-lg",
-                      href: "/",
-                      attributes: {
-                        "aria-current": "page",
-                        "data-path": "home",
-                      },
-                      [
-                        .text("Home"),
-                      ],
-                    ),
-
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/services",
-                      attributes: {
-                        "data-path": "services",
-                      },
-                      [
-                        .text("Services"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/projects",
-                      attributes: {
-                        "data-path": "projects",
-                      },
-                      [
-                        .text("Projects"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/about",
-                      attributes: {
-                        "data-path": "about",
-                      },
-                      [
-                        .text("About"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Contact"),
-                      ],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: "flex items-center gap-4",
-                  [
-                    a(
-                      classes:
-                          "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Start a Project →"),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        AppHeader(
+          tabs: [
+            (name: "Home", url: "/", isSelected: true),
+            (name: "Services", url: "/services", isSelected: false),
+            (name: "Projects", url: "/projects", isSelected: false),
+            (name: "About", url: "/about", isSelected: false),
+            (name: "Contact", url: "/contact", isSelected: false),
           ],
         ),
         main_(
@@ -438,7 +337,7 @@ class HomePage extends StatelessComponent {
                     ),
                   ],
                 ),
-
+                // services
                 section(
                   id: "services",
                   classes: "w-full bg-surface py-20 lg:py-28 relative",
@@ -482,290 +381,37 @@ class HomePage extends StatelessComponent {
                         div(
                           classes: "grid grid-cols-1 md:grid-cols-2 gap-6",
                           [
-                            div(
-                              classes:
-                                  "p-8 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden",
-                              [
-                                div(
-                                  classes:
-                                      "absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none",
-                                  [],
-                                ),
-                                div(
-                                  classes: "space-y-4",
-                                  [
-                                    div(
-                                      classes: "flex items-center justify-between",
-                                      [
-                                        span(
-                                          classes: "font-label-mono text-headline-md text-primary font-semibold",
-                                          [
-                                            .text("01"),
-                                          ],
-                                        ),
-                                        div(
-                                          classes:
-                                              "w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:text-secondary transition-colors",
-                                          [
-                                            span(
-                                              classes: "material-symbols-outlined",
-                                              [
-                                                .text("smartphone"),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    h3(
-                                      classes:
-                                          "font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors",
-                                      [
-                                        .text(" Mobile App Development "),
-                                      ],
-                                    ),
-                                    p(
-                                      classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      [
-                                        .text(
-                                          " High-quality Android and iOS applications designed for rapid performance, native gesture fidelity, and faultless offline resilience. ",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-
-                                div(
-                                  classes: "pt-8 flex flex-wrap gap-2",
-                                  [
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [
-                                        .text("Android"),
-                                      ],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [
-                                        .text("iOS"),
-                                      ],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [
-                                        Component.text("Cross-platform"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            HomeServiceCard(
+                              count: 1,
+                              title: "Mobile App Development",
+                              description:
+                                  "High-quality Android and iOS applications designed for rapid performance, native gesture fidelity, and faultless offline resilience.",
+                              iconName: "smartphone",
+                              chips: ["Android", "iOS", "Cross-platform"],
                             ),
-                            div(
-                              classes:
-                                  "p-8 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-secondary/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden",
-                              [
-                                div(
-                                  classes:
-                                      "absolute -right-10 -bottom-10 w-40 h-40 bg-secondary/5 rounded-full blur-2xl group-hover:bg-secondary/10 transition-colors pointer-events-none",
-                                  [],
-                                ),
-                                div(
-                                  classes: "space-y-4",
-                                  [
-                                    div(
-                                      classes: "flex items-center justify-between",
-                                      [
-                                        span(
-                                          classes: "font-label-mono text-headline-md text-secondary font-semibold",
-                                          [.text("02")],
-                                        ),
-                                        div(
-                                          classes:
-                                              "w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary transition-colors",
-                                          [
-                                            span(
-                                              classes: "material-symbols-outlined",
-                                              [.text("web")],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    h3(
-                                      classes:
-                                          "font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-secondary transition-colors",
-                                      [.text(" Web Development ")],
-                                    ),
-                                    p(
-                                      classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      [
-                                        .text(
-                                          " Modern websites, dynamic web applications, dashboards, and enterprise platforms architected for ultra-low latency and search discovery. ",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                div(
-                                  classes: "pt-8 flex flex-wrap gap-2",
-                                  [
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Web Apps")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Dashboards")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Business Platforms")],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            HomeServiceCard(
+                              count: 2,
+                              title: "Web Development",
+                              description:
+                                  "Modern websites, dynamic web applications, dashboards, and enterprise platforms architected for ultra-low latency and search discovery.",
+                              iconName: "web",
+                              chips: ["Web Apps", "Dashboards", "Business Platforms"],
                             ),
-                            div(
-                              classes:
-                                  "p-8 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden",
-                              [
-                                div(
-                                  classes:
-                                      "absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none",
-                                  [],
-                                ),
-                                div(
-                                  classes: "space-y-4",
-                                  [
-                                    div(
-                                      classes: "flex items-center justify-between",
-                                      [
-                                        span(
-                                          classes: "font-label-mono text-headline-md text-primary font-semibold",
-                                          [.text("03")],
-                                        ),
-                                        div(
-                                          classes:
-                                              "w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:text-secondary transition-colors",
-                                          [
-                                            span(
-                                              classes: "material-symbols-outlined",
-                                              [.text("desktop_windows")],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    h3(
-                                      classes:
-                                          "font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors",
-                                      [.text(" Desktop Applications ")],
-                                    ),
-                                    p(
-                                      classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      [
-                                        .text(
-                                          " Reliable desktop software, administrative terminals, and offline-capable management systems built seamlessly around complex operations. ",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                div(
-                                  classes: "pt-8 flex flex-wrap gap-2",
-                                  [
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Desktop")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Management Systems")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Business Software")],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            HomeServiceCard(
+                              count: 3,
+                              title: "Desktop Applications",
+                              description:
+                                  "Reliable desktop software, administrative terminals, and offline-capable management systems built seamlessly around complex operations.",
+                              iconName: "desktop_windows",
+                              chips: ["Desktop", "Management Systems", "Business Software"],
                             ),
-                            div(
-                              classes:
-                                  "p-8 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden",
-                              [
-                                div(
-                                  classes:
-                                      "absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none",
-                                  [],
-                                ),
-                                div(
-                                  classes: "space-y-4",
-                                  [
-                                    div(
-                                      classes: "flex items-center justify-between",
-                                      [
-                                        span(
-                                          classes: "font-label-mono text-headline-md text-primary font-semibold",
-                                          [.text("04")],
-                                        ),
-                                        div(
-                                          classes:
-                                              "w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:text-secondary transition-colors",
-                                          [
-                                            span(
-                                              classes: "material-symbols-outlined",
-                                              [.text("design_services")],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    h3(
-                                      classes:
-                                          "font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors",
-                                      [.text("UI/UX Design")],
-                                    ),
-                                    p(
-                                      classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      [
-                                        .text(
-                                          "Clean and intuitive digital interfaces engineered around real user psychology, rigorous accessibility specs, and brand identity standards.",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                div(
-                                  classes: "pt-8 flex flex-wrap gap-2",
-                                  [
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("UX")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("UI")],
-                                    ),
-                                    span(
-                                      classes:
-                                          "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
-                                      [.text("Product Design")],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            HomeServiceCard(
+                              count: 4,
+                              title: "UI/UX Design",
+                              description:
+                                  "Clean and intuitive digital interfaces engineered around real user psychology, rigorous accessibility specs, and brand identity standards.",
+                              iconName: "design_services",
+                              chips: ["UI", "UX", "Product Design"],
                             ),
                           ],
                         ),
@@ -773,6 +419,7 @@ class HomePage extends StatelessComponent {
                     ),
                   ],
                 ),
+                // selected-work
                 section(
                   id: "selected-work",
                   classes: "w-full bg-surface-container-low py-20 lg:py-28 relative",
@@ -1076,7 +723,7 @@ class HomePage extends StatelessComponent {
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " A multi-platform institute management system with separate applications for administrators, teachers, and students. ",
                                         ),
                                       ],
@@ -1169,7 +816,7 @@ class HomePage extends StatelessComponent {
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(" Driving lesson booking platform for the Canadian market. "),
+                                        .text(" Driving lesson booking platform for the Canadian market. "),
                                       ],
                                     ),
                                   ],
@@ -1188,21 +835,21 @@ class HomePage extends StatelessComponent {
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
                                       [
-                                        Component.text("Chat"),
+                                        .text("Chat"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
                                       [
-                                        Component.text("Payment"),
+                                        .text("Payment"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
                                       [
-                                        Component.text("Map Tracking"),
+                                        .text("Map Tracking"),
                                       ],
                                     ),
                                     div(
@@ -1286,12 +933,10 @@ class HomePage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center gap-2 font-label-mono text-label-mono uppercase tracking-wider text-secondary",
                               [
-                                span(
-                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",[]
-                                ),
+                                span(classes: "h-1.5 w-1.5 rounded-full bg-secondary", []),
                                 span(
                                   [
-                                    Component.text("WHY BROTHERS-TECH"),
+                                    .text("WHY BROTHERS-TECH"),
                                   ],
                                 ),
                               ],
@@ -1300,13 +945,13 @@ class HomePage extends StatelessComponent {
                               classes:
                                   "font-headline-lg text-headline-lg lg:text-[44px] lg:leading-[52px] text-on-surface font-semibold tracking-tight",
                               [
-                                Component.text(" More Than Code. We Build Products. "),
+                                .text(" More Than Code. We Build Products. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
                               [
-                                Component.text(
+                                .text(
                                   " We combine engineering rigour with genuine product strategy so your digital systems run flawlessly under pressure and drive bottom-line velocity. ",
                                 ),
                               ],
@@ -1327,7 +972,7 @@ class HomePage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-2xl",
                                       [
-                                        Component.text("verified_user"),
+                                        .text("verified_user"),
                                       ],
                                     ),
                                   ],
@@ -1335,13 +980,13 @@ class HomePage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Built for Real-World Use "),
+                                    .text(" Built for Real-World Use "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Software designed around actual user behaviors, unforgiving real conditions, and measurable business requirements. ",
                                     ),
                                   ],
@@ -1359,7 +1004,7 @@ class HomePage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-2xl",
                                       [
-                                        Component.text("hub"),
+                                        .text("hub"),
                                       ],
                                     ),
                                   ],
@@ -1367,13 +1012,13 @@ class HomePage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" One Team, Multi-Platform "),
+                                    .text(" One Team, Multi-Platform "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Mobile, web, and desktop products planned and delivered seamlessly by one coordinated team. ",
                                     ),
                                   ],
@@ -1391,7 +1036,7 @@ class HomePage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-2xl",
                                       [
-                                        Component.text("layers"),
+                                        .text("layers"),
                                       ],
                                     ),
                                   ],
@@ -1399,13 +1044,13 @@ class HomePage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Scalable Architecture "),
+                                    .text(" Scalable Architecture "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Clean code modularity and database schemas engineered to scale from initial prototype to millions of monthly active users. ",
                                     ),
                                   ],
@@ -1423,7 +1068,7 @@ class HomePage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-2xl",
                                       [
-                                        Component.text("rocket_launch"),
+                                        .text("rocket_launch"),
                                       ],
                                     ),
                                   ],
@@ -1431,13 +1076,13 @@ class HomePage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" From Idea to Release "),
+                                    .text(" From Idea to Release "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Complete lifecycle ownership: product discovery, interface architecture, QA testing, deployment, and ongoing post-launch refinement. ",
                                     ),
                                   ],
@@ -1463,12 +1108,10 @@ class HomePage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center gap-2 font-label-mono text-label-mono uppercase tracking-wider text-secondary",
                               [
-                                span(
-                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",[]
-                                ),
+                                span(classes: "h-1.5 w-1.5 rounded-full bg-secondary", []),
                                 span(
                                   [
-                                    Component.text("HOW WE WORK"),
+                                    .text("HOW WE WORK"),
                                   ],
                                 ),
                               ],
@@ -1477,13 +1120,13 @@ class HomePage extends StatelessComponent {
                               classes:
                                   "font-headline-lg text-headline-lg lg:text-[44px] lg:leading-[52px] text-on-surface font-semibold tracking-tight",
                               [
-                                Component.text(" From Idea to Launch. "),
+                                .text(" From Idea to Launch. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant",
                               [
-                                Component.text(
+                                .text(
                                   " A disciplined five-stage development pipeline designed to eliminate rework, ensure transparent execution, and protect delivery milestones. ",
                                 ),
                               ],
@@ -1496,7 +1139,8 @@ class HomePage extends StatelessComponent {
                             div(
                               classes:
                                   "hidden md:block absolute top-10 left-12 right-12 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary-container z-0 opacity-40",
-                            []),
+                              [],
+                            ),
                             div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-primary/40 transition-colors",
@@ -1505,25 +1149,25 @@ class HomePage extends StatelessComponent {
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(173,198,255,0.4)]",
                                   [
-                                    Component.text(" 01 "),
+                                    .text(" 01 "),
                                   ],
                                 ),
                                 div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
                                   [
-                                    Component.text(" DISCOVER "),
+                                    .text(" DISCOVER "),
                                   ],
                                 ),
                                 h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
                                   [
-                                    Component.text(" Define & Align "),
+                                    .text(" Define & Align "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Understand the business, users, technical requirements, edge cases, and core conversion goals. ",
                                     ),
                                   ],
@@ -1538,25 +1182,25 @@ class HomePage extends StatelessComponent {
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center text-secondary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(76,215,246,0.4)]",
                                   [
-                                    Component.text(" 02 "),
+                                    .text(" 02 "),
                                   ],
                                 ),
                                 div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
                                   [
-                                    Component.text(" DESIGN "),
+                                    .text(" DESIGN "),
                                   ],
                                 ),
                                 h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
                                   [
-                                    Component.text(" Plan & Prototype "),
+                                    .text(" Plan & Prototype "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Wireframe user flows, design interactive UI systems, and validate high-fidelity prototypes. ",
                                     ),
                                   ],
@@ -1571,25 +1215,25 @@ class HomePage extends StatelessComponent {
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(173,198,255,0.4)]",
                                   [
-                                    Component.text(" 03 "),
+                                    .text(" 03 "),
                                   ],
                                 ),
                                 div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
                                   [
-                                    Component.text(" DEVELOP "),
+                                    .text(" DEVELOP "),
                                   ],
                                 ),
                                 h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
                                   [
-                                    Component.text(" Engineered Code "),
+                                    .text(" Engineered Code "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Transform approved specifications into reliable software with clean architectures and CI/CD. ",
                                     ),
                                   ],
@@ -1604,25 +1248,25 @@ class HomePage extends StatelessComponent {
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center text-secondary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(76,215,246,0.4)]",
                                   [
-                                    Component.text(" 04 "),
+                                    .text(" 04 "),
                                   ],
                                 ),
                                 div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
                                   [
-                                    Component.text(" TEST "),
+                                    .text(" TEST "),
                                   ],
                                 ),
                                 h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
                                   [
-                                    Component.text(" Rigorous QA "),
+                                    .text(" Rigorous QA "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Verify automated test suites, end-to-end integration, performance under load, and system stability. ",
                                     ),
                                   ],
@@ -1637,25 +1281,25 @@ class HomePage extends StatelessComponent {
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center text-primary-fixed font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(77,142,255,0.4)]",
                                   [
-                                    Component.text(" 05 "),
+                                    .text(" 05 "),
                                   ],
                                 ),
                                 div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
                                   [
-                                    Component.text(" LAUNCH "),
+                                    .text(" LAUNCH "),
                                   ],
                                 ),
                                 h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
                                   [
-                                    Component.text(" Deploy & Scale "),
+                                    .text(" Deploy & Scale "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Zero-downtime production deployment, store approval submission, telemetry setup, and iteration. ",
                                     ),
                                   ],
@@ -1699,7 +1343,7 @@ class HomePage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono uppercase tracking-wider font-semibold",
                                       [
-                                        Component.text("GET IN TOUCH"),
+                                        .text("GET IN TOUCH"),
                                       ],
                                     ),
                                   ],
@@ -1714,7 +1358,7 @@ class HomePage extends StatelessComponent {
                                 p(
                                   classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Whether you’re starting something new or improving an existing product, let’s turn your idea into reliable, production-ready software. ",
                                     ),
                                   ],
@@ -1732,14 +1376,14 @@ class HomePage extends StatelessComponent {
                                       [
                                         span(
                                           [
-                                            Component.text("Tell Us About Your Project"),
+                                            .text("Tell Us About Your Project"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "material-symbols-outlined ml-2 text-base group-hover:translate-x-1 transition-transform",
                                           [
-                                            Component.text("arrow_forward"),
+                                            .text("arrow_forward"),
                                           ],
                                         ),
                                       ],
@@ -1761,5 +1405,93 @@ class HomePage extends StatelessComponent {
         AppFooter(),
       ]),
     ]);
+  }
+}
+
+class HomeServiceCard extends StatelessComponent {
+  final int count;
+  final String iconName, title, description;
+  final List<String> chips;
+
+  HomeServiceCard({
+    super.key,
+    required this.count,
+    required this.iconName,
+    required this.title,
+    required this.description,
+    required this.chips,
+  });
+
+  @override
+  Component build(BuildContext context) {
+    return div(
+      classes:
+          "p-8 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden",
+      [
+        div(
+          classes:
+              "absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none",
+          [],
+        ),
+        div(
+          classes: "space-y-4",
+          [
+            div(
+              classes: "flex items-center justify-between",
+              [
+                span(
+                  classes: "font-label-mono text-headline-md text-primary font-semibold",
+                  [
+                    .text(count.toString().padLeft(2, "0")),
+                  ],
+                ),
+                div(
+                  classes:
+                      "w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:text-secondary transition-colors",
+                  [
+                    span(
+                      classes: "material-symbols-outlined",
+                      [
+                        .text(iconName),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            h3(
+              classes:
+                  "font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors",
+              [
+                .text(" $title "),
+              ],
+            ),
+            p(
+              classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
+              [
+                .text(
+                  " $description ",
+                ),
+              ],
+            ),
+          ],
+        ),
+
+        div(
+          classes: "pt-8 flex flex-wrap gap-2",
+          chips
+              .map(
+                (chip) => span(
+                  classes:
+                      "px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs border border-outline-variant/20",
+                  [
+                    .text(chip),
+                  ],
+                ),
+              )
+              .toList(),
+        ),
+      ],
+    );
   }
 }

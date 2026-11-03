@@ -24,7 +24,7 @@ class AppFooter extends StatelessComponent {
                             span(
                               classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                               [
-                                Component.text("Brothers-Tech"),
+                                .text("Brothers-Tech"),
                               ],
                             ),
                             span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
@@ -33,7 +33,7 @@ class AppFooter extends StatelessComponent {
                         p(
                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                           [
-                            Component.text(
+                            .text(
                               " Architecting elite software systems, AI infrastructure, and mission-critical cloud platforms for modern enterprises. ",
                             ),
                           ],
@@ -45,7 +45,7 @@ class AppFooter extends StatelessComponent {
                         h4(
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
                           [
-                            Component.text(" Navigation "),
+                            .text(" Navigation "),
                           ],
                         ),
                         ul(
@@ -60,7 +60,7 @@ class AppFooter extends StatelessComponent {
                                     "data-path": "home",
                                   },
                                   [
-                                    Component.text("Home"),
+                                    .text("Home"),
                                   ],
                                 ),
                               ],
@@ -74,7 +74,7 @@ class AppFooter extends StatelessComponent {
                                     "data-path": "services",
                                   },
                                   [
-                                    Component.text("Services"),
+                                    .text("Services"),
                                   ],
                                 ),
                               ],
@@ -130,7 +130,7 @@ class AppFooter extends StatelessComponent {
                         h4(
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
                           [
-                            Component.text(" Practices "),
+                            .text(" Practices "),
                           ],
                         ),
                         ul(
@@ -138,12 +138,12 @@ class AppFooter extends StatelessComponent {
                           [
                             li(
                               [
-                                Component.text("Full-Stack Platforms"),
+                                .text("Full-Stack Platforms"),
                               ],
                             ),
                             li(
                               [
-                                Component.text("AI & Machine Learning"),
+                                .text("AI & Machine Learning"),
                               ],
                             ),
                           ],
@@ -175,7 +175,7 @@ class AppFooter extends StatelessComponent {
                             span(classes: "inline-block w-1.5 h-1.5 rounded-full bg-secondary", []),
                             span(
                               [
-                                Component.text("GLOBAL CORE"),
+                                .text("GLOBAL CORE"),
                               ],
                             ),
                           ],
@@ -190,7 +190,7 @@ class AppFooter extends StatelessComponent {
                   [
                     p(
                       [
-                        Component.text("© 2025 Brothers-Tech Studio. All rights reserved."),
+                        .text("© 2025 Brothers-Tech Studio. All rights reserved."),
                       ],
                     ),
                     div(

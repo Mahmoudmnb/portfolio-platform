@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../core/components/app_footer.dart';
+import '../../core/components/app_header.dart';
 
 class AboutPage extends StatelessComponent {
   const AboutPage();
@@ -19,113 +20,13 @@ class AboutPage extends StatelessComponent {
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
       ),
       Component.fragment([
-        header(
-          classes:
-              "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          [
-            div(
-              classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              [
-                a(
-                  classes: "flex items-center gap-2 group",
-                  href: "/",
-                  attributes: {
-                    "data-path": "home",
-                  },
-                  [
-                    span(
-                      classes:
-                          "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      [
-                        Component.text("Brothers-Tech"),
-                      ],
-                    ),
-                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
-                  ],
-                ),
-                nav(
-                  classes:
-                      "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
-                  attributes: {
-                    "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
-                  },
-                  [
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/",
-                      attributes: {
-                        "data-path": "home",
-                      },
-                      [
-                        Component.text("Home"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/services",
-                      attributes: {
-                        "data-path": "services",
-                      },
-                      [
-                        Component.text("Services"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/projects",
-                      attributes: {
-                        "data-path": "projects",
-                      },
-                      [
-                        Component.text("Projects"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/about",
-                      attributes: {
-                        "aria-current": "page",
-                        "data-path": "about",
-                      },
-                      [
-                        Component.text("About"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Contact"),
-                      ],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: "flex items-center gap-4",
-                  [
-                    a(
-                      classes:
-                          "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Start a Project →"),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        AppHeader(
+          tabs: [
+            (name: "Home", url: "/", isSelected: false),
+            (name: "Services", url: "/services", isSelected: false),
+            (name: "Projects", url: "/projects", isSelected: false),
+            (name: "About", url: "/about", isSelected: true),
+            (name: "Contact", url: "/contact", isSelected: false),
           ],
         ),
         main_(
@@ -170,7 +71,7 @@ class AboutPage extends StatelessComponent {
                                 span(
                                   classes: "font-label-mono text-label-mono text-secondary tracking-widest uppercase",
                                   [
-                                    Component.text("ABOUT BROTHERS-TECH"),
+                                    .text("ABOUT BROTHERS-TECH"),
                                   ],
                                 ),
                               ],
@@ -178,12 +79,12 @@ class AboutPage extends StatelessComponent {
                             h1(
                               classes: "font-display-hero text-display-hero text-on-surface tracking-tight",
                               [
-                                Component.text(" Small Team. "),
+                                .text(" Small Team. "),
                                 span(
                                   classes:
                                       "block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent",
                                   [
-                                    Component.text(" Serious Software. "),
+                                    .text(" Serious Software. "),
                                   ],
                                 ),
                               ],
@@ -191,7 +92,7 @@ class AboutPage extends StatelessComponent {
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed",
                               [
-                                Component.text(
+                                .text(
                                   " Brothers-Tech is a software development team focused on building practical, reliable digital products across mobile, web and desktop. ",
                                 ),
                               ],
@@ -206,16 +107,16 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
                                       [
-                                        Component.text("verified"),
+                                        .text("verified"),
                                       ],
                                     ),
-                                    Component.text(" Practitioner-Led "),
+                                    .text(" Practitioner-Led "),
                                   ],
                                 ),
                                 span(
                                   classes: "text-outline-variant",
                                   [
-                                    Component.text("•"),
+                                    .text("•"),
                                   ],
                                 ),
                                 span(
@@ -224,16 +125,16 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
                                       [
-                                        Component.text("forum"),
+                                        .text("forum"),
                                       ],
                                     ),
-                                    Component.text(" Direct Communication "),
+                                    .text(" Direct Communication "),
                                   ],
                                 ),
                                 span(
                                   classes: "text-outline-variant",
                                   [
-                                    Component.text("•"),
+                                    .text("•"),
                                   ],
                                 ),
                                 span(
@@ -242,10 +143,10 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
                                       [
-                                        Component.text("devices"),
+                                        .text("devices"),
                                       ],
                                     ),
-                                    Component.text(" Multi-Platform Craft "),
+                                    .text(" Multi-Platform Craft "),
                                   ],
                                 ),
                               ],
@@ -266,13 +167,13 @@ class AboutPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("01"),
+                                    .text("01"),
                                   ],
                                 ),
                                 span(classes: "w-8 h-[1px] bg-secondary/40", []),
                                 span(
                                   [
-                                    Component.text("Core Principles"),
+                                    .text("Core Principles"),
                                   ],
                                 ),
                               ],
@@ -280,13 +181,13 @@ class AboutPage extends StatelessComponent {
                             h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
                               [
-                                Component.text(" What defines Brothers-Tech. "),
+                                .text(" What defines Brothers-Tech. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
                               [
-                                Component.text(
+                                .text(
                                   " Engineering guidelines that dictate how we write every file, architect every database, and ship every release. ",
                                 ),
                               ],
@@ -309,7 +210,7 @@ class AboutPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
                                           [
-                                            Component.text("view_in_ar"),
+                                            .text("view_in_ar"),
                                           ],
                                         ),
                                       ],
@@ -317,13 +218,13 @@ class AboutPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
                                       [
-                                        Component.text(" Product First "),
+                                        .text(" Product First "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " We don't just write code to ticket specs; we think about user adoption, business viability, and real-world utility before touching a keyboard. A technically flawless feature is worthless if it creates user confusion. ",
                                         ),
                                       ],
@@ -333,7 +234,7 @@ class AboutPage extends StatelessComponent {
                                 div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
                                   [
-                                    Component.text(" FOCUS // OUTCOME OVER CEREMONY "),
+                                    .text(" FOCUS // OUTCOME OVER CEREMONY "),
                                   ],
                                 ),
                               ],
@@ -351,7 +252,7 @@ class AboutPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-primary text-[24px]",
                                           [
-                                            Component.text("signal_cellular_connected_no_internet_4_bar"),
+                                            .text("signal_cellular_connected_no_internet_4_bar"),
                                           ],
                                         ),
                                       ],
@@ -359,13 +260,13 @@ class AboutPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
                                       [
-                                        Component.text(" Built for Real Use "),
+                                        .text(" Built for Real Use "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Software needs to work under edge conditions, slow connections, and messy human workflows—not just in clean local demos. We test for battery drain, unstable networks, and unexpected inputs from day one. ",
                                         ),
                                       ],
@@ -375,7 +276,7 @@ class AboutPage extends StatelessComponent {
                                 div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
                                   [
-                                    Component.text(" RESILIENCE // ZERO CHEAP DEMOS "),
+                                    .text(" RESILIENCE // ZERO CHEAP DEMOS "),
                                   ],
                                 ),
                               ],
@@ -393,7 +294,7 @@ class AboutPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
                                           [
-                                            Component.text("code_blocks"),
+                                            .text("code_blocks"),
                                           ],
                                         ),
                                       ],
@@ -401,13 +302,13 @@ class AboutPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
                                       [
-                                        Component.text(" Clean Engineering "),
+                                        .text(" Clean Engineering "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Maintainable codebases, type-safety, modular architecture, and zero unnecessary dependencies that slow future development down. We leave systems clean so your in-house team can step in without dread. ",
                                         ),
                                       ],
@@ -417,7 +318,7 @@ class AboutPage extends StatelessComponent {
                                 div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
                                   [
-                                    Component.text(" INTEGRITY // ZERO CODE BLOAT "),
+                                    .text(" INTEGRITY // ZERO CODE BLOAT "),
                                   ],
                                 ),
                               ],
@@ -435,7 +336,7 @@ class AboutPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-primary text-[24px]",
                                           [
-                                            Component.text("all_inclusive"),
+                                            .text("all_inclusive"),
                                           ],
                                         ),
                                       ],
@@ -443,13 +344,13 @@ class AboutPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
                                       [
-                                        Component.text(" Long-Term Thinking "),
+                                        .text(" Long-Term Thinking "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " We build systems designed to be operated, maintained, and evolved gracefully long after initial launch day. Smart schema versioning, backward compatibility, and sound migration paths are non-negotiable. ",
                                         ),
                                       ],
@@ -459,7 +360,7 @@ class AboutPage extends StatelessComponent {
                                 div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
                                   [
-                                    Component.text(" LIFECYCLE // OPERATIONAL MATURITY "),
+                                    .text(" LIFECYCLE // OPERATIONAL MATURITY "),
                                   ],
                                 ),
                               ],
@@ -480,13 +381,13 @@ class AboutPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("02"),
+                                    .text("02"),
                                   ],
                                 ),
                                 span(classes: "w-8 h-[1px] bg-secondary/40", []),
                                 span(
                                   [
-                                    Component.text("Our Journey"),
+                                    .text("Our Journey"),
                                   ],
                                 ),
                               ],
@@ -494,13 +395,13 @@ class AboutPage extends StatelessComponent {
                             h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
                               [
-                                Component.text(" Built through real projects. "),
+                                .text(" Built through real projects. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
                               [
-                                Component.text(
+                                .text(
                                   " Capability is forged through shipping real software under tight constraints, not memorizing abstract buzzwords. ",
                                 ),
                               ],
@@ -520,7 +421,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary",
                                       [
-                                        Component.text("PHASE 01"),
+                                        .text("PHASE 01"),
                                       ],
                                     ),
                                     div(classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
@@ -529,13 +430,13 @@ class AboutPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
                                   [
-                                    Component.text(" Learn "),
+                                    .text(" Learn "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Deeply immersing in domain constraints, user behavior, and technology primitives before proposing any architectural pattern. ",
                                     ),
                                   ],
@@ -546,12 +447,12 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[14px]",
                                       [
-                                        Component.text("search"),
+                                        .text("search"),
                                       ],
                                     ),
                                     span(
                                       [
-                                        Component.text("Discovery & Scoping"),
+                                        .text("Discovery & Scoping"),
                                       ],
                                     ),
                                   ],
@@ -568,7 +469,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-primary",
                                       [
-                                        Component.text("PHASE 02"),
+                                        .text("PHASE 02"),
                                       ],
                                     ),
                                     div(classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]", []),
@@ -577,13 +478,13 @@ class AboutPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
                                   [
-                                    Component.text(" Build "),
+                                    .text(" Build "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Translating architecture into clean, testable software across mobile, web, and desktop with zero intermediate handoffs. ",
                                     ),
                                   ],
@@ -594,12 +495,12 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[14px]",
                                       [
-                                        Component.text("code"),
+                                        .text("code"),
                                       ],
                                     ),
                                     span(
                                       [
-                                        Component.text("Disciplined Coding"),
+                                        .text("Disciplined Coding"),
                                       ],
                                     ),
                                   ],
@@ -616,7 +517,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary",
                                       [
-                                        Component.text("PHASE 03"),
+                                        .text("PHASE 03"),
                                       ],
                                     ),
                                     div(classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
@@ -625,13 +526,13 @@ class AboutPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
                                   [
-                                    Component.text(" Ship "),
+                                    .text(" Ship "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Deploying production releases with disciplined QA, smooth automated CI/CD, and stringent App Store or cloud compliance. ",
                                     ),
                                   ],
@@ -642,12 +543,12 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[14px]",
                                       [
-                                        Component.text("rocket_launch"),
+                                        .text("rocket_launch"),
                                       ],
                                     ),
                                     span(
                                       [
-                                        Component.text("Automated Releases"),
+                                        .text("Automated Releases"),
                                       ],
                                     ),
                                   ],
@@ -664,7 +565,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-primary",
                                       [
-                                        Component.text("PHASE 04"),
+                                        .text("PHASE 04"),
                                       ],
                                     ),
                                     div(classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]", []),
@@ -673,13 +574,13 @@ class AboutPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
                                   [
-                                    Component.text(" Improve "),
+                                    .text(" Improve "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Listening to real user feedback, monitoring edge cases, profiling bottlenecks, and refining performance continuously. ",
                                     ),
                                   ],
@@ -690,12 +591,12 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[14px]",
                                       [
-                                        Component.text("refresh"),
+                                        .text("refresh"),
                                       ],
                                     ),
                                     span(
                                       [
-                                        Component.text("Telemetry & Polish"),
+                                        .text("Telemetry & Polish"),
                                       ],
                                     ),
                                   ],
@@ -727,13 +628,13 @@ class AboutPage extends StatelessComponent {
                                   [
                                     span(
                                       [
-                                        Component.text("03"),
+                                        .text("03"),
                                       ],
                                     ),
                                     span(classes: "w-8 h-[1px] bg-secondary/40", []),
                                     span(
                                       [
-                                        Component.text("Engineering Philosophy"),
+                                        .text("Engineering Philosophy"),
                                       ],
                                     ),
                                   ],
@@ -741,13 +642,13 @@ class AboutPage extends StatelessComponent {
                                 h2(
                                   classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
                                   [
-                                    Component.text(" Good software isn't just code. "),
+                                    .text(" Good software isn't just code. "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-lg text-body-lg text-on-surface-variant mt-2",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Lines of code are a liability, not an asset. Value is measured by human simplicity and operational endurance. ",
                                     ),
                                   ],
@@ -763,19 +664,19 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
                                       [
-                                        Component.text("01"),
+                                        .text("01"),
                                       ],
                                     ),
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
                                       [
-                                        Component.text(" It solves a real problem "),
+                                        .text(" It solves a real problem "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " If it doesn't eliminate friction or unlock a genuine capability, no amount of engineering polish will save it. We question assumptions early so time isn't wasted building what nobody uses. ",
                                         ),
                                       ],
@@ -788,19 +689,19 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-headline-sm text-primary font-semibold",
                                       [
-                                        Component.text("02"),
+                                        .text("02"),
                                       ],
                                     ),
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
                                       [
-                                        Component.text(" It feels simple to use "),
+                                        .text(" It feels simple to use "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " True sophistication is making complex distributed logic feel effortless, intuitive, and responsive to the user. Fast micro-interactions and sensible defaults beat confusing menus every time. ",
                                         ),
                                       ],
@@ -813,19 +714,19 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
                                       [
-                                        Component.text("03"),
+                                        .text("03"),
                                       ],
                                     ),
                                     h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
                                       [
-                                        Component.text(" It can grow "),
+                                        .text(" It can grow "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Architected from day one so adding a mobile client, a new API endpoint, or doubling user volume doesn't require a complete rewrite. Modularity allows gradual evolution without friction. ",
                                         ),
                                       ],
@@ -850,13 +751,13 @@ class AboutPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("04"),
+                                    .text("04"),
                                   ],
                                 ),
                                 span(classes: "w-8 h-[1px] bg-secondary/40", []),
                                 span(
                                   [
-                                    Component.text("Engineers & Designers"),
+                                    .text("Engineers & Designers"),
                                   ],
                                 ),
                               ],
@@ -864,13 +765,13 @@ class AboutPage extends StatelessComponent {
                             h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
                               [
-                                Component.text(" Small by design. Driven by craft. "),
+                                .text(" Small by design. Driven by craft. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
                               [
-                                Component.text(
+                                .text(
                                   " We keep the team lean so every project gets direct attention from experienced practitioners. No junior delegates, no outsourced accounts. ",
                                 ),
                               ],
@@ -915,7 +816,7 @@ class AboutPage extends StatelessComponent {
                                               classes:
                                                   "font-label-mono text-label-mono-xs text-secondary uppercase tracking-wider",
                                               [
-                                                Component.text("FOUNDER / MOBILE DEVELOPER / BACK-END DEVELOPER"),
+                                                .text("FOUNDER / MOBILE DEVELOPER / BACK-END DEVELOPER"),
                                               ],
                                             ),
                                           ],
@@ -923,20 +824,20 @@ class AboutPage extends StatelessComponent {
                                         h3(
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
                                           [
-                                            Component.text(" Mahmoud Bannan "),
+                                            .text(" Mahmoud Bannan "),
                                           ],
                                         ),
                                         p(
                                           classes: "font-body-sm text-body-sm text-tertiary",
                                           [
-                                            Component.text(" FOUNDER & Mobile Developer & Back-end Developer "),
+                                            .text(" FOUNDER & Mobile Developer & Back-end Developer "),
                                           ],
                                         ),
                                         p(
                                           classes:
                                               "font-body-md text-body-md text-on-surface-variant pt-2 leading-relaxed",
                                           [
-                                            Component.text(
+                                            .text(
                                               " Building reliable mobile applications and robust back-end systems with a focus on clean architecture, performance, and maintainable code. ",
                                             ),
                                           ],
@@ -956,13 +857,13 @@ class AboutPage extends StatelessComponent {
                                       [
                                         span(
                                           [
-                                            Component.text("LinkedIn"),
+                                            .text("LinkedIn"),
                                           ],
                                         ),
                                         span(
                                           classes: "material-symbols-outlined text-[14px]",
                                           [
-                                            Component.text("north_east"),
+                                            .text("north_east"),
                                           ],
                                         ),
                                       ],
@@ -970,7 +871,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "text-outline-variant",
                                       [
-                                        Component.text("•"),
+                                        .text("•"),
                                       ],
                                     ),
                                     a(
@@ -980,13 +881,13 @@ class AboutPage extends StatelessComponent {
                                       [
                                         span(
                                           [
-                                            Component.text("GitHub"),
+                                            .text("GitHub"),
                                           ],
                                         ),
                                         span(
                                           classes: "material-symbols-outlined text-[14px]",
                                           [
-                                            Component.text("north_east"),
+                                            .text("north_east"),
                                           ],
                                         ),
                                       ],
@@ -1029,7 +930,7 @@ class AboutPage extends StatelessComponent {
                                               classes:
                                                   "font-label-mono text-label-mono-xs text-primary uppercase tracking-wider",
                                               [
-                                                Component.text("FOUNDER / MOBILE DEVELOPER / FRONT-END WEB DEVELOPER"),
+                                                .text("FOUNDER / MOBILE DEVELOPER / FRONT-END WEB DEVELOPER"),
                                               ],
                                             ),
                                           ],
@@ -1037,20 +938,20 @@ class AboutPage extends StatelessComponent {
                                         h3(
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
                                           [
-                                            Component.text(" Mohammed Deeb Jalab "),
+                                            .text(" Mohammed Deeb Jalab "),
                                           ],
                                         ),
                                         p(
                                           classes: "font-body-sm text-body-sm text-tertiary",
                                           [
-                                            Component.text(" FOUNDER & Mobile Developer & Front-end Web Developer "),
+                                            .text(" FOUNDER & Mobile Developer & Front-end Web Developer "),
                                           ],
                                         ),
                                         p(
                                           classes:
                                               "font-body-md text-body-md text-on-surface-variant pt-2 leading-relaxed",
                                           [
-                                            Component.text(
+                                            .text(
                                               " Building polished mobile applications and responsive web experiences with clean code, intuitive interfaces, and dependable performance. ",
                                             ),
                                           ],
@@ -1070,13 +971,13 @@ class AboutPage extends StatelessComponent {
                                       [
                                         span(
                                           [
-                                            Component.text("LinkedIn"),
+                                            .text("LinkedIn"),
                                           ],
                                         ),
                                         span(
                                           classes: "material-symbols-outlined text-[14px]",
                                           [
-                                            Component.text("north_east"),
+                                            .text("north_east"),
                                           ],
                                         ),
                                       ],
@@ -1084,7 +985,7 @@ class AboutPage extends StatelessComponent {
                                     span(
                                       classes: "text-outline-variant",
                                       [
-                                        Component.text("•"),
+                                        .text("•"),
                                       ],
                                     ),
                                     a(
@@ -1094,13 +995,13 @@ class AboutPage extends StatelessComponent {
                                       [
                                         span(
                                           [
-                                            Component.text("GitHub"),
+                                            .text("GitHub"),
                                           ],
                                         ),
                                         span(
                                           classes: "material-symbols-outlined text-[14px]",
                                           [
-                                            Component.text("north_east"),
+                                            .text("north_east"),
                                           ],
                                         ),
                                       ],
@@ -1125,13 +1026,13 @@ class AboutPage extends StatelessComponent {
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               [
                                 span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
-                                Component.text(" Mobile "),
+                                .text(" Mobile "),
                               ],
                             ),
                             span(
                               classes: "text-outline-variant/60",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             span(
@@ -1139,13 +1040,13 @@ class AboutPage extends StatelessComponent {
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               [
                                 span(classes: "w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#adc6ff]", []),
-                                Component.text(" Web "),
+                                .text(" Web "),
                               ],
                             ),
                             span(
                               classes: "text-outline-variant/60",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             span(
@@ -1153,13 +1054,13 @@ class AboutPage extends StatelessComponent {
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               [
                                 span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
-                                Component.text(" Desktop "),
+                                .text(" Desktop "),
                               ],
                             ),
                             span(
                               classes: "text-outline-variant/60",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             span(
@@ -1167,7 +1068,7 @@ class AboutPage extends StatelessComponent {
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               [
                                 span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
-                                Component.text(" UI/UX "),
+                                .text(" UI/UX "),
                               ],
                             ),
                           ],
@@ -1196,7 +1097,7 @@ class AboutPage extends StatelessComponent {
                                 ),
                                 span(
                                   [
-                                    Component.text("Available for new projects"),
+                                    .text("Available for new projects"),
                                   ],
                                 ),
                               ],
@@ -1205,14 +1106,14 @@ class AboutPage extends StatelessComponent {
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight max-w-2xl mb-4",
                               [
-                                Component.text(" Have an Idea? Let's Build It Together. "),
+                                .text(" Have an Idea? Let's Build It Together. "),
                               ],
                             ),
                             p(
                               classes:
                                   "font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed",
                               [
-                                Component.text(
+                                .text(
                                   " Whether you're starting something new or improving an existing product, let's turn your idea into reliable software. ",
                                 ),
                               ],
@@ -1225,13 +1126,13 @@ class AboutPage extends StatelessComponent {
                                 "data-path": "contact",
                               },
                               [
-                                Component.text(" Tell Us About Your Project → "),
+                                .text(" Tell Us About Your Project → "),
                               ],
                             ),
                             p(
                               classes: "font-label-mono text-label-mono-xs text-tertiary mt-6",
                               [
-                                Component.text(" DIRECT RESPONSE FROM A TECHNICAL LEAD WITHIN 24 HOURS "),
+                                .text(" DIRECT RESPONSE FROM A TECHNICAL LEAD WITHIN 24 HOURS "),
                               ],
                             ),
                           ],

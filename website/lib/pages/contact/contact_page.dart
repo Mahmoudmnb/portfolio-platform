@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../core/components/app_footer.dart';
+import '../../core/components/app_header.dart';
 
 class ContactPage extends StatelessComponent {
   const ContactPage();
@@ -17,113 +18,13 @@ class ContactPage extends StatelessComponent {
       ),
       Document.body(attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen"}),
       Component.fragment([
-        header(
-          classes:
-              "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          [
-            div(
-              classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              [
-                a(
-                  classes: "flex items-center gap-2 group",
-                  href: "/",
-                  attributes: {
-                    "data-path": "home",
-                  },
-                  [
-                    span(
-                      classes:
-                          "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      [
-                        Component.text("Brothers-Tech"),
-                      ],
-                    ),
-                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
-                  ],
-                ),
-                nav(
-                  classes:
-                      "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
-                  attributes: {
-                    "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
-                  },
-                  [
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/",
-                      attributes: {
-                        "data-path": "home",
-                      },
-                      [
-                        Component.text("Home"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/services",
-                      attributes: {
-                        "data-path": "services",
-                      },
-                      [
-                        Component.text("Services"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/projects",
-                      attributes: {
-                        "data-path": "projects",
-                      },
-                      [
-                        Component.text("Projects"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/about",
-                      attributes: {
-                        "data-path": "about",
-                      },
-                      [
-                        Component.text("About"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 transition-colors bg-surface-container-high text-primary font-medium rounded-lg",
-                      href: "/contact",
-                      attributes: {
-                        "aria-current": "page",
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Contact"),
-                      ],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: "flex items-center gap-4",
-                  [
-                    a(
-                      classes:
-                          "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Start a Project →"),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        AppHeader(
+          tabs: [
+            (name: "Home", url: "/", isSelected: false),
+            (name: "Services", url: "/services", isSelected: false),
+            (name: "Projects", url: "/projects", isSelected: false),
+            (name: "About", url: "/about", isSelected: false),
+            (name: "Contact", url: "/contact", isSelected: true),
           ],
         ),
         main_(
@@ -158,7 +59,7 @@ class ContactPage extends StatelessComponent {
                                 span(
                                   classes: "font-label-mono text-label-mono text-secondary tracking-widest uppercase",
                                   [
-                                    Component.text("Contact"),
+                                    .text("Contact"),
                                   ],
                                 ),
                               ],
@@ -167,12 +68,12 @@ class ContactPage extends StatelessComponent {
                               classes:
                                   "font-headline-lg text-headline-lg md:text-[54px] md:leading-[62px] text-on-surface tracking-tight font-semibold mt-1",
                               [
-                                Component.text(" Let's Build "),
+                                .text(" Let's Build "),
                                 span(
                                   classes:
                                       "bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary-container",
                                   [
-                                    Component.text("Something Together."),
+                                    .text("Something Together."),
                                   ],
                                 ),
                               ],
@@ -181,7 +82,7 @@ class ContactPage extends StatelessComponent {
                               classes:
                                   "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mt-1",
                               [
-                                Component.text(
+                                .text(
                                   " Have a software idea, an existing product that needs improvement, or a business problem that technology could solve? Tell us about it. ",
                                 ),
                               ],
@@ -224,14 +125,14 @@ class ContactPage extends StatelessComponent {
                                               [
                                                 span(
                                                   [
-                                                    Component.text("Your Name"),
+                                                    .text("Your Name"),
                                                   ],
                                                 ),
                                                 span(
                                                   classes:
                                                       "font-label-mono-xs text-label-mono-xs text-outline tracking-wider uppercase",
                                                   [
-                                                    Component.text("Required"),
+                                                    .text("Required"),
                                                   ],
                                                 ),
                                               ],
@@ -265,14 +166,14 @@ class ContactPage extends StatelessComponent {
                                               [
                                                 span(
                                                   [
-                                                    Component.text("Work Email"),
+                                                    .text("Work Email"),
                                                   ],
                                                 ),
                                                 span(
                                                   classes:
                                                       "font-label-mono-xs text-label-mono-xs text-outline tracking-wider uppercase",
                                                   [
-                                                    Component.text("Required"),
+                                                    .text("Required"),
                                                   ],
                                                 ),
                                               ],
@@ -308,14 +209,14 @@ class ContactPage extends StatelessComponent {
                                           [
                                             span(
                                               [
-                                                Component.text("Company or Organization"),
+                                                .text("Company or Organization"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "font-label-mono-xs text-label-mono-xs px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant uppercase tracking-wider",
                                               [
-                                                Component.text("Optional"),
+                                                .text("Optional"),
                                               ],
                                             ),
                                           ],
@@ -340,13 +241,13 @@ class ContactPage extends StatelessComponent {
                                           [
                                             span(
                                               [
-                                                Component.text("What can we help you with?"),
+                                                .text("What can we help you with?"),
                                               ],
                                             ),
                                             span(
                                               classes: "font-label-mono-xs text-label-mono-xs text-outline",
                                               [
-                                                Component.text("Select all that apply"),
+                                                .text("Select all that apply"),
                                               ],
                                             ),
                                           ],
@@ -367,34 +268,12 @@ class ContactPage extends StatelessComponent {
                                                   classes:
                                                       "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
                                                   [
-                                                    Component.text("check"),
+                                                    .text("check"),
                                                   ],
                                                 ),
                                                 span(
                                                   [
-                                                    Component.text("Mobile App"),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            button(
-                                              classes:
-                                                  "scope-pill px-3.5 py-2 rounded-lg text-body-sm font-label-mono bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-all flex items-center gap-1.5",
-                                              attributes: {
-                                                "data-selected": "false",
-                                                "type": "button",
-                                              },
-                                              [
-                                                span(
-                                                  classes:
-                                                      "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
-                                                  [
-                                                    Component.text("check"),
-                                                  ],
-                                                ),
-                                                span(
-                                                  [
-                                                    Component.text("Web Platform"),
+                                                    .text("Mobile App"),
                                                   ],
                                                 ),
                                               ],
@@ -411,34 +290,12 @@ class ContactPage extends StatelessComponent {
                                                   classes:
                                                       "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
                                                   [
-                                                    Component.text("check"),
+                                                    .text("check"),
                                                   ],
                                                 ),
                                                 span(
                                                   [
-                                                    Component.text("Desktop Software"),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            button(
-                                              classes:
-                                                  "scope-pill px-3.5 py-2 rounded-lg text-body-sm font-label-mono bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-all flex items-center gap-1.5",
-                                              attributes: {
-                                                "data-selected": "false",
-                                                "type": "button",
-                                              },
-                                              [
-                                                span(
-                                                  classes:
-                                                      "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
-                                                  [
-                                                    Component.text("check"),
-                                                  ],
-                                                ),
-                                                span(
-                                                  [
-                                                    Component.text("Backend & API"),
+                                                    .text("Web Platform"),
                                                   ],
                                                 ),
                                               ],
@@ -455,12 +312,12 @@ class ContactPage extends StatelessComponent {
                                                   classes:
                                                       "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
                                                   [
-                                                    Component.text("check"),
+                                                    .text("check"),
                                                   ],
                                                 ),
                                                 span(
                                                   [
-                                                    Component.text("UI/UX Design"),
+                                                    .text("Desktop Software"),
                                                   ],
                                                 ),
                                               ],
@@ -477,12 +334,56 @@ class ContactPage extends StatelessComponent {
                                                   classes:
                                                       "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
                                                   [
-                                                    Component.text("check"),
+                                                    .text("check"),
                                                   ],
                                                 ),
                                                 span(
                                                   [
-                                                    Component.text("Not Sure Yet"),
+                                                    .text("Backend & API"),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            button(
+                                              classes:
+                                                  "scope-pill px-3.5 py-2 rounded-lg text-body-sm font-label-mono bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-all flex items-center gap-1.5",
+                                              attributes: {
+                                                "data-selected": "false",
+                                                "type": "button",
+                                              },
+                                              [
+                                                span(
+                                                  classes:
+                                                      "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
+                                                  [
+                                                    .text("check"),
+                                                  ],
+                                                ),
+                                                span(
+                                                  [
+                                                    .text("UI/UX Design"),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            button(
+                                              classes:
+                                                  "scope-pill px-3.5 py-2 rounded-lg text-body-sm font-label-mono bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-all flex items-center gap-1.5",
+                                              attributes: {
+                                                "data-selected": "false",
+                                                "type": "button",
+                                              },
+                                              [
+                                                span(
+                                                  classes:
+                                                      "material-symbols-outlined text-[16px] text-outline opacity-0 scope-icon transition-opacity",
+                                                  [
+                                                    .text("check"),
+                                                  ],
+                                                ),
+                                                span(
+                                                  [
+                                                    .text("Not Sure Yet"),
                                                   ],
                                                 ),
                                               ],
@@ -503,14 +404,14 @@ class ContactPage extends StatelessComponent {
                                           [
                                             span(
                                               [
-                                                Component.text("Tell us about your project"),
+                                                .text("Tell us about your project"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "font-label-mono-xs text-label-mono-xs text-outline tracking-wider uppercase",
                                               [
-                                                Component.text("Required"),
+                                                .text("Required"),
                                               ],
                                             ),
                                           ],
@@ -542,14 +443,14 @@ class ContactPage extends StatelessComponent {
                                           [
                                             span(
                                               [
-                                                Component.text("Send Project Inquiry"),
+                                                .text("Send Project Inquiry"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform",
                                               [
-                                                Component.text("arrow_forward"),
+                                                .text("arrow_forward"),
                                               ],
                                             ),
                                           ],
@@ -561,12 +462,12 @@ class ContactPage extends StatelessComponent {
                                             span(
                                               classes: "material-symbols-outlined text-outline text-[16px]",
                                               [
-                                                Component.text("lock"),
+                                                .text("lock"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text("Your project details remain confidential"),
+                                                .text("Your project details remain confidential"),
                                               ],
                                             ),
                                           ],
@@ -581,7 +482,7 @@ class ContactPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[20px] mt-0.5",
                                           [
-                                            Component.text("check_circle"),
+                                            .text("check_circle"),
                                           ],
                                         ),
                                         div(
@@ -590,13 +491,13 @@ class ContactPage extends StatelessComponent {
                                             p(
                                               classes: "font-medium text-on-surface",
                                               [
-                                                Component.text(" Inquiry dispatched to our lead engineering room. "),
+                                                .text(" Inquiry dispatched to our lead engineering room. "),
                                               ],
                                             ),
                                             p(
                                               classes: "text-on-surface-variant mt-0.5",
                                               [
-                                                Component.text(
+                                                .text(
                                                   " We will review your notes and reply directly to your work email. ",
                                                 ),
                                               ],
@@ -627,14 +528,14 @@ class ContactPage extends StatelessComponent {
                                   classes:
                                       "font-label-mono text-label-mono text-secondary tracking-widest uppercase block mb-2",
                                   [
-                                    Component.text("What Happens Next?"),
+                                    .text("What Happens Next?"),
                                   ],
                                 ),
                                 h2(
                                   classes:
                                       "font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight",
                                   [
-                                    Component.text(" A Simple, Transparent Start. "),
+                                    .text(" A Simple, Transparent Start. "),
                                   ],
                                 ),
                               ],
@@ -655,14 +556,14 @@ class ContactPage extends StatelessComponent {
                                             span(
                                               classes: "font-label-mono text-[20px] font-semibold text-primary",
                                               [
-                                                Component.text("01"),
+                                                .text("01"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[22px]",
                                               [
-                                                Component.text("description"),
+                                                .text("description"),
                                               ],
                                             ),
                                           ],
@@ -670,13 +571,13 @@ class ContactPage extends StatelessComponent {
                                         h3(
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
                                           [
-                                            Component.text(" Tell Us About Your Idea "),
+                                            .text(" Tell Us About Your Idea "),
                                           ],
                                         ),
                                         p(
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                           [
-                                            Component.text(
+                                            .text(
                                               " Submit the inquiry form with an overview of what you want to build or improve. ",
                                             ),
                                           ],
@@ -703,14 +604,14 @@ class ContactPage extends StatelessComponent {
                                             span(
                                               classes: "font-label-mono text-[20px] font-semibold text-secondary",
                                               [
-                                                Component.text("02"),
+                                                .text("02"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-outline group-hover:text-secondary transition-colors text-[22px]",
                                               [
-                                                Component.text("manage_search"),
+                                                .text("manage_search"),
                                               ],
                                             ),
                                           ],
@@ -718,13 +619,13 @@ class ContactPage extends StatelessComponent {
                                         h3(
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
                                           [
-                                            Component.text(" We'll Review Your Needs "),
+                                            .text(" We'll Review Your Needs "),
                                           ],
                                         ),
                                         p(
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                           [
-                                            Component.text(
+                                            .text(
                                               " A technical lead reviews your requirements, scope, and feasibility within our engineering team. ",
                                             ),
                                           ],
@@ -751,14 +652,14 @@ class ContactPage extends StatelessComponent {
                                             span(
                                               classes: "font-label-mono text-[20px] font-semibold text-primary",
                                               [
-                                                Component.text("03"),
+                                                .text("03"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[22px]",
                                               [
-                                                Component.text("forum"),
+                                                .text("forum"),
                                               ],
                                             ),
                                           ],
@@ -766,13 +667,13 @@ class ContactPage extends StatelessComponent {
                                         h3(
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
                                           [
-                                            Component.text(" Let's Talk About the Right Solution "),
+                                            .text(" Let's Talk About the Right Solution "),
                                           ],
                                         ),
                                         p(
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                           [
-                                            Component.text(
+                                            .text(
                                               " We arrange an introductory technical discussion to map architecture, timelines, and pragmatic next steps. ",
                                             ),
                                           ],

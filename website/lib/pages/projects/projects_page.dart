@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../core/components/app_footer.dart';
+import '../../core/components/app_header.dart';
 
 class ProjectsPage extends StatelessComponent {
   const ProjectsPage();
@@ -19,113 +20,13 @@ class ProjectsPage extends StatelessComponent {
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
       ),
       Component.fragment([
-        header(
-          classes:
-              "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          [
-            div(
-              classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              [
-                a(
-                  classes: "flex items-center gap-2 group",
-                  href: "/",
-                  attributes: {
-                    "data-path": "home",
-                  },
-                  [
-                    span(
-                      classes:
-                          "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      [
-                        Component.text("Brothers-Tech"),
-                      ],
-                    ),
-                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
-                  ],
-                ),
-                nav(
-                  classes:
-                      "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
-                  attributes: {
-                    "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
-                  },
-                  [
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/",
-                      attributes: {
-                        "data-path": "home",
-                      },
-                      [
-                        .text("Home"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/services",
-                      attributes: {
-                        "data-path": "services",
-                      },
-                      [
-                        .text("Services"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/projects",
-                      attributes: {
-                        "aria-current": "page",
-                        "data-path": "projects",
-                      },
-                      [
-                        .text("Projects"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/about",
-                      attributes: {
-                        "data-path": "about",
-                      },
-                      [
-                        Component.text("About"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Contact"),
-                      ],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: "flex items-center gap-4",
-                  [
-                    a(
-                      classes:
-                          "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Start a Project →"),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        AppHeader(
+          tabs: [
+            (name: "Home", url: "/", isSelected: false),
+            (name: "Services", url: "/services", isSelected: false),
+            (name: "Projects", url: "/projects", isSelected: true),
+            (name: "About", url: "/about", isSelected: false),
+            (name: "Contact", url: "/contact", isSelected: false),
           ],
         ),
         main_(
@@ -162,19 +63,19 @@ class ProjectsPage extends StatelessComponent {
                               classes:
                                   "font-label-mono text-label-mono-xs uppercase tracking-widest text-secondary font-medium",
                               [
-                                Component.text("Selected Work"),
+                                .text("Selected Work"),
                               ],
                             ),
                             span(
                               classes: "text-outline-variant",
                               [
-                                Component.text("|"),
+                                .text("|"),
                               ],
                             ),
                             span(
                               classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                               [
-                                Component.text("Production Case Studies"),
+                                .text("Production Case Studies"),
                               ],
                             ),
                           ],
@@ -182,12 +83,12 @@ class ProjectsPage extends StatelessComponent {
                         h1(
                           classes: "font-display-hero text-display-hero text-on-surface tracking-tight",
                           [
-                            Component.text(" Products We've "),
+                            .text(" Products We've "),
                             span(
                               classes:
                                   "text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-secondary-fixed",
                               [
-                                Component.text("Brought to Life."),
+                                .text("Brought to Life."),
                               ],
                             ),
                           ],
@@ -195,7 +96,7 @@ class ProjectsPage extends StatelessComponent {
                         p(
                           classes: "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed",
                           [
-                            Component.text(
+                            .text(
                               " From consumer mobile apps to high-throughput web dashboards and mission-critical desktop systems, explore the digital products engineered and deployed by Brothers-Tech. ",
                             ),
                           ],
@@ -210,13 +111,13 @@ class ProjectsPage extends StatelessComponent {
                                 span(
                                   classes: "material-symbols-outlined text-secondary text-[18px]",
                                   [
-                                    Component.text("verified"),
+                                    .text("verified"),
                                   ],
                                 ),
                                 span(
                                   classes: "text-on-surface font-medium",
                                   [
-                                    Component.text("14+ Platforms Shipped"),
+                                    .text("14+ Platforms Shipped"),
                                   ],
                                 ),
                               ],
@@ -224,7 +125,7 @@ class ProjectsPage extends StatelessComponent {
                             span(
                               classes: "text-outline-variant hidden sm:inline",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             div(
@@ -233,12 +134,12 @@ class ProjectsPage extends StatelessComponent {
                                 span(
                                   classes: "material-symbols-outlined text-primary text-[18px]",
                                   [
-                                    Component.text("phone_iphone"),
+                                    .text("phone_iphone"),
                                   ],
                                 ),
                                 span(
                                   [
-                                    Component.text("Android & iOS"),
+                                    .text("Android & iOS"),
                                   ],
                                 ),
                               ],
@@ -246,7 +147,7 @@ class ProjectsPage extends StatelessComponent {
                             span(
                               classes: "text-outline-variant hidden sm:inline",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             div(
@@ -255,12 +156,12 @@ class ProjectsPage extends StatelessComponent {
                                 span(
                                   classes: "material-symbols-outlined text-primary text-[18px]",
                                   [
-                                    Component.text("laptop_chromebook"),
+                                    .text("laptop_chromebook"),
                                   ],
                                 ),
                                 span(
                                   [
-                                    Component.text("Modern Web"),
+                                    .text("Modern Web"),
                                   ],
                                 ),
                               ],
@@ -268,7 +169,7 @@ class ProjectsPage extends StatelessComponent {
                             span(
                               classes: "text-outline-variant hidden sm:inline",
                               [
-                                Component.text("•"),
+                                .text("•"),
                               ],
                             ),
                             div(
@@ -277,12 +178,12 @@ class ProjectsPage extends StatelessComponent {
                                 span(
                                   classes: "material-symbols-outlined text-primary text-[18px]",
                                   [
-                                    Component.text("desktop_windows"),
+                                    .text("desktop_windows"),
                                   ],
                                 ),
                                 span(
                                   [
-                                    Component.text("Native Desktop"),
+                                    .text("Native Desktop"),
                                   ],
                                 ),
                               ],
@@ -321,20 +222,20 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "px-2.5 py-1 rounded bg-secondary/10 border border-secondary/30 font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                       [
-                                        Component.text(" Featured Flagship "),
+                                        .text(" Featured Flagship "),
                                       ],
                                     ),
                                     span(
                                       classes: "text-outline-variant",
                                       [
-                                        Component.text("•"),
+                                        .text("•"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "font-label-mono text-label-mono-xs text-on-surface-variant tracking-wider uppercase",
                                       [
-                                        Component.text(" Multi-Platform • Dashboard + iOS/Android Mobile "),
+                                        .text(" Multi-Platform • Dashboard + iOS/Android Mobile "),
                                       ],
                                     ),
                                   ],
@@ -343,13 +244,13 @@ class ProjectsPage extends StatelessComponent {
                                   classes:
                                       "font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight group-hover:text-primary transition-colors",
                                   [
-                                    Component.text(" Quran Institute Management System "),
+                                    .text(" Quran Institute Management System "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " A multi-platform Quran institute management system with dedicated admin, teacher, and student applications, customized and deployed in 3 different versions for three institutes, with features adapted to each institute’s specific workflow and requirements. ",
                                     ),
                                   ],
@@ -361,28 +262,28 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/30 font-label-mono text-label-mono-xs text-primary",
                                       [
-                                        Component.text("Multi-Platform"),
+                                        .text("Multi-Platform"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/30 font-label-mono text-label-mono-xs text-primary",
                                       [
-                                        Component.text("Admin Desktop"),
+                                        .text("Admin Desktop"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/30 font-label-mono text-label-mono-xs text-primary",
                                       [
-                                        Component.text("Instructor App"),
+                                        .text("Instructor App"),
                                       ],
                                     ),
                                     span(
                                       classes:
                                           "px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/30 font-label-mono text-label-mono-xs text-primary",
                                       [
-                                        Component.text("Student App"),
+                                        .text("Student App"),
                                       ],
                                     ),
                                   ],
@@ -403,18 +304,18 @@ class ProjectsPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-[20px]",
                                           [
-                                            Component.text("android"),
+                                            .text("android"),
                                           ],
                                         ),
                                         span(
                                           [
-                                            Component.text("Android"),
+                                            .text("Android"),
                                           ],
                                         ),
                                         span(
                                           classes: "material-symbols-outlined text-[18px]",
                                           [
-                                            Component.text("north_east"),
+                                            .text("north_east"),
                                           ],
                                         ),
                                       ],
@@ -495,13 +396,13 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                           [
-                                            Component.text("Mobile • iOS & Android"),
+                                            .text("Mobile • iOS & Android"),
                                           ],
                                         ),
                                         span(
                                           classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                                           [
-                                            Component.text("MEDICAL EDUCATION"),
+                                            .text("MEDICAL EDUCATION"),
                                           ],
                                         ),
                                       ],
@@ -510,13 +411,13 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors",
                                       [
-                                        Component.text(" Prime - Medical Education Platform "),
+                                        .text(" Prime - Medical Education Platform "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Mobile learning platform for medical students at Aleppo University. ",
                                         ),
                                       ],
@@ -531,12 +432,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Built question banks, previous exams, videos, PDFs, and learning resources.",
                                                 ),
                                               ],
@@ -549,12 +450,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Integrated an AI assistant and offline content access.",
                                                 ),
                                               ],
@@ -567,12 +468,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text("Implemented content encryption."),
+                                                .text("Implemented content encryption."),
                                               ],
                                             ),
                                           ],
@@ -591,28 +492,28 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("AI Integration"),
+                                            .text("AI Integration"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Encryption"),
+                                            .text("Encryption"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Videos & PDFs"),
+                                            .text("Videos & PDFs"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Offline Access"),
+                                            .text("Offline Access"),
                                           ],
                                         ),
                                       ],
@@ -633,19 +534,19 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "material-symbols-outlined text-[18px]",
                                               [
-                                                Component.text("android"),
+                                                .text("android"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text("Android"),
+                                                .text("Android"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-[15px] group-hover/store-android:translate-x-1 transition-transform",
                                               [
-                                                Component.text("open_in_new"),
+                                                .text("open_in_new"),
                                               ],
                                             ),
                                           ],
@@ -675,14 +576,14 @@ class ProjectsPage extends StatelessComponent {
                                             ),
                                             span(
                                               [
-                                                Component.text("iOS"),
+                                                .text("iOS"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-[15px] group-hover/store-ios:translate-x-1 transition-transform",
                                               [
-                                                Component.text("open_in_new"),
+                                                .text("open_in_new"),
                                               ],
                                             ),
                                           ],
@@ -730,13 +631,13 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                           [
-                                            Component.text("Mobile • iOS & Android"),
+                                            .text("Mobile • iOS & Android"),
                                           ],
                                         ),
                                         span(
                                           classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                                           [
-                                            Component.text("DELIVERY PLATFORM"),
+                                            .text("DELIVERY PLATFORM"),
                                           ],
                                         ),
                                       ],
@@ -751,7 +652,7 @@ class ProjectsPage extends StatelessComponent {
                                             "lang": "ar",
                                           },
                                           [
-                                            Component.text("الندهة ع"),
+                                            .text("الندهة ع"),
                                           ],
                                         ),
                                         span(
@@ -759,7 +660,7 @@ class ProjectsPage extends StatelessComponent {
                                             "dir": "ltr",
                                           },
                                           [
-                                            Component.text("| Ala Al-Nadha — Multi-Service Delivery Platform"),
+                                            .text("| Ala Al-Nadha — Multi-Service Delivery Platform"),
                                           ],
                                         ),
                                       ],
@@ -767,7 +668,7 @@ class ProjectsPage extends StatelessComponent {
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Multi-service platform for food delivery, grocery shopping, and cleaning services across Aleppo. ",
                                         ),
                                       ],
@@ -782,12 +683,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Developed restaurant, supermarket, and cleaning-service ordering flows within one application.",
                                                 ),
                                               ],
@@ -800,12 +701,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Built smart voice search that converts natural Arabic speech into relevant stores, products, and search keywords.",
                                                 ),
                                               ],
@@ -818,12 +719,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Implemented location-based delivery, order management, offers, and a streamlined experience.",
                                                 ),
                                               ],
@@ -844,21 +745,21 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Voice Search"),
+                                            .text("Voice Search"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Location Services"),
+                                            .text("Location Services"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Order Management"),
+                                            .text("Order Management"),
                                           ],
                                         ),
                                       ],
@@ -879,19 +780,19 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "material-symbols-outlined text-[18px]",
                                               [
-                                                Component.text("android"),
+                                                .text("android"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text("Android"),
+                                                .text("Android"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-[15px] group-hover/alnadha-android:translate-x-1 transition-transform",
                                               [
-                                                Component.text("open_in_new"),
+                                                .text("open_in_new"),
                                               ],
                                             ),
                                           ],
@@ -922,14 +823,14 @@ class ProjectsPage extends StatelessComponent {
                                             ),
                                             span(
                                               [
-                                                Component.text("iOS"),
+                                                .text("iOS"),
                                               ],
                                             ),
                                             span(
                                               classes:
                                                   "material-symbols-outlined text-[15px] group-hover/alnadha-ios:translate-x-1 transition-transform",
                                               [
-                                                Component.text("open_in_new"),
+                                                .text("open_in_new"),
                                               ],
                                             ),
                                           ],
@@ -977,13 +878,13 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                           [
-                                            Component.text("Mobile • iOS"),
+                                            .text("Mobile • iOS"),
                                           ],
                                         ),
                                         span(
                                           classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                                           [
-                                            Component.text("CANADIAN MARKET"),
+                                            .text("CANADIAN MARKET"),
                                           ],
                                         ),
                                       ],
@@ -992,13 +893,13 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors",
                                       [
-                                        Component.text(" Drisavo - Driving School Booking Platform "),
+                                        .text(" Drisavo - Driving School Booking Platform "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed",
                                       [
-                                        Component.text(" Driving lesson booking platform for the Canadian market. "),
+                                        .text(" Driving lesson booking platform for the Canadian market. "),
                                       ],
                                     ),
                                     ul(
@@ -1011,12 +912,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Built dedicated student and instructor experiences with real-time lesson booking.",
                                                 ),
                                               ],
@@ -1029,12 +930,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Implemented chat, digital wallet payments, and driving-hour purchases.",
                                                 ),
                                               ],
@@ -1047,12 +948,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text("Added student progress tracking for parents."),
+                                                .text("Added student progress tracking for parents."),
                                               ],
                                             ),
                                           ],
@@ -1071,42 +972,42 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Flutter"),
+                                            .text("Flutter"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Dart"),
+                                            .text("Dart"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("REST APIs"),
+                                            .text("REST APIs"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Chat"),
+                                            .text("Chat"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Payments"),
+                                            .text("Payments"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Real-time Features"),
+                                            .text("Real-time Features"),
                                           ],
                                         ),
                                       ],
@@ -1136,14 +1037,14 @@ class ProjectsPage extends StatelessComponent {
                                         ),
                                         span(
                                           [
-                                            Component.text("iOS"),
+                                            .text("iOS"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "material-symbols-outlined text-[15px] group-hover/drisavo-ios:translate-x-1 transition-transform",
                                           [
-                                            Component.text("open_in_new"),
+                                            .text("open_in_new"),
                                           ],
                                         ),
                                       ],
@@ -1189,13 +1090,13 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                           [
-                                            Component.text("Learning Platform"),
+                                            .text("Learning Platform"),
                                           ],
                                         ),
                                         span(
                                           classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                                           [
-                                            Component.text("BACCALAUREATE"),
+                                            .text("BACCALAUREATE"),
                                           ],
                                         ),
                                       ],
@@ -1204,13 +1105,13 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors",
                                       [
-                                        Component.text(" Prime Bac - Baccalaureate Learning Platform "),
+                                        .text(" Prime Bac - Baccalaureate Learning Platform "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Educational platform for Baccalaureate students focused on exam preparation and study organization. ",
                                         ),
                                       ],
@@ -1225,12 +1126,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Developed chapter, section, and full-course tests with interactive learning resources.",
                                                 ),
                                               ],
@@ -1243,12 +1144,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Implemented student–instructor communication and study task scheduling.",
                                                 ),
                                               ],
@@ -1261,12 +1162,12 @@ class ProjectsPage extends StatelessComponent {
                                             span(
                                               classes: "text-secondary",
                                               [
-                                                Component.text("•"),
+                                                .text("•"),
                                               ],
                                             ),
                                             span(
                                               [
-                                                Component.text(
+                                                .text(
                                                   "Extended the Prime platform with productivity and learning-management features.",
                                                 ),
                                               ],
@@ -1287,21 +1188,21 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Real-time Communication"),
+                                            .text("Real-time Communication"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Task Management"),
+                                            .text("Task Management"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Offline Access"),
+                                            .text("Offline Access"),
                                           ],
                                         ),
                                       ],
@@ -1347,13 +1248,13 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "font-label-mono text-label-mono-xs text-secondary uppercase font-semibold",
                                           [
-                                            Component.text("Mobile • iOS & Android"),
+                                            .text("Mobile • iOS & Android"),
                                           ],
                                         ),
                                         span(
                                           classes: "font-label-mono text-label-mono-xs text-on-surface-variant",
                                           [
-                                            Component.text("E-COMMERCE"),
+                                            .text("E-COMMERCE"),
                                           ],
                                         ),
                                       ],
@@ -1362,13 +1263,13 @@ class ProjectsPage extends StatelessComponent {
                                       classes:
                                           "font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors",
                                       [
-                                        Component.text(" Elegance - E-Commerce Shop App "),
+                                        .text(" Elegance - E-Commerce Shop App "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed",
                                       [
-                                        Component.text(
+                                        .text(
                                           " A polished cross-platform shopping app that lets customers browse products, shop offline, manage their cart, and complete secure purchases through PayPal. ",
                                         ),
                                       ],
@@ -1385,21 +1286,21 @@ class ProjectsPage extends StatelessComponent {
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Offline Access"),
+                                            .text("Offline Access"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("PayPal Payment"),
+                                            .text("PayPal Payment"),
                                           ],
                                         ),
                                         span(
                                           classes:
                                               "px-2 py-0.5 rounded bg-surface-container font-label-mono text-[11px] text-primary",
                                           [
-                                            Component.text("Android/iOS"),
+                                            .text("Android/iOS"),
                                           ],
                                         ),
                                       ],
@@ -1429,13 +1330,13 @@ class ProjectsPage extends StatelessComponent {
                                   classes:
                                       "font-label-mono text-label-mono-xs text-secondary uppercase tracking-widest font-semibold",
                                   [
-                                    Component.text("Engineered Precision"),
+                                    .text("Engineered Precision"),
                                   ],
                                 ),
                                 h3(
                                   classes: "font-headline-md text-headline-md text-on-surface font-semibold mt-1",
                                   [
-                                    Component.text(" Multi-Disciplinary Delivery "),
+                                    .text(" Multi-Disciplinary Delivery "),
                                   ],
                                 ),
                               ],
@@ -1443,7 +1344,7 @@ class ProjectsPage extends StatelessComponent {
                             p(
                               classes: "font-body-sm text-body-sm text-on-surface-variant max-w-md",
                               [
-                                Component.text(
+                                .text(
                                   " Every platform engineered by Brothers-Tech is built with production-grade telemetry, strict code audits, and uncompromising uptime standards. ",
                                 ),
                               ],
@@ -1464,7 +1365,7 @@ class ProjectsPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[24px]",
                                       [
-                                        Component.text("phone_android"),
+                                        .text("phone_android"),
                                       ],
                                     ),
                                   ],
@@ -1472,13 +1373,13 @@ class ProjectsPage extends StatelessComponent {
                                 h4(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Mobile Apps "),
+                                    .text(" Mobile Apps "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Native and cross-platform mobile apps for iOS and Android with 60fps gesture fidelity. ",
                                     ),
                                   ],
@@ -1496,7 +1397,7 @@ class ProjectsPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[24px]",
                                       [
-                                        Component.text("web"),
+                                        .text("web"),
                                       ],
                                     ),
                                   ],
@@ -1504,13 +1405,13 @@ class ProjectsPage extends StatelessComponent {
                                 h4(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Web Platforms "),
+                                    .text(" Web Platforms "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Complex web applications, responsive SaaS portals, and high-performance digital platforms. ",
                                     ),
                                   ],
@@ -1528,7 +1429,7 @@ class ProjectsPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[24px]",
                                       [
-                                        Component.text("desktop_windows"),
+                                        .text("desktop_windows"),
                                       ],
                                     ),
                                   ],
@@ -1536,13 +1437,13 @@ class ProjectsPage extends StatelessComponent {
                                 h4(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Desktop Systems "),
+                                    .text(" Desktop Systems "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Native macOS and Windows administrative tools, terminals, and offline-capable software. ",
                                     ),
                                   ],
@@ -1560,7 +1461,7 @@ class ProjectsPage extends StatelessComponent {
                                     span(
                                       classes: "material-symbols-outlined text-[24px]",
                                       [
-                                        Component.text("dns"),
+                                        .text("dns"),
                                       ],
                                     ),
                                   ],
@@ -1568,13 +1469,13 @@ class ProjectsPage extends StatelessComponent {
                                 h4(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
                                   [
-                                    Component.text(" Secure Data & Integrations "),
+                                    .text(" Secure Data & Integrations "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Reliable data management, secure connections with business tools, and systems designed to grow with your product. ",
                                     ),
                                   ],
@@ -1605,13 +1506,13 @@ class ProjectsPage extends StatelessComponent {
                             h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight",
                               [
-                                Component.text(" Have an Idea? Let's Build It Together. "),
+                                .text(" Have an Idea? Let's Build It Together. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
                               [
-                                Component.text(
+                                .text(
                                   " Whether you're starting something new or scaling an existing product, let's turn your idea into reliable, production-ready software. ",
                                 ),
                               ],
@@ -1624,7 +1525,7 @@ class ProjectsPage extends StatelessComponent {
                                       "inline-flex items-center justify-center h-12 px-8 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[0_0_24px_rgba(77,142,255,0.4)]",
                                   href: "/contact",
                                   [
-                                    Component.text(" Tell Us About Your Project → "),
+                                    .text(" Tell Us About Your Project → "),
                                   ],
                                 ),
                               ],
@@ -1636,7 +1537,7 @@ class ProjectsPage extends StatelessComponent {
                                 span(classes: "w-2 h-2 rounded-full bg-secondary animate-pulse", []),
                                 span(
                                   [
-                                    Component.text("Available for new projects"),
+                                    .text("Available for new projects"),
                                   ],
                                 ),
                               ],

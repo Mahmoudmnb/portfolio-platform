@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../core/components/app_footer.dart';
+import '../../core/components/app_header.dart';
 
 class ServicesPage extends StatelessComponent {
   const ServicesPage();
@@ -18,113 +19,13 @@ class ServicesPage extends StatelessComponent {
       Document.body(attributes: {'class': "bg-surface font-body-md text-on-surface antialiased"}),
 
       Component.fragment([
-        header(
-          classes:
-              "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          [
-            div(
-              classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              [
-                a(
-                  classes: "flex items-center gap-2 group",
-                  href: "/",
-                  attributes: {
-                    "data-path": "home",
-                  },
-                  [
-                    span(
-                      classes:
-                          "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      [
-                        Component.text("Brothers-Tech"),
-                      ],
-                    ),
-                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
-                  ],
-                ),
-                nav(
-                  classes:
-                      "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
-                  attributes: {
-                    "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
-                  },
-                  [
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/",
-                      attributes: {
-                        "data-path": "home",
-                      },
-                      [
-                        Component.text("Home"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 transition-colors bg-surface-container-high text-primary font-medium rounded-lg",
-                      href: "/services",
-                      attributes: {
-                        "aria-current": "page",
-                        "data-path": "services",
-                      },
-                      [
-                        Component.text("Services"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/projects",
-                      attributes: {
-                        "data-path": "projects",
-                      },
-                      [
-                        Component.text("Projects"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/about",
-                      attributes: {
-                        "data-path": "about",
-                      },
-                      [
-                        Component.text("About"),
-                      ],
-                    ),
-                    a(
-                      classes:
-                          "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Contact"),
-                      ],
-                    ),
-                  ],
-                ),
-                div(
-                  classes: "flex items-center gap-4",
-                  [
-                    a(
-                      classes:
-                          "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
-                      href: "/contact",
-                      attributes: {
-                        "data-path": "contact",
-                      },
-                      [
-                        Component.text("Start a Project →"),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+        AppHeader(
+          tabs: [
+            (name: "Home", url: "/", isSelected: false),
+            (name: "Services", url: "/services", isSelected: true),
+            (name: "Projects", url: "/projects", isSelected: false),
+            (name: "About", url: "/about", isSelected: false),
+            (name: "Contact", url: "/contact", isSelected: false),
           ],
         ),
         main_(
@@ -163,7 +64,7 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "font-label-mono text-label-mono uppercase tracking-widest text-secondary font-medium",
                               [
-                                Component.text("Our Services"),
+                                .text("Our Services"),
                               ],
                             ),
                           ],
@@ -172,12 +73,12 @@ class ServicesPage extends StatelessComponent {
                           classes:
                               "font-display-hero text-display-hero tracking-tight text-on-surface max-w-4xl mb-space-md",
                           [
-                            Component.text(" From Idea to "),
+                            .text(" From Idea to "),
                             span(
                               classes:
                                   "text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-secondary-fixed",
                               [
-                                Component.text("Working Software."),
+                                .text("Working Software."),
                               ],
                             ),
                           ],
@@ -186,7 +87,7 @@ class ServicesPage extends StatelessComponent {
                           classes:
                               "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-space-xl",
                           [
-                            Component.text(
+                            .text(
                               " Brothers-Tech designs and develops mobile, web, desktop, and connected software solutions built around real business needs. ",
                             ),
                           ],
@@ -205,7 +106,7 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "text-on-surface",
                                       [
-                                        Component.text("5 Core Practices"),
+                                        .text("5 Core Practices"),
                                       ],
                                     ),
                                   ],
@@ -213,7 +114,7 @@ class ServicesPage extends StatelessComponent {
                                 span(
                                   classes: "hidden sm:inline text-outline-variant font-mono",
                                   [
-                                    Component.text("•"),
+                                    .text("•"),
                                   ],
                                 ),
                                 div(
@@ -223,7 +124,7 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "text-on-surface",
                                       [
-                                        Component.text("Multi-Platform Architecture"),
+                                        .text("Multi-Platform Architecture"),
                                       ],
                                     ),
                                   ],
@@ -231,7 +132,7 @@ class ServicesPage extends StatelessComponent {
                                 span(
                                   classes: "hidden sm:inline text-outline-variant font-mono",
                                   [
-                                    Component.text("•"),
+                                    .text("•"),
                                   ],
                                 ),
                                 div(
@@ -241,7 +142,7 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "text-on-surface",
                                       [
-                                        Component.text("Production Grade Systems"),
+                                        .text("Production Grade Systems"),
                                       ],
                                     ),
                                   ],
@@ -249,7 +150,7 @@ class ServicesPage extends StatelessComponent {
                                 span(
                                   classes: "hidden sm:inline text-outline-variant font-mono",
                                   [
-                                    Component.text("•"),
+                                    .text("•"),
                                   ],
                                 ),
                                 div(
@@ -259,7 +160,7 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "text-on-surface",
                                       [
-                                        Component.text("Zero Vendor Lock-in"),
+                                        .text("Zero Vendor Lock-in"),
                                       ],
                                     ),
                                   ],
@@ -285,20 +186,20 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center px-3 py-1 rounded-md bg-surface-container-high text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-wider mb-space-md",
                               [
-                                Component.text(" 01 • Mobile Applications "),
+                                .text(" 01 • Mobile Applications "),
                               ],
                             ),
                             h2(
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight mb-space-md",
                               [
-                                Component.text(" Mobile Applications "),
+                                .text(" Mobile Applications "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
                               [
-                                Component.text(
+                                .text(
                                   " Reliable Android and iOS applications designed around your users and business goals. We handle the full journey from planning and design to store release and ongoing improvements. ",
                                 ),
                               ],
@@ -340,20 +241,20 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center px-3 py-1 rounded-md bg-surface-container-high text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-wider mb-space-md",
                               [
-                                Component.text(" 02 • Web Platforms "),
+                                .text(" 02 • Web Platforms "),
                               ],
                             ),
                             h2(
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight mb-space-md",
                               [
-                                Component.text(" Web Platforms, Applications & High-Density Dashboards "),
+                                .text(" Web Platforms, Applications & High-Density Dashboards "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
                               [
-                                Component.text(
+                                .text(
                                   " Professional websites, customer portals, booking systems, dashboards, and business tools designed to be fast, accessible, easy to use, and ready to grow with your business. ",
                                 ),
                               ],
@@ -372,20 +273,20 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center px-3 py-1 rounded-md bg-surface-container-high text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-wider mb-space-md",
                               [
-                                Component.text(" 03 • Desktop Applications "),
+                                .text(" 03 • Desktop Applications "),
                               ],
                             ),
                             h2(
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight mb-space-md",
                               [
-                                Component.text(" Desktop Software & Operations Workstations "),
+                                .text(" Desktop Software & Operations Workstations "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
                               [
-                                Component.text(
+                                .text(
                                   " Reliable desktop software designed to simplify daily operations, organize complex workflows, manage important data, and help teams work efficiently—even when an internet connection is unavailable. ",
                                 ),
                               ],
@@ -419,13 +320,13 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center px-3 py-1 rounded-md bg-surface-container-high text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-wider mb-space-sm",
                               [
-                                Component.text(" Engineering Delivery Framework "),
+                                .text(" Engineering Delivery Framework "),
                               ],
                             ),
                             h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
                               [
-                                Component.text(" How We Build. "),
+                                .text(" How We Build. "),
                               ],
                             ),
                           ],
@@ -433,7 +334,7 @@ class ServicesPage extends StatelessComponent {
                         p(
                           classes: "font-body-lg text-body-lg text-on-surface-variant max-w-md",
                           [
-                            Component.text(
+                            .text(
                               " A disciplined, transparent delivery framework from initial whiteboard to continuous production support. ",
                             ),
                           ],
@@ -455,13 +356,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("01 // DISCOVERY"),
+                                        .text("01 // DISCOVERY"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("architecture"),
+                                        .text("architecture"),
                                       ],
                                     ),
                                   ],
@@ -469,13 +370,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Plan "),
+                                    .text(" Plan "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Requirements discovery, technical architecture blueprint, database schema planning, API specs, and a milestone-driven roadmap. ",
                                     ),
                                   ],
@@ -488,7 +389,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: Technical RFC & Spec"),
+                                    .text("Deliverable: Technical RFC & Spec"),
                                   ],
                                 ),
                               ],
@@ -507,13 +408,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("02 // PROTOTYPING"),
+                                        .text("02 // PROTOTYPING"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("palette"),
+                                        .text("palette"),
                                       ],
                                     ),
                                   ],
@@ -521,13 +422,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Design "),
+                                    .text(" Design "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " User journey mapping, wireframing, high-fidelity UI design, tokenized design systems, and interactive clickable prototypes in Figma. ",
                                     ),
                                   ],
@@ -540,7 +441,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: Design Tokens & Prototypes"),
+                                    .text("Deliverable: Design Tokens & Prototypes"),
                                   ],
                                 ),
                               ],
@@ -559,13 +460,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("03 // EXECUTION"),
+                                        .text("03 // EXECUTION"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("terminal"),
+                                        .text("terminal"),
                                       ],
                                     ),
                                   ],
@@ -573,13 +474,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Develop "),
+                                    .text(" Develop "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Full-stack engineering, strict static typing, clean modular architectural patterns, local unit tests, and continuous pull-request reviews. ",
                                     ),
                                   ],
@@ -592,7 +493,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: Staging Deployment Builds"),
+                                    .text("Deliverable: Staging Deployment Builds"),
                                   ],
                                 ),
                               ],
@@ -611,13 +512,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("04 // VERIFICATION"),
+                                        .text("04 // VERIFICATION"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("checklist"),
+                                        .text("checklist"),
                                       ],
                                     ),
                                   ],
@@ -625,13 +526,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Test "),
+                                    .text(" Test "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Automated regression suites, cross-browser/device testing, penetration audits, load testing, and edge case resilience verification. ",
                                     ),
                                   ],
@@ -644,7 +545,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: QA & Security Audit Report"),
+                                    .text("Deliverable: QA & Security Audit Report"),
                                   ],
                                 ),
                               ],
@@ -663,13 +564,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("05 // ROLLOUT"),
+                                        .text("05 // ROLLOUT"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("rocket_launch"),
+                                        .text("rocket_launch"),
                                       ],
                                     ),
                                   ],
@@ -677,13 +578,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Deploy "),
+                                    .text(" Deploy "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Automated CI/CD orchestration, zero-downtime containerized infrastructure, DNS provisioning, and App Store / Google Play submissions. ",
                                     ),
                                   ],
@@ -696,7 +597,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: Production Release Verified"),
+                                    .text("Deliverable: Production Release Verified"),
                                   ],
                                 ),
                               ],
@@ -715,13 +616,13 @@ class ServicesPage extends StatelessComponent {
                                     span(
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
                                       [
-                                        Component.text("06 // MAINTENANCE"),
+                                        .text("06 // MAINTENANCE"),
                                       ],
                                     ),
                                     span(
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
                                       [
-                                        Component.text("health_and_safety"),
+                                        .text("health_and_safety"),
                                       ],
                                     ),
                                   ],
@@ -729,13 +630,13 @@ class ServicesPage extends StatelessComponent {
                                 h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                   [
-                                    Component.text(" Support "),
+                                    .text(" Support "),
                                   ],
                                 ),
                                 p(
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
                                   [
-                                    Component.text(
+                                    .text(
                                       " Continuous real-time telemetry monitoring, error tracking, infrastructure maintenance, security patching, and ongoing feature iteration. ",
                                     ),
                                   ],
@@ -748,7 +649,7 @@ class ServicesPage extends StatelessComponent {
                               [
                                 span(
                                   [
-                                    Component.text("Deliverable: 24/7 SLA & Telemetry Logs"),
+                                    .text("Deliverable: 24/7 SLA & Telemetry Logs"),
                                   ],
                                 ),
                               ],
@@ -772,20 +673,20 @@ class ServicesPage extends StatelessComponent {
                               classes:
                                   "inline-flex items-center px-3.5 py-1 rounded-full bg-surface-container text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-widest font-semibold mb-space-sm",
                               [
-                                Component.text(" Product Taxonomy "),
+                                .text(" Product Taxonomy "),
                               ],
                             ),
                             h2(
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight mb-space-sm",
                               [
-                                Component.text(" Software Solutions Tailored to Your Industry. "),
+                                .text(" Software Solutions Tailored to Your Industry. "),
                               ],
                             ),
                             p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
                               [
-                                Component.text(
+                                .text(
                                   " From complex enterprise workflow tools to customer-facing platforms, we engineer purpose-built systems. ",
                                 ),
                               ],
@@ -808,7 +709,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("corporate_fare"),
+                                            .text("corporate_fare"),
                                           ],
                                         ),
                                       ],
@@ -816,13 +717,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Business Applications "),
+                                        .text(" Business Applications "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Internal operations tools, automated resource planning, and custom ERP systems engineered for high-concurrency business data. ",
                                         ),
                                       ],
@@ -836,7 +737,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("Enterprise Ops • ERP"),
+                                        .text("Enterprise Ops • ERP"),
                                       ],
                                     ),
                                   ],
@@ -856,7 +757,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("school"),
+                                            .text("school"),
                                           ],
                                         ),
                                       ],
@@ -864,13 +765,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Educational Platforms "),
+                                        .text(" Educational Platforms "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Interactive Learning Management Systems (LMS), real-time virtual classroom software, student portals, and grading pipelines. ",
                                         ),
                                       ],
@@ -884,7 +785,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("LMS • Interactive Portals"),
+                                        .text("LMS • Interactive Portals"),
                                       ],
                                     ),
                                   ],
@@ -904,7 +805,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("inventory_2"),
+                                            .text("inventory_2"),
                                           ],
                                         ),
                                       ],
@@ -912,13 +813,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Management Systems "),
+                                        .text(" Management Systems "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " High-accuracy inventory tracking, fleet dispatch management, supply-chain dashboards, and real-time asset control centers. ",
                                         ),
                                       ],
@@ -932,7 +833,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("Fleet • Logistics • Supply"),
+                                        .text("Fleet • Logistics • Supply"),
                                       ],
                                     ),
                                   ],
@@ -952,7 +853,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("shopping_cart"),
+                                            .text("shopping_cart"),
                                           ],
                                         ),
                                       ],
@@ -960,13 +861,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" E-commerce Solutions "),
+                                        .text(" E-commerce Solutions "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " High-conversion checkout flows, custom multi-vendor marketplaces, dynamic catalog indexing, and low-latency inventory syncing. ",
                                         ),
                                       ],
@@ -980,7 +881,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("Marketplaces • Checkout"),
+                                        .text("Marketplaces • Checkout"),
                                       ],
                                     ),
                                   ],
@@ -1000,7 +901,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("monitoring"),
+                                            .text("monitoring"),
                                           ],
                                         ),
                                       ],
@@ -1008,13 +909,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Dashboards & Analytics "),
+                                        .text(" Dashboards & Analytics "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " High-density telemetry dashboards, real-time streaming data visualizers, executive KPI portals, and custom report builders. ",
                                         ),
                                       ],
@@ -1028,7 +929,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("Telemetry • Real-Time KPIs"),
+                                        .text("Telemetry • Real-Time KPIs"),
                                       ],
                                     ),
                                   ],
@@ -1048,7 +949,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("admin_panel_settings"),
+                                            .text("admin_panel_settings"),
                                           ],
                                         ),
                                       ],
@@ -1056,13 +957,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Admin Panels "),
+                                        .text(" Admin Panels "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Granular role-based access control portals, immutable audit logging, team administration consoles, and support tooling. ",
                                         ),
                                       ],
@@ -1076,7 +977,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("RBAC • Audit Logs • Tools"),
+                                        .text("RBAC • Audit Logs • Tools"),
                                       ],
                                     ),
                                   ],
@@ -1096,7 +997,7 @@ class ServicesPage extends StatelessComponent {
                                         span(
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
                                           [
-                                            Component.text("extension"),
+                                            .text("extension"),
                                           ],
                                         ),
                                       ],
@@ -1104,13 +1005,13 @@ class ServicesPage extends StatelessComponent {
                                     h3(
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
                                       [
-                                        Component.text(" Custom Software & Bespoke Engines "),
+                                        .text(" Custom Software & Bespoke Engines "),
                                       ],
                                     ),
                                     p(
                                       classes: "font-body-md text-body-md text-on-surface-variant max-w-xl",
                                       [
-                                        Component.text(
+                                        .text(
                                           " Specialized proprietary algorithms, offline native automation workstations, local hardware-interfacing software, and mission-critical enterprise utilities built strictly to your specifications. ",
                                         ),
                                       ],
@@ -1124,7 +1025,7 @@ class ServicesPage extends StatelessComponent {
                                     span(classes: "w-1.5 h-1.5 rounded-full bg-secondary", []),
                                     span(
                                       [
-                                        Component.text("Hardware Interfacing • Bespoke Engineering • Custom Protocols"),
+                                        .text("Hardware Interfacing • Bespoke Engineering • Custom Protocols"),
                                       ],
                                     ),
                                   ],
@@ -1155,7 +1056,7 @@ class ServicesPage extends StatelessComponent {
                           [
                             span(
                               [
-                                Component.text("GET IN TOUCH"),
+                                .text("GET IN TOUCH"),
                               ],
                             ),
                           ],
@@ -1164,13 +1065,13 @@ class ServicesPage extends StatelessComponent {
                           classes:
                               "font-headline-lg text-headline-lg text-on-surface tracking-tight max-w-2xl mb-space-md",
                           [
-                            Component.text(" Have an Idea? Let's Build It Together. "),
+                            .text(" Have an Idea? Let's Build It Together. "),
                           ],
                         ),
                         p(
                           classes: "font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-space-xl",
                           [
-                            Component.text(
+                            .text(
                               " Whether you're starting something new or improving an existing product, let's turn your idea into reliable, production-ready software. ",
                             ),
                           ],
@@ -1183,7 +1084,7 @@ class ServicesPage extends StatelessComponent {
                             "data-path": "contact",
                           },
                           [
-                            Component.text(" Tell Us About Your Project → "),
+                            .text(" Tell Us About Your Project → "),
                           ],
                         ),
                       ],
