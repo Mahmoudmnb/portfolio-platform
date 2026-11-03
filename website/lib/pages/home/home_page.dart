@@ -1273,47 +1273,39 @@ class HomePage extends StatelessComponent {
                     ),
                   ],
                 ),
-                Component.element(
-                  tag: "section",
+                section(
                   classes: "w-full bg-surface py-20 lg:py-28 relative",
-                  children: [
-                    Component.element(
-                      tag: "div",
+                  [
+                    div(
                       classes: "max-w-7xl mx-auto px-6 sm:px-8",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-3xl mb-16 space-y-4",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "inline-flex items-center gap-2 font-label-mono text-label-mono uppercase tracking-wider text-secondary",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",
+                              [
+                                span(
+                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",[]
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(
+                                  [
                                     Component.text("WHY BROTHERS-TECH"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes:
                                   "font-headline-lg text-headline-lg lg:text-[44px] lg:leading-[52px] text-on-surface font-semibold tracking-tight",
-                              children: [
+                              [
                                 Component.text(" More Than Code. We Build Products. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
-                              children: [
+                              [
                                 Component.text(
                                   " We combine engineering rigour with genuine product strategy so your digital systems run flawlessly under pressure and drive bottom-line velocity. ",
                                 ),
@@ -1321,40 +1313,34 @@ class HomePage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        Component.element(
-                          tag: "div",
+                        div(
                           classes: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "p-7 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/40 transition-all duration-300 space-y-4",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-2xl",
-                                      children: [
+                                      [
                                         Component.text("verified_user"),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" Built for Real-World Use "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Software designed around actual user behaviors, unforgiving real conditions, and measurable business requirements. ",
                                     ),
@@ -1362,36 +1348,31 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-7 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-secondary/40 transition-all duration-300 space-y-4",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-2xl",
-                                      children: [
+                                      [
                                         Component.text("hub"),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" One Team, Multi-Platform "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Mobile, web, and desktop products planned and delivered seamlessly by one coordinated team. ",
                                     ),
@@ -1399,36 +1380,31 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-7 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-primary/40 transition-all duration-300 space-y-4",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-2xl",
-                                      children: [
+                                      [
                                         Component.text("layers"),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" Scalable Architecture "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Clean code modularity and database schemas engineered to scale from initial prototype to millions of monthly active users. ",
                                     ),
@@ -1436,36 +1412,31 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-7 rounded-2xl bg-surface-container border border-outline-variant/30 hover:border-secondary/40 transition-all duration-300 space-y-4",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-2xl",
-                                      children: [
+                                      [
                                         Component.text("rocket_launch"),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" From Idea to Release "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Complete lifecycle ownership: product discovery, interface architecture, QA testing, deployment, and ongoing post-launch refinement. ",
                                     ),
@@ -1479,47 +1450,39 @@ class HomePage extends StatelessComponent {
                     ),
                   ],
                 ),
-                Component.element(
-                  tag: "section",
+                section(
                   classes: "w-full bg-surface-container-low py-20 lg:py-28 relative border-y border-outline-variant/20",
-                  children: [
-                    Component.element(
-                      tag: "div",
+                  [
+                    div(
                       classes: "max-w-7xl mx-auto px-6 sm:px-8",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-3xl mb-16 space-y-4",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "inline-flex items-center gap-2 font-label-mono text-label-mono uppercase tracking-wider text-secondary",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",
+                              [
+                                span(
+                                  classes: "h-1.5 w-1.5 rounded-full bg-secondary",[]
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(
+                                  [
                                     Component.text("HOW WE WORK"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes:
                                   "font-headline-lg text-headline-lg lg:text-[44px] lg:leading-[52px] text-on-surface font-semibold tracking-tight",
-                              children: [
+                              [
                                 Component.text(" From Idea to Launch. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant",
-                              children: [
+                              [
                                 Component.text(
                                   " A disciplined five-stage development pipeline designed to eliminate rework, ensure transparent execution, and protect delivery milestones. ",
                                 ),
@@ -1527,46 +1490,39 @@ class HomePage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        Component.element(
-                          tag: "div",
+                        div(
                           classes: "relative grid grid-cols-1 md:grid-cols-5 gap-6",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "hidden md:block absolute top-10 left-12 right-12 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary-container z-0 opacity-40",
-                            ),
-                            Component.element(
-                              tag: "div",
+                            []),
+                            div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-primary/40 transition-colors",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(173,198,255,0.4)]",
-                                  children: [
+                                  [
                                     Component.text(" 01 "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" DISCOVER "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h4",
+                                h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
-                                  children: [
+                                  [
                                     Component.text(" Define & Align "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Understand the business, users, technical requirements, edge cases, and core conversion goals. ",
                                     ),
@@ -1574,37 +1530,32 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-secondary/40 transition-colors",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center text-secondary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(76,215,246,0.4)]",
-                                  children: [
+                                  [
                                     Component.text(" 02 "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" DESIGN "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h4",
+                                h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
-                                  children: [
+                                  [
                                     Component.text(" Plan & Prototype "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Wireframe user flows, design interactive UI systems, and validate high-fidelity prototypes. ",
                                     ),
@@ -1612,37 +1563,32 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-primary/40 transition-colors",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(173,198,255,0.4)]",
-                                  children: [
+                                  [
                                     Component.text(" 03 "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" DEVELOP "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h4",
+                                h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
-                                  children: [
+                                  [
                                     Component.text(" Engineered Code "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Transform approved specifications into reliable software with clean architectures and CI/CD. ",
                                     ),
@@ -1650,37 +1596,32 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-secondary/40 transition-colors",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center text-secondary font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(76,215,246,0.4)]",
-                                  children: [
+                                  [
                                     Component.text(" 04 "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" TEST "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h4",
+                                h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
-                                  children: [
+                                  [
                                     Component.text(" Rigorous QA "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Verify automated test suites, end-to-end integration, performance under load, and system stability. ",
                                     ),
@@ -1688,37 +1629,32 @@ class HomePage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative z-10 p-6 rounded-2xl bg-surface-container border border-outline-variant/30 flex flex-col space-y-3 group hover:border-primary/40 transition-colors",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center text-primary-fixed font-label-mono font-bold text-sm shadow-[0_0_12px_rgba(77,142,255,0.4)]",
-                                  children: [
+                                  [
                                     Component.text(" 05 "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "font-label-mono text-label-mono text-secondary uppercase font-semibold",
-                                  children: [
+                                  [
                                     Component.text(" LAUNCH "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h4",
+                                h4(
                                   classes: "font-headline-sm text-body-md font-semibold text-on-surface",
-                                  children: [
+                                  [
                                     Component.text(" Deploy & Scale "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Zero-downtime production deployment, store approval submission, telemetry setup, and iteration. ",
                                     ),

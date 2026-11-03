@@ -1,4 +1,7 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+
+import '../../core/components/app_footer.dart';
 
 class AboutPage extends StatelessComponent {
   const AboutPage();
@@ -16,121 +19,106 @@ class AboutPage extends StatelessComponent {
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
       ),
       Component.fragment([
-        Component.element(
-          tag: "header",
+        header(
           classes:
               "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          children: [
-            Component.element(
-              tag: "div",
+          [
+            div(
               classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
-              children: [
-                Component.element(
-                  tag: "a",
+              [
+                a(
                   classes: "flex items-center gap-2 group",
+                  href: "/",
                   attributes: {
                     "data-path": "home",
-                    "href": "/",
                   },
-                  children: [
-                    Component.element(
-                      tag: "span",
+                  [
+                    span(
                       classes:
                           "font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold group-hover:text-primary transition-colors",
-                      children: [
+                      [
                         Component.text("Brothers-Tech"),
                       ],
                     ),
-                    Component.element(
-                      tag: "span",
-                      classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
-                    ),
+                    span(classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
                   ],
                 ),
-                Component.element(
-                  tag: "nav",
+                nav(
                   classes:
                       "hidden md:flex items-center gap-1 bg-surface-container-lowest/60 px-2 py-1.5 rounded-xl border border-[rgba(255,255,255,0.05)]",
                   attributes: {
                     "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
                   },
-                  children: [
-                    Component.element(
-                      tag: "a",
+                  [
+                    a(
                       classes:
                           "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
+                      href: "/",
                       attributes: {
                         "data-path": "home",
-                        "href": "/",
                       },
-                      children: [
+                      [
                         Component.text("Home"),
                       ],
                     ),
-                    Component.element(
-                      tag: "a",
+                    a(
                       classes:
                           "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
+                      href: "/services",
                       attributes: {
                         "data-path": "services",
-                        "href": "/services",
                       },
-                      children: [
+                      [
                         Component.text("Services"),
                       ],
                     ),
-                    Component.element(
-                      tag: "a",
+                    a(
                       classes:
                           "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
+                      href: "/projects",
                       attributes: {
                         "data-path": "projects",
-                        "href": "/projects",
                       },
-                      children: [
+                      [
                         Component.text("Projects"),
                       ],
                     ),
-                    Component.element(
-                      tag: "a",
+                    a(
                       classes:
                           "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
+                      href: "/about",
                       attributes: {
                         "aria-current": "page",
                         "data-path": "about",
-                        "href": "/about",
                       },
-                      children: [
+                      [
                         Component.text("About"),
                       ],
                     ),
-                    Component.element(
-                      tag: "a",
+                    a(
                       classes:
                           "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
+                      href: "/contact",
                       attributes: {
                         "data-path": "contact",
-                        "href": "/contact",
                       },
-                      children: [
+                      [
                         Component.text("Contact"),
                       ],
                     ),
                   ],
                 ),
-                Component.element(
-                  tag: "div",
+                div(
                   classes: "flex items-center gap-4",
-                  children: [
-                    Component.element(
-                      tag: "a",
+                  [
+                    a(
                       classes:
                           "hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(77,142,255,0.4)]",
+                      href: "/contact",
                       attributes: {
                         "data-path": "contact",
-                        "href": "/contact",
                       },
-                      children: [
+                      [
                         Component.text("Start a Project →"),
                       ],
                     ),
@@ -140,139 +128,120 @@ class AboutPage extends StatelessComponent {
             ),
           ],
         ),
-        Component.element(
-          tag: "main",
+        main_(
           classes: "w-full pt-20 bg-background flex-1",
-          children: [
-            Component.element(
-              tag: "div",
+          [
+            div(
               classes: "flex flex-col w-full",
-              children: [
-                Component.element(
-                  tag: "div",
+              [
+                div(
                   classes: "relative w-full overflow-hidden",
-                  children: [
-                    Component.element(
-                      tag: "div",
+                  [
+                    div(
                       classes:
                           "pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-primary/10 rounded-full blur-[140px] opacity-70",
+                      [],
                     ),
-                    Component.element(
-                      tag: "div",
+                    div(
                       classes:
                           "pointer-events-none absolute top-[30%] -right-40 w-[480px] h-[300px] bg-secondary/10 rounded-full blur-[120px] opacity-60",
+                      [],
                     ),
-                    Component.element(
-                      tag: "div",
+                    div(
                       classes:
                           "pointer-events-none absolute top-[70%] -left-32 w-[500px] h-[300px] bg-primary-container/10 rounded-full blur-[130px] opacity-50",
+                      [],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 pt-16 sm:pt-24 pb-20 sm:pb-28",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-4xl flex flex-col items-start space-y-6 sm:space-y-8",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-surface-container-low shadow-sm",
-                              children: [
-                                Component.element(
-                                  tag: "span",
+                              [
+                                span(
                                   classes:
                                       "inline-block w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-pulse",
+                                  [],
                                 ),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes: "font-label-mono text-label-mono text-secondary tracking-widest uppercase",
-                                  children: [
+                                  [
                                     Component.text("ABOUT BROTHERS-TECH"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h1",
+                            h1(
                               classes: "font-display-hero text-display-hero text-on-surface tracking-tight",
-                              children: [
+                              [
                                 Component.text(" Small Team. "),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes:
                                       "block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent",
-                                  children: [
+                                  [
                                     Component.text(" Serious Software. "),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed",
-                              children: [
+                              [
                                 Component.text(
                                   " Brothers-Tech is a software development team focused on building practical, reliable digital products across mobile, web and desktop. ",
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "pt-4 flex flex-wrap items-center gap-3 sm:gap-4 font-label-mono text-label-mono text-tertiary",
-                              children: [
-                                Component.element(
-                                  tag: "span",
+                              [
+                                span(
                                   classes: "flex items-center gap-2",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
-                                      children: [
+                                      [
                                         Component.text("verified"),
                                       ],
                                     ),
                                     Component.text(" Practitioner-Led "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes: "text-outline-variant",
-                                  children: [
+                                  [
                                     Component.text("•"),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes: "flex items-center gap-2",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
-                                      children: [
+                                      [
                                         Component.text("forum"),
                                       ],
                                     ),
                                     Component.text(" Direct Communication "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes: "text-outline-variant",
-                                  children: [
+                                  [
                                     Component.text("•"),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
+                                span(
                                   classes: "flex items-center gap-2",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
-                                      children: [
+                                      [
                                         Component.text("devices"),
                                       ],
                                     ),
@@ -285,48 +254,38 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-3xl mb-14 sm:mb-16",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                              [
+                                span(
+                                  [
                                     Component.text("01"),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-8 h-[1px] bg-secondary/40",
-                                ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(classes: "w-8 h-[1px] bg-secondary/40", []),
+                                span(
+                                  [
                                     Component.text("Core Principles"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
-                              children: [
+                              [
                                 Component.text(" What defines Brothers-Tech. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
-                              children: [
+                              [
                                 Component.text(
                                   " Engineering guidelines that dictate how we write every file, architect every database, and ship every release. ",
                                 ),
@@ -334,43 +293,36 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        Component.element(
-                          tag: "div",
+                        div(
                           classes: "grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
+                                      [
+                                        span(
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
-                                          children: [
+                                          [
                                             Component.text("view_in_ar"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
-                                      children: [
+                                      [
                                         Component.text(" Product First "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " We don't just write code to ticket specs; we think about user adoption, business viability, and real-world utility before touching a keyboard. A technically flawless feature is worthless if it creates user confusion. ",
                                         ),
@@ -378,48 +330,41 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
-                                  children: [
+                                  [
                                     Component.text(" FOCUS // OUTCOME OVER CEREMONY "),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
+                                      [
+                                        span(
                                           classes: "material-symbols-outlined text-primary text-[24px]",
-                                          children: [
+                                          [
                                             Component.text("signal_cellular_connected_no_internet_4_bar"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
-                                      children: [
+                                      [
                                         Component.text(" Built for Real Use "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " Software needs to work under edge conditions, slow connections, and messy human workflows—not just in clean local demos. We test for battery drain, unstable networks, and unexpected inputs from day one. ",
                                         ),
@@ -427,48 +372,41 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
-                                  children: [
+                                  [
                                     Component.text(" RESILIENCE // ZERO CHEAP DEMOS "),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
+                                      [
+                                        span(
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
-                                          children: [
+                                          [
                                             Component.text("code_blocks"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
-                                      children: [
+                                      [
                                         Component.text(" Clean Engineering "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " Maintainable codebases, type-safety, modular architecture, and zero unnecessary dependencies that slow future development down. We leave systems clean so your in-house team can step in without dread. ",
                                         ),
@@ -476,48 +414,41 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
-                                  children: [
+                                  [
                                     Component.text(" INTEGRITY // ZERO CODE BLOAT "),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
+                                      [
+                                        span(
                                           classes: "material-symbols-outlined text-primary text-[24px]",
-                                          children: [
+                                          [
                                             Component.text("all_inclusive"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
-                                      children: [
+                                      [
                                         Component.text(" Long-Term Thinking "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " We build systems designed to be operated, maintained, and evolved gracefully long after initial launch day. Smart schema versioning, backward compatibility, and sound migration paths are non-negotiable. ",
                                         ),
@@ -525,10 +456,9 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
-                                  children: [
+                                  [
                                     Component.text(" LIFECYCLE // OPERATIONAL MATURITY "),
                                   ],
                                 ),
@@ -538,48 +468,38 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-3xl mb-14 sm:mb-16",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                              [
+                                span(
+                                  [
                                     Component.text("02"),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-8 h-[1px] bg-secondary/40",
-                                ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(classes: "w-8 h-[1px] bg-secondary/40", []),
+                                span(
+                                  [
                                     Component.text("Our Journey"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
-                              children: [
+                              [
                                 Component.text(" Built through real projects. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
-                              children: [
+                              [
                                 Component.text(
                                   " Capability is forged through shipping real software under tight constraints, not memorizing abstract buzzwords. ",
                                 ),
@@ -587,62 +507,50 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        Component.element(
-                          tag: "div",
+                        div(
                           classes: "relative grid grid-cols-1 md:grid-cols-4 gap-6",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes: "flex items-center justify-between mb-6",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-label-mono text-secondary",
-                                      children: [
+                                      [
                                         Component.text("PHASE 01"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
-                                      classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
-                                    ),
+                                    div(classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
-                                  children: [
+                                  [
                                     Component.text(" Learn "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Deeply immersing in domain constraints, user behavior, and technology primitives before proposing any architectural pattern. ",
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-[14px]",
-                                      children: [
+                                      [
                                         Component.text("search"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                    span(
+                                      [
                                         Component.text("Discovery & Scoping"),
                                       ],
                                     ),
@@ -650,58 +558,47 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes: "flex items-center justify-between mb-6",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-label-mono text-primary",
-                                      children: [
+                                      [
                                         Component.text("PHASE 02"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
-                                      classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]",
-                                    ),
+                                    div(classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]", []),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
-                                  children: [
+                                  [
                                     Component.text(" Build "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Translating architecture into clean, testable software across mobile, web, and desktop with zero intermediate handoffs. ",
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-[14px]",
-                                      children: [
+                                      [
                                         Component.text("code"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                    span(
+                                      [
                                         Component.text("Disciplined Coding"),
                                       ],
                                     ),
@@ -709,58 +606,47 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes: "flex items-center justify-between mb-6",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-label-mono text-secondary",
-                                      children: [
+                                      [
                                         Component.text("PHASE 03"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
-                                      classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
-                                    ),
+                                    div(classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]", []),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
-                                  children: [
+                                  [
                                     Component.text(" Ship "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Deploying production releases with disciplined QA, smooth automated CI/CD, and stringent App Store or cloud compliance. ",
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-[14px]",
-                                      children: [
+                                      [
                                         Component.text("rocket_launch"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                    span(
+                                      [
                                         Component.text("Automated Releases"),
                                       ],
                                     ),
@@ -768,58 +654,47 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes: "flex items-center justify-between mb-6",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-label-mono text-primary",
-                                      children: [
+                                      [
                                         Component.text("PHASE 04"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
-                                      classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]",
-                                    ),
+                                    div(classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]", []),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h3",
+                                h3(
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
-                                  children: [
+                                  [
                                     Component.text(" Improve "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Listening to real user feedback, monitoring edge cases, profiling bottlenecks, and refining performance continuously. ",
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "material-symbols-outlined text-[14px]",
-                                      children: [
+                                      [
                                         Component.text("refresh"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                    span(
+                                      [
                                         Component.text("Telemetry & Polish"),
                                       ],
                                     ),
@@ -831,58 +706,47 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes:
                               "rounded-xl bg-surface-container-lowest p-8 sm:p-14 shadow-2xl relative overflow-hidden",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-80",
+                              [],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes: "max-w-2xl mb-12 sm:mb-16",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes:
                                       "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                  [
+                                    span(
+                                      [
                                         Component.text("03"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
-                                      classes: "w-8 h-[1px] bg-secondary/40",
-                                    ),
-                                    Component.element(
-                                      tag: "span",
-                                      children: [
+                                    span(classes: "w-8 h-[1px] bg-secondary/40", []),
+                                    span(
+                                      [
                                         Component.text("Engineering Philosophy"),
                                       ],
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "h2",
+                                h2(
                                   classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
-                                  children: [
+                                  [
                                     Component.text(" Good software isn't just code. "),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "p",
+                                p(
                                   classes: "font-body-lg text-body-lg text-on-surface-variant mt-2",
-                                  children: [
+                                  [
                                     Component.text(
                                       " Lines of code are a liability, not an asset. Value is measured by human simplicity and operational endurance. ",
                                     ),
@@ -890,32 +754,27 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes: "grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10",
-                              children: [
-                                Component.element(
-                                  tag: "div",
+                              [
+                                div(
                                   classes: "space-y-4",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
-                                      children: [
+                                      [
                                         Component.text("01"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
-                                      children: [
+                                      [
                                         Component.text(" It solves a real problem "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " If it doesn't eliminate friction or unlock a genuine capability, no amount of engineering polish will save it. We question assumptions early so time isn't wasted building what nobody uses. ",
                                         ),
@@ -923,28 +782,24 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "space-y-4",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-headline-sm text-primary font-semibold",
-                                      children: [
+                                      [
                                         Component.text("02"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
-                                      children: [
+                                      [
                                         Component.text(" It feels simple to use "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " True sophistication is making complex distributed logic feel effortless, intuitive, and responsive to the user. Fast micro-interactions and sensible defaults beat confusing menus every time. ",
                                         ),
@@ -952,28 +807,24 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes: "space-y-4",
-                                  children: [
-                                    Component.element(
-                                      tag: "span",
+                                  [
+                                    span(
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
-                                      children: [
+                                      [
                                         Component.text("03"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "h3",
+                                    h3(
                                       classes: "font-headline-md text-headline-md text-on-surface",
-                                      children: [
+                                      [
                                         Component.text(" It can grow "),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "p",
+                                    p(
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
-                                      children: [
+                                      [
                                         Component.text(
                                           " Architected from day one so adding a mobile client, a new API endpoint, or doubling user volume doesn't require a complete rewrite. Modularity allows gradual evolution without friction. ",
                                         ),
@@ -987,48 +838,38 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes: "max-w-3xl mb-14 sm:mb-16",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                              [
+                                span(
+                                  [
                                     Component.text("04"),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-8 h-[1px] bg-secondary/40",
-                                ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(classes: "w-8 h-[1px] bg-secondary/40", []),
+                                span(
+                                  [
                                     Component.text("Engineers & Designers"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
-                              children: [
+                              [
                                 Component.text(" Small by design. Driven by craft. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
-                              children: [
+                              [
                                 Component.text(
                                   " We keep the team lean so every project gets direct attention from experienced practitioners. No junior delegates, no outsourced accounts. ",
                                 ),
@@ -1036,76 +877,65 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        Component.element(
-                          tag: "div",
+                        div(
                           classes: "grid grid-cols-1 md:grid-cols-3 gap-8",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "group rounded-xl bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between hover:bg-surface-container transition-all duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes: "relative w-full h-72 overflow-hidden bg-surface-container-highest",
-                                      children: [
-                                        Component.element(
-                                          tag: "img",
+                                      [
+                                        img(
                                           classes:
                                               "w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500",
+                                          src: "assets/images/Mahmoud.png",
                                           attributes: {
                                             "data-alt":
                                                 "Editorial portrait of a male technical lead engineer in a minimalist dark studio setting, moody cinematic soft lighting with subtle cool cyan rim light, wearing a dark crewneck, thoughtful and focused expression, high dynamic range editorial portrait photograph in contemporary aesthetic.",
-                                            "src": "assets/images/Mahmoud.png",
                                           },
                                         ),
-                                        Component.element(
-                                          tag: "div",
+                                        div(
                                           classes:
                                               "absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent",
+                                          [],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
+                                    div(
                                       classes: "p-6 sm:p-8 space-y-3",
-                                      children: [
-                                        Component.element(
-                                          tag: "div",
+                                      [
+                                        div(
                                           classes: "flex items-center justify-between",
-                                          children: [
-                                            Component.element(
-                                              tag: "span",
+                                          [
+                                            span(
                                               classes:
                                                   "font-label-mono text-label-mono-xs text-secondary uppercase tracking-wider",
-                                              children: [
+                                              [
                                                 Component.text("FOUNDER / MOBILE DEVELOPER / BACK-END DEVELOPER"),
                                               ],
                                             ),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "h3",
+                                        h3(
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
-                                          children: [
+                                          [
                                             Component.text(" Mahmoud Bannan "),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "p",
+                                        p(
                                           classes: "font-body-sm text-body-sm text-tertiary",
-                                          children: [
+                                          [
                                             Component.text(" FOUNDER & Mobile Developer & Back-end Developer "),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "p",
+                                        p(
                                           classes:
                                               "font-body-md text-body-md text-on-surface-variant pt-2 leading-relaxed",
-                                          children: [
+                                          [
                                             Component.text(
                                               " Building reliable mobile applications and robust back-end systems with a focus on clean architecture, performance, and maintainable code. ",
                                             ),
@@ -1115,57 +945,47 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes:
                                       "px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex items-center gap-4 font-label-mono text-label-mono text-primary",
-                                  children: [
-                                    Component.element(
-                                      tag: "a",
+                                  [
+                                    a(
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
-                                      attributes: {
-                                        "href": "https://www.linkedin.com/in/mouhammed-deeb-jalab",
-                                      },
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
-                                          children: [
+                                      href: "https://www.linkedin.com/in/mouhammed-deeb-jalab",
+
+                                      [
+                                        span(
+                                          [
                                             Component.text("LinkedIn"),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "span",
+                                        span(
                                           classes: "material-symbols-outlined text-[14px]",
-                                          children: [
+                                          [
                                             Component.text("north_east"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
+                                    span(
                                       classes: "text-outline-variant",
-                                      children: [
+                                      [
                                         Component.text("•"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "a",
+                                    a(
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
-                                      attributes: {
-                                        "href": "https://github.com/Mohamed-Jalab",
-                                      },
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
-                                          children: [
+                                      href: "https://github.com/Mohamed-Jalab",
+
+                                      [
+                                        span(
+                                          [
                                             Component.text("GitHub"),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "span",
+                                        span(
                                           classes: "material-symbols-outlined text-[14px]",
-                                          children: [
+                                          [
                                             Component.text("north_east"),
                                           ],
                                         ),
@@ -1175,72 +995,61 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "group rounded-xl bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between hover:bg-surface-container transition-all duration-300",
-                              children: [
-                                Component.element(
-                                  tag: "div",
-                                  children: [
-                                    Component.element(
-                                      tag: "div",
+                              [
+                                div(
+                                  [
+                                    div(
                                       classes: "relative w-full h-72 overflow-hidden bg-surface-container-highest",
-                                      children: [
-                                        Component.element(
-                                          tag: "img",
+                                      [
+                                        img(
                                           classes:
                                               "w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500",
-                                          attributes: {
-                                            "alt":
-                                                "Portrait of Mohammed Deeb Jalab, founder, mobile developer, and front-end web developer",
-                                            "src": "assets/images/Mohammed.jpg",
-                                          },
+
+                                          alt:
+                                              "Portrait of Mohammed Deeb Jalab, founder, mobile developer, and front-end web developer",
+                                          src: "assets/images/Mohammed.jpg",
                                         ),
-                                        Component.element(
-                                          tag: "div",
+                                        div(
                                           classes:
                                               "absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent",
+                                          [],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "div",
+                                    div(
                                       classes: "p-6 sm:p-8 space-y-3",
-                                      children: [
-                                        Component.element(
-                                          tag: "div",
+                                      [
+                                        div(
                                           classes: "flex items-center justify-between",
-                                          children: [
-                                            Component.element(
-                                              tag: "span",
+                                          [
+                                            span(
                                               classes:
                                                   "font-label-mono text-label-mono-xs text-primary uppercase tracking-wider",
-                                              children: [
+                                              [
                                                 Component.text("FOUNDER / MOBILE DEVELOPER / FRONT-END WEB DEVELOPER"),
                                               ],
                                             ),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "h3",
+                                        h3(
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
-                                          children: [
+                                          [
                                             Component.text(" Mohammed Deeb Jalab "),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "p",
+                                        p(
                                           classes: "font-body-sm text-body-sm text-tertiary",
-                                          children: [
+                                          [
                                             Component.text(" FOUNDER & Mobile Developer & Front-end Web Developer "),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "p",
+                                        p(
                                           classes:
                                               "font-body-md text-body-md text-on-surface-variant pt-2 leading-relaxed",
-                                          children: [
+                                          [
                                             Component.text(
                                               " Building polished mobile applications and responsive web experiences with clean code, intuitive interfaces, and dependable performance. ",
                                             ),
@@ -1250,57 +1059,47 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                Component.element(
-                                  tag: "div",
+                                div(
                                   classes:
                                       "px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex items-center gap-4 font-label-mono text-label-mono text-primary",
-                                  children: [
-                                    Component.element(
-                                      tag: "a",
+                                  [
+                                    a(
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
-                                      attributes: {
-                                        "href": "https://www.linkedin.com/in/mouhammed-deeb-jalab",
-                                      },
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
-                                          children: [
+                                      href: "https://www.linkedin.com/in/mouhammed-deeb-jalab",
+
+                                      [
+                                        span(
+                                          [
                                             Component.text("LinkedIn"),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "span",
+                                        span(
                                           classes: "material-symbols-outlined text-[14px]",
-                                          children: [
+                                          [
                                             Component.text("north_east"),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "span",
+                                    span(
                                       classes: "text-outline-variant",
-                                      children: [
+                                      [
                                         Component.text("•"),
                                       ],
                                     ),
-                                    Component.element(
-                                      tag: "a",
+                                    a(
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
-                                      attributes: {
-                                        "href": "https://github.com/Mohamed-Jalab",
-                                      },
-                                      children: [
-                                        Component.element(
-                                          tag: "span",
-                                          children: [
+                                      href: "https://github.com/Mohamed-Jalab",
+
+                                      [
+                                        span(
+                                          [
                                             Component.text("GitHub"),
                                           ],
                                         ),
-                                        Component.element(
-                                          tag: "span",
+                                        span(
                                           classes: "material-symbols-outlined text-[14px]",
-                                          children: [
+                                          [
                                             Component.text("north_east"),
                                           ],
                                         ),
@@ -1314,81 +1113,60 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-10",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes:
                               "py-5 px-6 sm:px-10 rounded-xl bg-surface-container-lowest/80 backdrop-blur-md flex flex-wrap items-center justify-around gap-4 shadow-sm",
-                          children: [
-                            Component.element(
-                              tag: "span",
+                          [
+                            span(
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
-                                ),
+                              [
+                                span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
                                 Component.text(" Mobile "),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes: "text-outline-variant/60",
-                              children: [
+                              [
                                 Component.text("•"),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#adc6ff]",
-                                ),
+                              [
+                                span(classes: "w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#adc6ff]", []),
                                 Component.text(" Web "),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes: "text-outline-variant/60",
-                              children: [
+                              [
                                 Component.text("•"),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
-                                ),
+                              [
+                                span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
                                 Component.text(" Desktop "),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes: "text-outline-variant/60",
-                              children: [
+                              [
                                 Component.text("•"),
                               ],
                             ),
-                            Component.element(
-                              tag: "span",
+                            span(
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
-                              children: [
-                                Component.element(
-                                  tag: "span",
-                                  classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
-                                ),
+                              [
+                                span(classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]", []),
                                 Component.text(" UI/UX "),
                               ],
                             ),
@@ -1396,71 +1174,63 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    Component.element(
-                      tag: "section",
+                    section(
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 pt-12 pb-24 sm:pb-32",
-                      children: [
-                        Component.element(
-                          tag: "div",
+                      [
+                        div(
                           classes:
                               "relative rounded-2xl bg-surface-container-low p-8 sm:p-16 shadow-2xl overflow-hidden text-center flex flex-col items-center",
-                          children: [
-                            Component.element(
-                              tag: "div",
+                          [
+                            div(
                               classes:
                                   "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(77,142,255,0.12)_0%,transparent_70%)]",
+                              [],
                             ),
-                            Component.element(
-                              tag: "div",
+                            div(
                               classes:
                                   "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-secondary font-label-mono text-label-mono mb-8 shadow-sm",
-                              children: [
-                                Component.element(
-                                  tag: "span",
+                              [
+                                span(
                                   classes: "w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-ping",
+                                  [],
                                 ),
-                                Component.element(
-                                  tag: "span",
-                                  children: [
+                                span(
+                                  [
                                     Component.text("Available for new projects"),
                                   ],
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "h2",
+                            h2(
                               classes:
                                   "font-headline-lg text-headline-lg text-on-surface tracking-tight max-w-2xl mb-4",
-                              children: [
+                              [
                                 Component.text(" Have an Idea? Let's Build It Together. "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes:
                                   "font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed",
-                              children: [
+                              [
                                 Component.text(
                                   " Whether you're starting something new or improving an existing product, let's turn your idea into reliable software. ",
                                 ),
                               ],
                             ),
-                            Component.element(
-                              tag: "a",
+                            a(
                               classes:
                                   "inline-flex items-center justify-center h-12 px-8 rounded-lg bg-primary-container text-on-primary-container font-body-md text-body-md font-medium hover:bg-primary transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_24px_rgba(77,142,255,0.4)]",
+                              href: "/contact",
                               attributes: {
                                 "data-path": "contact",
-                                "href": "/contact",
                               },
-                              children: [
+                              [
                                 Component.text(" Tell Us About Your Project → "),
                               ],
                             ),
-                            Component.element(
-                              tag: "p",
+                            p(
                               classes: "font-label-mono text-label-mono-xs text-tertiary mt-6",
-                              children: [
+                              [
                                 Component.text(" DIRECT RESPONSE FROM A TECHNICAL LEAD WITHIN 24 HOURS "),
                               ],
                             ),
@@ -1474,274 +1244,7 @@ class AboutPage extends StatelessComponent {
             ),
           ],
         ),
-        Component.element(
-          tag: "footer",
-          classes: "w-full bg-surface-container-lowest border-t border-[rgba(255,255,255,0.08)] py-16",
-          children: [
-            Component.element(
-              tag: "div",
-              classes: "max-w-7xl mx-auto px-6 sm:px-8",
-              children: [
-                Component.element(
-                  tag: "div",
-                  classes: "grid grid-cols-1 md:grid-cols-4 gap-10 mb-12",
-                  children: [
-                    Component.element(
-                      tag: "div",
-                      classes: "space-y-4",
-                      children: [
-                        Component.element(
-                          tag: "div",
-                          classes: "flex items-center gap-2",
-                          children: [
-                            Component.element(
-                              tag: "span",
-                              classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
-                              children: [
-                                Component.text("Brothers-Tech"),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "span",
-                              classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
-                            ),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "p",
-                          classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
-                          children: [
-                            Component.text(
-                              " Architecting elite software systems, AI infrastructure, and mission-critical cloud platforms for modern enterprises. ",
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Component.element(
-                      tag: "div",
-                      children: [
-                        Component.element(
-                          tag: "h4",
-                          classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
-                          children: [
-                            Component.text(" Navigation "),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "ul",
-                          classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
-                          children: [
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.element(
-                                  tag: "a",
-                                  classes: "hover:text-primary transition-colors",
-                                  attributes: {
-                                    "data-path": "home",
-                                    "href": "/",
-                                  },
-                                  children: [
-                                    Component.text("Home"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.element(
-                                  tag: "a",
-                                  classes: "hover:text-primary transition-colors",
-                                  attributes: {
-                                    "data-path": "services",
-                                    "href": "/services",
-                                  },
-                                  children: [
-                                    Component.text("Services"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.element(
-                                  tag: "a",
-                                  classes: "hover:text-primary transition-colors",
-                                  attributes: {
-                                    "data-path": "projects",
-                                    "href": "/projects",
-                                  },
-                                  children: [
-                                    Component.text("Projects"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.element(
-                                  tag: "a",
-                                  classes: "hover:text-primary transition-colors",
-                                  attributes: {
-                                    "data-path": "about",
-                                    "href": "/about",
-                                  },
-                                  children: [
-                                    Component.text("About"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.element(
-                                  tag: "a",
-                                  classes: "hover:text-primary transition-colors",
-                                  attributes: {
-                                    "data-path": "contact",
-                                    "href": "/contact",
-                                  },
-                                  children: [
-                                    Component.text("Contact"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Component.element(
-                      tag: "div",
-                      children: [
-                        Component.element(
-                          tag: "h4",
-                          classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
-                          children: [
-                            Component.text(" Practices "),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "ul",
-                          classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
-                          children: [
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.text("Full-Stack Platforms"),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "li",
-                              children: [
-                                Component.text("AI & Machine Learning"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Component.element(
-                      tag: "div",
-                      children: [
-                        Component.element(
-                          tag: "h4",
-                          classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
-                          children: [
-                            Component.text(" Studio "),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "p",
-                          classes: "font-body-sm text-body-sm text-on-surface-variant mb-4",
-                          children: [
-                            Component.text(" Engineering disciplined technical solutions with surgical execution. "),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "div",
-                          classes: "flex items-center gap-3 text-secondary font-label-mono text-label-mono",
-                          children: [
-                            Component.element(
-                              tag: "span",
-                              children: [
-                                Component.text("EST. 2024"),
-                              ],
-                            ),
-                            Component.element(
-                              tag: "span",
-                              classes: "inline-block w-1.5 h-1.5 rounded-full bg-secondary",
-                            ),
-                            Component.element(
-                              tag: "span",
-                              children: [
-                                Component.text("GLOBAL CORE"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Component.element(
-                  tag: "div",
-                  classes:
-                      "pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4 font-label-mono text-label-mono-xs text-on-surface-variant",
-                  children: [
-                    Component.element(
-                      tag: "p",
-                      children: [
-                        Component.text("© 2025 Brothers-Tech Studio. All rights reserved."),
-                      ],
-                    ),
-                    Component.element(
-                      tag: "div",
-                      classes: "flex items-center gap-6",
-                      children: [
-                        Component.element(
-                          tag: "a",
-                          classes: "hover:text-on-surface transition-colors",
-                          attributes: {
-                            "href": "#",
-                          },
-                          children: [
-                            Component.text("Security Policy"),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "a",
-                          classes: "hover:text-on-surface transition-colors",
-                          attributes: {
-                            "href": "#",
-                          },
-                          children: [
-                            Component.text("Terms of Service"),
-                          ],
-                        ),
-                        Component.element(
-                          tag: "a",
-                          classes: "hover:text-on-surface transition-colors",
-                          attributes: {
-                            "href": "#",
-                          },
-                          children: [
-                            Component.text("Privacy Architecture"),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+        AppFooter(),
       ]),
     ]);
   }
