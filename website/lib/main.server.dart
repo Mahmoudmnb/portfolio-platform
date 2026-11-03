@@ -25,11 +25,7 @@ void main() {
       },
       styles: siteStyles,
       head: [
-        _headElement('link', {
-          'rel': 'icon',
-          'href': 'favicon.svg',
-          'type': 'image/svg+xml',
-        }),
+        link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
         _headElement('link', {
           'rel': 'preconnect',
           'href': 'https://fonts.googleapis.com',

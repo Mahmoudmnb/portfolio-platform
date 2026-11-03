@@ -5,7 +5,6 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
-import 'package:bro_tech_web/pages/site_page.dart' as _site_page;
 
 /// Default [ServerOptions] for use with your Jaspr project.
 ///
@@ -23,16 +22,5 @@ import 'package:bro_tech_web/pages/site_page.dart' as _site_page;
 ///   runApp(...);
 /// }
 /// ```
-ServerOptions get defaultServerOptions => ServerOptions(
-  clientId: 'main.client.dart.js',
-  clients: {
-    _site_page.SitePage: ClientTarget<_site_page.SitePage>(
-      'site_page',
-      params: __site_pageSitePage,
-    ),
-  },
-);
-
-Map<String, Object?> __site_pageSitePage(_site_page.SitePage c) => {
-  'page': c.page,
-};
+ServerOptions get defaultServerOptions =>
+    ServerOptions(clientId: 'main.client.dart.js');

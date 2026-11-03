@@ -6,8 +6,6 @@
 
 import 'package:jaspr/client.dart';
 
-import 'package:bro_tech_web/pages/site_page.dart' deferred as _site_page;
-
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
 /// Use this to initialize Jaspr **before** calling [runApp].
@@ -24,11 +22,4 @@ import 'package:bro_tech_web/pages/site_page.dart' deferred as _site_page;
 ///   runApp(...);
 /// }
 /// ```
-ClientOptions get defaultClientOptions => ClientOptions(
-  clients: {
-    'site_page': ClientLoader(
-      (p) => _site_page.SitePage(page: p['page'] as String),
-      loader: _site_page.loadLibrary,
-    ),
-  },
-);
+ClientOptions get defaultClientOptions => ClientOptions();
