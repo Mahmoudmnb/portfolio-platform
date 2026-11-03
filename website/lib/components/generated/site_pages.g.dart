@@ -4852,6 +4852,7 @@ Component buildProjectsPage() {
                   classes:
                       "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
                   attributes: {
+                    "aria-current": "page",
                     "data-path": "projects",
                     "href": "/projects",
                   },
@@ -7323,6 +7324,7 @@ Component buildAboutPage() {
                   classes:
                       "px-4 py-2 text-on-surface-variant font-body-md text-body-md hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg",
                   attributes: {
+                    "aria-current": "page",
                     "data-path": "about",
                     "href": "/about",
                   },
