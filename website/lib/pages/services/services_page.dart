@@ -15,18 +15,15 @@ class ServicesPage extends StatelessComponent {
       Document.body(attributes: {'class': "bg-surface font-body-md text-on-surface antialiased"}),
 
       Component.fragment([
-        // ignore: prefer_html_components
         Component.element(
           tag: "header",
           classes:
               "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "a",
                   classes: "flex items-center gap-2 group",
@@ -35,7 +32,6 @@ class ServicesPage extends StatelessComponent {
                     "href": "/",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes:
@@ -44,14 +40,12 @@ class ServicesPage extends StatelessComponent {
                         Component.text("Brothers-Tech"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "nav",
                   classes:
@@ -60,7 +54,6 @@ class ServicesPage extends StatelessComponent {
                     "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -73,7 +66,6 @@ class ServicesPage extends StatelessComponent {
                         Component.text("Home"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -87,7 +79,6 @@ class ServicesPage extends StatelessComponent {
                         Component.text("Services"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -100,7 +91,6 @@ class ServicesPage extends StatelessComponent {
                         Component.text("Projects"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -113,7 +103,6 @@ class ServicesPage extends StatelessComponent {
                         Component.text("About"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -128,12 +117,10 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "flex items-center gap-4",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -152,57 +139,47 @@ class ServicesPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "main",
           classes: "w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "flex flex-col w-full",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "section",
                   classes: "relative w-full overflow-hidden px-6 lg:px-12 py-16 lg:py-24",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-b from-primary/15 via-secondary/5 to-transparent blur-3xl pointer-events-none -z-10",
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "max-w-6xl mx-auto flex flex-col items-center text-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "inline-flex items-center gap-space-sm px-3.5 py-1 rounded-full bg-surface-container-high shadow-sm mb-space-lg",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "relative flex h-2 w-2",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
                                       "animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "relative inline-flex rounded-full h-2 w-2 bg-secondary",
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
@@ -213,14 +190,12 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h1",
                           classes:
                               "font-display-hero text-display-hero tracking-tight text-on-surface max-w-4xl mb-space-md",
                           children: [
                             Component.text(" From Idea to "),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
@@ -231,7 +206,6 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes:
@@ -242,28 +216,23 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "w-full max-w-4xl p-1 rounded-xl bg-surface-container-low shadow-md",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "px-6 py-3 rounded-lg bg-surface-container flex flex-wrap items-center justify-between gap-y-3 gap-x-6 text-on-surface-variant font-label-mono text-label-mono",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center gap-space-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-on-surface",
@@ -273,7 +242,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "hidden sm:inline text-outline-variant font-mono",
@@ -281,17 +249,14 @@ class ServicesPage extends StatelessComponent {
                                     Component.text("•"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center gap-space-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-on-surface",
@@ -301,7 +266,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "hidden sm:inline text-outline-variant font-mono",
@@ -309,17 +273,14 @@ class ServicesPage extends StatelessComponent {
                                     Component.text("•"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center gap-space-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-on-surface",
@@ -329,7 +290,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "hidden sm:inline text-outline-variant font-mono",
@@ -337,17 +297,14 @@ class ServicesPage extends StatelessComponent {
                                     Component.text("•"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center gap-space-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-on-surface",
@@ -365,22 +322,18 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "section",
                   classes: "w-full px-6 lg:px-12 py-12 flex flex-col gap-24 lg:gap-32 max-w-7xl mx-auto",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "lg:col-span-6 flex flex-col items-start",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
@@ -389,7 +342,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" 01 • Mobile Applications "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes:
@@ -398,7 +350,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Mobile Applications "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
@@ -410,12 +361,10 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "lg:col-span-6 relative w-full flex items-center justify-center",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "img",
                               classes: "block w-full max-w-lg h-auto rounded-2xl shadow-2xl",
@@ -429,17 +378,14 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "order-2 lg:order-1 lg:col-span-6 relative w-full flex items-center justify-center",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "img",
                               classes: "block w-full max-w-lg h-auto rounded-2xl shadow-2xl",
@@ -451,12 +397,10 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "order-1 lg:order-2 lg:col-span-6 flex flex-col items-start",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
@@ -465,7 +409,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" 02 • Web Platforms "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes:
@@ -474,7 +417,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Web Platforms, Applications & High-Density Dashboards "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
@@ -488,17 +430,14 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "lg:col-span-6 flex flex-col items-start",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
@@ -507,7 +446,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" 03 • Desktop Applications "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes:
@@ -516,7 +454,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Desktop Software & Operations Workstations "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg",
@@ -528,12 +465,10 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "lg:col-span-6 relative w-full flex items-center justify-center",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "img",
                               classes: "block w-full max-w-lg h-auto rounded-2xl shadow-2xl",
@@ -549,21 +484,17 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "section",
                   classes: "w-full px-6 lg:px-12 py-20 max-w-7xl mx-auto",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
@@ -572,7 +503,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Engineering Delivery Framework "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
@@ -582,7 +512,6 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-lg text-body-lg text-on-surface-variant max-w-md",
@@ -594,27 +523,22 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -622,7 +546,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("01 // DISCOVERY"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -632,7 +555,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -640,7 +562,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Plan "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -652,13 +573,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -669,22 +588,18 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -692,7 +607,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("02 // PROTOTYPING"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -702,7 +616,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -710,7 +623,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Design "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -722,13 +634,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -739,22 +649,18 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -762,7 +668,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("03 // EXECUTION"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -772,7 +677,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -780,7 +684,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Develop "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -792,13 +695,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -809,22 +710,18 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -832,7 +729,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("04 // VERIFICATION"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -842,7 +738,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -850,7 +745,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Test "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -862,13 +756,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -879,22 +771,18 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -902,7 +790,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("05 // ROLLOUT"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -912,7 +799,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -920,7 +806,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Deploy "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -932,13 +817,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -949,22 +832,18 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "p-6 rounded-2xl bg-surface-container shadow-md hover:bg-surface-container-high transition-colors flex flex-col justify-between h-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary font-bold",
@@ -972,7 +851,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text("06 // MAINTENANCE"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-on-surface-variant text-[20px]",
@@ -982,7 +860,6 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -990,7 +867,6 @@ class ServicesPage extends StatelessComponent {
                                     Component.text(" Support "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -1002,13 +878,11 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-6 font-label-mono-xs text-label-mono-xs text-secondary flex items-center gap-1",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -1023,22 +897,18 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "section",
                   classes: "w-full px-6 lg:px-12 py-20 bg-surface-container-lowest",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "max-w-7xl mx-auto flex flex-col items-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "text-center max-w-3xl mb-16",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
@@ -1047,7 +917,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Product Taxonomy "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes:
@@ -1056,7 +925,6 @@ class ServicesPage extends StatelessComponent {
                                 Component.text(" Software Solutions Tailored to Your Industry. "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant leading-relaxed",
@@ -1068,28 +936,23 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1099,7 +962,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1107,7 +969,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Business Applications "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1119,18 +980,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1141,23 +999,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1167,7 +1021,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1175,7 +1028,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Educational Platforms "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1187,18 +1039,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1209,23 +1058,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1235,7 +1080,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1243,7 +1087,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Management Systems "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1255,18 +1098,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1277,23 +1117,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1303,7 +1139,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1311,7 +1146,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" E-commerce Solutions "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1323,18 +1157,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1345,23 +1176,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1371,7 +1198,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1379,7 +1205,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Dashboards & Analytics "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1391,18 +1216,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1413,23 +1235,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1439,7 +1257,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1447,7 +1264,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Admin Panels "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant",
@@ -1459,18 +1275,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1481,23 +1294,19 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-6 rounded-2xl bg-surface-container flex flex-col justify-between shadow-sm hover:bg-surface-container-high transition-colors md:col-span-2 xl:col-span-2",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[22px]",
@@ -1507,7 +1316,6 @@ class ServicesPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-sm text-headline-sm text-on-surface font-semibold mb-2",
@@ -1515,7 +1323,6 @@ class ServicesPage extends StatelessComponent {
                                         Component.text(" Custom Software & Bespoke Engines "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant max-w-xl",
@@ -1527,18 +1334,15 @@ class ServicesPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "mt-4 pt-3 flex items-center gap-2 text-secondary font-label-mono-xs text-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-1.5 h-1.5 rounded-full bg-secondary",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -1555,30 +1359,25 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "section",
                   classes: "w-full px-6 lg:px-12 py-20 lg:py-28 relative",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "max-w-5xl mx-auto rounded-3xl bg-surface-container p-8 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col items-center text-center",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none",
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-mono-xs text-label-mono-xs uppercase tracking-widest font-semibold mb-space-md",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               children: [
@@ -1587,7 +1386,6 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h2",
                           classes:
@@ -1596,7 +1394,6 @@ class ServicesPage extends StatelessComponent {
                             Component.text(" Have an Idea? Let's Build It Together. "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-space-xl",
@@ -1606,7 +1403,6 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes:
@@ -1627,37 +1423,30 @@ class ServicesPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "footer",
           classes: "w-full bg-surface-container-lowest text-on-surface-variant",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "max-w-7xl mx-auto px-6 lg:px-12 pt-space-xl pb-space-lg",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl mb-space-xl",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "lg:col-span-2 flex flex-col gap-space-md",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-space-sm",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "w-2 h-2 rounded-full bg-secondary shadow-[0_0_12px_#4cd7f6]",
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
@@ -1667,7 +1456,6 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-md text-body-md text-on-surface-variant max-w-sm leading-relaxed",
@@ -1677,12 +1465,10 @@ class ServicesPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-space-sm pt-space-xs",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
@@ -1695,12 +1481,10 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex flex-col gap-space-sm",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "span",
                           classes:
@@ -1709,17 +1493,14 @@ class ServicesPage extends StatelessComponent {
                             Component.text("Navigation"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "flex flex-col gap-space-xs font-body-md text-body-md",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               classes: "pt-space-xs",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1733,11 +1514,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1751,11 +1530,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1769,11 +1546,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1787,11 +1562,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1809,12 +1582,10 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex flex-col gap-space-sm",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "span",
                           classes:
@@ -1823,17 +1594,14 @@ class ServicesPage extends StatelessComponent {
                             Component.text("Practices"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "flex flex-col gap-space-xs font-body-md text-body-md",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               classes: "pt-space-xs",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1847,11 +1615,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1869,12 +1635,10 @@ class ServicesPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex flex-col gap-space-sm",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "span",
                           classes:
@@ -1883,17 +1647,14 @@ class ServicesPage extends StatelessComponent {
                             Component.text("Studio"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "flex flex-col gap-space-xs font-body-md text-body-md",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               classes: "pt-space-xs",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1907,11 +1668,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1925,11 +1684,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1943,11 +1700,9 @@ class ServicesPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-on-surface transition-colors",
@@ -1967,13 +1722,11 @@ class ServicesPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes:
                       "pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "p",
                       classes: "font-body-sm text-body-sm",
@@ -1981,12 +1734,10 @@ class ServicesPage extends StatelessComponent {
                         Component.text(" © 2025 Brothers-Tech Studio. All rights reserved. "),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex items-center gap-space-lg font-body-sm text-body-sm",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -1998,7 +1749,6 @@ class ServicesPage extends StatelessComponent {
                             Component.text("Security Policy"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -2010,7 +1760,6 @@ class ServicesPage extends StatelessComponent {
                             Component.text("Terms of Service"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",

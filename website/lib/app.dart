@@ -1,11 +1,11 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-import 'pages/about_page.dart';
-import 'pages/contact_page.dart';
-import 'pages/home_page.dart';
-import 'pages/projects_page.dart';
-import 'pages/services_page.dart';
+import 'pages/about/about_page.dart';
+import 'pages/contact/contact_page.dart';
+import 'pages/home/home_page.dart';
+import 'pages/projects/projects_page.dart';
+import 'pages/services/services_page.dart';
 
 class App extends StatelessComponent {
   const App({super.key});

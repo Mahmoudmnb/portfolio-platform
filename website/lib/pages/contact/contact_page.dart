@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class ContactPage extends StatelessComponent {
@@ -14,18 +15,14 @@ class ContactPage extends StatelessComponent {
       ),
       Document.body(attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen"}),
       Component.fragment([
-        // ignore: prefer_html_components
-        Component.element(
-          tag: "header",
+        header(
           classes:
               "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
-          children: [
-            // ignore: prefer_html_components
+          [
             Component.element(
               tag: "div",
               classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "a",
                   classes: "flex items-center gap-2 group",
@@ -34,7 +31,6 @@ class ContactPage extends StatelessComponent {
                     "href": "/",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes:
@@ -43,14 +39,12 @@ class ContactPage extends StatelessComponent {
                         Component.text("Brothers-Tech"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "nav",
                   classes:
@@ -59,7 +53,6 @@ class ContactPage extends StatelessComponent {
                     "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -72,7 +65,6 @@ class ContactPage extends StatelessComponent {
                         Component.text("Home"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -85,7 +77,6 @@ class ContactPage extends StatelessComponent {
                         Component.text("Services"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -98,7 +89,6 @@ class ContactPage extends StatelessComponent {
                         Component.text("Projects"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -111,7 +101,6 @@ class ContactPage extends StatelessComponent {
                         Component.text("About"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -127,12 +116,10 @@ class ContactPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "flex items-center gap-4",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -151,50 +138,41 @@ class ContactPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "main",
           classes: "w-full pt-20 bg-background min-h-screen",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "flex flex-col w-full",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "relative w-full overflow-hidden",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-gradient-to-b from-primary/15 via-secondary/5 to-transparent blur-3xl pointer-events-none -z-10",
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "max-w-7xl mx-auto px-6 sm:px-8 pt-12 pb-16 w-full",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex flex-col items-start gap-4 max-w-3xl",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/40 shadow-sm",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
                                       "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-pulse",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "font-label-mono text-label-mono text-secondary tracking-widest uppercase",
@@ -204,14 +182,12 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h1",
                               classes:
                                   "font-headline-lg text-headline-lg md:text-[54px] md:leading-[62px] text-on-surface tracking-tight font-semibold mt-1",
                               children: [
                                 Component.text(" Let's Build "),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
@@ -222,7 +198,6 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes:
@@ -237,45 +212,37 @@ class ContactPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "max-w-7xl mx-auto px-6 sm:px-8 pb-24 w-full",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "grid grid-cols-1 lg:grid-cols-12 gap-8 items-start",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "lg:col-span-12 bg-surface-container-low/90 backdrop-blur-md rounded-xl border border-outline-variant/40 p-6 md:p-8 shadow-xl relative",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "form",
                                   id: "project-inquiry-form",
                                   classes: "space-y-6",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "grid grid-cols-1 sm:grid-cols-2 gap-5",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex flex-col gap-2",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "label",
                                               classes:
@@ -284,14 +251,12 @@ class ContactPage extends StatelessComponent {
                                                 "for": "contact-name",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
                                                     Component.text("Your Name"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -302,12 +267,10 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "div",
                                               classes: "relative",
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "input",
                                                   id: "contact-name",
@@ -323,12 +286,10 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex flex-col gap-2",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "label",
                                               classes:
@@ -337,14 +298,12 @@ class ContactPage extends StatelessComponent {
                                                 "for": "contact-email",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
                                                     Component.text("Work Email"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -355,12 +314,10 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "div",
                                               classes: "relative",
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "input",
                                                   id: "contact-email",
@@ -378,12 +335,10 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "flex flex-col gap-2",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "label",
                                           classes:
@@ -392,14 +347,12 @@ class ContactPage extends StatelessComponent {
                                             "for": "contact-company",
                                           },
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               children: [
                                                 Component.text("Company or Organization"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -410,7 +363,6 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "input",
                                           id: "contact-company",
@@ -423,25 +375,21 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "flex flex-col gap-3",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "label",
                                           classes:
                                               "font-body-md text-body-md font-medium text-on-surface flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               children: [
                                                 Component.text("What can we help you with?"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes: "font-label-mono-xs text-label-mono-xs text-outline",
@@ -451,13 +399,11 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           id: "scope-pills",
                                           classes: "flex flex-wrap gap-2.5",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -467,7 +413,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -476,7 +421,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -485,7 +429,6 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -495,7 +438,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -504,7 +446,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -513,7 +454,6 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -523,7 +463,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -532,7 +471,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -541,7 +479,6 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -551,7 +488,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -560,7 +496,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -569,7 +504,6 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -579,7 +513,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -588,7 +521,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -597,7 +529,6 @@ class ContactPage extends StatelessComponent {
                                                 ),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "button",
                                               classes:
@@ -607,7 +538,6 @@ class ContactPage extends StatelessComponent {
                                                 "type": "button",
                                               },
                                               children: [
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   classes:
@@ -616,7 +546,6 @@ class ContactPage extends StatelessComponent {
                                                     Component.text("check"),
                                                   ],
                                                 ),
-                                                // ignore: prefer_html_components
                                                 Component.element(
                                                   tag: "span",
                                                   children: [
@@ -629,12 +558,10 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "flex flex-col gap-2",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "label",
                                           classes:
@@ -643,14 +570,12 @@ class ContactPage extends StatelessComponent {
                                             "for": "contact-message",
                                           },
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               children: [
                                                 Component.text("Tell us about your project"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -661,7 +586,6 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "textarea",
                                           id: "contact-message",
@@ -676,12 +600,10 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "pt-2 flex flex-col sm:flex-row items-center justify-between gap-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "button",
                                           id: "submit-btn",
@@ -691,14 +613,12 @@ class ContactPage extends StatelessComponent {
                                             "type": "submit",
                                           },
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               children: [
                                                 Component.text("Send Project Inquiry"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -709,13 +629,11 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes:
                                               "flex items-center gap-2 text-on-surface-variant font-label-mono-xs text-label-mono-xs",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes: "material-symbols-outlined text-outline text-[16px]",
@@ -723,7 +641,6 @@ class ContactPage extends StatelessComponent {
                                                 Component.text("lock"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               children: [
@@ -734,14 +651,12 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       id: "form-feedback",
                                       classes:
                                           "hidden p-4 rounded-lg bg-surface-container-high border border-secondary/40 text-on-surface flex items-start gap-3",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[20px] mt-0.5",
@@ -749,12 +664,10 @@ class ContactPage extends StatelessComponent {
                                             Component.text("check_circle"),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "text-body-sm font-body-sm",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "p",
                                               classes: "font-medium text-on-surface",
@@ -762,7 +675,6 @@ class ContactPage extends StatelessComponent {
                                                 Component.text(" Inquiry dispatched to our lead engineering room. "),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "p",
                                               classes: "text-on-surface-variant mt-0.5",
@@ -784,23 +696,19 @@ class ContactPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes:
                           "w-full bg-surface-container-lowest/70 border-y border-outline-variant/30 py-20 relative",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "max-w-7xl mx-auto px-6 sm:px-8",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes: "max-w-2xl mb-12",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
@@ -809,7 +717,6 @@ class ContactPage extends StatelessComponent {
                                     Component.text("What Happens Next?"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h2",
                                   classes:
@@ -820,28 +727,23 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes: "grid grid-cols-1 md:grid-cols-3 gap-6 relative",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "p-6 rounded-xl bg-surface-container/70 border border-outline-variant/30 relative flex flex-col justify-between hover:border-primary/40 transition-colors group",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "space-y-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes: "font-label-mono text-[20px] font-semibold text-primary",
@@ -849,7 +751,6 @@ class ContactPage extends StatelessComponent {
                                                 Component.text("01"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -860,7 +761,6 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "h3",
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
@@ -868,7 +768,6 @@ class ContactPage extends StatelessComponent {
                                             Component.text(" Tell Us About Your Idea "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
@@ -880,7 +779,6 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
@@ -888,23 +786,19 @@ class ContactPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "p-6 rounded-xl bg-surface-container/70 border border-outline-variant/30 relative flex flex-col justify-between hover:border-secondary/40 transition-colors group",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "space-y-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes: "font-label-mono text-[20px] font-semibold text-secondary",
@@ -912,7 +806,6 @@ class ContactPage extends StatelessComponent {
                                                 Component.text("02"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -923,7 +816,6 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "h3",
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
@@ -931,7 +823,6 @@ class ContactPage extends StatelessComponent {
                                             Component.text(" We'll Review Your Needs "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
@@ -943,7 +834,6 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
@@ -951,23 +841,19 @@ class ContactPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "p-6 rounded-xl bg-surface-container/70 border border-outline-variant/30 relative flex flex-col justify-between hover:border-primary/40 transition-colors group",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "space-y-4",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes: "font-label-mono text-[20px] font-semibold text-primary",
@@ -975,7 +861,6 @@ class ContactPage extends StatelessComponent {
                                                 Component.text("03"),
                                               ],
                                             ),
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -986,7 +871,6 @@ class ContactPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "h3",
                                           classes: "font-headline-sm text-headline-sm text-on-surface font-medium",
@@ -994,7 +878,6 @@ class ContactPage extends StatelessComponent {
                                             Component.text(" Let's Talk About the Right Solution "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
@@ -1006,7 +889,6 @@ class ContactPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
@@ -1026,32 +908,26 @@ class ContactPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "footer",
           classes: "w-full bg-surface-container-lowest border-t border-[rgba(255,255,255,0.08)] py-16",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "max-w-7xl mx-auto px-6 sm:px-8",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "grid grid-cols-1 md:grid-cols-4 gap-10 mb-12",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "space-y-4",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-2",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
@@ -1059,14 +935,12 @@ class ContactPage extends StatelessComponent {
                                 Component.text("Brothers-Tech"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
@@ -1078,11 +952,9 @@ class ContactPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1090,16 +962,13 @@ class ContactPage extends StatelessComponent {
                             Component.text(" Navigation "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1113,11 +982,9 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1131,11 +998,9 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1149,11 +1014,9 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1167,11 +1030,9 @@ class ContactPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1189,11 +1050,9 @@ class ContactPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1201,19 +1060,16 @@ class ContactPage extends StatelessComponent {
                             Component.text(" Practices "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
                                 Component.text("Full-Stack Platforms"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
@@ -1224,11 +1080,9 @@ class ContactPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1236,7 +1090,6 @@ class ContactPage extends StatelessComponent {
                             Component.text(" Studio "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-sm text-body-sm text-on-surface-variant mb-4",
@@ -1244,24 +1097,20 @@ class ContactPage extends StatelessComponent {
                             Component.text(" Engineering disciplined technical solutions with surgical execution. "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-3 text-secondary font-label-mono text-label-mono",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               children: [
                                 Component.text("EST. 2024"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "inline-block w-1.5 h-1.5 rounded-full bg-secondary",
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               children: [
@@ -1274,25 +1123,21 @@ class ContactPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes:
                       "pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4 font-label-mono text-label-mono-xs text-on-surface-variant",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "p",
                       children: [
                         Component.text("© 2025 Brothers-Tech Studio. All rights reserved."),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex items-center gap-6",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -1303,7 +1148,6 @@ class ContactPage extends StatelessComponent {
                             Component.text("Security Policy"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -1314,7 +1158,6 @@ class ContactPage extends StatelessComponent {
                             Component.text("Terms of Service"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",

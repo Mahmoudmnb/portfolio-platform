@@ -16,18 +16,15 @@ class AboutPage extends StatelessComponent {
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
       ),
       Component.fragment([
-        // ignore: prefer_html_components
         Component.element(
           tag: "header",
           classes:
               "fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "h-20 max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "a",
                   classes: "flex items-center gap-2 group",
@@ -36,7 +33,6 @@ class AboutPage extends StatelessComponent {
                     "href": "/",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes:
@@ -45,14 +41,12 @@ class AboutPage extends StatelessComponent {
                         Component.text("Brothers-Tech"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "span",
                       classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "nav",
                   classes:
@@ -61,7 +55,6 @@ class AboutPage extends StatelessComponent {
                     "data-active-classes": "bg-surface-container-high text-primary font-medium rounded-lg",
                   },
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -74,7 +67,6 @@ class AboutPage extends StatelessComponent {
                         Component.text("Home"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -87,7 +79,6 @@ class AboutPage extends StatelessComponent {
                         Component.text("Services"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -100,7 +91,6 @@ class AboutPage extends StatelessComponent {
                         Component.text("Projects"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -114,7 +104,6 @@ class AboutPage extends StatelessComponent {
                         Component.text("About"),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -129,12 +118,10 @@ class AboutPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "flex items-center gap-4",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "a",
                       classes:
@@ -153,62 +140,51 @@ class AboutPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "main",
           classes: "w-full pt-20 bg-background flex-1",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "flex flex-col w-full",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "relative w-full overflow-hidden",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-primary/10 rounded-full blur-[140px] opacity-70",
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "pointer-events-none absolute top-[30%] -right-40 w-[480px] h-[300px] bg-secondary/10 rounded-full blur-[120px] opacity-60",
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes:
                           "pointer-events-none absolute top-[70%] -left-32 w-[500px] h-[300px] bg-primary-container/10 rounded-full blur-[130px] opacity-50",
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 pt-16 sm:pt-24 pb-20 sm:pb-28",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "max-w-4xl flex flex-col items-start space-y-6 sm:space-y-8",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-surface-container-low shadow-sm",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
                                       "inline-block w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-pulse",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "font-label-mono text-label-mono text-secondary tracking-widest uppercase",
@@ -218,13 +194,11 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h1",
                               classes: "font-display-hero text-display-hero text-on-surface tracking-tight",
                               children: [
                                 Component.text(" Small Team. "),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes:
@@ -235,7 +209,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed",
@@ -245,18 +218,15 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pt-4 flex flex-wrap items-center gap-3 sm:gap-4 font-label-mono text-label-mono text-tertiary",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "flex items-center gap-2",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
@@ -267,7 +237,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Practitioner-Led "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "text-outline-variant",
@@ -275,12 +244,10 @@ class AboutPage extends StatelessComponent {
                                     Component.text("•"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "flex items-center gap-2",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
@@ -291,7 +258,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Direct Communication "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "text-outline-variant",
@@ -299,12 +265,10 @@ class AboutPage extends StatelessComponent {
                                     Component.text("•"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "flex items-center gap-2",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-secondary text-[16px]",
@@ -321,35 +285,29 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "max-w-3xl mb-14 sm:mb-16",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
                                     Component.text("01"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-8 h-[1px] bg-secondary/40",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -358,7 +316,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
@@ -366,7 +323,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" What defines Brothers-Tech. "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
@@ -378,28 +334,23 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
@@ -409,7 +360,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
@@ -417,7 +367,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" Product First "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -429,7 +378,6 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
@@ -439,23 +387,19 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-primary text-[24px]",
@@ -465,7 +409,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
@@ -473,7 +416,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" Built for Real Use "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -485,7 +427,6 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
@@ -495,23 +436,19 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-secondary text-[24px]",
@@ -521,7 +458,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
@@ -529,7 +465,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" Clean Engineering "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -541,7 +476,6 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
@@ -551,23 +485,19 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "p-8 sm:p-10 rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes:
                                           "w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-6",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-primary text-[24px]",
@@ -577,7 +507,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface mb-3",
@@ -585,7 +514,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" Long-Term Thinking "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -597,7 +525,6 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-8 pt-4 font-label-mono text-label-mono-xs text-tertiary",
@@ -611,35 +538,29 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "max-w-3xl mb-14 sm:mb-16",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
                                     Component.text("02"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-8 h-[1px] bg-secondary/40",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -648,7 +569,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
@@ -656,7 +576,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Built through real projects. "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
@@ -668,23 +587,19 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "relative grid grid-cols-1 md:grid-cols-4 gap-6",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-6",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary",
@@ -692,14 +607,12 @@ class AboutPage extends StatelessComponent {
                                         Component.text("PHASE 01"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
@@ -707,7 +620,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Learn "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
@@ -717,12 +629,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-[14px]",
@@ -730,7 +640,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("search"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -741,18 +650,15 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-6",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-primary",
@@ -760,14 +666,12 @@ class AboutPage extends StatelessComponent {
                                         Component.text("PHASE 02"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]",
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
@@ -775,7 +679,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Build "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
@@ -785,12 +688,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-[14px]",
@@ -798,7 +699,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("code"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -809,18 +709,15 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-6",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-secondary",
@@ -828,14 +725,12 @@ class AboutPage extends StatelessComponent {
                                         Component.text("PHASE 03"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
@@ -843,7 +738,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Ship "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
@@ -853,12 +747,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-[14px]",
@@ -866,7 +758,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("rocket_launch"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -877,18 +768,15 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "relative p-6 sm:p-8 rounded-xl bg-surface-container-low shadow-sm flex flex-col",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "flex items-center justify-between mb-6",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-label-mono text-primary",
@@ -896,14 +784,12 @@ class AboutPage extends StatelessComponent {
                                         Component.text("PHASE 04"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#adc6ff]",
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h3",
                                   classes: "font-headline-md text-headline-md text-on-surface mb-2",
@@ -911,7 +797,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Improve "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex-1",
@@ -921,12 +806,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-mono-xs",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "material-symbols-outlined text-[14px]",
@@ -934,7 +817,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("refresh"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -949,47 +831,39 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "rounded-xl bg-surface-container-lowest p-8 sm:p-14 shadow-2xl relative overflow-hidden",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-80",
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes: "max-w-2xl mb-12 sm:mb-16",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
                                         Component.text("03"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "w-8 h-[1px] bg-secondary/40",
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       children: [
@@ -998,7 +872,6 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "h2",
                                   classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
@@ -1006,7 +879,6 @@ class AboutPage extends StatelessComponent {
                                     Component.text(" Good software isn't just code. "),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "p",
                                   classes: "font-body-lg text-body-lg text-on-surface-variant mt-2",
@@ -1018,17 +890,14 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes: "grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "space-y-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
@@ -1036,7 +905,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("01"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface",
@@ -1044,7 +912,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" It solves a real problem "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -1056,12 +923,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "space-y-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-headline-sm text-primary font-semibold",
@@ -1069,7 +934,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("02"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface",
@@ -1077,7 +941,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" It feels simple to use "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -1089,12 +952,10 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes: "space-y-4",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "font-label-mono text-headline-sm text-secondary font-semibold",
@@ -1102,7 +963,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("03"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "h3",
                                       classes: "font-headline-md text-headline-md text-on-surface",
@@ -1110,7 +970,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text(" It can grow "),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "p",
                                       classes: "font-body-md text-body-md text-on-surface-variant leading-relaxed",
@@ -1128,35 +987,29 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "max-w-3xl mb-14 sm:mb-16",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "flex items-center gap-2 font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
                                     Component.text("04"),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-8 h-[1px] bg-secondary/40",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -1165,7 +1018,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes: "font-headline-lg text-headline-lg text-on-surface tracking-tight",
@@ -1173,7 +1025,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Small by design. Driven by craft. "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-body-lg text-body-lg text-on-surface-variant mt-3",
@@ -1185,27 +1036,22 @@ class AboutPage extends StatelessComponent {
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "grid grid-cols-1 md:grid-cols-3 gap-8",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "group rounded-xl bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between hover:bg-surface-container transition-all duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "relative w-full h-72 overflow-hidden bg-surface-container-highest",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "img",
                                           classes:
@@ -1216,7 +1062,6 @@ class AboutPage extends StatelessComponent {
                                             "src": "assets/images/Mahmoud.png",
                                           },
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes:
@@ -1224,17 +1069,14 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "p-6 sm:p-8 space-y-3",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -1245,7 +1087,6 @@ class AboutPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "h3",
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
@@ -1253,7 +1094,6 @@ class AboutPage extends StatelessComponent {
                                             Component.text(" Mahmoud Bannan "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes: "font-body-sm text-body-sm text-tertiary",
@@ -1261,7 +1101,6 @@ class AboutPage extends StatelessComponent {
                                             Component.text(" FOUNDER & Mobile Developer & Back-end Developer "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes:
@@ -1276,13 +1115,11 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex items-center gap-4 font-label-mono text-label-mono text-primary",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "a",
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
@@ -1290,14 +1127,12 @@ class AboutPage extends StatelessComponent {
                                         "href": "https://www.linkedin.com/in/mouhammed-deeb-jalab",
                                       },
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           children: [
                                             Component.text("LinkedIn"),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-[14px]",
@@ -1307,7 +1142,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-outline-variant",
@@ -1315,7 +1149,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("•"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "a",
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
@@ -1323,14 +1156,12 @@ class AboutPage extends StatelessComponent {
                                         "href": "https://github.com/Mohamed-Jalab",
                                       },
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           children: [
                                             Component.text("GitHub"),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-[14px]",
@@ -1344,22 +1175,18 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "group rounded-xl bg-surface-container-low overflow-hidden shadow-sm flex flex-col justify-between hover:bg-surface-container transition-all duration-300",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "relative w-full h-72 overflow-hidden bg-surface-container-highest",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "img",
                                           classes:
@@ -1370,7 +1197,6 @@ class AboutPage extends StatelessComponent {
                                             "src": "assets/images/Mohammed.jpg",
                                           },
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes:
@@ -1378,17 +1204,14 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "div",
                                       classes: "p-6 sm:p-8 space-y-3",
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "div",
                                           classes: "flex items-center justify-between",
                                           children: [
-                                            // ignore: prefer_html_components
                                             Component.element(
                                               tag: "span",
                                               classes:
@@ -1399,7 +1222,6 @@ class AboutPage extends StatelessComponent {
                                             ),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "h3",
                                           classes: "font-headline-md text-headline-md text-on-surface font-semibold",
@@ -1407,7 +1229,6 @@ class AboutPage extends StatelessComponent {
                                             Component.text(" Mohammed Deeb Jalab "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes: "font-body-sm text-body-sm text-tertiary",
@@ -1415,7 +1236,6 @@ class AboutPage extends StatelessComponent {
                                             Component.text(" FOUNDER & Mobile Developer & Front-end Web Developer "),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "p",
                                           classes:
@@ -1430,13 +1250,11 @@ class AboutPage extends StatelessComponent {
                                     ),
                                   ],
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "div",
                                   classes:
                                       "px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex items-center gap-4 font-label-mono text-label-mono text-primary",
                                   children: [
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "a",
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
@@ -1444,14 +1262,12 @@ class AboutPage extends StatelessComponent {
                                         "href": "https://www.linkedin.com/in/mouhammed-deeb-jalab",
                                       },
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           children: [
                                             Component.text("LinkedIn"),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-[14px]",
@@ -1461,7 +1277,6 @@ class AboutPage extends StatelessComponent {
                                         ),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "span",
                                       classes: "text-outline-variant",
@@ -1469,7 +1284,6 @@ class AboutPage extends StatelessComponent {
                                         Component.text("•"),
                                       ],
                                     ),
-                                    // ignore: prefer_html_components
                                     Component.element(
                                       tag: "a",
                                       classes: "inline-flex items-center gap-1 hover:text-secondary transition-colors",
@@ -1477,14 +1291,12 @@ class AboutPage extends StatelessComponent {
                                         "href": "https://github.com/Mohamed-Jalab",
                                       },
                                       children: [
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           children: [
                                             Component.text("GitHub"),
                                           ],
                                         ),
-                                        // ignore: prefer_html_components
                                         Component.element(
                                           tag: "span",
                                           classes: "material-symbols-outlined text-[14px]",
@@ -1502,24 +1314,20 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-10",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "py-5 px-6 sm:px-10 rounded-xl bg-surface-container-lowest/80 backdrop-blur-md flex flex-wrap items-center justify-around gap-4 shadow-sm",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
@@ -1527,7 +1335,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Mobile "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "text-outline-variant/60",
@@ -1535,13 +1342,11 @@ class AboutPage extends StatelessComponent {
                                 Component.text("•"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#adc6ff]",
@@ -1549,7 +1354,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Web "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "text-outline-variant/60",
@@ -1557,13 +1361,11 @@ class AboutPage extends StatelessComponent {
                                 Component.text("•"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
@@ -1571,7 +1373,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Desktop "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "text-outline-variant/60",
@@ -1579,13 +1380,11 @@ class AboutPage extends StatelessComponent {
                                 Component.text("•"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes:
                                   "font-label-mono text-label-mono text-on-surface flex items-center gap-2 tracking-wider",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4cd7f6]",
@@ -1597,35 +1396,29 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "section",
                       classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 pt-12 pb-24 sm:pb-32",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes:
                               "relative rounded-2xl bg-surface-container-low p-8 sm:p-16 shadow-2xl overflow-hidden text-center flex flex-col items-center",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(77,142,255,0.12)_0%,transparent_70%)]",
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "div",
                               classes:
                                   "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-secondary font-label-mono text-label-mono mb-8 shadow-sm",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   classes: "w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-ping",
                                 ),
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "span",
                                   children: [
@@ -1634,7 +1427,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "h2",
                               classes:
@@ -1643,7 +1435,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Have an Idea? Let's Build It Together. "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes:
@@ -1654,7 +1445,6 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "a",
                               classes:
@@ -1667,7 +1457,6 @@ class AboutPage extends StatelessComponent {
                                 Component.text(" Tell Us About Your Project → "),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "p",
                               classes: "font-label-mono text-label-mono-xs text-tertiary mt-6",
@@ -1685,32 +1474,26 @@ class AboutPage extends StatelessComponent {
             ),
           ],
         ),
-        // ignore: prefer_html_components
         Component.element(
           tag: "footer",
           classes: "w-full bg-surface-container-lowest border-t border-[rgba(255,255,255,0.08)] py-16",
           children: [
-            // ignore: prefer_html_components
             Component.element(
               tag: "div",
               classes: "max-w-7xl mx-auto px-6 sm:px-8",
               children: [
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes: "grid grid-cols-1 md:grid-cols-4 gap-10 mb-12",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "space-y-4",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-2",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "font-headline-sm text-headline-sm text-on-surface font-semibold",
@@ -1718,14 +1501,12 @@ class AboutPage extends StatelessComponent {
                                 Component.text("Brothers-Tech"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]",
                             ),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-sm text-body-sm text-on-surface-variant leading-relaxed",
@@ -1737,11 +1518,9 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1749,16 +1528,13 @@ class AboutPage extends StatelessComponent {
                             Component.text(" Navigation "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1772,11 +1548,9 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1790,11 +1564,9 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1808,11 +1580,9 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1826,11 +1596,9 @@ class AboutPage extends StatelessComponent {
                                 ),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
-                                // ignore: prefer_html_components
                                 Component.element(
                                   tag: "a",
                                   classes: "hover:text-primary transition-colors",
@@ -1848,11 +1616,9 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1860,19 +1626,16 @@ class AboutPage extends StatelessComponent {
                             Component.text(" Practices "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "ul",
                           classes: "space-y-2.5 font-body-sm text-body-sm text-on-surface-variant",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
                                 Component.text("Full-Stack Platforms"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "li",
                               children: [
@@ -1883,11 +1646,9 @@ class AboutPage extends StatelessComponent {
                         ),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "h4",
                           classes: "font-label-mono text-label-mono text-on-surface uppercase tracking-wider mb-4",
@@ -1895,7 +1656,6 @@ class AboutPage extends StatelessComponent {
                             Component.text(" Studio "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "p",
                           classes: "font-body-sm text-body-sm text-on-surface-variant mb-4",
@@ -1903,24 +1663,20 @@ class AboutPage extends StatelessComponent {
                             Component.text(" Engineering disciplined technical solutions with surgical execution. "),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "div",
                           classes: "flex items-center gap-3 text-secondary font-label-mono text-label-mono",
                           children: [
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               children: [
                                 Component.text("EST. 2024"),
                               ],
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               classes: "inline-block w-1.5 h-1.5 rounded-full bg-secondary",
                             ),
-                            // ignore: prefer_html_components
                             Component.element(
                               tag: "span",
                               children: [
@@ -1933,25 +1689,21 @@ class AboutPage extends StatelessComponent {
                     ),
                   ],
                 ),
-                // ignore: prefer_html_components
                 Component.element(
                   tag: "div",
                   classes:
                       "pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4 font-label-mono text-label-mono-xs text-on-surface-variant",
                   children: [
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "p",
                       children: [
                         Component.text("© 2025 Brothers-Tech Studio. All rights reserved."),
                       ],
                     ),
-                    // ignore: prefer_html_components
                     Component.element(
                       tag: "div",
                       classes: "flex items-center gap-6",
                       children: [
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -1962,7 +1714,6 @@ class AboutPage extends StatelessComponent {
                             Component.text("Security Policy"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
@@ -1973,7 +1724,6 @@ class AboutPage extends StatelessComponent {
                             Component.text("Terms of Service"),
                           ],
                         ),
-                        // ignore: prefer_html_components
                         Component.element(
                           tag: "a",
                           classes: "hover:text-on-surface transition-colors",
