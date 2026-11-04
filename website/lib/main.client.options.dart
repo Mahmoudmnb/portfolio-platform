@@ -6,6 +6,9 @@
 
 import 'package:jaspr/client.dart';
 
+import 'package:bro_tech_web/pages/contact/views/contact_form_view.dart'
+    deferred as _contact_form_view;
+
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
 /// Use this to initialize Jaspr **before** calling [runApp].
@@ -22,4 +25,11 @@ import 'package:jaspr/client.dart';
 ///   runApp(...);
 /// }
 /// ```
-ClientOptions get defaultClientOptions => ClientOptions();
+ClientOptions get defaultClientOptions => ClientOptions(
+  clients: {
+    'contact_form_view': ClientLoader(
+      (p) => _contact_form_view.ContactFormView(),
+      loader: _contact_form_view.loadLibrary,
+    ),
+  },
+);
