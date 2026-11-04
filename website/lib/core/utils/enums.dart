@@ -1,0 +1,1 @@
+enum ColorTheme { primary, secondary }
