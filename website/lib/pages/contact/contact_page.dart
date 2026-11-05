@@ -17,6 +17,9 @@ class ContactPage extends StatelessComponent {
         meta: {
           'description': 'Tell Brothers-Tech about your software idea, product improvement, or business challenge.',
         },
+        children: [
+          link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
+        ],
       ),
       Document.body(attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen"}),
       Component.fragment([

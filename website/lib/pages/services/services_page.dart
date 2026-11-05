@@ -20,6 +20,9 @@ class ServicesPage extends StatelessComponent {
         meta: {
           'description': 'Explore Brothers-Tech mobile, web, desktop, cloud, and AI software development services.',
         },
+        children: [
+          link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
+        ],
       ),
       Document.body(attributes: {'class': "bg-surface font-body-md text-on-surface antialiased"}),
 

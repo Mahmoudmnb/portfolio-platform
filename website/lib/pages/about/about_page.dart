@@ -22,6 +22,9 @@ class AboutPage extends StatelessComponent {
         meta: {
           'description': 'Meet the Brothers-Tech team and learn how we build practical, reliable digital products.',
         },
+        children: [
+          link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
+        ],
       ),
       Document.body(
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},

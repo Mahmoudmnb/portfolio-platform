@@ -24,6 +24,9 @@ class HomePage extends StatelessComponent {
           'description':
               'Brothers-Tech designs and develops reliable mobile, web, and desktop software for real business needs.',
         },
+        children: [
+          link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
+        ],
       ),
       Document.body(
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},

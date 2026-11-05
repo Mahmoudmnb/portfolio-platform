@@ -20,6 +20,9 @@ class ProjectsPage extends StatelessComponent {
         meta: {
           'description': 'Explore mobile, web, and desktop products designed and deployed by Brothers-Tech.',
         },
+        children: [
+          link(href: "favicon.svg", rel: "icon", type: "image/svg+xml"),
+        ],
       ),
       Document.body(
         attributes: {'class': "bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"},
