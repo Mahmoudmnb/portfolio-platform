@@ -14,7 +14,8 @@ class TeamMembersView extends AsyncStatelessComponent {
   @override
   Future<Component> build(BuildContext context) async {
     try {
-      final List<TeamMember> members = await getTeamMembers();
+      await Future.delayed(Duration(milliseconds: 300));
+      // final List<TeamMember> members = await getTeamMembers();
       return section(
         classes: "relative w-full max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24",
         [
@@ -54,28 +55,60 @@ class TeamMembersView extends AsyncStatelessComponent {
               ),
             ],
           ),
-          if (members.isEmpty)
-            EmptyCard(
-              title: "No Member Available",
-              description: "There are no member to display right now.",
-            ),
+          // if (members.isEmpty)
+          //   EmptyCard(
+          //     title: "No Member Available",
+          //     description: "There are no member to display right now.",
+          //   ),
           div(
             classes: "grid grid-cols-1 md:grid-cols-3 gap-8",
-            members
-                .map(
-                  (member) => TeamMemberCard(
-                    name: member.name,
-                    roleTag: member.roleTitle,
-                    roleSubtitle: 'FOUNDER & Mobile Developer & Back-end Developer',
-                    bio: member.bio,
-                    imageSrc: member.photo?.url ?? "invalid image",
-                    imageAlt:
-                        'Editorial portrait of a male technical lead engineer in a minimalist dark studio setting, moody cinematic soft lighting with subtle cool cyan rim light, wearing a dark crewneck, thoughtful and focused expression.',
-                    badgeColorClass: 'text-secondary',
-                    socialLinks: member.links.map((l) => (label: l.label, url: l.url)).toList(),
-                  ),
-                )
-                .toList(),
+            [
+              TeamMemberCard(
+                name: 'Mahmoud Bannan',
+                roleTag: 'FOUNDER / MOBILE DEVELOPER / BACK-END DEVELOPER',
+                roleSubtitle: 'FOUNDER & Mobile Developer & Back-end Developer',
+                bio:
+                    'Building reliable mobile applications and robust back-end systems with a focus on clean architecture, performance, and maintainable code.',
+                imageSrc: 'assets/images/Mahmoud.png',
+                imageAlt:
+                    'Editorial portrait of a male technical lead engineer in a minimalist dark studio setting, moody cinematic soft lighting with subtle cool cyan rim light, wearing a dark crewneck, thoughtful and focused expression.',
+                badgeColorClass: 'text-secondary',
+                socialLinks: [
+                  (label: 'LinkedIn', url: 'https://www.linkedin.com/in/mahmoudbannan'),
+                  (label: 'GitHub', url: 'https://github.com/Mahmoudmnb'),
+                ],
+              ),
+              TeamMemberCard(
+                name: 'Mohammed Deeb Jalab',
+                roleTag: 'FOUNDER / MOBILE DEVELOPER / FRONT-END WEB DEVELOPER',
+                roleSubtitle: 'FOUNDER & Mobile Developer & Front-end Web Developer',
+                bio:
+                    'Building polished mobile applications and responsive web experiences with clean code, intuitive interfaces, and dependable performance.',
+                imageSrc: 'assets/images/Mohammed.jpg',
+                imageAlt: 'Portrait of Mohammed Deeb Jalab, founder, mobile developer, and front-end web developer',
+                badgeColorClass: 'text-primary',
+                socialLinks: [
+                  (label: 'LinkedIn', url: 'https://www.linkedin.com/in/mouhammed-deeb-jalab'),
+                  (label: 'GitHub', url: 'https://github.com/Mohamed-Jalab'),
+                ],
+              ),
+            ],
+            // AppConstants.teamMembers,
+            // members
+            //     .map(
+            //       (member) => TeamMemberCard(
+            //         name: member.name,
+            //         roleTag: member.roleTitle,
+            //         roleSubtitle: 'FOUNDER & Mobile Developer & Back-end Developer',
+            //         bio: member.bio,
+            //         imageSrc: member.photo?.url ?? "invalid image",
+            //         imageAlt:
+            //             'Editorial portrait of a male technical lead engineer in a minimalist dark studio setting, moody cinematic soft lighting with subtle cool cyan rim light, wearing a dark crewneck, thoughtful and focused expression.',
+            //         badgeColorClass: 'text-secondary',
+            //         socialLinks: member.links.map((l) => (label: l.label, url: l.url)).toList(),
+            //       ),
+            //     )
+            //     .toList(),
           ),
         ],
       );
