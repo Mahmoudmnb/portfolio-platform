@@ -2,13 +2,13 @@
 
 For interactive API testing, import the [Postman collection and local environment template](postman/README.md), generated from the same contract.
 
-The contract is [OpenAPI 3.1](openapi.yaml). The document uses JSON syntax, which is also valid YAML 1.2. API base URLs include `/api/v1`: development `http://localhost:8000/api/v1`, Android emulator/LAN `http://HOST_REACHABLE_ADDRESS:8000/api/v1`, production `https://api.example.test/api/v1` (replace this placeholder). Serve the Jaspr client separately. Configure its exact origins in SITE_ORIGINS. Native Flutter does not depend on CORS.
+The contract is [OpenAPI 3.1](openapi.yaml). The 2026-11-23 website content additions are detailed in the [Flutter handoff](../backend/docs/flutter-backend-updates.md), [request examples](../backend/docs/flutter-api-examples.md), and [implementation checklist](../backend/docs/flutter-implementation-checklist.md). The document uses JSON syntax, which is also valid YAML 1.2. API base URLs include `/api/v1`: development `http://localhost:8000/api/v1`, Android emulator/LAN `http://HOST_REACHABLE_ADDRESS:8000/api/v1`, production `https://api.example.test/api/v1` (replace this placeholder). Serve the Jaspr client separately. Configure its exact origins in SITE_ORIGINS. Native Flutter does not depend on CORS.
 
 Send `Accept: application/json`; use `Content-Type: application/json` except multipart uploads. A single resource is under `data`. Collections have `data`, `links` and `meta`, including current_page, per_page, last_page and total. Default page size is 20, maximum 100. Follow `links.next` or increment page until last_page. Treat an empty data array as an empty state, not an error. Show a loading indicator while awaiting a request and a retry action on network/5xx errors. On 422 map `errors` keys to form fields; on 429 honor Retry-After. Keep X-Request-ID for diagnostics without recording private payloads.
 
 ## Public content flow
 
-Fetch `/site-settings`, then paginated `/entries`, `/team-members` and `/services`. Use `/entries/{slug}` for details; list entries intentionally omit description/gallery/contributors. `kind=project` and `kind=product` share the same API; products have external links and no shopping functionality. Draft/archived entries and inactive profiles/services are absent, including guessed detail slugs. Taxonomies appear only when attached to currently visible entries. Inactive contributors are omitted from public entry details. Always handle 404 after following an old link.
+Fetch `/site-settings` and `/pages/{page_key}` for the five fixed page keys (home/about/services/projects/contact), then paginated `/entries`, `/team-members` and `/services`. Use `/entries/{slug}` for details; list entries intentionally omit description/gallery/contributors/challenge/solution/outcomes. `kind=project` and `kind=product` share the same API; products have external links and no shopping functionality. Draft/archived entries and inactive profiles/services are absent, including guessed detail slugs. Taxonomies appear only when attached to currently visible entries. Inactive contributors are omitted from public entry details. Always handle 404 after following an old link.
 
 ```sh
 API_BASE=http://localhost:8000/api/v1
@@ -21,11 +21,17 @@ curl -fsS -H 'Accept: application/json' "$API_BASE/entries/field-notes"
 
 Entry filters: kind, category (slug), technology (slug), featured (`0`/`1`), q (at most 100 characters), page and per_page. Search is a literal case-insensitive title/summary substring; `%` and `_` are literal. Public ordering: featured first, sort_order ascending, published_at descending, ID ascending. Team/services/categories sort by sort_order then ID; technologies by ID. Unknown/invalid query fields return 422.
 
-Markdown descriptions/bios are untrusted text. Disable raw HTML in Markdown renderers and sanitize rendered output. Never inject them with unsafe innerHTML. Links are HTTP(S) and contain no credentials; the API never fetches submitted URLs. `seo_title`/`seo_description` derive from entry title/summary and are not editable override fields.
+Markdown descriptions/bios are untrusted text. Disable raw HTML in Markdown renderers and sanitize rendered output. Never inject them with unsafe innerHTML. External links are HTTP(S) without credentials; page CTAs, navigation and service CTAs also accept documented safe local paths. The API never fetches submitted URLs. `seo_title`/`seo_description` are editable nullable overrides; null falls back to entry title/summary in responses.
 
 Media `url` and `thumbnail_url` are absolute URLs derived from configured storage. Render thumbnail in grids and display URL in detail views; use supplied dimensions to reserve layout space. Public resources include ready media only. Display images retain original dimensions and are re-encoded WebP; thumbnails fit within 480×480 without upscaling. Do not synthesize storage keys or concatenate API paths with media URLs. Local media requires `storage:link` and a MEDIA_URL reachable by the device. Known public media URLs remain accessible after unpublishing; this API is not a private-file vault.
 
 All API content currently uses `Cache-Control: no-store, private`; do not maintain stale client caches across publication changes. Media bytes may use storage/CDN caching independently. Unpublish takes effect on the next API fetch.
+
+## Fixed website pages
+
+Public GET `/pages/{page_key}` returns `{data: {page_key, locale, content, seo, featured_projects, created_at, updated_at}}` for a published page; missing/draft pages return 404. Owner GET `/admin/pages` is an unpaginated `{data: [...]}` collection. GET/PUT `/admin/pages/{page_key}` loads or upserts a fixed page. PUT requires status/content/seo and replaces content and SEO as complete objects. Optional media/featured-entry references preserve existing values when omitted. See the linked handoff for all section types, validation rules and editable settings extensions. Preview uses the admin response; there is one saved version, so saving as draft hides a previously published page.
+
+Keep using `/entries?kind=project` rather than inventing `/projects`. Optional `project_type` classifies mobile_app/web_app/desktop_app/platform. Public sort may be `sort_order` or `-published_at`; the existing default order is unchanged. Media gains alt/file_size/display_mime_type, upload accepts alt_text, and PATCH `/admin/media/{id}` edits alt text. See OpenAPI for the complete additive fields.
 
 ## Owner Flutter flow
 
@@ -63,7 +69,7 @@ Admin lists add status for entries, active (`0`/`1`) for team/services, and sort
 
 ## Contact form
 
-POST name/email/subject/message to `/inquiries`. Optional website is a hidden honeypot field; leave it empty. Filled honeypots receive the same acknowledgment and store nothing. Render the stable generic success message; no inquiry ID/content is returned. The backend stores accepted messages without SMTP. It does not deduplicate retries, so avoid resubmitting automatically after an ambiguous timeout. There is no public inquiry list/detail API.
+POST name/email/subject/message to `/inquiries`; optional source_page accepts a local path without query/fragment. Optional website is a hidden honeypot field; leave it empty. Filled honeypots receive the same acknowledgment and store nothing. Render the stable generic success message; no inquiry ID/content is returned. The backend stores accepted messages without SMTP. Optional generic alerts use the server-only INQUIRY_NOTIFICATION_EMAIL and contain no visitor details. Queued delivery retries independently; a dispatch failure does not discard the stored inquiry. Operators may requeue an unnotified alert with `php artisan app:retry-inquiry-notification INQUIRY_ID`. It does not deduplicate retries, so avoid resubmitting automatically after an ambiguous timeout. There is no public inquiry list/detail API.
 
 ```sh
 curl -sS -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' \
@@ -110,8 +116,12 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
         "id": 1,
         "width": 20,
         "height": 20,
-        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+        "url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/display.webp",
+        "thumbnail_url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/thumbnail.webp",
+        "alt": null,
+        "file_size": null,
+        "mime_type": "image/webp",
+        "display_mime_type": "image/webp"
       },
       "category": {
         "id": 1,
@@ -119,8 +129,8 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
         "name": "Mobile",
         "description": null,
         "sort_order": 0,
-        "created_at": "2026-10-21T06:00:00.000000Z",
-        "updated_at": "2026-10-21T06:00:00.000000Z"
+        "created_at": "2026-10-21T09:00:00.000000Z",
+        "updated_at": "2026-10-21T09:00:00.000000Z"
       },
       "technologies": [
         {
@@ -128,15 +138,18 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
           "slug": "flutter",
           "name": "Flutter",
           "website_url": null,
-          "created_at": "2026-10-21T06:00:00.000000Z",
-          "updated_at": "2026-10-21T06:00:00.000000Z"
+          "created_at": "2026-10-21T09:00:00.000000Z",
+          "updated_at": "2026-10-21T09:00:00.000000Z"
         }
       ],
-      "published_at": "2026-10-21T06:00:00.000000Z",
+      "published_at": "2026-10-21T09:00:00.000000Z",
       "seo_title": "Field notes",
       "seo_description": "A fictional offline notebook.",
-      "created_at": "2026-10-21T06:00:00.000000Z",
-      "updated_at": "2026-10-21T06:00:00.000000Z"
+      "created_at": "2026-10-21T09:00:00.000000Z",
+      "updated_at": "2026-10-21T09:00:00.000000Z",
+      "project_type": null,
+      "platforms": [],
+      "store_links": []
     }
   ],
   "links": {
@@ -192,15 +205,60 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
     "repository_url": null,
     "demo_url": null,
     "external_url": null,
+    "cover": {
+      "id": 1,
+      "width": 20,
+      "height": 20,
+      "url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/display.webp",
+      "thumbnail_url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/thumbnail.webp",
+      "alt": null,
+      "file_size": null,
+      "mime_type": "image/webp",
+      "display_mime_type": "image/webp"
+    },
+    "category": {
+      "id": 1,
+      "slug": "mobile",
+      "name": "Mobile",
+      "description": null,
+      "sort_order": 0,
+      "created_at": "2026-10-21T09:00:00.000000Z",
+      "updated_at": "2026-10-21T09:00:00.000000Z"
+    },
+    "technologies": [
+      {
+        "id": 1,
+        "slug": "flutter",
+        "name": "Flutter",
+        "website_url": null,
+        "created_at": "2026-10-21T09:00:00.000000Z",
+        "updated_at": "2026-10-21T09:00:00.000000Z"
+      }
+    ],
+    "published_at": "2026-10-21T09:00:00.000000Z",
+    "seo_title": "Field notes",
+    "seo_description": "A fictional offline notebook.",
+    "created_at": "2026-10-21T09:00:00.000000Z",
+    "updated_at": "2026-10-21T09:00:00.000000Z",
+    "project_type": null,
+    "platforms": [],
+    "store_links": [],
     "description": "An **offline** notebook.",
+    "challenge": null,
+    "solution": null,
+    "outcomes": [],
     "gallery": [
       {
         "media": {
           "id": 1,
           "width": 20,
           "height": 20,
-          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+          "url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/display.webp",
+          "thumbnail_url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/thumbnail.webp",
+          "alt": null,
+          "file_size": null,
+          "mime_type": "image/webp",
+          "display_mime_type": "image/webp"
         },
         "alt_text": "Notebook example",
         "sort_order": 0
@@ -218,45 +276,18 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
           "id": 1,
           "width": 20,
           "height": 20,
-          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+          "url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/display.webp",
+          "thumbnail_url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/thumbnail.webp",
+          "alt": null,
+          "file_size": null,
+          "mime_type": "image/webp",
+          "display_mime_type": "image/webp"
         },
         "links": [],
-        "created_at": "2026-10-21T06:00:00.000000Z",
-        "updated_at": "2026-10-21T06:00:00.000000Z"
+        "created_at": "2026-10-21T09:00:00.000000Z",
+        "updated_at": "2026-10-21T09:00:00.000000Z"
       }
-    ],
-    "cover": {
-      "id": 1,
-      "width": 20,
-      "height": 20,
-      "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-      "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
-    },
-    "category": {
-      "id": 1,
-      "slug": "mobile",
-      "name": "Mobile",
-      "description": null,
-      "sort_order": 0,
-      "created_at": "2026-10-21T06:00:00.000000Z",
-      "updated_at": "2026-10-21T06:00:00.000000Z"
-    },
-    "technologies": [
-      {
-        "id": 1,
-        "slug": "flutter",
-        "name": "Flutter",
-        "website_url": null,
-        "created_at": "2026-10-21T06:00:00.000000Z",
-        "updated_at": "2026-10-21T06:00:00.000000Z"
-      }
-    ],
-    "published_at": "2026-10-21T06:00:00.000000Z",
-    "seo_title": "Field notes",
-    "seo_description": "A fictional offline notebook.",
-    "created_at": "2026-10-21T06:00:00.000000Z",
-    "updated_at": "2026-10-21T06:00:00.000000Z"
+    ]
   }
 }
 ```
@@ -277,12 +308,16 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
         "id": 1,
         "width": 20,
         "height": 20,
-        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+        "url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/display.webp",
+        "thumbnail_url": "http://localhost:8000/storage/c82a9d42-550c-49bd-9fcd-6a0d0ecca3cf/thumbnail.webp",
+        "alt": null,
+        "file_size": null,
+        "mime_type": "image/webp",
+        "display_mime_type": "image/webp"
       },
       "links": [],
-      "created_at": "2026-10-21T06:00:00.000000Z",
-      "updated_at": "2026-10-21T06:00:00.000000Z"
+      "created_at": "2026-10-21T09:00:00.000000Z",
+      "updated_at": "2026-10-21T09:00:00.000000Z"
     }
   ],
   "links": {
@@ -338,8 +373,18 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
     "default_seo_description": "Projects, products and services.",
     "social_links": [],
     "logo": null,
-    "created_at": "2026-10-21T06:00:00.000000Z",
-    "updated_at": "2026-10-21T06:00:00.000000Z"
+    "created_at": "2026-10-21T09:00:00.000000Z",
+    "updated_at": "2026-10-21T09:00:00.000000Z",
+    "phone": null,
+    "location": null,
+    "availability_text": null,
+    "logo_light": null,
+    "logo_dark": null,
+    "favicon": null,
+    "navigation": [],
+    "footer": null,
+    "shared_cta": null,
+    "legal_links": null
   }
 }
 ```
@@ -355,7 +400,7 @@ The following fictional fixtures come from the backend HTTP feature tests (now e
       "The per page field must be between 1 and 100."
     ]
   },
-  "request_id": "6988b0a3-ee95-4f80-ad25-f494f1eb44a8"
+  "request_id": "ab004a44-d15f-45f8-bafd-6fa2fdf684ba"
 }
 ```
 

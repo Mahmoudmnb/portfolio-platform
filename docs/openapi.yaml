@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Portfolio Platform REST API",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "JSON-only owner/public API. All API responses use Cache-Control: no-store and a server-generated UUID X-Request-ID. Public reads expose only visible content; known media URLs remain accessible after unpublishing. Bearer tokens expire in 7 days; no registration or refresh endpoint. Markdown is untrusted text. Errors never expose SQL or traces. Query booleans use 0/1; body booleans use JSON booleans. Lists use stable ID tie-breakers. Public entries: featured desc, sort_order asc, published_at desc, id asc; other ordered content sort_order then id, technologies id. Analytics are accepted events, including bots/retries, never unique visitors. HTTP links cannot contain credentials and are never fetched."
   },
   "servers": [
@@ -105,6 +105,32 @@
               ]
             },
             "description": ""
+          },
+          {
+            "name": "project_type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mobile_app",
+                "web_app",
+                "desktop_app",
+                "platform"
+              ]
+            },
+            "description": "Optional platform/application classification; kind stays project or product."
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "sort_order",
+                "-published_at"
+              ]
+            },
+            "description": "Optional override of the original featured/order/date ordering; id ascending breaks ties."
           }
         ],
         "responses": {
@@ -152,8 +178,12 @@
                         "id": 1,
                         "width": 20,
                         "height": 20,
-                        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/webp",
+                        "display_mime_type": "image/webp"
                       },
                       "category": {
                         "id": 1,
@@ -161,8 +191,8 @@
                         "name": "Mobile",
                         "description": null,
                         "sort_order": 0,
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
                       },
                       "technologies": [
                         {
@@ -170,15 +200,18 @@
                           "slug": "flutter",
                           "name": "Flutter",
                           "website_url": null,
-                          "created_at": "2026-10-21T06:00:00.000000Z",
-                          "updated_at": "2026-10-21T06:00:00.000000Z"
+                          "created_at": "2026-10-21T09:00:00.000000Z",
+                          "updated_at": "2026-10-21T09:00:00.000000Z"
                         }
                       ],
-                      "published_at": "2026-10-21T06:00:00.000000Z",
+                      "published_at": "2026-10-21T09:00:00.000000Z",
                       "seo_title": "Field notes",
                       "seo_description": "A fictional offline notebook.",
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z",
+                      "project_type": null,
+                      "platforms": [],
+                      "store_links": []
                     }
                   ],
                   "links": {
@@ -308,15 +341,60 @@
                     "repository_url": null,
                     "demo_url": null,
                     "external_url": null,
+                    "cover": {
+                      "id": 1,
+                      "width": 20,
+                      "height": 20,
+                      "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                      "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                      "alt": null,
+                      "file_size": null,
+                      "mime_type": "image/webp",
+                      "display_mime_type": "image/webp"
+                    },
+                    "category": {
+                      "id": 1,
+                      "slug": "mobile",
+                      "name": "Mobile",
+                      "description": null,
+                      "sort_order": 0,
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
+                    },
+                    "technologies": [
+                      {
+                        "id": 1,
+                        "slug": "flutter",
+                        "name": "Flutter",
+                        "website_url": null,
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
+                      }
+                    ],
+                    "published_at": "2026-10-21T09:00:00.000000Z",
+                    "seo_title": "Field notes",
+                    "seo_description": "A fictional offline notebook.",
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "project_type": null,
+                    "platforms": [],
+                    "store_links": [],
                     "description": "An **offline** notebook.",
+                    "challenge": null,
+                    "solution": null,
+                    "outcomes": [],
                     "gallery": [
                       {
                         "media": {
                           "id": 1,
                           "width": 20,
                           "height": 20,
-                          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+                          "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                          "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                          "alt": null,
+                          "file_size": null,
+                          "mime_type": "image/webp",
+                          "display_mime_type": "image/webp"
                         },
                         "alt_text": "Notebook example",
                         "sort_order": 0
@@ -334,45 +412,18 @@
                           "id": 1,
                           "width": 20,
                           "height": 20,
-                          "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                          "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+                          "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                          "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                          "alt": null,
+                          "file_size": null,
+                          "mime_type": "image/webp",
+                          "display_mime_type": "image/webp"
                         },
                         "links": [],
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
                       }
-                    ],
-                    "cover": {
-                      "id": 1,
-                      "width": 20,
-                      "height": 20,
-                      "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                      "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
-                    },
-                    "category": {
-                      "id": 1,
-                      "slug": "mobile",
-                      "name": "Mobile",
-                      "description": null,
-                      "sort_order": 0,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
-                    },
-                    "technologies": [
-                      {
-                        "id": 1,
-                        "slug": "flutter",
-                        "name": "Flutter",
-                        "website_url": null,
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
-                      }
-                    ],
-                    "published_at": "2026-10-21T06:00:00.000000Z",
-                    "seo_title": "Field notes",
-                    "seo_description": "A fictional offline notebook.",
-                    "created_at": "2026-10-21T06:00:00.000000Z",
-                    "updated_at": "2026-10-21T06:00:00.000000Z"
+                    ]
                   }
                 }
               }
@@ -546,6 +597,20 @@
               ]
             },
             "description": ""
+          },
+          {
+            "name": "project_type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mobile_app",
+                "web_app",
+                "desktop_app",
+                "platform"
+              ]
+            },
+            "description": "Optional platform/application classification; kind stays project or product."
           }
         ],
         "responses": {
@@ -589,23 +654,74 @@
                       "repository_url": null,
                       "demo_url": null,
                       "external_url": null,
+                      "cover": {
+                        "id": 1,
+                        "width": 20,
+                        "height": 20,
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/png",
+                        "display_mime_type": "image/webp",
+                        "status": "ready",
+                        "original_filename": "fictional.png",
+                        "bytes": 100,
+                        "usage_count": 5,
+                        "failure_message": null,
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
+                      },
+                      "category": {
+                        "id": 1,
+                        "slug": "mobile",
+                        "name": "Mobile",
+                        "description": null,
+                        "sort_order": 0,
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
+                      },
+                      "technologies": [
+                        {
+                          "id": 1,
+                          "slug": "flutter",
+                          "name": "Flutter",
+                          "website_url": null,
+                          "created_at": "2026-10-21T09:00:00.000000Z",
+                          "updated_at": "2026-10-21T09:00:00.000000Z"
+                        }
+                      ],
+                      "published_at": "2026-10-21T09:00:00.000000Z",
+                      "seo_title": "Field notes",
+                      "seo_description": "A fictional offline notebook.",
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z",
+                      "project_type": null,
+                      "platforms": [],
+                      "store_links": [],
                       "description": "An **offline** notebook.",
+                      "challenge": null,
+                      "solution": null,
+                      "outcomes": [],
                       "gallery": [
                         {
                           "media": {
                             "id": 1,
                             "width": 20,
                             "height": 20,
-                            "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                            "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
+                            "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                            "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                            "alt": null,
+                            "file_size": null,
+                            "mime_type": "image/png",
+                            "display_mime_type": "image/webp",
                             "status": "ready",
                             "original_filename": "fictional.png",
-                            "mime_type": "image/png",
                             "bytes": 100,
-                            "usage_count": 3,
+                            "usage_count": 5,
                             "failure_message": null,
-                            "created_at": "2026-10-21T06:00:00.000000Z",
-                            "updated_at": "2026-10-21T06:00:00.000000Z"
+                            "created_at": "2026-10-21T09:00:00.000000Z",
+                            "updated_at": "2026-10-21T09:00:00.000000Z"
                           },
                           "alt_text": "Notebook example",
                           "sort_order": 0
@@ -623,66 +739,30 @@
                             "id": 1,
                             "width": 20,
                             "height": 20,
-                            "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                            "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
+                            "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                            "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                            "alt": null,
+                            "file_size": null,
+                            "mime_type": "image/png",
+                            "display_mime_type": "image/webp",
                             "status": "ready",
                             "original_filename": "fictional.png",
-                            "mime_type": "image/png",
                             "bytes": 100,
-                            "usage_count": 3,
+                            "usage_count": 5,
                             "failure_message": null,
-                            "created_at": "2026-10-21T06:00:00.000000Z",
-                            "updated_at": "2026-10-21T06:00:00.000000Z"
+                            "created_at": "2026-10-21T09:00:00.000000Z",
+                            "updated_at": "2026-10-21T09:00:00.000000Z"
                           },
                           "links": [],
+                          "created_at": "2026-10-21T09:00:00.000000Z",
+                          "updated_at": "2026-10-21T09:00:00.000000Z",
                           "is_active": true,
-                          "photo_media_id": 1,
-                          "created_at": "2026-10-21T06:00:00.000000Z",
-                          "updated_at": "2026-10-21T06:00:00.000000Z"
+                          "photo_media_id": 1
                         }
                       ],
-                      "cover": {
-                        "id": 1,
-                        "width": 20,
-                        "height": 20,
-                        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
-                        "status": "ready",
-                        "original_filename": "fictional.png",
-                        "mime_type": "image/png",
-                        "bytes": 100,
-                        "usage_count": 3,
-                        "failure_message": null,
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
-                      },
-                      "category": {
-                        "id": 1,
-                        "slug": "mobile",
-                        "name": "Mobile",
-                        "description": null,
-                        "sort_order": 0,
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
-                      },
-                      "technologies": [
-                        {
-                          "id": 1,
-                          "slug": "flutter",
-                          "name": "Flutter",
-                          "website_url": null,
-                          "created_at": "2026-10-21T06:00:00.000000Z",
-                          "updated_at": "2026-10-21T06:00:00.000000Z"
-                        }
-                      ],
-                      "published_at": "2026-10-21T06:00:00.000000Z",
-                      "seo_title": "Field notes",
-                      "seo_description": "A fictional offline notebook.",
-                      "category_id": 1,
                       "status": "published",
-                      "cover_media_id": 1,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "category_id": 1,
+                      "cover_media_id": 1
                     }
                   ],
                   "links": {
@@ -1134,8 +1214,8 @@
                       "name": "Mobile",
                       "description": null,
                       "sort_order": 0,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
                     }
                   ],
                   "links": {
@@ -1725,8 +1805,8 @@
                       "slug": "flutter",
                       "name": "Flutter",
                       "website_url": null,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
                     }
                   ],
                   "links": {
@@ -2321,12 +2401,16 @@
                         "id": 1,
                         "width": 20,
                         "height": 20,
-                        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/webp",
+                        "display_mime_type": "image/webp"
                       },
                       "links": [],
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
                     }
                   ],
                   "links": {
@@ -2456,12 +2540,16 @@
                       "id": 1,
                       "width": 20,
                       "height": 20,
-                      "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                      "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp"
+                      "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                      "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                      "alt": null,
+                      "file_size": null,
+                      "mime_type": "image/webp",
+                      "display_mime_type": "image/webp"
                     },
                     "links": [],
-                    "created_at": "2026-10-21T06:00:00.000000Z",
-                    "updated_at": "2026-10-21T06:00:00.000000Z"
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z"
                   }
                 }
               }
@@ -2629,22 +2717,25 @@
                         "id": 1,
                         "width": 20,
                         "height": 20,
-                        "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                        "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/png",
+                        "display_mime_type": "image/webp",
                         "status": "ready",
                         "original_filename": "fictional.png",
-                        "mime_type": "image/png",
                         "bytes": 100,
-                        "usage_count": 3,
+                        "usage_count": 5,
                         "failure_message": null,
-                        "created_at": "2026-10-21T06:00:00.000000Z",
-                        "updated_at": "2026-10-21T06:00:00.000000Z"
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
                       },
                       "links": [],
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z",
                       "is_active": true,
-                      "photo_media_id": 1,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "photo_media_id": 1
                     }
                   ],
                   "links": {
@@ -3089,7 +3180,35 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": [],
+                  "data": [
+                    {
+                      "id": 1,
+                      "slug": "fictional-development",
+                      "title": "Alias eos nobis aliquam.",
+                      "summary": "Tempora debitis nemo numquam et.",
+                      "description": "Eaque excepturi ad nihil voluptatibus officiis dolores. Quia omnis error unde id unde sunt aliquid. Laudantium quia qui rem autem necessitatibus voluptatem.",
+                      "icon_key": null,
+                      "sort_order": 0,
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z",
+                      "features": [],
+                      "cover": {
+                        "id": 1,
+                        "width": 20,
+                        "height": 20,
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/webp",
+                        "display_mime_type": "image/webp"
+                      },
+                      "cta_label": null,
+                      "cta_url": null,
+                      "seo_title": "Alias eos nobis aliquam.",
+                      "seo_description": "Tempora debitis nemo numquam et."
+                    }
+                  ],
                   "links": {
                     "first": "http://localhost:8000/api/v1/services?page=1",
                     "last": "http://localhost:8000/api/v1/services?page=1",
@@ -3098,7 +3217,7 @@
                   },
                   "meta": {
                     "current_page": 1,
-                    "from": null,
+                    "from": 1,
                     "last_page": 1,
                     "links": [
                       {
@@ -3122,8 +3241,8 @@
                     ],
                     "path": "http://localhost:8000/api/v1/services",
                     "per_page": 20,
-                    "to": null,
-                    "total": 0
+                    "to": 1,
+                    "total": 1
                   }
                 }
               }
@@ -3204,6 +3323,35 @@
                     "data"
                   ],
                   "additionalProperties": false
+                },
+                "example": {
+                  "data": {
+                    "id": 1,
+                    "slug": "fictional-development",
+                    "title": "Alias eos nobis aliquam.",
+                    "summary": "Tempora debitis nemo numquam et.",
+                    "description": "Eaque excepturi ad nihil voluptatibus officiis dolores. Quia omnis error unde id unde sunt aliquid. Laudantium quia qui rem autem necessitatibus voluptatem.",
+                    "icon_key": null,
+                    "sort_order": 0,
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "features": [],
+                    "cover": {
+                      "id": 1,
+                      "width": 20,
+                      "height": 20,
+                      "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                      "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                      "alt": null,
+                      "file_size": null,
+                      "mime_type": "image/webp",
+                      "display_mime_type": "image/webp"
+                    },
+                    "cta_label": null,
+                    "cta_url": null,
+                    "seo_title": "Alias eos nobis aliquam.",
+                    "seo_description": "Tempora debitis nemo numquam et."
+                  }
                 }
               }
             },
@@ -3730,8 +3878,18 @@
                     "default_seo_description": "Projects, products and services.",
                     "social_links": [],
                     "logo": null,
-                    "created_at": "2026-10-21T06:00:00.000000Z",
-                    "updated_at": "2026-10-21T06:00:00.000000Z"
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "phone": null,
+                    "location": null,
+                    "availability_text": null,
+                    "logo_light": null,
+                    "logo_dark": null,
+                    "favicon": null,
+                    "navigation": [],
+                    "footer": null,
+                    "shared_cta": null,
+                    "legal_links": null
                   }
                 }
               }
@@ -3813,9 +3971,22 @@
                     "default_seo_description": "Projects, products and services.",
                     "social_links": [],
                     "logo": null,
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "phone": null,
+                    "location": null,
+                    "availability_text": null,
+                    "logo_light": null,
+                    "logo_dark": null,
+                    "favicon": null,
+                    "navigation": [],
+                    "footer": null,
+                    "shared_cta": null,
+                    "legal_links": null,
                     "logo_media_id": null,
-                    "created_at": "2026-10-21T06:00:00.000000Z",
-                    "updated_at": "2026-10-21T06:00:00.000000Z"
+                    "logo_light_media_id": null,
+                    "logo_dark_media_id": null,
+                    "favicon_media_id": null
                   }
                 }
               }
@@ -4024,7 +4195,8 @@
               }
             }
           }
-        }
+        },
+        "description": "Validate and store a private inquiry. Optional source_page is a safe local path. A filled website honeypot returns the same generic 201 acknowledgment without persistence. Optional configured business inbox notifications are generic queued alerts; persistence does not require SMTP. Notification dispatch failure does not discard the inquiry. No automatic request deduplication."
       }
     },
     "/analytics/events": {
@@ -4539,7 +4711,14 @@
                   "file": {
                     "type": "string",
                     "format": "binary",
-                    "description": "JPEG/PNG/WebP, max 10 MiB, 8000 pixels per side, 20 megapixels. Re-encoded WebP display and 480\u00d7480-fit thumbnail; never upscaled."
+                    "description": "JPEG/PNG/WebP, max 10 MiB, 8000 pixels per side, 20 megapixels. Re-encoded WebP display and 480×480-fit thumbnail; never upscaled."
+                  },
+                  "alt_text": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 500
                   }
                 },
                 "required": [
@@ -4640,16 +4819,19 @@
                       "id": 1,
                       "width": 20,
                       "height": 20,
-                      "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                      "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
+                      "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                      "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                      "alt": null,
+                      "file_size": null,
+                      "mime_type": "image/png",
+                      "display_mime_type": "image/webp",
                       "status": "ready",
                       "original_filename": "fictional.png",
-                      "mime_type": "image/png",
                       "bytes": 100,
-                      "usage_count": 3,
+                      "usage_count": 5,
                       "failure_message": null,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
                     }
                   ],
                   "links": {
@@ -4770,16 +4952,19 @@
                     "id": 1,
                     "width": 20,
                     "height": 20,
-                    "url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/display.webp",
-                    "thumbnail_url": "http://localhost:8000/storage/f65b92de-4495-45a9-961c-541a12e5a8d8/thumbnail.webp",
+                    "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                    "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                    "alt": "Fictional notebook",
+                    "file_size": null,
+                    "mime_type": "image/png",
+                    "display_mime_type": "image/webp",
                     "status": "ready",
                     "original_filename": "fictional.png",
-                    "mime_type": "image/png",
                     "bytes": 100,
-                    "usage_count": 3,
+                    "usage_count": 5,
                     "failure_message": null,
-                    "created_at": "2026-10-21T06:00:00.000000Z",
-                    "updated_at": "2026-10-21T06:00:00.000000Z"
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z"
                   }
                 }
               }
@@ -4883,6 +5068,111 @@
             "$ref": "#/components/responses/503"
           }
         }
+      },
+      "patch": {
+        "operationId": "patch_admin_media_id",
+        "summary": "Update media alternative text",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AdminMedia"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "data": {
+                    "id": 1,
+                    "width": 20,
+                    "height": 20,
+                    "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                    "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                    "alt": "Fictional notebook",
+                    "file_size": null,
+                    "mime_type": "image/png",
+                    "display_mime_type": "image/webp",
+                    "status": "ready",
+                    "original_filename": "fictional.png",
+                    "bytes": 100,
+                    "usage_count": 5,
+                    "failure_message": null,
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z"
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "$ref": "#/components/headers/RequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/NoStore"
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "405": {
+            "$ref": "#/components/responses/405"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "503": {
+            "$ref": "#/components/responses/503"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MediaMetadataUpdate"
+              }
+            }
+          }
+        }
       }
     },
     "/admin/inquiries": {
@@ -4984,12 +5274,13 @@
                       "email": "visitor@example.test",
                       "subject": "Hello",
                       "message": "Fictional sample inquiry.",
+                      "source_page": null,
                       "status": "new",
                       "internal_note": null,
-                      "submitted_at": "2026-10-21T06:00:00.000000Z",
+                      "submitted_at": "2026-10-21T09:00:00.000000Z",
                       "last_status_changed_at": null,
-                      "created_at": "2026-10-21T06:00:00.000000Z",
-                      "updated_at": "2026-10-21T06:00:00.000000Z"
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z"
                     }
                   ],
                   "links": {
@@ -6386,6 +6677,409 @@
         },
         "security": []
       }
+    },
+    "/pages/{page_key}": {
+      "get": {
+        "operationId": "get_pages_page_key",
+        "summary": "Read a published fixed page with inline SEO",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Page"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "data": {
+                    "page_key": "home",
+                    "locale": "en",
+                    "content": {
+                      "hero": {
+                        "title": "Fictional studio"
+                      }
+                    },
+                    "seo": {
+                      "title": "Fictional studio",
+                      "meta_description": "Fictional page for integration testing.",
+                      "canonical_url": null,
+                      "og_title": "Fictional studio",
+                      "og_description": "Fictional page for integration testing.",
+                      "twitter_title": null,
+                      "twitter_description": null,
+                      "robots_index": true,
+                      "robots_follow": true,
+                      "og_image": {
+                        "id": 1,
+                        "width": 20,
+                        "height": 20,
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/webp",
+                        "display_mime_type": "image/webp"
+                      }
+                    },
+                    "featured_projects": [],
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "page_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "home",
+                "about",
+                "services",
+                "projects",
+                "contact"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/admin/pages": {
+      "get": {
+        "operationId": "get_admin_pages",
+        "summary": "List saved pages, including drafts; fixed-size unpaginated collection",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdminPage"
+                      },
+                      "maxItems": 5
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "data": [
+                    {
+                      "page_key": "home",
+                      "locale": "en",
+                      "content": {
+                        "hero": {
+                          "title": "Fictional studio"
+                        }
+                      },
+                      "seo": {
+                        "title": "Fictional studio",
+                        "meta_description": "Fictional page for integration testing.",
+                        "canonical_url": null,
+                        "og_title": "Fictional studio",
+                        "og_description": "Fictional page for integration testing.",
+                        "twitter_title": null,
+                        "twitter_description": null,
+                        "robots_index": true,
+                        "robots_follow": true,
+                        "og_image": {
+                          "id": 1,
+                          "width": 20,
+                          "height": 20,
+                          "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                          "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                          "alt": null,
+                          "file_size": null,
+                          "mime_type": "image/png",
+                          "display_mime_type": "image/webp",
+                          "status": "ready",
+                          "original_filename": "fictional.png",
+                          "bytes": 100,
+                          "usage_count": 5,
+                          "failure_message": null,
+                          "created_at": "2026-10-21T09:00:00.000000Z",
+                          "updated_at": "2026-10-21T09:00:00.000000Z"
+                        }
+                      },
+                      "featured_projects": [],
+                      "created_at": "2026-10-21T09:00:00.000000Z",
+                      "updated_at": "2026-10-21T09:00:00.000000Z",
+                      "status": "published",
+                      "og_image_media_id": 1,
+                      "featured_entry_ids": []
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          }
+        },
+        "security": []
+      }
+    },
+    "/admin/pages/{page_key}": {
+      "get": {
+        "operationId": "get_admin_pages_page_key",
+        "summary": "Read a saved page including drafts",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AdminPage"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "data": {
+                    "page_key": "home",
+                    "locale": "en",
+                    "content": {
+                      "hero": {
+                        "title": "Fictional studio"
+                      }
+                    },
+                    "seo": {
+                      "title": "Fictional studio",
+                      "meta_description": "Fictional page for integration testing.",
+                      "canonical_url": null,
+                      "og_title": "Fictional studio",
+                      "og_description": "Fictional page for integration testing.",
+                      "twitter_title": null,
+                      "twitter_description": null,
+                      "robots_index": true,
+                      "robots_follow": true,
+                      "og_image": {
+                        "id": 1,
+                        "width": 20,
+                        "height": 20,
+                        "url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/display.webp",
+                        "thumbnail_url": "http://localhost:8000/storage/da39f1b1-660f-4bc0-8b3c-486f1c46ed5f/thumbnail.webp",
+                        "alt": null,
+                        "file_size": null,
+                        "mime_type": "image/png",
+                        "display_mime_type": "image/webp",
+                        "status": "ready",
+                        "original_filename": "fictional.png",
+                        "bytes": 100,
+                        "usage_count": 5,
+                        "failure_message": null,
+                        "created_at": "2026-10-21T09:00:00.000000Z",
+                        "updated_at": "2026-10-21T09:00:00.000000Z"
+                      }
+                    },
+                    "featured_projects": [],
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "status": "published",
+                    "og_image_media_id": 1,
+                    "featured_entry_ids": []
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "page_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "home",
+                "about",
+                "services",
+                "projects",
+                "contact"
+              ]
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "put_admin_pages_page_key",
+        "summary": "Create or replace a fixed page and its SEO",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AdminPage"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "data": {
+                    "page_key": "about",
+                    "locale": "en",
+                    "content": {
+                      "intro": {
+                        "title": "Our studio"
+                      }
+                    },
+                    "seo": {
+                      "title": "About",
+                      "meta_description": "A fictional studio.",
+                      "canonical_url": null,
+                      "og_title": "About",
+                      "og_description": "A fictional studio.",
+                      "twitter_title": null,
+                      "twitter_description": null,
+                      "robots_index": true,
+                      "robots_follow": true,
+                      "og_image": null
+                    },
+                    "featured_projects": [],
+                    "created_at": "2026-10-21T09:00:00.000000Z",
+                    "updated_at": "2026-10-21T09:00:00.000000Z",
+                    "status": "published",
+                    "og_image_media_id": null,
+                    "featured_entry_ids": []
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "page_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "home",
+                "about",
+                "services",
+                "projects",
+                "contact"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageWrite"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -6461,6 +7155,29 @@
             ],
             "maxLength": 2048,
             "format": "uri"
+          },
+          "alt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "file_size": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "description": "Processed display WebP bytes; null for older media without recorded variant metadata."
+          },
+          "display_mime_type": {
+            "type": "string",
+            "const": "image/webp"
+          },
+          "mime_type": {
+            "type": "string",
+            "const": "image/webp"
           }
         },
         "required": [
@@ -6468,7 +7185,11 @@
           "width",
           "height",
           "url",
-          "thumbnail_url"
+          "thumbnail_url",
+          "alt",
+          "file_size",
+          "display_mime_type",
+          "mime_type"
         ],
         "additionalProperties": false
       },
@@ -6548,6 +7269,25 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "alt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "file_size": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "description": "Processed display WebP bytes; null for older media without recorded variant metadata."
+          },
+          "display_mime_type": {
+            "type": "string",
+            "const": "image/webp"
           }
         },
         "required": [
@@ -6563,7 +7303,10 @@
           "usage_count",
           "failure_message",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "alt",
+          "file_size",
+          "display_mime_type"
         ],
         "additionalProperties": false
       },
@@ -6583,6 +7326,9 @@
             "type": "integer",
             "minimum": -1000000,
             "maximum": 1000000
+          },
+          "is_visible": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -6794,6 +7540,47 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "cta_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "cta_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "cover": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Media"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "seo_title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": "string",
+            "maxLength": 500
           }
         },
         "required": [
@@ -6805,7 +7592,13 @@
           "icon_key",
           "sort_order",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "features",
+          "cta_label",
+          "cta_url",
+          "cover",
+          "seo_title",
+          "seo_description"
         ],
         "additionalProperties": false
       },
@@ -6852,7 +7645,7 @@
           "social_links": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Link"
+              "$ref": "#/components/schemas/SocialLink"
             },
             "maxItems": 10
           },
@@ -6873,6 +7666,73 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "availability_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          },
+          "footer": {
+            "$ref": "#/components/schemas/Footer"
+          },
+          "shared_cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "legal_links": {
+            "$ref": "#/components/schemas/LegalLinks"
+          },
+          "logo_light": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Media"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "logo_dark": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Media"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Media"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -6887,7 +7747,17 @@
           "social_links",
           "logo",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "phone",
+          "location",
+          "availability_text",
+          "navigation",
+          "footer",
+          "shared_cta",
+          "legal_links",
+          "logo_light",
+          "logo_dark",
+          "favicon"
         ],
         "additionalProperties": false
       },
@@ -6999,6 +7869,69 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "project_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "desktop_app",
+              "platform",
+              null
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web",
+                "windows",
+                "macos",
+                "linux"
+              ]
+            },
+            "maxItems": 6
+          },
+          "store_links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "ios",
+                    "web",
+                    "windows",
+                    "macos",
+                    "linux"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "platform",
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
           }
         },
         "required": [
@@ -7019,7 +7952,10 @@
           "seo_title",
           "seo_description",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "project_type",
+          "platforms",
+          "store_links"
         ],
         "additionalProperties": false
       },
@@ -7169,6 +8105,91 @@
               "$ref": "#/components/schemas/TeamMember"
             },
             "maxItems": 30
+          },
+          "project_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "desktop_app",
+              "platform",
+              null
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web",
+                "windows",
+                "macos",
+                "linux"
+              ]
+            },
+            "maxItems": 6
+          },
+          "store_links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "ios",
+                    "web",
+                    "windows",
+                    "macos",
+                    "linux"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "platform",
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "challenge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "solution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
           }
         },
         "required": [
@@ -7192,7 +8213,13 @@
           "updated_at",
           "description",
           "gallery",
-          "contributors"
+          "contributors",
+          "project_type",
+          "platforms",
+          "store_links",
+          "challenge",
+          "solution",
+          "outcomes"
         ],
         "additionalProperties": false
       },
@@ -7333,6 +8360,54 @@
           },
           "is_active": {
             "type": "boolean"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "cta_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "cta_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "cover": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminMedia"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "seo_title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "cover_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
           }
         },
         "required": [
@@ -7345,7 +8420,14 @@
           "sort_order",
           "created_at",
           "updated_at",
-          "is_active"
+          "is_active",
+          "features",
+          "cta_label",
+          "cta_url",
+          "cover",
+          "seo_title",
+          "seo_description",
+          "cover_media_id"
         ],
         "additionalProperties": false
       },
@@ -7473,7 +8555,7 @@
           "social_links": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Link"
+              "$ref": "#/components/schemas/SocialLink"
             },
             "maxItems": 10
           },
@@ -7501,6 +8583,94 @@
               "null"
             ],
             "minimum": 1
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "availability_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          },
+          "footer": {
+            "$ref": "#/components/schemas/Footer"
+          },
+          "shared_cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "legal_links": {
+            "$ref": "#/components/schemas/LegalLinks"
+          },
+          "logo_light": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminMedia"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "logo_dark": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminMedia"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminMedia"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "logo_light_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "logo_dark_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "favicon_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
           }
         },
         "required": [
@@ -7516,7 +8686,20 @@
           "logo",
           "created_at",
           "updated_at",
-          "logo_media_id"
+          "logo_media_id",
+          "phone",
+          "location",
+          "availability_text",
+          "navigation",
+          "footer",
+          "shared_cta",
+          "legal_links",
+          "logo_light",
+          "logo_dark",
+          "favicon",
+          "logo_light_media_id",
+          "logo_dark_media_id",
+          "favicon_media_id"
         ],
         "additionalProperties": false
       },
@@ -7688,6 +8871,91 @@
               "null"
             ],
             "minimum": 1
+          },
+          "project_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "desktop_app",
+              "platform",
+              null
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web",
+                "windows",
+                "macos",
+                "linux"
+              ]
+            },
+            "maxItems": 6
+          },
+          "store_links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "ios",
+                    "web",
+                    "windows",
+                    "macos",
+                    "linux"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "platform",
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "challenge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "solution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
           }
         },
         "required": [
@@ -7714,7 +8982,13 @@
           "contributors",
           "status",
           "category_id",
-          "cover_media_id"
+          "cover_media_id",
+          "project_type",
+          "platforms",
+          "store_links",
+          "challenge",
+          "solution",
+          "outcomes"
         ],
         "additionalProperties": false
       },
@@ -7776,6 +9050,13 @@
           "updated_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "source_page": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
           }
         },
         "required": [
@@ -7789,7 +9070,8 @@
           "submitted_at",
           "last_status_changed_at",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "source_page"
         ],
         "additionalProperties": false
       },
@@ -7976,6 +9258,14 @@
               "null"
             ],
             "maxLength": 2048
+          },
+          "source_page": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "pattern": "^/(?!/)[a-zA-Z0-9/_-]*$"
           }
         },
         "required": [
@@ -8203,6 +9493,105 @@
               "additionalProperties": false
             },
             "maxItems": 20
+          },
+          "project_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "desktop_app",
+              "platform",
+              null
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web",
+                "windows",
+                "macos",
+                "linux"
+              ]
+            },
+            "maxItems": 6
+          },
+          "store_links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "ios",
+                    "web",
+                    "windows",
+                    "macos",
+                    "linux"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "platform",
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "challenge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "solution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "seo_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
           }
         },
         "required": [
@@ -8345,6 +9734,105 @@
               "additionalProperties": false
             },
             "maxItems": 20
+          },
+          "project_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "desktop_app",
+              "platform",
+              null
+            ]
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web",
+                "windows",
+                "macos",
+                "linux"
+              ]
+            },
+            "maxItems": 6
+          },
+          "store_links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "ios",
+                    "web",
+                    "windows",
+                    "macos",
+                    "linux"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "platform",
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "challenge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "solution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 10000
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "seo_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
           }
         },
         "required": [],
@@ -8593,6 +10081,50 @@
           },
           "is_active": {
             "type": "boolean"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "cta_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "cta_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "seo_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "cover_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
           }
         },
         "required": [
@@ -8637,6 +10169,50 @@
           },
           "is_active": {
             "type": "boolean"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 30
+          },
+          "cta_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "cta_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "seo_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "seo_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "cover_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
           }
         },
         "required": [],
@@ -8682,11 +10258,69 @@
           "social_links": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Link"
+              "$ref": "#/components/schemas/SocialLink"
             },
             "maxItems": 10
           },
           "logo_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "availability_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          },
+          "footer": {
+            "$ref": "#/components/schemas/Footer"
+          },
+          "shared_cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "legal_links": {
+            "$ref": "#/components/schemas/LegalLinks"
+          },
+          "logo_light_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "logo_dark_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "favicon_media_id": {
             "type": [
               "integer",
               "null"
@@ -8745,11 +10379,69 @@
           "social_links": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Link"
+              "$ref": "#/components/schemas/SocialLink"
             },
             "maxItems": 10
           },
           "logo_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "availability_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          },
+          "footer": {
+            "$ref": "#/components/schemas/Footer"
+          },
+          "shared_cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "legal_links": {
+            "$ref": "#/components/schemas/LegalLinks"
+          },
+          "logo_light_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "logo_dark_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "favicon_media_id": {
             "type": [
               "integer",
               "null"
@@ -8870,6 +10562,1200 @@
           "last",
           "prev",
           "next"
+        ],
+        "additionalProperties": false
+      },
+      "SocialLink": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "sort_order": {
+            "type": "integer",
+            "minimum": -1000000,
+            "maximum": 1000000
+          },
+          "is_visible": {
+            "type": "boolean"
+          },
+          "platform": {
+            "type": "string",
+            "maxLength": 40,
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          }
+        },
+        "required": [
+          "label",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "NavigationLink": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "sort_order": {
+            "type": "integer",
+            "minimum": -1000000,
+            "maximum": 1000000
+          },
+          "is_visible": {
+            "type": "boolean"
+          },
+          "open_in_new_tab": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "label",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "ContentCta": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "eyebrow": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5000
+          },
+          "button_label": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "button_url": {
+            "type": "string",
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          }
+        },
+        "required": [
+          "title",
+          "button_label",
+          "button_url"
+        ],
+        "additionalProperties": false
+      },
+      "Footer": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5000
+          },
+          "copyright_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "established_year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1900,
+            "maximum": 2100
+          },
+          "footer_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          },
+          "practice_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationLink"
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "LegalLinks": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "privacy_policy_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "terms_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "security_policy_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "PageHeading": {
+        "type": "object",
+        "properties": {
+          "eyebrow": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5000
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "PageHero": {
+        "type": "object",
+        "properties": {
+          "eyebrow": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5000
+          },
+          "highlighted_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "primary_cta": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "url": {
+                "type": "string",
+                "maxLength": 2048,
+                "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+              }
+            },
+            "required": [
+              "label",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "secondary_cta": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "url": {
+                "type": "string",
+                "maxLength": 2048,
+                "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+              }
+            },
+            "required": [
+              "label",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "PageCard": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5000
+          },
+          "icon_key": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80,
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "value": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "period": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "description": "HTTP(S) URL without credentials or a local path matching ^/(?!/)[a-zA-Z0-9/_-]*$."
+          },
+          "sort_order": {
+            "type": "integer",
+            "minimum": -1000000,
+            "maximum": 1000000
+          },
+          "is_visible": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "ContactFormContent": {
+        "type": "object",
+        "properties": {
+          "name_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "email_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "subject_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "message_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "submit_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "sending_label": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "success_message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "error_message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "confidentiality_note": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1000
+          },
+          "subject_options": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 180
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "HomePageContent": {
+        "type": "object",
+        "properties": {
+          "hero": {
+            "$ref": "#/components/schemas/PageHero"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "service_cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "value_propositions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "process_steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "section_headings": {
+            "type": "object",
+            "properties": {
+              "highlights": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "service_cards": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "value_propositions": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "process_steps": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "metrics": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "featured_projects": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "team_members": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "services": {
+                "$ref": "#/components/schemas/PageHeading"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "hero"
+        ],
+        "additionalProperties": false
+      },
+      "AboutPageContent": {
+        "type": "object",
+        "properties": {
+          "intro": {
+            "$ref": "#/components/schemas/PageHero"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "journey_phases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "philosophy_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "specializations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "section_headings": {
+            "type": "object",
+            "properties": {
+              "highlights": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "principles": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "journey_phases": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "philosophy_items": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "specializations": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "featured_projects": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "team_members": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "services": {
+                "$ref": "#/components/schemas/PageHeading"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "intro"
+        ],
+        "additionalProperties": false
+      },
+      "ServicesPageContent": {
+        "type": "object",
+        "properties": {
+          "intro": {
+            "$ref": "#/components/schemas/PageHero"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "solutions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "delivery_steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "section_headings": {
+            "type": "object",
+            "properties": {
+              "highlights": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "capabilities": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "solutions": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "delivery_steps": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "featured_projects": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "team_members": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "services": {
+                "$ref": "#/components/schemas/PageHeading"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "intro"
+        ],
+        "additionalProperties": false
+      },
+      "ProjectsPageContent": {
+        "type": "object",
+        "properties": {
+          "intro": {
+            "$ref": "#/components/schemas/PageHero"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "delivery_steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageCard"
+            },
+            "maxItems": 30
+          },
+          "cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "section_headings": {
+            "type": "object",
+            "properties": {
+              "highlights": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "delivery_steps": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "featured_projects": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "team_members": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "services": {
+                "$ref": "#/components/schemas/PageHeading"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "intro"
+        ],
+        "additionalProperties": false
+      },
+      "ContactPageContent": {
+        "type": "object",
+        "properties": {
+          "intro": {
+            "$ref": "#/components/schemas/PageHero"
+          },
+          "form": {
+            "$ref": "#/components/schemas/ContactFormContent"
+          },
+          "cta": {
+            "$ref": "#/components/schemas/ContentCta"
+          },
+          "section_headings": {
+            "type": "object",
+            "properties": {
+              "featured_projects": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "team_members": {
+                "$ref": "#/components/schemas/PageHeading"
+              },
+              "services": {
+                "$ref": "#/components/schemas/PageHeading"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "intro"
+        ],
+        "additionalProperties": false
+      },
+      "PageSeoWrite": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "meta_description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "og_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "og_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "twitter_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "twitter_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "robots_index": {
+            "type": "boolean"
+          },
+          "robots_follow": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "meta_description"
+        ],
+        "additionalProperties": false
+      },
+      "PageSeo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "meta_description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "og_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "og_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "twitter_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "twitter_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "robots_index": {
+            "type": "boolean"
+          },
+          "robots_follow": {
+            "type": "boolean"
+          },
+          "og_image": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Media"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "title",
+          "meta_description",
+          "canonical_url",
+          "og_title",
+          "og_description",
+          "twitter_title",
+          "twitter_description",
+          "robots_index",
+          "robots_follow",
+          "og_image"
+        ],
+        "additionalProperties": false
+      },
+      "AdminPageSeo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "meta_description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "og_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "og_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "twitter_title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 180
+          },
+          "twitter_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          },
+          "robots_index": {
+            "type": "boolean"
+          },
+          "robots_follow": {
+            "type": "boolean"
+          },
+          "og_image": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminMedia"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "title",
+          "meta_description",
+          "canonical_url",
+          "og_title",
+          "og_description",
+          "twitter_title",
+          "twitter_description",
+          "robots_index",
+          "robots_follow",
+          "og_image"
+        ],
+        "additionalProperties": false
+      },
+      "PageWrite": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "published"
+            ]
+          },
+          "content": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HomePageContent"
+              },
+              {
+                "$ref": "#/components/schemas/AboutPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ServicesPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ProjectsPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ContactPageContent"
+              }
+            ]
+          },
+          "seo": {
+            "$ref": "#/components/schemas/PageSeoWrite"
+          },
+          "og_image_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "featured_entry_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "status",
+          "content",
+          "seo"
+        ],
+        "additionalProperties": false,
+        "description": "PUT upserts one of five fixed page keys; content and seo replace whole objects. Optional og_image_media_id and featured_entry_ids preserve current values when omitted; null clears the image and [] clears entries. Content section names must match the path page_key. Only ready media may be attached. English only. No concurrent-edit version check; refetch after save."
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "page_key": {
+            "type": "string",
+            "enum": [
+              "home",
+              "about",
+              "services",
+              "projects",
+              "contact"
+            ]
+          },
+          "locale": {
+            "type": "string",
+            "const": "en"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HomePageContent"
+              },
+              {
+                "$ref": "#/components/schemas/AboutPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ServicesPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ProjectsPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ContactPageContent"
+              }
+            ]
+          },
+          "seo": {
+            "$ref": "#/components/schemas/PageSeo"
+          },
+          "featured_projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntrySummary"
+            },
+            "maxItems": 30
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "page_key",
+          "locale",
+          "content",
+          "seo",
+          "featured_projects",
+          "created_at",
+          "updated_at"
+        ],
+        "additionalProperties": false
+      },
+      "AdminPage": {
+        "type": "object",
+        "properties": {
+          "page_key": {
+            "type": "string",
+            "enum": [
+              "home",
+              "about",
+              "services",
+              "projects",
+              "contact"
+            ]
+          },
+          "locale": {
+            "type": "string",
+            "const": "en"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HomePageContent"
+              },
+              {
+                "$ref": "#/components/schemas/AboutPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ServicesPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ProjectsPageContent"
+              },
+              {
+                "$ref": "#/components/schemas/ContactPageContent"
+              }
+            ]
+          },
+          "seo": {
+            "$ref": "#/components/schemas/AdminPageSeo"
+          },
+          "featured_projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminEntry"
+            },
+            "maxItems": 30
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "published"
+            ]
+          },
+          "og_image_media_id": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "featured_entry_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "page_key",
+          "locale",
+          "content",
+          "seo",
+          "featured_projects",
+          "created_at",
+          "updated_at",
+          "status",
+          "og_image_media_id",
+          "featured_entry_ids"
+        ],
+        "additionalProperties": false
+      },
+      "MediaMetadataUpdate": {
+        "type": "object",
+        "properties": {
+          "alt_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "alt_text"
         ],
         "additionalProperties": false
       }

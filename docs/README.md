@@ -12,6 +12,9 @@
 - [Architecture](architecture.md)
 - [API integration](api-integration.md)
 - [OpenAPI 3.1](openapi.yaml)
+- [Website content changes for Flutter](../backend/docs/flutter-backend-updates.md)
+- [Flutter request examples](../backend/docs/flutter-api-examples.md)
+- [Flutter implementation checklist](../backend/docs/flutter-implementation-checklist.md)
 - [Dashboard design](dashboard-design.md)
 
 ## Deployment and operations

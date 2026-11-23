@@ -334,6 +334,18 @@
                   "value": "0",
                   "disabled": true,
                   "description": "{\"type\": \"string\", \"enum\": [\"0\", \"1\"]}"
+                },
+                {
+                  "key": "project_type",
+                  "value": "mobile_app",
+                  "disabled": true,
+                  "description": "Optional platform/application classification; kind stays project or product."
+                },
+                {
+                  "key": "sort",
+                  "value": "sort_order",
+                  "disabled": true,
+                  "description": "Optional override of the original featured/order/date ordering; id ascending breaks ties."
                 }
               ]
             },
@@ -757,7 +769,7 @@
                 "inquiries"
               ]
             },
-            "description": "Submit a private inquiry",
+            "description": "Validate and store a private inquiry. Optional source_page is a safe local path. A filled website honeypot returns the same generic 201 acknowledgment without persistence. Optional configured business inbox notifications are generic queued alerts; persistence does not require SMTP. Notification dispatch failure does not discard the inquiry. No automatic request deduplication.",
             "auth": {
               "type": "noauth"
             },
@@ -871,6 +883,173 @@
             }
           ],
           "response": []
+        },
+        {
+          "name": "GET /pages/{page_key} — Read a published fixed page with inline SEO",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/pages/{{page_key}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "{{page_key}}"
+              ]
+            },
+            "description": "Read a published fixed page with inline SEO",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/pages — List saved pages, including drafts; fixed-size unpaginated collection",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/pages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "pages"
+              ]
+            },
+            "description": "List saved pages, including drafts; fixed-size unpaginated collection",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "GET /admin/pages/{page_key} — Read a saved page including drafts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/pages/{{page_key}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "pages",
+                "{{page_key}}"
+              ]
+            },
+            "description": "Read a saved page including drafts",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PUT /admin/pages/{page_key} — Create or replace a fixed page and its SEO",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/pages/{{page_key}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "pages",
+                "{{page_key}}"
+              ]
+            },
+            "description": "Create or replace a fixed page and its SEO\nExample is for page_key=home. For about/services/projects/contact, replace content.hero with content.intro. Content and seo replace whole objects; saving draft hides any published version.",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"draft\",\n  \"content\": {\n    \"hero\": {\n      \"title\": \"Fictional studio\"\n    }\n  },\n  \"seo\": {\n    \"title\": \"Fictional studio\",\n    \"meta_description\": \"Fictional page description.\"\n  },\n  \"featured_entry_ids\": [],\n  \"og_image_media_id\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                ]
+              }
+            }
+          ],
+          "response": []
         }
       ]
     },
@@ -956,6 +1135,12 @@
                   "value": "draft",
                   "disabled": true,
                   "description": "{\"type\": \"string\", \"enum\": [\"draft\", \"published\", \"archived\"]}"
+                },
+                {
+                  "key": "project_type",
+                  "value": "mobile_app",
+                  "disabled": true,
+                  "description": "Optional platform/application classification; kind stays project or product."
                 }
               ]
             },
@@ -2235,6 +2420,10 @@
       ]
     },
     {
+      "name": "Pages",
+      "item": []
+    },
+    {
       "name": "Media",
       "item": [
         {
@@ -2261,6 +2450,12 @@
             "body": {
               "mode": "formdata",
               "formdata": [
+                {
+                  "key": "alt_text",
+                  "type": "text",
+                  "value": "Fictional project screenshot",
+                  "disabled": true
+                },
                 {
                   "key": "file",
                   "type": "file",
@@ -2415,6 +2610,55 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([204]));"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "PATCH /admin/media/{id} — Update media alternative text",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/media/{{media_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "media",
+                "{{media_id}}"
+              ]
+            },
+            "description": "Update media alternative text",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alt_text\": \"Fictional project screenshot\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Expected success status\", () => pm.expect(pm.response.code).to.be.oneOf([200]));"
                 ]
               }
             }

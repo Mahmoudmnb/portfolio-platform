@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Postman v2.1 collection from the unchanged OpenAPI contract."""
+"""Generate the Postman v2.1 collection from the OpenAPI contract."""
 import json
 from pathlib import Path
 
@@ -25,6 +25,8 @@ BODIES = {
     'SettingsCreate': {'site_title': 'Fictional Portfolio', 'tagline': 'Fictional tagline', 'introduction': 'Fictional introduction.', 'contact_email': 'owner@example.test', 'availability': 'available', 'default_seo_title': 'Fictional Portfolio', 'default_seo_description': 'Fictional portfolio description.', 'social_links': []},
     'InquiryCreate': {'name': 'Fictional Visitor', 'email': 'visitor@example.test', 'subject': 'Postman example', 'message': 'A fictional example inquiry.', 'website': ''},
     'InquiryUpdate': {'status': 'read', 'internal_note': 'Reviewed manually in Postman.'},
+    'PageWrite': {'status': 'draft', 'content': {'hero': {'title': 'Fictional studio'}}, 'seo': {'title': 'Fictional studio', 'meta_description': 'Fictional page description.'}, 'featured_entry_ids': [], 'og_image_media_id': None},
+    'MediaMetadataUpdate': {'alt_text': 'Fictional project screenshot'},
     'Event': {'event_name': 'page_view', 'path': '/about'},
 }
 
@@ -34,7 +36,7 @@ def event(kind, lines):
 
 
 def generate():
-    folders = {name: {'name': name, 'item': []} for name in ['Authentication', 'Public API', 'Entries', 'Categories', 'Technologies', 'Team members', 'Services', 'Site settings', 'Media', 'Inquiries', 'Audit events', 'Analytics']}
+    folders = {name: {'name': name, 'item': []} for name in ['Authentication', 'Public API', 'Entries', 'Categories', 'Technologies', 'Team members', 'Services', 'Site settings', 'Pages', 'Media', 'Inquiries', 'Audit events', 'Analytics']}
     titles = {'team-members': 'Team members', 'site-settings': 'Site settings', 'audit-events': 'Audit events'}
     for path, methods in SPEC['paths'].items():
         for method, op in methods.items():
@@ -43,7 +45,7 @@ def generate():
             parts = path.strip('/').split('/')
             resource = parts[1] if parts[0] == 'admin' else parts[0]
             prefix = RESOURCE.get(resource, resource.replace('-', '_'))
-            url_path = path.replace('{id}', '{{' + prefix + '_id}}').replace('{slug}', '{{' + prefix + '_slug}}')
+            url_path = path.replace('{id}', '{{' + prefix + '_id}}').replace('{slug}', '{{' + prefix + '_slug}}').replace('{page_key}', '{{page_key}}')
             queries = []
             for param in methods.get('parameters', []) + op.get('parameters', []):
                 if param['in'] != 'query':
@@ -58,6 +60,8 @@ def generate():
             if queries:
                 url['query'] = queries
             description = op.get('description', op['summary'])
+            if path == '/admin/pages/{page_key}' and method == 'put':
+                description += '\nExample is for page_key=home. For about/services/projects/contact, replace content.hero with content.intro. Content and seo replace whole objects; saving draft hides any published version.'
             if method == 'delete':
                 description += '\nPermanently deletes the selected resource. Send only when intended.'
             if path == '/admin/site-settings' and method == 'put':
@@ -76,7 +80,7 @@ def generate():
                 request['header'].append({'key': 'Content-Type', 'value': 'application/json'})
                 request['body'] = {'mode': 'raw', 'raw': raw, 'options': {'raw': {'language': 'json'}}}
             elif 'multipart/form-data' in content:
-                request['body'] = {'mode': 'formdata', 'formdata': [{'key': 'file', 'type': 'file', 'src': [], 'description': 'Choose a local JPEG, PNG or WebP. Max 10 MiB, 8000px per side, 20 megapixels.'}]}
+                request['body'] = {'mode': 'formdata', 'formdata': [{'key': 'alt_text', 'type': 'text', 'value': 'Fictional project screenshot', 'disabled': True}, {'key': 'file', 'type': 'file', 'src': [], 'description': 'Choose a local JPEG, PNG or WebP. Max 10 MiB, 8000px per side, 20 megapixels.'}]}
             successes = [int(code) for code in op['responses'] if code.isdigit() and 200 <= int(code) < 300]
             scripts = [f'pm.test("Expected success status", () => pm.expect(pm.response.code).to.be.oneOf({json.dumps(successes)}));']
             before = []
@@ -102,7 +106,7 @@ def generate():
 
 
 def environment():
-    values = {'base_url': SPEC['servers'][0]['url'], 'email': '', 'password': '', 'token': '', 'current_password': '', 'new_password': ''}
+    values = {'base_url': SPEC['servers'][0]['url'], 'email': '', 'password': '', 'token': '', 'current_password': '', 'new_password': '', 'page_key': 'home'}
     for name in RESOURCE.values():
         values[name + '_id'] = ''
     for name in ('entry', 'team_member', 'service'):

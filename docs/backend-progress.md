@@ -2,6 +2,56 @@
 
 # Backend implementation progress
 
+## Current website content update — 2026-11-23
+
+Implemented the requested [Brothers-Tech website brief](../backend/docs/brothers_tech_backend_integration_plan.md) as an additive extension of the existing API. See the [Flutter change guide](../backend/docs/flutter-backend-updates.md), [tested request examples](../backend/docs/flutter-api-examples.md), and [client checklist](../backend/docs/flutter-implementation-checklist.md).
+
+Delivered five fixed page keys with typed content/section headings, draft/published visibility, inline SEO and locked ready-media attachment; owner page GET/list/PUT and public GET routes; ordered featured entry references filtered by live publication; extended settings/contact/navigation/footer/CTA/legal/logo variants; project classification/details/platform/store/SEO fields; service features/cover/CTA/SEO; team-link visibility; editable media alt text and processed file metadata; private inquiry source paths and optional generic queued alerts with a manual requeue command. New media references participate in usage counts, deletion guards and orphan cleanup, including a concurrent page attachment/cleanup test. Existing `/entries`, `/site-settings`, kind/status values and older write bodies remain supported. Literal search now explicitly converts bound strings to utf8mb4, preserving behavior with native PDO bindings on both engines. The legacy transfer compares shared source/target columns, leaving new destination fields at defaults.
+
+Production seeding remains singleton settings only. The opt-in nonproduction demo command creates idempotent fictional drafts for all five pages. The original website source archive was not supplied, so no complete existing-copy/asset import is claimed. No client source, real records or hosted database was changed, and no public deployment was performed.
+
+The user explicitly approved seven compatible dependency security updates after the original locked audit reported 10 advisories in seven existing packages: Laravel 13.38.0 → 13.43.0; Symfony filesystem/http-foundation/http-kernel/routing/yaml 8.1.9 → 8.1.11; Symfony mime 8.1.7 → 8.1.10. No new dependency or major-version change was introduced. Composer manifest constraints are unchanged.
+
+Verification used PHP 8.5.4 and isolated native MariaDB 11.8.6 / MySQL 8.4.13 data directories and Unix sockets under `/tmp/portfolio-website-tests`. GD/PDO PostgreSQL and missing database runtime libraries were extracted there without system installation. PostgreSQL 18.6 was used only as the disposable frozen legacy transfer source; all application integration tests used MySQL/MariaDB. No SQLite was used.
+
+| Final post-upgrade check | Actual result |
+| --- | --- |
+| MariaDB 11.8.6 full suite | **60 tests, 608 assertions passed; no skips** |
+| MySQL 8.4.13 full suite | **60 tests, 608 assertions passed; no skips** |
+| New page/resource documentation examples | Accepted by real HTTP feature tests for all five page payloads and settings/entry/service payloads |
+| Migration → full rollback → migrate | Passed on both destination engines in their disposable `_testing` databases |
+| Laravel Pint, full and final dirty formatting | Passed |
+| PHPStan/Larastan, level 5, 512 MiB | Passed, zero errors |
+| Composer strict validation | Passed |
+| Online locked security audit after approved updates | Passed; no advisories or abandoned packages |
+| OpenAPI 3.1 + route/response check | Valid; **63 operations match**, **32 actual response fixtures conform** |
+| Postman generation | 63 method/path pairs match OpenAPI; repeat generation is reproducible; environment secrets remain blank |
+| Whitespace, handoff links, client preservation | Passed; no website/dashboard/shared-client source changes |
+
+Representative executed commands from `backend/` (the temporary PHP extension configuration and each disposable database/transfer-source environment were selected in the shell):
+
+```sh
+php artisan migrate --no-interaction
+php artisan migrate:rollback --no-interaction
+php artisan migrate --no-interaction
+php artisan migrate --database=legacy_pgsql --path=tests/Fixtures/postgres --no-interaction
+TRANSFER_TEST_SOURCE=1 php artisan test --compact
+vendor/bin/pint --format agent
+vendor/bin/pint --dirty --format agent
+vendor/bin/phpstan analyse --memory-limit=512M
+composer validate --strict
+composer audit --locked --format=json
+python3 ../scripts/check-openapi.py
+python3 ../scripts/generate-postman.py
+git diff --check
+```
+
+The complete suite was repeated with each destination engine after the seven approved package updates. It includes successful real cross-engine import/reconciliation/rollback tests, concurrent media attachment/cleanup, publication and hidden-reference checks, generic notification delivery/idempotency and queue-dispatch failure recovery. Laravel 13.43's test teardown disconnects resolved database connections, so the readiness failure test now restores its database facade after the intentional mock; failure/visibility assertions were retained. JSON response booleans and ordering integers are normalized even when validation accepts equivalent numeric form values.
+
+Exact Hostinger MariaDB 11.8.9, hosted CI/container execution, actual SMTP delivery and Flutter/Jaspr UI/SSR acceptance remain external release checks. No public deployment, hosted migration, real inquiry, real employee data or real owner credentials were used. The source release requires the new migration and normal configuration/worker refresh during an authorized deployment. The Markdown handoff identifies the missing source archive and editorial tasks explicitly.
+
+## Historical delivery evidence — October 2026
+
 Updated 2026-10-21. See [delivery report](backend-completion.md) for versions, commands, evidence and external checks.
 
 ## Gates
