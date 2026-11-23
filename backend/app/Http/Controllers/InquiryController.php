@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InquiryRequest;
 use App\Http\Requests\InquiryUpdateRequest;
 use App\Http\Resources\InquiryResource;
+use App\Jobs\NotifyInquiry;
 use App\Models\Inquiry;
 use App\Support\Audit;
 use App\Support\Collections;
@@ -14,13 +15,21 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class InquiryController extends Controller
 {
     public function store(InquiryRequest $r): JsonResponse
     {
         if (! $r->validated('website')) {
-            Inquiry::create(collect($r->validated())->except('website')->all() + ['submitted_at' => now()]);
+            $inquiry = DB::transaction(fn () => Inquiry::create(collect($r->validated())->except('website')->all() + ['submitted_at' => now()]));
+            if (config('portfolio.inquiry_notification_email')) {
+                try {
+                    NotifyInquiry::dispatch($inquiry->id)->afterCommit();
+                } catch (\Throwable $exception) {
+                    Log::warning('Inquiry notification dispatch failed.', ['exception_type' => $exception::class]);
+                }
+            }
         }
 
         return response()->json(['data' => ['message' => 'Thank you. Your inquiry has been received.']], 201);

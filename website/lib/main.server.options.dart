@@ -5,7 +5,8 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
-import 'package:bro_tech_web/pages/site_page.dart' as _site_page;
+import 'package:bro_tech_web/pages/contact/views/contact_form_view.dart'
+    as _contact_form_view;
 
 /// Default [ServerOptions] for use with your Jaspr project.
 ///
@@ -26,13 +27,7 @@ import 'package:bro_tech_web/pages/site_page.dart' as _site_page;
 ServerOptions get defaultServerOptions => ServerOptions(
   clientId: 'main.client.dart.js',
   clients: {
-    _site_page.SitePage: ClientTarget<_site_page.SitePage>(
-      'site_page',
-      params: __site_pageSitePage,
-    ),
+    _contact_form_view.ContactFormView:
+        ClientTarget<_contact_form_view.ContactFormView>('contact_form_view'),
   },
 );
-
-Map<String, Object?> __site_pageSitePage(_site_page.SitePage c) => {
-  'page': c.page,
-};

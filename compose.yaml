@@ -33,7 +33,7 @@ services:
     <<: *app
     command: ["php", "artisan", "schedule:work"]
   mysql:
-    image: mariadb:11.8.9
+    image: mariadb:12.3.2
     environment:
       MYSQL_DATABASE: portfolio
       MYSQL_USER: portfolio
@@ -47,7 +47,7 @@ services:
       timeout: 3s
       retries: 30
   mailpit:
-    image: axllent/mailpit:v1.31.6
+    image: axllent/mailpit:v1.34.0
     ports: ["127.0.0.1:${MAILPIT_PORT:-8025}:8025"]
 volumes:
   mysql_database:

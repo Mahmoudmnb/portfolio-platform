@@ -56,7 +56,8 @@ class BackendTest extends TestCase
             if (! str_starts_with($route->uri(), 'api/v1/admin/') || str_ends_with($route->uri(), '/login')) {
                 continue;
             }
-            $uri = preg_replace('/\{[^}]+\}/', '1', $route->uri());
+            $uri = str_replace('{page_key}', 'home', $route->uri());
+            $uri = preg_replace('/\{[^}]+\}/', '1', $uri);
             foreach (array_diff($route->methods(), ['HEAD']) as $method) {
                 $this->json($method, '/'.$uri)->assertUnauthorized();
             }

@@ -6,7 +6,8 @@
 
 import 'package:jaspr/client.dart';
 
-import 'package:bro_tech_web/pages/site_page.dart' deferred as _site_page;
+import 'package:bro_tech_web/pages/contact/views/contact_form_view.dart'
+    deferred as _contact_form_view;
 
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
@@ -26,9 +27,9 @@ import 'package:bro_tech_web/pages/site_page.dart' deferred as _site_page;
 /// ```
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
-    'site_page': ClientLoader(
-      (p) => _site_page.SitePage(page: p['page'] as String),
-      loader: _site_page.loadLibrary,
+    'contact_form_view': ClientLoader(
+      (p) => _contact_form_view.ContactFormView(),
+      loader: _contact_form_view.loadLibrary,
     ),
   },
 );

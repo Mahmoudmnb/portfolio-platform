@@ -14,6 +14,8 @@
 include: package:lints/recommended.yaml
 
 analyzer:
+  errors:
+    jaspr_lints/prefer_html_components: ignore ignore
   exclude:
     - lib/components/generated/**
 

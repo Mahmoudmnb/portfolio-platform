@@ -4,7 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Media;
+use App\Models\Page;
 use App\Models\PortfolioEntry;
+use App\Models\Service;
 use App\Models\TeamMember;
 use App\Models\Technology;
 use App\Models\User;
@@ -30,6 +32,8 @@ class ContractTest extends TestCase
         $entry->technologies()->attach($t);
         $entry->contributors()->attach($member);
         $entry->gallery()->attach($m, ['alt_text' => 'Notebook example', 'sort_order' => 0]);
+        Service::factory()->create(['slug' => 'fictional-development', 'is_active' => true, 'cover_media_id' => $m->id]);
+        Page::factory()->create(['status' => 'published', 'og_image_media_id' => $m->id]);
         $fixtures = [];
         $capture = function ($method, $path, $actual, $payload = []) use (&$fixtures) {
             $r = $this->json(strtoupper($method), '/api/v1'.$actual, $payload);
@@ -45,6 +49,8 @@ class ContractTest extends TestCase
         foreach (['/entries', '/team-members', '/categories', '/technologies', '/services', '/site-settings', '/ready'] as $path) {
             $capture('get', $path, $path);
         }
+        $capture('get', '/pages/{page_key}', '/pages/home');
+        $capture('get', '/services/{slug}', '/services/fictional-development');
         $capture('get', '/entries/{slug}', '/entries/field-notes');
         $capture('get', '/team-members/{slug}', '/team-members/fictional-engineer');
         $capture('get', '/entries', '/entries?per_page=101');
@@ -55,6 +61,10 @@ class ContractTest extends TestCase
         foreach (['/admin/auth/me', '/admin/entries', '/admin/team-members', '/admin/site-settings', '/admin/media', '/admin/inquiries', '/admin/audit-events', '/admin/analytics/summary', '/admin/analytics/daily', '/admin/analytics/top-pages', '/admin/analytics/top-entries', '/admin/analytics/referrers'] as $path) {
             $capture('get', $path, $path);
         }
+        $capture('get', '/admin/pages', '/admin/pages');
+        $capture('get', '/admin/pages/{page_key}', '/admin/pages/home');
+        $capture('put', '/admin/pages/{page_key}', '/admin/pages/about', ['status' => 'published', 'content' => ['intro' => ['title' => 'Our studio']], 'seo' => ['title' => 'About', 'meta_description' => 'A fictional studio.']]);
+        $capture('patch', '/admin/media/{id}', '/admin/media/'.$m->id, ['alt_text' => 'Fictional notebook']);
         $capture('get', '/admin/media/{id}', '/admin/media/'.$m->id);
         $dir = storage_path('framework/testing');
         if (! is_dir($dir)) {
