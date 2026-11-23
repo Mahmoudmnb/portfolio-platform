@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Media;
+use App\Models\Page;
 use App\Models\PortfolioEntry;
 use App\Models\User;
 use App\Services\AnalyticsCounter;
@@ -115,6 +116,27 @@ class ConcurrencyTest extends TestCase
         if ($entry) {
             $this->assertSame('ready', $media->status);
             $this->assertSame($id, $entry->cover_media_id);
+        } else {
+            $this->assertSame('deleting', $media->status);
+        }
+    }
+
+    public function test_page_image_attachment_racing_cleanup_preserves_references(): void
+    {
+        Queue::fake();
+        $owner = User::factory()->create();
+        $this->withToken($owner->createToken('page-race')->plainTextToken);
+        $media = Media::factory()->create(['created_at' => now()->subDays(2)]);
+        $id = $media->id;
+        $attach = function () use ($id) {
+            $response = $this->putJson('/api/v1/admin/pages/home', ['status' => 'draft', 'content' => ['hero' => ['title' => 'Fictional studio']], 'seo' => ['title' => 'Example', 'meta_description' => 'Example'], 'og_image_media_id' => $id]);
+            $this->assertContains($response->status(), [200, 422]);
+        };
+        $this->parallel([$attach, fn () => app(MediaLifecycle::class)->delete($id, true)]);
+        $media->refresh();
+        if ($page = Page::first()) {
+            $this->assertSame($id, $page->og_image_media_id);
+            $this->assertSame('ready', $media->status);
         } else {
             $this->assertSame('deleting', $media->status);
         }
