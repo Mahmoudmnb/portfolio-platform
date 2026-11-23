@@ -5,6 +5,7 @@ return [
     'analytics_enabled' => (bool) env('ANALYTICS_ENABLED', true),
     'referrer_daily_limit' => (int) env('ANALYTICS_REFERRER_DAILY_LIMIT', 100),
     'analytics_retention_days' => (int) env('ANALYTICS_RETENTION_DAYS', 90),
+    'inquiry_notification_email' => env('INQUIRY_NOTIFICATION_EMAIL'),
     'inquiry_retention_days' => (int) env('INQUIRY_RETENTION_DAYS', 180),
     'audit_retention_days' => (int) env('AUDIT_RETENTION_DAYS', 180),
     'site_origins' => array_filter(explode(',', env('SITE_ORIGINS', 'http://localhost:8080'))),

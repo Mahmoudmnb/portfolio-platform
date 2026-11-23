@@ -34,10 +34,11 @@ class ContentWriter
                     $entity = $id ? $class::whereKey($id)->lockForUpdate()->firstOrFail() : new $class;
                     $relations = collect($input)->only(['technology_ids', 'contributor_ids', 'gallery', 'links'])->all();
                     $entity->fill(collect($input)->except(array_keys($relations))->all());
-                    $mediaField = match ($type) {
-                        'entries' => 'cover_media_id', 'team-members' => 'photo_media_id', 'site-settings' => 'logo_media_id', default => null
+                    $mediaFields = match ($type) {
+                        'entries', 'services' => ['cover_media_id'], 'team-members' => ['photo_media_id'],
+                        'site-settings' => ['logo_media_id', 'logo_light_media_id', 'logo_dark_media_id', 'favicon_media_id'], default => []
                     };
-                    $mediaIds = $mediaField ? array_filter([$entity->getAttribute($mediaField)]) : [];
+                    $mediaIds = array_values(array_filter(array_map(fn ($field) => $entity->getAttribute($field), $mediaFields)));
                     foreach ($relations['gallery'] ?? [] as $g) {
                         $mediaIds[] = $g['media_id'];
                     }
