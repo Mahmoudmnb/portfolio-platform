@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\MediaStatus;
+use App\Http\Requests\MediaMetadataRequest;
 use App\Http\Requests\UploadRequest;
 use App\Http\Resources\MediaResource;
 use App\Jobs\ProcessMedia;
@@ -11,6 +12,7 @@ use App\Services\ImageInspector;
 use App\Services\MediaLifecycle;
 use App\Support\Audit;
 use App\Support\Collections;
+use App\Support\ContentTypes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -32,9 +34,13 @@ class MediaController extends Controller
         if (isset($v['usage'])) {
             $q->where(function ($q) use ($v) {
                 if ($v['usage'] === 'used') {
-                    $q->has('galleryEntries')->orHas('coverEntries')->orHas('members')->orHas('settings');
+                    foreach (ContentTypes::MEDIA_USAGE as $relation) {
+                        $q->orHas($relation);
+                    }
                 } else {
-                    $q->doesntHave('galleryEntries')->doesntHave('coverEntries')->doesntHave('members')->doesntHave('settings');
+                    foreach (ContentTypes::MEDIA_USAGE as $relation) {
+                        $q->doesntHave($relation);
+                    }
                 }
             });
         }
@@ -55,7 +61,7 @@ class MediaController extends Controller
         Storage::disk('local')->putFileAs('uploads', $file, $key);
         try {
             $m = DB::transaction(function () use ($r, $file, $info, $key) {
-                $m = Media::create($info + ['storage_key' => $key, 'disk' => config('portfolio.media_disk'), 'original_filename' => Str::limit(basename(str_replace('\\', '/', $file->getClientOriginalName())), 255, ''), 'uploader_id' => $r->user()->id, 'status' => 'processing']);
+                $m = Media::create($info + ['alt_text' => $r->validated('alt_text'), 'storage_key' => $key, 'disk' => config('portfolio.media_disk'), 'original_filename' => Str::limit(basename(str_replace('\\', '/', $file->getClientOriginalName())), 255, ''), 'uploader_id' => $r->user()->id, 'status' => 'processing']);
                 Audit::record('uploaded', $m);
 
                 return $m;
@@ -72,6 +78,18 @@ class MediaController extends Controller
         }
 
         return (new MediaResource($m->refresh()))->response()->setStatusCode(201);
+    }
+
+    public function update(MediaMetadataRequest $request, int $id): MediaResource
+    {
+        return DB::transaction(function () use ($request, $id) {
+            $media = Media::whereKey($id)->lockForUpdate()->firstOrFail();
+            abort_if($media->status === 'deleting', 409, 'Media is being deleted.');
+            $media->update($request->validated());
+            Audit::record('updated', $media, ['alt_text']);
+
+            return new MediaResource(Media::withUsage()->findOrFail($id));
+        });
     }
 
     public function destroy(int $id, MediaLifecycle $lifecycle): Response
