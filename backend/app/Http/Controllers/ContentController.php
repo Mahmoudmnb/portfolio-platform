@@ -21,7 +21,7 @@ class ContentController extends Controller
         $admin = $r->is('api/v1/admin/*');
         $rules = ['q' => 'sometimes|string|max:100'];
         if ($resource === 'entries') {
-            $rules += ['kind' => 'sometimes|in:project,product', 'featured' => 'sometimes|boolean', 'category' => 'sometimes|string|max:160', 'technology' => 'sometimes|string|max:160'];
+            $rules += ['kind' => 'sometimes|in:project,product', 'featured' => 'sometimes|boolean', 'category' => 'sometimes|string|max:160', 'technology' => 'sometimes|string|max:160', 'project_type' => 'sometimes|in:mobile_app,web_app,desktop_app,platform', 'sort' => 'sometimes|in:sort_order,-published_at'];
         }
         if ($admin && $resource === 'entries') {
             $rules += ['status' => 'sometimes|in:draft,published,archived'];
@@ -30,14 +30,15 @@ class ContentController extends Controller
             $rules += ['active' => 'sometimes|boolean'];
         }
         if ($admin) {
-            $rules += ['sort' => 'sometimes|in:id,created_at,updated_at,sort_order', 'direction' => 'sometimes|in:asc,desc'];
+            $rules['sort'] = 'sometimes|in:id,created_at,updated_at,sort_order';
+            $rules['direction'] = 'sometimes|in:asc,desc';
         }
         $v = Collections::validate($r, $rules);
         $q = ContentTypes::query($resource, $admin);
         if (isset($v['sort']) && $v['sort'] === 'sort_order' && $resource === 'technologies') {
             throw ValidationException::withMessages(['sort' => ['Unsupported sort.']]);
         }
-        foreach (['kind', 'status', 'featured'] as $f) {
+        foreach (['kind', 'status', 'featured', 'project_type'] as $f) {
             if (isset($v[$f])) {
                 $q->where($f, $v[$f]);
             }
@@ -55,15 +56,17 @@ class ContentController extends Controller
             $pattern = Collections::literal($v['q']);
             $q->where(function ($q) use ($pattern, $resource) {
                 if ($resource === 'entries') {
-                    $q->whereRaw("LOWER(title) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern])->orWhereRaw("LOWER(summary) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
+                    $q->whereRaw("LOWER(title) LIKE LOWER(CONVERT(? USING utf8mb4)) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern])->orWhereRaw("LOWER(summary) LIKE LOWER(CONVERT(? USING utf8mb4)) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
                 } else {
                     $column = $resource === 'services' ? 'title' : 'name';
-                    $q->whereRaw("LOWER($column) LIKE LOWER(?) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
+                    $q->whereRaw("LOWER($column) LIKE LOWER(CONVERT(? USING utf8mb4)) COLLATE utf8mb4_bin ESCAPE '!'", [$pattern]);
                 }
             });
         }
         if ($admin && isset($v['sort'])) {
             $q->orderBy($v['sort'], $v['direction'] ?? 'asc');
+        } elseif ($resource === 'entries' && isset($v['sort'])) {
+            $q->orderBy($v['sort'] === '-published_at' ? 'published_at' : 'sort_order', $v['sort'] === '-published_at' ? 'desc' : 'asc');
         } elseif ($resource === 'entries') {
             $q->orderByDesc('featured')->orderBy('sort_order')->orderByDesc('published_at');
         } elseif ($resource !== 'technologies') {

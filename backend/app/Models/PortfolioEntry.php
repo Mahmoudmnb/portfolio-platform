@@ -25,7 +25,7 @@ class PortfolioEntry extends Model
 
     protected function casts(): array
     {
-        return ['featured' => 'boolean', 'sort_order' => 'integer', 'published_at' => 'immutable_datetime'];
+        return ['featured' => 'boolean', 'sort_order' => 'integer', 'published_at' => 'immutable_datetime', 'outcomes' => 'array', 'platforms' => 'array', 'store_links' => 'array'];
     }
 
     public function scopeVisible(Builder $query): Builder

@@ -42,8 +42,13 @@ class FailureTest extends TestCase
         Route::get('/api/v1/internal-test', fn () => throw new \RuntimeException('SECRET_DIAGNOSTIC'));
         $r = $this->getJson('/api/v1/internal-test')->assertStatus(500)->assertJsonPath('code', 'INTERNAL_ERROR');
         $this->assertStringNotContainsString('SECRET_DIAGNOSTIC', $r->getContent());
-        DB::shouldReceive('select')->once()->andThrow(new \RuntimeException('database credentials'));
-        $this->getJson('/api/v1/ready')->assertStatus(503)->assertJsonPath('code', 'UNAVAILABLE');
+        $database = DB::getFacadeRoot();
+        try {
+            DB::shouldReceive('select')->once()->andThrow(new \RuntimeException('database credentials'));
+            $this->getJson('/api/v1/ready')->assertStatus(503)->assertJsonPath('code', 'UNAVAILABLE');
+        } finally {
+            DB::swap($database);
+        }
     }
 
     public function test_oversized_body_maps_to_413(): void

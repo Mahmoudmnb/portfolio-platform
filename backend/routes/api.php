@@ -6,7 +6,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReadinessController;
+use App\Support\WebsiteContent;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -18,6 +20,7 @@ Route::prefix('v1')->group(function () {
                 Route::get($resource.'/{slug}', [ContentController::class, 'show'])->defaults('resource', $resource);
             }
         }
+        Route::get('pages/{page_key}', [PageController::class, 'show'])->whereIn('page_key', WebsiteContent::PAGE_KEYS);
         Route::get('site-settings', [ContentController::class, 'settings']);
     });
     Route::post('inquiries', [InquiryController::class, 'store'])->middleware('throttle:inquiries');
@@ -36,10 +39,14 @@ Route::prefix('v1')->group(function () {
                 Route::patch($resource.'/{id}', [ContentController::class, 'update'])->whereNumber('id')->defaults('resource', $resource);
                 Route::delete($resource.'/{id}', [ContentController::class, 'destroy'])->whereNumber('id')->defaults('resource', $resource);
             }
+            Route::get('pages', [PageController::class, 'index']);
+            Route::get('pages/{page_key}', [PageController::class, 'show'])->whereIn('page_key', WebsiteContent::PAGE_KEYS);
+            Route::put('pages/{page_key}', [PageController::class, 'update'])->whereIn('page_key', WebsiteContent::PAGE_KEYS);
             Route::get('site-settings', [ContentController::class, 'settings']);
             Route::put('site-settings', [ContentController::class, 'updateSettings'])->defaults('resource', 'site-settings');
             Route::get('media', [MediaController::class, 'index']);
             Route::get('media/{id}', [MediaController::class, 'show'])->whereNumber('id');
+            Route::patch('media/{id}', [MediaController::class, 'update'])->whereNumber('id');
             Route::delete('media/{id}', [MediaController::class, 'destroy'])->whereNumber('id');
             Route::get('inquiries', [InquiryController::class, 'index']);
             Route::get('inquiries/{id}', [InquiryController::class, 'show'])->whereNumber('id');

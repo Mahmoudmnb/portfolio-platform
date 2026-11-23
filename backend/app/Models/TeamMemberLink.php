@@ -13,6 +13,6 @@ class TeamMemberLink extends Model
 
     protected function casts(): array
     {
-        return [];
+        return ['is_visible' => 'boolean', 'sort_order' => 'integer'];
     }
 }
