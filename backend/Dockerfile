@@ -1,4 +1,4 @@
-FROM php:8.5.12-fpm-bookworm AS runtime
+FROM php:8.6.0RC2-fpm-bookworm AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libwebp-dev libzip-dev libonig-dev libxml2-dev unzip curl nginx supervisor \
     && docker-php-ext-configure gd --with-jpeg --with-webp \
     && docker-php-ext-install pdo_mysql gd bcmath pcntl mbstring dom xml zip \
