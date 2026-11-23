@@ -54,7 +54,7 @@ class ProcessMedia implements ShouldQueue
                 if (! $disk->put($m->variantKey(), $display) || ! $disk->put($m->variantKey('thumbnail'), $thumbnail)) {
                     throw new \RuntimeException('Storage write failed.');
                 }
-                $m->update(['status' => 'ready']);
+                $m->update(['status' => 'ready', 'display_bytes' => strlen($display)]);
             } finally {
                 imagedestroy($image);
             }

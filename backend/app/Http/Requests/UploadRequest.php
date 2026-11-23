@@ -6,6 +6,6 @@ class UploadRequest extends StrictRequest
 {
     public function rules(): array
     {
-        return ['file' => ['required', 'file', 'max:10240']];
+        return ['alt_text' => ['sometimes', 'nullable', 'string', 'max:500'], 'file' => ['required', 'file', 'max:10240']];
     }
 }

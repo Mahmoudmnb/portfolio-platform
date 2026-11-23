@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\PortfolioEntry;
 use App\Models\Service;
 use App\Models\Technology;
@@ -26,6 +27,9 @@ class DemoContent extends Command
         $entry = PortfolioEntry::firstOrCreate(['slug' => 'fictional-field-notes'], ['title' => 'Fictional field notes', 'summary' => 'An offline notebook demonstration.', 'description' => 'A fictional project for local integration.', 'kind' => 'project', 'category_id' => $c->id, 'status' => 'draft']);
         $entry->technologies()->syncWithoutDetaching([$t->id]);
         Service::firstOrCreate(['slug' => 'fictional-app-development'], ['title' => 'Fictional application development', 'summary' => 'Example service.', 'description' => 'Fictional service for local testing.', 'is_active' => false]);
+        foreach (['home' => 'Build useful software', 'about' => 'Our fictional studio', 'services' => 'Software development services', 'projects' => 'Selected work', 'contact' => 'Start a conversation'] as $key => $title) {
+            Page::firstOrCreate(['page_key' => $key], ['status' => 'draft', 'content' => [$key === 'home' ? 'hero' : 'intro' => ['title' => $title, 'description' => 'Fictional starter content for local integration.']], 'seo' => ['title' => $title, 'meta_description' => 'Fictional starter content for local integration.']]);
+        }
         $this->info('Fictional drafts created. No owner or password seeded.');
 
         return self::SUCCESS;
