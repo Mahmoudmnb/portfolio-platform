@@ -1,0 +1,544 @@
+diff --git a/.github/CODEOWNERS b/.github/CODEOWNERS
+new file mode 100644
+index 0000000..12efc85
+--- /dev/null
++++ b/.github/CODEOWNERS
+@@ -0,0 +1,2 @@
++# Default reviewer; this file does not grant repository permissions.
++* @Mahmoudmnb
+diff --git a/.github/ISSUE_TEMPLATE/bug_report.yml b/.github/ISSUE_TEMPLATE/bug_report.yml
+new file mode 100644
+index 0000000..f79f56f
+--- /dev/null
++++ b/.github/ISSUE_TEMPLATE/bug_report.yml
+@@ -0,0 +1,40 @@
++name: Bug report
++description: Report a reproducible problem using fictional data.
++title: "[Bug]: "
++body:
++  - type: markdown
++    attributes:
++      value: "For vulnerabilities use SECURITY.md. Do not include passwords, tokens, private inquiries or production logs. Reproduce against your own local instance."
++  - type: dropdown
++    id: area
++    attributes:
++      label: Affected area
++      options: [Backend API, Android dashboard, Shared Dart client, Documentation or setup]
++    validations:
++      required: true
++  - type: input
++    id: revision
++    attributes:
++      label: Version or commit
++      placeholder: Commit SHA or release tag
++    validations:
++      required: true
++  - type: textarea
++    id: environment
++    attributes:
++      label: Environment
++      description: OS/device, relevant PHP/Flutter version, database engine/version. No credentials.
++    validations:
++      required: true
++  - type: textarea
++    id: reproduction
++    attributes:
++      label: Steps to reproduce
++      description: Minimal steps with fictional records and expected versus actual behavior.
++    validations:
++      required: true
++  - type: textarea
++    id: diagnostics
++    attributes:
++      label: Sanitized diagnostics
++      description: Relevant error text, HTTP status, request ID or fictional screenshots. Remove secrets and personal information.
+diff --git a/.github/ISSUE_TEMPLATE/config.yml b/.github/ISSUE_TEMPLATE/config.yml
+new file mode 100644
+index 0000000..0b2e058
+--- /dev/null
++++ b/.github/ISSUE_TEMPLATE/config.yml
+@@ -0,0 +1,5 @@
++blank_issues_enabled: false
++contact_links:
++  - name: Security reporting instructions
++    url: https://github.com/Mahmoudmnb/portfolio-platform/blob/HEAD/SECURITY.md
++    about: Read the private reporting instructions before disclosing a vulnerability.
+diff --git a/.github/ISSUE_TEMPLATE/feature_request.yml b/.github/ISSUE_TEMPLATE/feature_request.yml
+new file mode 100644
+index 0000000..f52b977
+--- /dev/null
++++ b/.github/ISSUE_TEMPLATE/feature_request.yml
+@@ -0,0 +1,23 @@
++name: Feature proposal
++description: Propose a focused improvement.
++title: "[Feature]: "
++body:
++  - type: textarea
++    id: problem
++    attributes:
++      label: What problem does this solve?
++      description: Explain the user need and affected component.
++    validations:
++      required: true
++  - type: textarea
++    id: proposal
++    attributes:
++      label: Proposed behavior
++      description: Describe the outcome and any API/client impact.
++    validations:
++      required: true
++  - type: textarea
++    id: alternatives
++    attributes:
++      label: Alternatives and tradeoffs
++      description: Existing workarounds or a smaller solution.
+diff --git a/.github/dependabot.yml b/.github/dependabot.yml
+new file mode 100644
+index 0000000..2d4abfd
+--- /dev/null
++++ b/.github/dependabot.yml
+@@ -0,0 +1,22 @@
++version: 2
++updates:
++  - package-ecosystem: composer
++    directory: /backend
++    schedule:
++      interval: weekly
++    open-pull-requests-limit: 5
++  - package-ecosystem: pub
++    directory: /dashboard
++    schedule:
++      interval: weekly
++    open-pull-requests-limit: 5
++  - package-ecosystem: pub
++    directory: /packages/portfolio_api
++    schedule:
++      interval: weekly
++    open-pull-requests-limit: 5
++  - package-ecosystem: github-actions
++    directory: /
++    schedule:
++      interval: weekly
++    open-pull-requests-limit: 5
+diff --git a/.github/pull_request_template.md b/.github/pull_request_template.md
+new file mode 100644
+index 0000000..eaa5537
+--- /dev/null
++++ b/.github/pull_request_template.md
+@@ -0,0 +1,15 @@
++## Problem and resulting behavior
++
++Explain the concrete change and affected area.
++
++## Verification
++
++List actual commands/results and any unrun checks. Add fictional screenshots for UI changes.
++
++## Review checklist
++
++- [ ] Change is focused and follows the applicable contribution instructions.
++- [ ] Meaningful tests/docs/contracts are updated where behavior changed.
++- [ ] No credentials, private inquiry data, database exports or signing files are included.
++- [ ] No production mutation or deployment is required to verify this PR.
++- [ ] Third-party assets have appropriate provenance and notices, if added.
+diff --git a/.gitignore b/.gitignore
+index 6e65833..3423486 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -13,3 +13,20 @@
+ 
+ # Filled Postman environments stay local; tracked templates contain no credentials.
+ /docs/postman/*.local.json
++
++# Private deployment, credentials and generated release artifacts
++**/auth.json
++**/key.properties
++**/*.jks
++**/*.keystore
++**/*.p12
++**/*.pfx
++**/*.pem
++**/*.key
++**/*.sql
++**/*.sql.gz
++**/*.dump
++**/*.apk
++**/*.aab
++**/*.local.json
++**/config/production.json
+diff --git a/AGENTS.md b/AGENTS.md
+index dd1d66a..9f9d1c1 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,5 +1,9 @@
+ # Portfolio platform
+ 
+-Read `docs/backend-implementation-plan.md` and `docs/backend-progress.md` before backend changes. Implement only `backend/`, backend documentation and infrastructure. Preserve `website/`, `dashboard/` and `packages/portfolio_api/`; their clients are not part of this backend task.
++This monorepo contains the Laravel backend, Flutter Android dashboard and a shared Dart client; website/ is reserved for Jaspr integration. Follow the user's requested scope and read area-specific AGENTS.md files before changes. Do not modify unrelated components to simplify the task.
+ 
+-Use real MySQL and MariaDB for integration tests. The October 2026 MySQL/Hostinger migration supersedes the original PostgreSQL implementation plan. Never commit secrets, uploaded visitor data, local databases or administrator passwords. Never deploy publicly or run destructive production migrations without explicit authorization. Keep API contract, integration guide and progress evidence aligned with behavior. See backend/AGENTS.md for commands.
++For backend behavior read docs/backend-progress.md and docs/development.md. The October 2026 MySQL/Hostinger migration supersedes the original PostgreSQL implementation plan. Use real MySQL/MariaDB for integration tests; PostgreSQL is only a legacy-transfer source. For dashboard/client work read docs/dashboard-development.md and the relevant completion reports. Preserve API compatibility and keep docs/openapi.yaml and client models aligned.
++
++For repository/community work read CONTRIBUTING.md, SECURITY.md and docs/open-source-readiness.md. Documentation/configuration changes need relevant link/schema/whitespace checks; do not claim full runtime verification unless executed. Preserve the existing license and third-party notices.
++
++Never commit secrets, uploaded visitor data, local databases, signing material or administrator passwords. Never run tests or smoke workflows against production. Public deployment, destructive migrations, repository visibility changes and shared-history rewriting require explicit user authorization. Record actual results and blockers, not inferred success.
+diff --git a/CODE_OF_CONDUCT.md b/CODE_OF_CONDUCT.md
+new file mode 100644
+index 0000000..2a4d243
+--- /dev/null
++++ b/CODE_OF_CONDUCT.md
+@@ -0,0 +1,13 @@
++# Code of conduct
++
++We want project discussions and contributions to be useful, respectful and welcoming.
++
++- Treat people with respect regardless of background, identity, experience or ability.
++- Give specific, constructive feedback about the work and be willing to reconsider.
++- Respect privacy. Do not publish private messages, personal information or credentials.
++- Avoid harassment, discrimination, threats, sexualized behavior, personal attacks and repeated disruption.
++- Keep issues and pull requests focused on the project. Respect maintainers' time and boundaries.
++
++This applies to repository issues, pull requests and other spaces maintained for this project. Maintainers may edit/remove content, close or lock discussions, reject contributions, or restrict participation to address violations. Responses should consider context and severity.
++
++Report conduct concerns through a private contact method listed on the maintainer's GitHub profile. If none is available, ask for a private contact channel without publishing details or identifying information. Security vulnerabilities use SECURITY.md instead. Reports are handled as privately as practical; no absolute confidentiality or response-time guarantee is promised.
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+new file mode 100644
+index 0000000..350fa97
+--- /dev/null
++++ b/CONTRIBUTING.md
+@@ -0,0 +1,64 @@
++# Contributing
++
++Thanks for helping improve Portfolio Platform. Start with the root README and the documentation for the area you want to change. For substantial behavior or architecture changes, open a focused proposal before investing in a large pull request.
++
++## Set up safely
++
++Fork the repository, create a topic branch, and follow [backend setup](docs/development.md) and/or [dashboard setup](docs/dashboard-development.md). Use the versions in manifests, lockfiles and CI. Install from lockfiles; do not update unrelated dependencies.
++
++Use fictional data and your own local API. Never point tests, smoke scripts or experimental clients at the author's production service. Database integration tests require an isolated MySQL/MariaDB database with a name ending in `_testing`; PostgreSQL is needed only for the explicit legacy-transfer test lane. Read scripts' disposable-environment guards before running them.
++
++Do not submit `.env`, tokens, owner passwords, uploaded content, inquiry messages, signing keys, database backups or raw production logs. Sanitize screenshots and error reports. The published API URL is public configuration, but it is not permission to administer or test the live service.
++
++## Find your area
++
++- backend/: Laravel API behavior, migrations, resources, policies and jobs.
++- dashboard/: Flutter UI, session state, media flow and Android configuration.
++- packages/portfolio_api/: pure Dart transport, request encoding and response parsing.
++- website/: reserved Jaspr integration; discuss work before introducing an application.
++- docs/: setup, API contracts, operations and verified evidence.
++
++Read applicable AGENTS.md files if using a coding assistant. Keep changes focused and preserve unrelated work. Shared client code must remain independent of Flutter and secure-storage implementation.
++
++## Checks
++
++For backend changes, from backend/ with a disposable test database:
++
++```sh
++composer install
++vendor/bin/pint
++vendor/bin/phpstan analyse --memory-limit=512M
++php artisan test
++composer audit --locked
++python3 ../scripts/check-openapi.py
++```
++
++The contract checker needs the Python requirements and response fixtures generated by the tests; see [development setup](docs/development.md). Never run destructive migration commands against existing content.
++
++For shared client changes, from packages/portfolio_api/:
++
++```sh
++dart pub get --enforce-lockfile
++dart analyze --fatal-infos
++dart test
++```
++
++For dashboard changes, from dashboard/:
++
++```sh
++flutter pub get --enforce-lockfile
++flutter analyze --fatal-infos
++flutter test
++```
++
++Run dart format on changed Dart files. Check ordinary Android builds for native/configuration changes, supplying a local API_BASE_URL. A hosted build does not prove device execution. For contract changes, regenerate models using packages/portfolio_api/tool/generate_contract.py, format the output and review its diff. Coordinate intentional API changes with both clients and update docs/openapi.yaml and integration examples.
++
++Documentation/configuration-only changes need link/schema/whitespace checks rather than unrelated runtime suites. Run git diff --check. Report unavailable checks honestly and include commands/results in the pull request. Do not use skipped checks as passing evidence.
++
++## Pull requests
++
++Explain the concrete problem, resulting behavior, affected area, verification and relevant limitations. Add fictional screenshots for UI changes and behavior-focused tests for meaningful fixes. Keep generated outputs consistent with their sources. Do not include unrelated formatting, dependency upgrades, live deployment edits or secret files.
++
++A maintainer reviews before merging; contributors do not need access to production or signing credentials. Dependency update PRs receive the same review as other code. No contributor license agreement or mandatory sign-off is currently required; contributed source is covered by the repository's existing license. Preserve third-party licenses and only contribute material you have permission to share.
++
++For security reports use [SECURITY.md](SECURITY.md). For bugs and proposals use the GitHub issue templates. Please follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+diff --git a/README.md b/README.md
+index 56f38a7..e16074f 100644
+--- a/README.md
++++ b/README.md
+@@ -1,25 +1,84 @@
+-# Portfolio platform
++# Portfolio Platform
+ 
+-Laravel REST backend for a portfolio and small team website. Projects and products are portfolio entries; products link to external destinations. This repository does not implement commerce or public user accounts.
++A self-hosted portfolio and small-team content platform: a Laravel API, a Flutter Android administration app, and a shared Dart API client. Built by Mahmoud Bannan / Brothers Tech as a practical example of backend and mobile development.
+ 
+-- `backend/`: Laravel 13 / PHP 8.5 API, MySQL/MariaDB migrations, queues, tests and container.
+-- `website/`: reserved for the Jaspr website; no client implemented here.
+-- `dashboard/`: Flutter Android owner app for content, media, inquiries, analytics and account management.
+-- `packages/portfolio_api/`: shared pure Dart API client, contract models and tests.
++[![Backend](https://github.com/Mahmoudmnb/portfolio-platform/actions/workflows/backend.yml/badge.svg)](https://github.com/Mahmoudmnb/portfolio-platform/actions/workflows/backend.yml)
++[![Android dashboard](https://github.com/Mahmoudmnb/portfolio-platform/actions/workflows/dashboard.yml/badge.svg)](https://github.com/Mahmoudmnb/portfolio-platform/actions/workflows/dashboard.yml)
++[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+ 
+-Start with [local setup](docs/development.md), then [client integration](docs/api-integration.md) and the [OpenAPI 3.1 contract](docs/openapi.yaml). See [architecture](docs/architecture.md), [deployment and recovery](docs/deployment.md), [verification progress](docs/backend-progress.md), and [delivery report](docs/backend-completion.md).
++Manage projects and products, team profiles, services, images, site settings and inquiries without editing website content in code. Publish drafts explicitly, process uploaded images through a queue, and review aggregate event counts.
+ 
+-The owner is created interactively with `php artisan app:create-owner`; there is no registration endpoint or seeded administrator password. Public data is visible only after explicit publication/activation. Image uploads process asynchronously. Analytics store daily aggregate event counts without visitor identifiers. No production deployment is performed by this repository's CI.
++## Preview
+ 
+-```sh
+-cp backend/.env.example backend/.env
+-# Set APP_KEY once; follow docs/development.md for the complete initialization sequence.
+-docker compose build
+-docker compose up -d mysql mailpit
+-```
++Screenshots show fictional development data. The dashboard is an Android application; the Jaspr website directory is currently reserved for integration.
+ 
+-All commands and verification limitations are recorded in the progress/report documents. Never point tests at a production database.
++| Overview | Content | Inbox |
++| --- | --- | --- |
++| ![Dashboard overview](dashboard/test/screenshots/android-overview.png) | ![Portfolio entries](dashboard/test/screenshots/android-content.png) | ![Inquiry inbox](dashboard/test/screenshots/android-inbox.png) |
+ 
+-For the Android dashboard, start with [dashboard development](docs/dashboard-development.md) and read the [completion report](docs/dashboard-completion.md), [finishing progress](docs/dashboard-finishing-progress.md) and [release preparation](docs/dashboard-release-preparation.md). Local checks have recorded results; picker selection, remaining Figma comparisons, ARM64 builds, hosted CI and physical-device checks still have documented gaps. The website remains a reserved directory.
++## What is included
+ 
+-The backend targets Hostinger Business / MariaDB 11.8.9, with a MySQL 8.4 compatibility lane. See [Hostinger deployment](docs/hostinger-deployment.md), [existing PostgreSQL data transfer](docs/postgres-to-mysql-transfer.md), and [migration verification](docs/mysql-migration-completion.md).
++- Versioned public and owner REST endpoints, with an [OpenAPI 3.1 contract](docs/openapi.yaml).
++- One owner account, Sanctum tokens, explicit publication rules and validated content relationships.
++- JPEG/PNG/WebP uploads, queued WebP processing, ready-only image selection and safe deletion rules.
++- Private inquiries and aggregate page/entry/contact events; no unique-visitor tracking.
++- Flutter management screens, secure credential storage, bounded image polling and server-aware sessions.
++- MySQL/MariaDB constraints, concurrency tests, framework checks and separate backend/dashboard CI.
++
++Products are portfolio entries with external links. Checkout, payments, public registration and multitenancy are outside the current scope. Signed distribution releases, physical-device acceptance and other unverified gates are documented in the [production review](docs/dashboard-production-review.md) and [finishing progress](docs/dashboard-finishing-progress.md). A CI badge reports GitHub's current state; historical completion reports describe only their recorded runs.
++
++## Repository map
++
++| Path | Purpose |
++| --- | --- |
++| `backend/` | Laravel API, database migrations, jobs, tests and container |
++| `dashboard/` | Flutter Android owner application |
++| `packages/portfolio_api/` | Framework-independent Dart client and contract models |
++| `website/` | Reserved Jaspr website integration |
++| `docs/` | Setup, architecture, API, deployment and verification evidence |
++
++The website and Android dashboard call the same Laravel API. Laravel stores structured content in MySQL/MariaDB and images on a configured filesystem disk. A queue worker prepares images; a scheduler handles cleanup. On shared hosting, bounded cron-driven workers replace persistent development workers.
++
++## Run your own instance
++
++Use your own local backend and owner account. The author's live portfolio/API are operational services, not a shared administration sandbox or load-test target.
++
++The repository currently targets PHP 8.5, Composer 2.9, MariaDB 11.8.9 (with a MySQL 8.4 compatibility lane), Flutter 3.47.7 / Dart 3.13.5 and JDK 17. Check the committed manifests/lockfiles and setup guides for exact requirements. PostgreSQL is an optional legacy data-transfer source, not the normal runtime database.
++
++1. Clone the repository:
++
++   ```sh
++   git clone https://github.com/Mahmoudmnb/portfolio-platform.git
++   cd portfolio-platform
++   ```
++
++2. Follow [backend local setup](docs/development.md) to configure a private `.env`, initialize a new development database, create an owner interactively and start the API, worker and scheduler. Docker Compose and host-native instructions are provided. No default owner password is shipped.
++
++3. Start the Android dashboard against that backend:
++
++   ```sh
++   cd dashboard
++   flutter pub get --enforce-lockfile
++   flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000/api/v1
++   ```
++
++   `10.0.2.2` reaches the host from the Android emulator. Physical devices need a reachable LAN URL; returned media URLs must also be reachable. See [dashboard setup](docs/dashboard-development.md). An omitted API_BASE_URL intentionally displays a configuration error.
++
++## Documentation
++
++- [Documentation index](docs/README.md)
++- [Architecture](docs/architecture.md)
++- [API integration guide](docs/api-integration.md) and [OpenAPI](docs/openapi.yaml)
++- [Hostinger deployment](docs/hostinger-deployment.md) and [backup/recovery](docs/deployment.md)
++- [PostgreSQL data transfer](docs/postgres-to-mysql-transfer.md)
++- [Android release preparation](docs/dashboard-release-preparation.md)
++
++## Contributing and support
++
++Read [CONTRIBUTING.md](CONTRIBUTING.md) for local checks and pull requests. Use the [issue templates](https://github.com/Mahmoudmnb/portfolio-platform/issues/new/choose) for reproducible bugs and focused feature proposals. Participation follows the [Code of Conduct](CODE_OF_CONDUCT.md). Maintenance is best effort; there is no response-time guarantee.
++
++Report vulnerabilities privately using [SECURITY.md](SECURITY.md), never in a public bug report. Do not include credentials, inquiry contents, database dumps or production logs in issues.
++
++## License
++
++Source code is available under the existing [MIT license](LICENSE), copyright 2026 Brothers Tech. Preserve third-party notices, including the bundled font licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Replace branding and personal/sample content when deploying your own instance; no endorsement is implied.
+diff --git a/SECURITY.md b/SECURITY.md
+new file mode 100644
+index 0000000..e40ad1f
+--- /dev/null
++++ b/SECURITY.md
+@@ -0,0 +1,21 @@
++# Security policy
++
++## Scope and support
++
++Security fixes are maintained on the default development branch. No older release branch currently has a promised security-support period. Published deployment/review reports do not imply that every deployment is patched or that a debug APK is a distribution release.
++
++## Report privately
++
++Use GitHub's **Security → Report a vulnerability** for this repository when private vulnerability reporting is enabled:
++
++https://github.com/Mahmoudmnb/portfolio-platform/security/advisories/new
++
++If that control is unavailable, request a private reporting channel from the maintainer through their GitHub profile/contact options. A public request should contain no vulnerability details, exploit, credentials or affected private records. Do not submit a vulnerability through the ordinary public bug template.
++
++Include the affected revision, component, impact, minimal reproduction against an instance you control, and suggested mitigation if available. Redact tokens, passwords, personal information and inquiry contents. Do not test the author's production service or other deployments without separate authorization.
++
++Reports are handled on a best-effort basis. No response deadline, bounty or permission for live-system testing is implied by this policy.
++
++## Contributor responsibilities
++
++Use local/disposable environments, keep credentials out of source and logs, preserve TLS verification and authorization checks, and report suspected leaks privately. Removing a secret from the latest file does not remove it from Git history; exposed credentials require revocation/rotation by their owner. Do not rewrite shared history or rotate production secrets without coordination.
+diff --git a/THIRD_PARTY_NOTICES.md b/THIRD_PARTY_NOTICES.md
+new file mode 100644
+index 0000000..80d159b
+--- /dev/null
++++ b/THIRD_PARTY_NOTICES.md
+@@ -0,0 +1,20 @@
++# Third-party notices
++
++The root MIT license covers this project's original source. Dependencies, fonts and other assets retain their own licenses; the root license does not replace them.
++
++## Bundled fonts
++
++| Asset | License file |
++| --- | --- |
++| Manrope | [Manrope OFL notice](dashboard/assets/fonts/Manrope-OFL.txt) |
++| Roboto | [Roboto OFL notice](dashboard/assets/fonts/Roboto-OFL.txt) |
++
++Keep these notices when redistributing the fonts. Font licensing conditions, including reserved-name restrictions where applicable, are defined by the included licenses.
++
++## Dependencies and assets
++
++PHP dependencies are identified in backend/composer.lock. Dart/Flutter dependencies are identified in dashboard/pubspec.lock and packages/portfolio_api/pubspec.lock. Consult each dependency's license when redistributing it; Flutter's in-app license registry also provides notices registered by the application and its dependencies.
++
++UI SVG assets live in dashboard/assets/figma/. This file does not certify their provenance: review their source and applicable redistribution terms before a public asset release. Figma design access and library subscriptions do not by themselves establish permission to redistribute every exported asset. Record any required asset notices alongside this file when provenance is confirmed.
++
++Screenshots in documentation represent development examples; do not replace them with private inquiry data or production credentials. Review content/image permissions separately when publishing your own portfolio data. Personal branding does not imply endorsement of forks.
+diff --git a/docs/README.md b/docs/README.md
+new file mode 100644
+index 0000000..ba0bcc8
+--- /dev/null
++++ b/docs/README.md
+@@ -0,0 +1,32 @@
++# Documentation
++
++## Start here
++
++- [Project overview](../README.md)
++- [Backend local development](development.md)
++- [Android dashboard development](dashboard-development.md)
++- [Contributing](../CONTRIBUTING.md)
++
++## Architecture and API
++
++- [Architecture](architecture.md)
++- [API integration](api-integration.md)
++- [OpenAPI 3.1](openapi.yaml)
++- [Dashboard design](dashboard-design.md)
++
++## Deployment and operations
++
++- [Hostinger Business deployment](hostinger-deployment.md)
++- [General deployment and recovery](deployment.md)
++- [PostgreSQL-to-MySQL transfer](postgres-to-mysql-transfer.md)
++- [Android release preparation](dashboard-release-preparation.md)
++
++## Evidence and remaining work
++
++- [MySQL migration verification](mysql-migration-completion.md)
++- [Dashboard implementation](dashboard-completion.md)
++- [Dashboard finishing progress](dashboard-finishing-progress.md)
++- [Production-connected Android review](dashboard-production-review.md)
++- [Open-source repository settings and handoff](open-source-readiness.md)
++
++Reports document their own observed run and may describe older configurations. Prefer current source, manifests, API contract and setup guides for behavior. Earlier PostgreSQL reports are historical; neither a plan nor a local report proves a hosted CI run, device test or public release.
+diff --git a/docs/open-source-readiness.md b/docs/open-source-readiness.md
+new file mode 100644
+index 0000000..4cdfe53
+--- /dev/null
++++ b/docs/open-source-readiness.md
+@@ -0,0 +1,68 @@
++# Open-source readiness and GitHub settings
++
++Prepared against repository revision `0c22940a5c4b4472b42de1e5c50a39bb39a3c787` on 2026-10-23. Repository files can be reviewed locally; remote settings and hosted CI require access to the GitHub repository's settings. No visibility change, push, deployment, tag or release was performed by this preparation.
++
++## Files prepared
++
++- Root README: project explanation, existing dashboard screenshots, component map, local-first setup and documentation links. Website integration remains explicitly reserved.
++- CONTRIBUTING.md: contribution scope, checks, safe local environments and review expectations.
++- SECURITY.md and CODE_OF_CONDUCT.md: private vulnerability/conduct reporting guidance without invented contact addresses or service guarantees.
++- THIRD_PARTY_NOTICES.md: preserved font notices and explicit outstanding asset provenance review.
++- GitHub issue forms, PR template, CODEOWNERS and Dependabot updates for Composer, both Pub packages and Actions.
++- docs/README.md: documentation navigation and evidence caveats.
++- Root ignore patterns and coding-agent scope guidance updated; runtime behavior and API contract unchanged.
++
++The existing MIT license and copyright holder are preserved. This preparation does not relicense third-party material or certify asset provenance.
++
++## Maintainer GitHub setup
++
++Review these settings in the repository UI. Availability and names can vary by account; unsupported controls should be recorded rather than claimed enabled.
++
++| Area | Recommended configuration |
++| --- | --- |
++| About | Description: `Self-hosted portfolio platform with a Laravel API, Flutter Android dashboard and shared Dart client.` |
++| Website | https://mahmoudbannan.com — identify it as the author's portfolio, not an admin demo |
++| Topics | laravel, flutter, dart, rest-api, portfolio, content-management, android, mysql, mariadb, self-hosted |
++| Features | Enable Issues; Discussions optional only if the maintainer wants to moderate another channel |
++| Pull requests | Prefer squash merging and automatic deletion of merged topic branches; preserve the current default branch |
++| Actions | Keep default workflow token permissions read-only; public fork PR checks must not receive production/signing secrets |
++| Security | Review/enable Dependabot alerts, supported secret scanning/push protection and private vulnerability reporting |
++| Code scanning | Enable supported analysis only after reviewing language coverage; do not add a fake PHP/Dart scanning badge |
++| Branch rules | Protect the default branch against deletion/force pushes; require passing appropriate checks and resolved conversations |
++| Reviews | Require another reviewer only when someone is actually available; do not deadlock a solo-maintainer workflow |
++| Releases | Publish a version/tag only after review and relevant gates; never attach an owner-configured debug APK as a production release |
++
++CODEOWNERS routes review to @Mahmoudmnb; it does not grant permissions or force review by itself. Configure rules after checking the actual stable CI job names. Existing backend/dashboard workflows use path filters: indiscriminately requiring their checks can block unrelated PRs because skipped workflows may leave required checks pending. Resolve check coverage first or use a properly designed always-running aggregate gate; do not select nonexistent checks.
++
++Dependabot configuration adds reviewable update PRs; it does not enable automatic merge, prove vulnerability coverage or replace hosted validation. Keep application lockfiles and verify SDK compatibility before accepting updates. Avoid privileged workflows that execute untrusted fork code. No automatic deployment workflow is introduced.
++
++Verify that Security → Report a vulnerability works before advertising it as an enabled private channel. SECURITY.md provides a fallback request for a private contact channel without inventing a public email address.
++
++## Publication review
++
++1. Inspect current tracked files and full Git history for secrets with a maintained secret scanner in a trusted environment. A filename/regex inspection is limited and does not certify a clean repository.
++2. Verify no .env, owner credentials, signing material, private inquiry data, backup archives or uploaded production media are tracked. Ignore rules do not remove already committed content.
++3. If a real leak is found, report privately, revoke/rotate through the owner and coordinate any history cleanup. Do not silently force-push or delete shared history.
++4. Audit dashboard/assets/figma SVG provenance and redistribution terms; keep font OFL notices and dependency licenses. This review remains open rather than assumed complete.
++5. Review documentation screenshots/evidence for fictional data, private contact information, account identifiers and inappropriate production diagnostics. Personal branding intentionally shown by the owner may stay; infrastructure details are not necessary for public examples.
++6. Confirm a fresh checkout can follow the local setup and create its own owner without the author's credentials or production API.
++7. Run hosted Backend and Android dashboard workflows on the reviewed revision, recording URLs/results. Old local reports are not current hosted evidence.
++8. Verify the README's current limitations before making any release-readiness claim. Existing unresolved picker/physical-device/Figma checks remain open until newly verified.
++
++## Validation of this change
++
++This task changes documentation and repository metadata only. Local checks cover Markdown file links introduced/edited here, YAML parsing and issue-form structure, Dependabot directory/manifest existence, ignore-pattern probes, tracked sensitive-file-name patterns and git diff whitespace. No full application test suite, hosted CI, complete history secret scan, license certification or live-system test is implied.
++
++## Apply the review patch
++
++Apply from a development checkout of the same repository, not from the running Hostinger deployment. Commit/review these changes normally and inspect conflicts if the branch has advanced. The patch contains documentation/community configuration only; it is not a deployment script.
++
++```sh
++git switch -c chore/open-source-readiness
++git apply --check /path/to/open-source-readiness.patch
++git apply /path/to/open-source-readiness.patch
++git diff --check
++git status --short
++```
++
++Review the resulting changes, run the relevant checks and commit/push using your existing authenticated development workflow. Configure the GitHub UI settings above separately. Do not apply with force or discard newer work to make an old patch fit.

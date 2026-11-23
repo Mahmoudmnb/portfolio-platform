@@ -24,7 +24,7 @@ class PostgresTransfer
             return $target->transaction(function () use ($source, $target, $apply, $verify) {
                 if ($apply) {
                     $target->table('application_locks')->upsert([['name' => 'transfer']], ['name'], ['name']);
-                    foreach (self::TABLES as $table) {
+                    foreach ([...self::TABLES, 'pages', 'page_entry'] as $table) {
                         if ($target->table($table)->exists()) {
                             throw new \RuntimeException('Target must be newly migrated and empty; no records were overwritten.');
                         }
@@ -33,6 +33,8 @@ class PostgresTransfer
                 $report = [];
                 foreach (self::TABLES as $table) {
                     $columns = array_values(array_filter($target->getSchemaBuilder()->getColumns($table), fn ($column) => ! ($column['generation'] ?? null)));
+                    $sourceColumns = $source->getSchemaBuilder()->getColumnListing($table);
+                    $columns = array_values(array_filter($columns, fn ($column) => in_array($column['name'], $sourceColumns, true)));
                     $names = array_column($columns, 'name');
                     $sourceDigest = hash_init('sha256');
                     $rows = 0;

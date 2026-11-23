@@ -5,7 +5,9 @@ namespace App\Http\Requests;
 use App\Enums\Availability;
 use App\Enums\EntryKind;
 use App\Enums\PublicationStatus;
+use App\Rules\ContentLink;
 use App\Rules\ContentUrl;
+use App\Support\WebsiteContent;
 use Illuminate\Validation\Rule;
 
 class ContentRequest extends StrictRequest
@@ -22,10 +24,17 @@ class ContentRequest extends StrictRequest
         $url = ['sometimes', 'nullable', 'string', 'max:2048', new ContentUrl];
         $sort = ['sometimes', 'integer', 'between:-1000000,1000000'];
         $links = ['sometimes', 'array', 'max:10'];
-        $linkFields = ['links' => $links, 'links.*' => ['array:label,url,sort_order'], 'links.*.label' => ['required', 'string', 'max:80'], 'links.*.url' => ['required', 'string', 'max:2048', new ContentUrl], 'links.*.sort_order' => ['sometimes', 'integer', 'between:-1000000,1000000']];
+        $linkFields = ['links' => $links, 'links.*' => ['array:label,url,sort_order,is_visible'], 'links.*.label' => ['required', 'string', 'max:80'], 'links.*.url' => ['required', 'string', 'max:2048', new ContentUrl], 'links.*.is_visible' => ['sometimes', 'boolean'], 'links.*.sort_order' => ['sometimes', 'integer', 'between:-1000000,1000000']];
 
         return match ($type) {
             'entries' => [
+                'project_type' => ['sometimes', 'nullable', Rule::in(WebsiteContent::PROJECT_TYPES)],
+                'challenge' => ['sometimes', 'nullable', 'string', 'max:10000'], 'solution' => ['sometimes', 'nullable', 'string', 'max:10000'],
+                'outcomes' => ['sometimes', 'array', 'max:30'], 'outcomes.*' => ['required', 'string', 'max:1000'],
+                'platforms' => ['sometimes', 'array', 'max:6'], 'platforms.*' => ['required', 'distinct', Rule::in(WebsiteContent::PLATFORMS)],
+                'store_links' => ['sometimes', 'array', 'max:10'], 'store_links.*' => ['array:platform,label,url'],
+                'store_links.*.platform' => ['required', Rule::in(WebsiteContent::PLATFORMS)], 'store_links.*.label' => ['required', 'string', 'max:80'], 'store_links.*.url' => ['required', 'string', 'max:2048', new ContentUrl],
+                'seo_title' => ['sometimes', 'nullable', 'string', 'max:180'], 'seo_description' => ['sometimes', 'nullable', 'string', 'max:500'],
                 'kind' => [$required, Rule::enum(EntryKind::class)], 'slug' => $slug, 'title' => $text(180), 'summary' => $text(500), 'description' => $text(50000),
                 'category_id' => ['sometimes', 'nullable', 'integer', 'exists:categories,id'], 'status' => ['sometimes', Rule::enum(PublicationStatus::class)],
                 'published_at' => ['sometimes', 'nullable', 'date', 'before_or_equal:now'], 'featured' => ['sometimes', 'boolean'], 'sort_order' => $sort,
@@ -38,14 +47,21 @@ class ContentRequest extends StrictRequest
             'categories' => ['slug' => $slug, 'name' => $text(120), 'description' => ['sometimes', 'nullable', 'string', 'max:1000'], 'sort_order' => $sort],
             'technologies' => ['slug' => $slug, 'name' => $text(120), 'website_url' => $url],
             'team-members' => array_merge(['slug' => $slug, 'name' => $text(120), 'role_title' => $text(180), 'bio' => $text(10000), 'photo_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'], 'is_active' => ['sometimes', 'boolean'], 'sort_order' => $sort], $linkFields),
-            'services' => ['slug' => $slug, 'title' => $text(180), 'summary' => $text(500), 'description' => $text(20000), 'icon_key' => ['sometimes', 'nullable', 'string', 'max:80', 'regex:/^[a-z][a-z0-9_-]*$/'], 'is_active' => ['sometimes', 'boolean'], 'sort_order' => $sort],
+            'services' => ['features' => ['sometimes', 'array', 'max:30'], 'features.*' => ['required', 'string', 'max:1000'], 'cover_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'], 'cta_label' => ['sometimes', 'nullable', 'string', 'max:80'], 'cta_url' => ['sometimes', 'nullable', 'string', 'max:2048', new ContentLink], 'seo_title' => ['sometimes', 'nullable', 'string', 'max:180'], 'seo_description' => ['sometimes', 'nullable', 'string', 'max:500'], 'slug' => $slug, 'title' => $text(180), 'summary' => $text(500), 'description' => $text(20000), 'icon_key' => ['sometimes', 'nullable', 'string', 'max:80', 'regex:/^[a-z][a-z0-9_-]*$/'], 'is_active' => ['sometimes', 'boolean'], 'sort_order' => $sort],
             'site-settings' => [
+                'phone' => ['sometimes', 'nullable', 'string', 'max:255'], 'location' => ['sometimes', 'nullable', 'string', 'max:255'], 'availability_text' => ['sometimes', 'nullable', 'string', 'max:255'],
+                'logo_light_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'], 'logo_dark_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'], 'favicon_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'],
+                'footer' => ['sometimes', 'nullable', 'array:description,copyright_text,established_year,footer_links,practice_links'],
+                'footer.description' => ['sometimes', 'nullable', 'string', 'max:5000'], 'footer.copyright_text' => ['sometimes', 'nullable', 'string', 'max:500'], 'footer.established_year' => ['sometimes', 'nullable', 'integer', 'between:1900,2100'],
+                'legal_links' => ['sometimes', 'nullable', 'array:privacy_policy_url,terms_url,security_policy_url'],
+                'legal_links.privacy_policy_url' => ['sometimes', 'nullable', 'string', 'max:2048', new ContentLink], 'legal_links.terms_url' => ['sometimes', 'nullable', 'string', 'max:2048', new ContentLink], 'legal_links.security_policy_url' => ['sometimes', 'nullable', 'string', 'max:2048', new ContentLink],
                 'site_title' => $text(180), 'tagline' => $text(500), 'introduction' => $text(10000), 'contact_email' => [$required, 'email', 'max:254'],
                 'availability' => [$required, Rule::enum(Availability::class)], 'logo_media_id' => ['sometimes', 'nullable', 'integer', 'exists:media,id'],
                 'default_seo_title' => $text(180), 'default_seo_description' => $text(500), 'social_links' => ['present', 'array', 'max:10'],
-                'social_links.*' => ['array:label,url,sort_order'], 'social_links.*.label' => ['required', 'string', 'max:80'], 'social_links.*.url' => ['required', 'string', 'max:2048', new ContentUrl],
+                'social_links.*' => ['array:platform,label,url,sort_order,is_visible'], 'social_links.*.label' => ['required', 'string', 'max:80'], 'social_links.*.url' => ['required', 'string', 'max:2048', new ContentUrl],
+                'social_links.*.platform' => ['sometimes', 'string', 'max:40', 'regex:/^[a-z][a-z0-9_-]*$/'], 'social_links.*.is_visible' => ['sometimes', 'boolean'],
                 'social_links.*.sort_order' => ['sometimes', 'integer', 'between:-1000000,1000000'],
-            ],
+            ] + WebsiteContent::linkRules('navigation') + WebsiteContent::linkRules('footer.footer_links') + WebsiteContent::linkRules('footer.practice_links') + WebsiteContent::ctaRules('shared_cta'),
             default => []
         };
     }
