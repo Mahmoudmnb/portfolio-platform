@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Support\ApiException;
 use App\Support\Audit;
 use App\Support\ContentTypes;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\UniqueConstraintViolationException;
@@ -52,7 +53,7 @@ class ContentWriter
                         if (! $entity->cover_media_id) {
                             throw ValidationException::withMessages(['cover_media_id' => ['A ready cover is required to publish.']]);
                         }
-                        $entity->published_at ??= now();
+                        $entity->published_at ??= CarbonImmutable::now();
                         if ($entity->published_at->isFuture()) {
                             throw ValidationException::withMessages(['published_at' => ['Future publication is not supported.']]);
                         }

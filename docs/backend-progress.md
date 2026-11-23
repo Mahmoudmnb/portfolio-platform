@@ -2,6 +2,23 @@
 
 # Backend implementation progress
 
+## Git synchronization and conflict resolution — 2026-11-23
+
+Preserved the local route commit and committed the ten existing documentation/tooling edits before merging `origin/chore/open-source-readiness` and `origin/main`. Resolved `backend/composer.lock` using the complete upstream `main` lockfile, retaining its reviewed dependency updates and the existing Laravel/Symfony security fixes. Kept the complete local OpenAPI definitions: automatic merging had introduced duplicate page path keys and a duplicate media PATCH operation that would silently replace the typed schemas when parsed. A strict duplicate-key check now passes on the resolved document.
+
+The upstream runtime image selected PHP 8.6 RC, which conflicts with Composer's `~8.5.0` requirement and the stable-runtime policy. Restored the existing PHP 8.5.12 container pin. The newer Larastan analyzer identified a mutable date assigned to the entry's immutable publication-date property; publication now initializes it with `CarbonImmutable::now()`. Existing publication tests cover this behavior. No dependency constraints or locked versions were changed beyond adopting upstream `main`.
+
+Post-resolution verification used PHP 8.5.4, PHPUnit 13.4.8, PHPStan 2.3.7 and Larastan 3.15.0 with the existing isolated test runtimes under `/tmp/portfolio-website-tests`:
+
+- MariaDB 11.8.6: **60 tests, 608 assertions passed; no skips**, repeated after the publication-date fix.
+- MySQL 8.4.13: **60 tests, 608 assertions passed; no skips**. Both suites included the disposable PostgreSQL legacy-transfer source.
+- Full Pint and dirty Pint formatting passed; PHPStan passed with zero errors at the configured level and 512 MiB limit.
+- Composer installation, strict validation and platform requirements passed; `composer audit --locked` reported no security vulnerability advisories.
+- OpenAPI 3.1 validation passed with **63 matching operations and 32 conforming response fixtures** using upstream's validator 0.9.0. Postman regeneration produced no changes; tracked credential and resource-ID values remain blank.
+- Whitespace and conflict-marker checks passed. The final client directory trees match upstream `main` exactly; no client implementation edits were made.
+
+Docker image execution remains unverified: this account cannot access the Docker daemon and the Compose subcommand is unavailable. Hosted CI results remain external. No deployment or production database operation was performed. The user selected `main` as the GitHub destination.
+
 ## Current website content update — 2026-11-23
 
 Implemented the requested [Brothers-Tech website brief](../backend/docs/brothers_tech_backend_integration_plan.md) as an additive extension of the existing API. See the [Flutter change guide](../backend/docs/flutter-backend-updates.md), [tested request examples](../backend/docs/flutter-api-examples.md), and [client checklist](../backend/docs/flutter-implementation-checklist.md).

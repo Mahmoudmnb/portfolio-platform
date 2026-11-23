@@ -16,8 +16,8 @@ Route::prefix('v1')->group(function () {
     Route::middleware('throttle:reads')->group(function () {
         foreach (['entries', 'categories', 'technologies', 'team-members', 'services'] as $resource) {
             Route::get($resource, [ContentController::class, 'index'])->defaults('resource', $resource);
-            if (!in_array($resource, ['categories', 'technologies'])) {
-                Route::get($resource . '/{slug}', [ContentController::class, 'show'])->defaults('resource', $resource);
+            if (! in_array($resource, ['categories', 'technologies'])) {
+                Route::get($resource.'/{slug}', [ContentController::class, 'show'])->defaults('resource', $resource);
             }
         }
         Route::get('pages/{page_key}', [PageController::class, 'show'])->whereIn('page_key', WebsiteContent::PAGE_KEYS);
@@ -34,10 +34,10 @@ Route::prefix('v1')->group(function () {
             Route::put('auth/password', [AuthController::class, 'password']);
             foreach (['entries', 'categories', 'technologies', 'team-members', 'services'] as $resource) {
                 Route::get($resource, [ContentController::class, 'index'])->defaults('resource', $resource);
-                Route::get($resource . '/{id}', [ContentController::class, 'show'])->whereNumber('id')->defaults('resource', $resource);
+                Route::get($resource.'/{id}', [ContentController::class, 'show'])->whereNumber('id')->defaults('resource', $resource);
                 Route::post($resource, [ContentController::class, 'store'])->defaults('resource', $resource);
-                Route::patch($resource . '/{id}', [ContentController::class, 'update'])->whereNumber('id')->defaults('resource', $resource);
-                Route::delete($resource . '/{id}', [ContentController::class, 'destroy'])->whereNumber('id')->defaults('resource', $resource);
+                Route::patch($resource.'/{id}', [ContentController::class, 'update'])->whereNumber('id')->defaults('resource', $resource);
+                Route::delete($resource.'/{id}', [ContentController::class, 'destroy'])->whereNumber('id')->defaults('resource', $resource);
             }
             Route::get('pages', [PageController::class, 'index']);
             Route::get('pages/{page_key}', [PageController::class, 'show'])->whereIn('page_key', WebsiteContent::PAGE_KEYS);
@@ -55,7 +55,7 @@ Route::prefix('v1')->group(function () {
         });
         Route::post('media', [MediaController::class, 'store'])->middleware('throttle:uploads');
         foreach (['summary', 'daily', 'top-pages', 'top-entries', 'referrers'] as $report) {
-            Route::get('analytics/' . $report, [AnalyticsController::class, 'report'])->defaults('report', $report);
+            Route::get('analytics/'.$report, [AnalyticsController::class, 'report'])->defaults('report', $report);
         }
         Route::get('audit-events', [AuditController::class, 'index']);
     });
