@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\ContentTypes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +27,7 @@ class Media extends Model
 
     protected function casts(): array
     {
-        return ['bytes' => 'integer', 'width' => 'integer', 'height' => 'integer'];
+        return ['display_bytes' => 'integer', 'bytes' => 'integer', 'width' => 'integer', 'height' => 'integer'];
     }
 
     public function galleryEntries(): BelongsToMany
@@ -49,14 +50,39 @@ class Media extends Model
         return $this->hasMany(SiteSetting::class, 'logo_media_id');
     }
 
+    public function lightSettings(): HasMany
+    {
+        return $this->hasMany(SiteSetting::class, 'logo_light_media_id');
+    }
+
+    public function darkSettings(): HasMany
+    {
+        return $this->hasMany(SiteSetting::class, 'logo_dark_media_id');
+    }
+
+    public function faviconSettings(): HasMany
+    {
+        return $this->hasMany(SiteSetting::class, 'favicon_media_id');
+    }
+
+    public function serviceCovers(): HasMany
+    {
+        return $this->hasMany(Service::class, 'cover_media_id');
+    }
+
+    public function pageImages(): HasMany
+    {
+        return $this->hasMany(Page::class, 'og_image_media_id');
+    }
+
     public function scopeWithUsage(Builder $q): Builder
     {
-        return $q->withCount(['galleryEntries', 'coverEntries', 'members', 'settings']);
+        return $q->withCount(ContentTypes::MEDIA_USAGE);
     }
 
     public function usageCount(): int
     {
-        return $this->galleryEntries()->count() + $this->coverEntries()->count() + $this->members()->count() + $this->settings()->count();
+        return array_sum(array_map(fn (string $relation): int => $this->{$relation}()->count(), ContentTypes::MEDIA_USAGE));
     }
 
     public function variantKey(string $variant = 'display'): string
